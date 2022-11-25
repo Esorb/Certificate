@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Esorb.Certificate.App", "Esorb.Certificate.App\Esorb.Certificate.App.csproj", "{EF69FD22-0AE0-4381-8392-6A473A418A86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Esorb.Certificate.UnitTests", "Esorb.Certificate.UnitTests\Esorb.Certificate.UnitTests.csproj", "{16F9BBBF-D292-401B-A18E-934970150739}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esorb.Certificate.Model", "Esorb.Certificate.Model\Esorb.Certificate.Model.csproj", "{BD21B501-4E49-4571-87E2-AA4A648E25A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esorb.Certificate.ViewModel", "Esorb.CertificateViewModel\Esorb.Certificate.ViewModel.csproj", "{87E88FEA-F08F-4B34-AF56-5C5E4B46ADB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esorb.Certificate.View", "Esorb.Certificate.View\Esorb.Certificate.View.csproj", "{A27AFD21-807F-4198-8398-B8D305E3C8B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF69FD22-0AE0-4381-8392-6A473A418A86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF69FD22-0AE0-4381-8392-6A473A418A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF69FD22-0AE0-4381-8392-6A473A418A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF69FD22-0AE0-4381-8392-6A473A418A86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16F9BBBF-D292-401B-A18E-934970150739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F9BBBF-D292-401B-A18E-934970150739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F9BBBF-D292-401B-A18E-934970150739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F9BBBF-D292-401B-A18E-934970150739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD21B501-4E49-4571-87E2-AA4A648E25A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD21B501-4E49-4571-87E2-AA4A648E25A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD21B501-4E49-4571-87E2-AA4A648E25A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD21B501-4E49-4571-87E2-AA4A648E25A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87E88FEA-F08F-4B34-AF56-5C5E4B46ADB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E88FEA-F08F-4B34-AF56-5C5E4B46ADB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E88FEA-F08F-4B34-AF56-5C5E4B46ADB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E88FEA-F08F-4B34-AF56-5C5E4B46ADB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A27AFD21-807F-4198-8398-B8D305E3C8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27AFD21-807F-4198-8398-B8D305E3C8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27AFD21-807F-4198-8398-B8D305E3C8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27AFD21-807F-4198-8398-B8D305E3C8B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC554508-3A8A-4F07-951E-C593CBAEBC74}
+	EndGlobalSection
+EndGlobal
