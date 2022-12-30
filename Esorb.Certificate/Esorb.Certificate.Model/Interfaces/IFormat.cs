@@ -2,7 +2,7 @@
 using Xceed.Document.NET;
 using Xceed.Words.NET;
 
-namespace Esorb.Certificate.Model
+namespace Esorb.Certificate.Model.Interfaces
 {
     interface IFormat
     {

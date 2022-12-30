@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Esorb.Certificate.Model
+namespace Esorb.Certificate.Model.Interfaces
 {
     interface ICondition
     {

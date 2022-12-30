@@ -10,12 +10,14 @@ namespace Esorb.Certificate.Model
     public class CertificateData : ViewModelBase
     {
         private long certificateDataId;
-        private short schoolYear;
+        private string? schoolYear;
         private short halfYear;
         private DateOnly dateOfSchoolConference;
         private DateOnly dateOfCertificateDistribution;
         private DateOnly dateOfRestartLessons;
         private TimeOnly timeOfRestartLessons;
+        private long certificateTemplateID;
+        private CertificateTemplate? template;
 
         public CertificateData()
         {
@@ -34,7 +36,7 @@ namespace Esorb.Certificate.Model
             }
         }
 
-        public short SchoolYear
+        public string? SchoolYear
         {
             get
             {
@@ -111,6 +113,19 @@ namespace Esorb.Certificate.Model
                 OnPropertyChanged(nameof(TimeOfRestartLessons));
             }
         }
+        public long CertificateTemplateID
+        {
+            get { return certificateTemplateID; }
+            set { certificateTemplateID = value; }
+        }
+
+
+        public CertificateTemplate? Template
+        {
+            get { return template; }
+            set { template = value; }
+        }
+
 
     }
 }

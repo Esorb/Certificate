@@ -24,11 +24,12 @@ namespace Esorb.Certificate.UnitTests
         public void PupilsFullNameAfterNameSetting_Is_Max_Mustermann()
         {
             // Arrange
-            var p = new Pupil();
-
-            // Act
-            p.FirstName = "Max";
-            p.LastName = "Mustermann";
+            var p = new Pupil
+            {
+                // Act
+                FirstName = "Max",
+                LastName = "Mustermann"
+            };
 
             // Assert
             Assert.AreEqual("Max Mustermann", p.FullName);
@@ -46,39 +47,37 @@ namespace Esorb.Certificate.UnitTests
                 HalfYear = 2
             };
 
-            using (var data = new CertificateContext())
+            using var data = new CertificateContext();
+            data.Pupils.ExecuteDelete();
+            data.SchoolClasses.ExecuteDelete();
+            data.Add(sc);
+            data.SaveChanges();
+
+            var p1 = new Pupil()
             {
-                data.Pupils.ExecuteDelete();
-                data.SchoolClasses.ExecuteDelete();
-                data.Add(sc);
-                data.SaveChanges();
+                FirstName = "Hans",
+                LastName = "Müller",
+                DateOfBirth = new DateOnly(2014, 8, 13),
+                YearsAtSchool = 1,
+                SchoolClassId = sc.SchoolClassId
+            };
 
-                var p1 = new Pupil()
-                {
-                    FirstName = "Hans",
-                    LastName = "Müller",
-                    DateOfBirth = new DateOnly(2014, 8, 13),
-                    YearsAtSchool = 1,
-                    SchoolClassId = sc.SchoolClassId
-                };
+            var p2 = new Pupil()
+            {
+                FirstName = "Maria",
+                LastName = "Maier",
+                DateOfBirth = new DateOnly(2013, 2, 25),
+                YearsAtSchool = 2,
+                SchoolClassId = sc.SchoolClassId
+            };
 
-                var p2 = new Pupil()
-                {
-                    FirstName = "Maria",
-                    LastName = "Maier",
-                    DateOfBirth = new DateOnly(2013, 2, 25),
-                    YearsAtSchool = 2,
-                    SchoolClassId = sc.SchoolClassId
-                };
+            // Act
+            data.Add(p1);
+            data.Add(p2);
+            data.SaveChanges();
 
-                // Act
-                data.Add(p1);
-                data.Add(p2);
-                data.SaveChanges();
-
-                // Assert
-                Assert.AreEqual(2, data.Pupils.Count());
-            }
+            // Assert
+            Assert.AreEqual(2, data.Pupils.Count());
         }
     }
 }

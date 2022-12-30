@@ -1,6 +1,7 @@
 ﻿using Esorb.Certificate.Basics;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,10 +14,13 @@ namespace Esorb.School_Certificate.Model
         private string className;
         private short yearlevel;
         private short halfYear;
+        private ObservableCollection<Pupil> pupils;
+
 
         public SchoolClass()
         {
             className = string.Empty;
+            pupils = new ObservableCollection<Pupil>();
         }
 
         public long SchoolClassId
@@ -70,5 +74,18 @@ namespace Esorb.School_Certificate.Model
                 OnPropertyChanged(nameof(HalfYear));
             }
         }
+
+        public ObservableCollection<Pupil> Pupils
+        {
+            get
+            {
+                return pupils;
+            }
+            set
+            {
+                pupils = value;
+            }
+        }
+
     }
 }
