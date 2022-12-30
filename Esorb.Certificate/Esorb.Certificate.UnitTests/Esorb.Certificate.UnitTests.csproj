@@ -12,13 +12,13 @@
 		<PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
 		<PackageReference Include="MSTest" Version="2.2.10" />
@@ -29,6 +29,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Esorb.Certificate.Model\Esorb.Certificate.Model.csproj" />
+		<ProjectReference Include="..\Esorb.Certificate.Output\Esorb.Certificate.Output.csproj" />
+		<ProjectReference Include="..\Esorb.Certificate.PupilCsvFileService\Esorb.Certificate.PupilCsvFileService.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -12,7 +12,7 @@ namespace Esorb.Certificate.Model
 {
     public class CertificateContext : DbContext
     {
-        private string _connectionString;
+        //private string _connectionString;
 
         //public CertificateContext(string connectionString)
         //{

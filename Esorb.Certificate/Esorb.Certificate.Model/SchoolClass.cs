@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esorb.Certificate.Basics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.School_Certificate.Model
 {
-    public class SchoolClass
+    public class SchoolClass : ViewModelBase
     {
         private long schoolClassId;
         private string className;
@@ -20,26 +21,54 @@ namespace Esorb.School_Certificate.Model
 
         public long SchoolClassId
         {
-            get { return schoolClassId; }
-            set { schoolClassId = value; }
+            get
+            {
+                return schoolClassId;
+            }
+            set
+            {
+                schoolClassId = value;
+                OnPropertyChanged(nameof(SchoolClassId));
+            }
         }
 
         public string ClassName
         {
-            get { return className; }
-            set { className = value; }
+            get
+            {
+                return className;
+            }
+            set
+            {
+                className = value;
+                OnPropertyChanged(nameof(ClassName));
+            }
         }
 
         public short Yearlevel
         {
-            get { return yearlevel; }
-            set { yearlevel = value; }
+            get
+            {
+                return yearlevel;
+            }
+            set
+            {
+                yearlevel = value;
+                OnPropertyChanged(nameof(Yearlevel));
+            }
         }
 
         public short HalfYear
         {
-            get { return halfYear; }
-            set { halfYear = value; }
+            get
+            {
+                return halfYear;
+            }
+            set
+            {
+                halfYear = value;
+                OnPropertyChanged(nameof(HalfYear));
+            }
         }
     }
 }
