@@ -1,4 +1,4 @@
-﻿using Esorb.Certificate.Model;
+﻿using Esorb.Certificate.Model.ValueInputs;
 using Esorb.Certificate.Output;
 using System;
 using System.Collections.Generic;
@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace Esorb.Certificate.UnitTests
 {
     [TestClass]
-    public class NumberOfHoursTest
+    public class NumberOfHoursTests
     {
         [TestMethod]
         public void ValidValueAssignement_ReturnsValue()
         {
             // Arrange
-            var noh = new NumberOfHours
+            var noh = new NumberOfHoursInput
             {
                 // Act
                 ValueString = "5"
@@ -28,7 +28,7 @@ namespace Esorb.Certificate.UnitTests
         public void NegativeValueAssignement_ReturnsZero()
         {
             // Arrange
-            var noh = new NumberOfHours
+            var noh = new NumberOfHoursInput
             {
                 // Act
                 ValueString = "-5"
@@ -41,7 +41,7 @@ namespace Esorb.Certificate.UnitTests
         public void InvalidValueAssignement_ReturnsZero()
         {
             // Arrange
-            var noh = new NumberOfHours
+            var noh = new NumberOfHoursInput
             {
                 // Act
                 ValueString = "Hello World"

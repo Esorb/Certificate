@@ -4,13 +4,14 @@ using Xceed.Words.NET;
 
 namespace Esorb.Certificate.Model.Interfaces
 {
-    interface IFormat
+    public interface IFormat
     {
         long FormatID { get; set; }
         int PageNumber { get; set; }
         int PositionOnPage { get; set; }
         List<IContent> Contents { get; set; }
         ICondition Condition { get; set; }
+        bool ExpectedConditionValue { get; set; }
 
         public void PrintTo(DocX document);
     }

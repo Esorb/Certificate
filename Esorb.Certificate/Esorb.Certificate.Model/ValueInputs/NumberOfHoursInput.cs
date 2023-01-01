@@ -1,19 +1,20 @@
 ﻿using Esorb.Certificate.Basics;
 using Esorb.Certificate.Model.Interfaces;
+using Esorb.School_Certificate.Model;
 using System.ComponentModel.Design;
 
-namespace Esorb.Certificate.Model
+namespace Esorb.Certificate.Model.ValueInputs
 {
-    public class NumberOfHours : ViewModelBase, IValueInput
+    public class NumberOfHoursInput : ViewModelBase, IValueInput
     {
         private long numberOfHoursID;
-        private long pupilID;
-        private long certificateID;
-        private long contentID;
+        private long inputContextID;
         private string numberOfHoursName;
-        private int quantity;
+        private int numberOfHours;
+        private InputContext? context;
 
-        public NumberOfHours()
+
+        public NumberOfHoursInput()
         {
             numberOfHoursName = "";
         }
@@ -29,45 +30,19 @@ namespace Esorb.Certificate.Model
                 OnPropertyChanged(nameof(NumberOfHoursID));
             }
         }
-        public long PupilID
+
+        public long InputContextID
         {
             get
             {
-                return pupilID;
+                return inputContextID;
             }
             set
             {
-                pupilID = value;
-                OnPropertyChanged(nameof(PupilID));
+                inputContextID = value;
+                OnPropertyChanged(nameof(InputContextID));
             }
         }
-
-        public long CertificateID
-        {
-            get
-            {
-                return certificateID;
-            }
-            set
-            {
-                certificateID = value;
-                OnPropertyChanged(nameof(CertificateID));
-            }
-        }
-
-        public long ContentID
-        {
-            get
-            {
-                return contentID;
-            }
-            set
-            {
-                contentID = value;
-                OnPropertyChanged(nameof(ContentID));
-            }
-        }
-
         public string ValueName
         {
             get
@@ -85,22 +60,35 @@ namespace Esorb.Certificate.Model
         {
             get
             {
-                return quantity.ToString();
+                return numberOfHours.ToString();
             }
             set
             {
-                if (int.TryParse(value, out quantity))
+                if (int.TryParse(value, out numberOfHours))
                 {
-                    if (quantity < 0)
+                    if (numberOfHours < 0)
                     {
-                        quantity = 0;
+                        numberOfHours = 0;
                     }
                 }
                 else
                 {
-                    quantity = 0;
+                    numberOfHours = 0;
                 }
                 OnPropertyChanged(nameof(ValueString));
+            }
+        }
+
+        public InputContext? Context
+        {
+            get
+            {
+                return context;
+            }
+            set
+            {
+                context = value;
+                OnPropertyChanged(nameof(Context));
             }
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.Model.Interfaces
 {
-    interface ICondition
+    public interface ICondition
     {
         string Name { get; }
         public bool IsFullfilledFor(Pupil pupil);

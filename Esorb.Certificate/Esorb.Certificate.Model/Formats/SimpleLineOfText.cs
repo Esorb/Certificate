@@ -14,6 +14,7 @@ namespace Esorb.Certificate.Model.Formats
         public long FormatID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int PageNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int PositionOnPage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool ExpectedConditionValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         List<IContent> IFormat.Contents { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         ICondition IFormat.Condition { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

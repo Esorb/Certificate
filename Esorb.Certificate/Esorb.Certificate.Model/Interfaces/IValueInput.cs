@@ -1,14 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Esorb.Certificate.Model.ValueInputs;
 
 namespace Esorb.Certificate.Model.Interfaces
 {
     public interface IValueInput
     {
-        long PupilID { get; set; }
-        long CertificateID { get; set; }
-        long ContentID { get; set; }
         string ValueName { get; set; }
         string ValueString { get; set; }
-
+        InputContext? Context { get; set; }
     }
 }

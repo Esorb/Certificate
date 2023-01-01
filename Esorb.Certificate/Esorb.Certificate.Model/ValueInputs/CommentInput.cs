@@ -1,21 +1,22 @@
 ﻿using Esorb.Certificate.Basics;
 using Esorb.Certificate.Model.Interfaces;
+using Esorb.School_Certificate.Model;
 
-namespace Esorb.Certificate.Model
+namespace Esorb.Certificate.Model.ValueInputs
 {
-    internal class Comment : ViewModelBase, IValueInput
+    public class CommentInput : ViewModelBase, IValueInput
     {
         private long commentID;
-        private long pupilID;
-        private long certificateID;
-        private long contentID;
+        private long inputContextID;
         private string commentName;
         private string commentText;
         private int maxLength;
-        public Comment()
+        private InputContext? context;
+
+        public CommentInput()
         {
-            commentName = "";
-            commentText = "";
+            commentName = string.Empty;
+            commentText = string.Empty;
         }
 
         public long CommentID
@@ -30,42 +31,17 @@ namespace Esorb.Certificate.Model
                 OnPropertyChanged(nameof(CommentID));
             }
         }
-        public long PupilID
-        {
-            get
-            {
-                return pupilID;
-            }
-            set
-            {
-                pupilID = value;
-                OnPropertyChanged(nameof(PupilID));
-            }
-        }
 
-        public long CertificateID
+        public long InputContextID
         {
             get
             {
-                return certificateID;
+                return inputContextID;
             }
             set
             {
-                certificateID = value;
-                OnPropertyChanged(nameof(CertificateID));
-            }
-        }
-
-        public long ContentID
-        {
-            get
-            {
-                return contentID;
-            }
-            set
-            {
-                contentID = value;
-                OnPropertyChanged(nameof(ContentID));
+                inputContextID = value;
+                OnPropertyChanged(nameof(InputContextID));
             }
         }
 
@@ -105,6 +81,19 @@ namespace Esorb.Certificate.Model
             {
                 maxLength = value;
                 OnPropertyChanged(nameof(MaxLength));
+            }
+        }
+
+        public InputContext? Context
+        {
+            get
+            {
+                return context;
+            }
+            set
+            {
+                context = value;
+                OnPropertyChanged(nameof(Context));
             }
         }
 

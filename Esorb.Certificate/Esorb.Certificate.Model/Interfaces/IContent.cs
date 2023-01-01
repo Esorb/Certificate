@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.Model.Interfaces
 {
-    interface IContent
+    public interface IContent
     {
         long ContentID { get; set; }
         long FormatID { get; set; }
