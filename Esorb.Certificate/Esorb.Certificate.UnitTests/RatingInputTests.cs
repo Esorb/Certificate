@@ -14,9 +14,11 @@ namespace Esorb.Certificate.UnitTests
         public void Assign_4_Returns_4stars()
         {
             // Arrange
-            var ri = new RatingInput();
-            // Act
-            ri.ValueString = "4";
+            RatingInput ri = new()
+            {
+                // Act
+                ValueString = "4"
+            };
             // Assert
             Assert.AreEqual("****", ri.ValueString);
         }
@@ -25,9 +27,11 @@ namespace Esorb.Certificate.UnitTests
         public void Assign_4stars_Returns_4stars()
         {
             // Arrange
-            var ri = new RatingInput();
-            // Act
-            ri.ValueString = "****";
+            RatingInput ri = new()
+            {
+                // Act
+                ValueString = "****"
+            };
             // Assert
             Assert.AreEqual("****", ri.ValueString);
         }
@@ -36,9 +40,11 @@ namespace Esorb.Certificate.UnitTests
         public void Assign_3_Returns_3stars()
         {
             // Arrange
-            var ri = new RatingInput();
-            // Act
-            ri.ValueString = "3";
+            RatingInput ri = new()
+            {
+                // Act
+                ValueString = "3"
+            };
             // Assert
             Assert.AreEqual("***", ri.ValueString);
         }
@@ -47,9 +53,11 @@ namespace Esorb.Certificate.UnitTests
         public void Assign_3stars_Returns_3stars()
         {
             // Arrange
-            var ri = new RatingInput();
-            // Act
-            ri.ValueString = "***";
+            RatingInput ri = new()
+            {
+                // Act
+                ValueString = "***"
+            };
             // Assert
             Assert.AreEqual("***", ri.ValueString);
         }
@@ -58,9 +66,11 @@ namespace Esorb.Certificate.UnitTests
         public void Assign_2_Returns_2stars()
         {
             // Arrange
-            var ri = new RatingInput();
-            // Act
-            ri.ValueString = "2";
+            RatingInput ri = new()
+            {
+                // Act
+                ValueString = "2"
+            };
             // Assert
             Assert.AreEqual("**", ri.ValueString);
         }
@@ -69,9 +79,11 @@ namespace Esorb.Certificate.UnitTests
         public void Assign_2stars_Returns_2stars()
         {
             // Arrange
-            var ri = new RatingInput();
-            // Act
-            ri.ValueString = "**";
+            RatingInput ri = new()
+            {
+                // Act
+                ValueString = "**"
+            };
             // Assert
             Assert.AreEqual("**", ri.ValueString);
         }
@@ -80,9 +92,11 @@ namespace Esorb.Certificate.UnitTests
         public void Assign_1_Returns_1stars()
         {
             // Arrange
-            var ri = new RatingInput();
-            // Act
-            ri.ValueString = "1";
+            RatingInput ri = new()
+            {
+                // Act
+                ValueString = "1"
+            };
             // Assert
             Assert.AreEqual("*", ri.ValueString);
         }
@@ -91,9 +105,11 @@ namespace Esorb.Certificate.UnitTests
         public void Assign_1star_Returns_1star()
         {
             // Arrange
-            var ri = new RatingInput();
-            // Act
-            ri.ValueString = "*";
+            RatingInput ri = new()
+            {
+                // Act
+                ValueString = "*"
+            };
             // Assert
             Assert.AreEqual("*", ri.ValueString);
         }
@@ -102,9 +118,11 @@ namespace Esorb.Certificate.UnitTests
         public void Assign_something_else_Returns_falsche_Eingabe()
         {
             // Arrange
-            var ri = new RatingInput();
-            // Act
-            ri.ValueString = "*****";
+            RatingInput ri = new()
+            {
+                // Act
+                ValueString = "*****"
+            };
             // Assert
             Assert.AreEqual("falsche Eingabe", ri.ValueString);
         }

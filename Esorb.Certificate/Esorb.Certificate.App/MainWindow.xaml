@@ -5,8 +5,267 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Esorb.Certificate.App"
         mc:Ignorable="d"
-        Title="Zeugnisse" Height="450" Width="800">
-    <Grid>
+        Title="Zeugnisse" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode ="NoResize">
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="LightGray" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40" Height="40">
+                    <Image.Source>
+                        <BitmapImage UriSource="Pictures/GGS.png"/>
+                    </Image.Source>
+                </Image>
+                <TextBlock Grid.Column="1" Text="Zeugnisprogramm der Gemeinschaftsgrundschule Forsbach" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="20"/>
+                <Button Grid.Column="2" x:Name="MinimizeButton" KeyboardNavigation.IsTabStop="False" Click="MinimizeButton_Click"  FontSize="20" FontFamily="Segoe MDL2 Assets" BorderBrush="Transparent" BorderThickness="0" Background="Transparent"/>
+                <Button Grid.Column="3" x:Name="CloseButton" KeyboardNavigation.IsTabStop="False" Click="CloseButton_Click" FontSize="20" FontFamily="Segoe MDL2 Assets" BorderBrush="Transparent" BorderThickness="0" Background="Transparent"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Border Background="YellowGreen"  Grid.Column="0" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="IndianRed"  Grid.Column="1" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="Yellow"  Grid.Column="2" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="DarkOrchid"  Grid.Column="3" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="OliveDrab"  Grid.Column="4" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="MediumBlue"  Grid.Column="5" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="LightBlue"  Grid.Column="6" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="YellowGreen"  Grid.Column="7" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="IndianRed"  Grid.Column="8" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="Yellow"  Grid.Column="9" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="DarkOrchid"  Grid.Column="10" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="OliveDrab"  Grid.Column="11" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="MediumBlue"  Grid.Column="12" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="LightBlue"  Grid.Column="13" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="YellowGreen"  Grid.Column="14" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="IndianRed"  Grid.Column="15" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="Yellow"  Grid.Column="16" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="DarkOrchid"  Grid.Column="17" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="OliveDrab"  Grid.Column="18" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="MediumBlue"  Grid.Column="19" BorderBrush="LightGray" BorderThickness="2"/>
+            <Border Background="LightBlue"  Grid.Column="20" BorderBrush="LightGray" BorderThickness="2"/>
+        </Grid>
+        <TabControl TabStripPlacement="Left" Grid.Row="2">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid Name="Panel">
+                                    <ContentPresenter x:Name="ContentSite"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      ContentSource="Header"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Panel" Property="Background" Value="White"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Panel" Property="Background" Value="LightGray"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <TextBlock Name="StartHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                        <TextBlock Text="Start" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <TextBlock Name="InputHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                        <TextBlock Text="Eingabe" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <TextBlock Name="ExportHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                        <TextBlock Text="Export" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <TextBlock Name="AdminHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                        <TextBlock Text="Admin" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabControl TabStripPlacement="Top">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
+                                <TextBlock Name="TemplateHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                                <TextBlock Text="Zeugnisvorlagen" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
+                                <TextBlock Name="CertificateHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                                <TextBlock Text="Zeugnis" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
+                                <TextBlock Name="TeacherHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                                <TextBlock Text="Lehrer" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
+                                <TextBlock Name="DistributionHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                                <TextBlock Text="Datenbank zur Verteilung vorbereiten" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
+                                <TextBlock Name="PupilHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                                <TextBlock Text="Schüler" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
+                                <TextBlock Name="ClassHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                                <TextBlock Text="Klassen" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                    </TabItem>
+
+                </TabControl>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <TextBlock Name="InfoHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
+                        <TextBlock Text="Info" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Border Background="White" Height="480" Width="640" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock Padding="10" Text="Zeugnisprogramm für die" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="20"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Height="80">
+                                <Image.Source>
+                                    <BitmapImage UriSource="Pictures/GGS.jpg"/>
+                                </Image.Source>
+                            </Image>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" >
+                                <TextBlock Text="Gemeinschaftsgrundschule Forsbach" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="20" FontWeight="Bold"/>
+                                <TextBlock Text="Amtliche Schulnummer: 115095" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="12"/>
+                            </StackPanel>
+                            <Image Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="60">
+                                <Image.Source>
+                                    <BitmapImage UriSource="Pictures/Roesrath.png"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                        <TextBlock Text="Ansprechpartnerin für Bedienungshinweise, Ideen und Fehler: Astrid Heidelberg" Margin="0,40,0,0" HorizontalAlignment="Left" FontFamily="Arial" FontSize="16"/>
+                        <TextBlock Text="Programmiert 2023 von Frank Brose" TextWrapping="Wrap" Margin="0,10,0,0" HorizontalAlignment="Left" FontFamily="Arial" FontSize="16"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                            <TextBlock Text="Der Sourcecode ist auf GitHub verfügbar:" Margin="0,0,10,0" VerticalAlignment="Center" FontFamily="Arial" FontSize="16"/>
+                            <Button x:Name="GitHubButton" Click="GitHubButton_Click" Margin="0,10,10,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                <Image Grid.Column="2" Name="GithubLogo">
+                                    <Image.Source>
+                                        <BitmapImage UriSource="Pictures/GitHub Logo.png"/>
+                                    </Image.Source>
+                                </Image>
+                            </Button>
+                        </StackPanel>
+                        <TextBlock Text="Verwendete Frameworks und Libraries:" Margin="0,10,0,0" VerticalAlignment="Center" FontFamily="Arial" FontSize="16"/>
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Column="0" VerticalAlignment="Center" Height="40" Margin="0,0,50,0">
+                                <Image.Source>
+                                    <BitmapImage UriSource="Pictures/Xceed Logo.png"/>
+                                </Image.Source>
+                            </Image>
+                            <Image Grid.Column="1" VerticalAlignment="Center" Height="50" Margin="0,0,50,0">
+                                <Image.Source>
+                                    <BitmapImage UriSource="Pictures/SQLite Logo.png"/>
+                                </Image.Source>
+                            </Image>
+                            <Image Grid.Column="2" VerticalAlignment="Center" Height="60">
+                                <Image.Source>
+                                    <BitmapImage UriSource="Pictures/Entity Framework Logo.png"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </StackPanel>
+
+                </Border>
+
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

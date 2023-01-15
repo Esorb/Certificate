@@ -5,7 +5,23 @@
 		<TargetFramework>net6.0-windows</TargetFramework>
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
+		<ApplicationIcon>Pictures\GGS.ico</ApplicationIcon>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="GGS.png" />
+	  <None Remove="Pictures\Entity Framework Logo.png" />
+	  <None Remove="Pictures\GGS.ico" />
+	  <None Remove="Pictures\GGS.jpg" />
+	  <None Remove="Pictures\GitHub Logo.png" />
+	  <None Remove="Pictures\Roesrath.png" />
+	  <None Remove="Pictures\SQLite Logo.png" />
+	  <None Remove="Pictures\Xceed Logo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Pictures\GGS.ico" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.0" />
@@ -27,6 +43,29 @@
 
 	<ItemGroup>
 		<Folder Include="Documents\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Pictures\Entity Framework Logo.png" />
+	  <Resource Include="Pictures\GGS.ico" />
+	  <Resource Include="Pictures\GGS.jpg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Pictures\GGS.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Pictures\GitHub Logo.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Pictures\Roesrath.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Pictures\SQLite Logo.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Pictures\Xceed Logo.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 
 </Project>
