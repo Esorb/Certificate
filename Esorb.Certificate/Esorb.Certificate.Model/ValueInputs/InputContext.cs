@@ -1,6 +1,6 @@
 ﻿using Esorb.Certificate.Basics;
 using Esorb.Certificate.Model.Interfaces;
-using Esorb.School_Certificate.Model;
+using Esorb.Certificate.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

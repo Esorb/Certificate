@@ -1,5 +1,4 @@
 using Esorb.Certificate.Model;
-using Esorb.School_Certificate.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 

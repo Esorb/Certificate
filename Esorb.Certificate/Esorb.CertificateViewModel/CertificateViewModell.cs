@@ -1,6 +1,5 @@
 ﻿using Esorb.Certificate.Basics;
 using Esorb.Certificate.Model;
-using Esorb.School_Certificate.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,6 +40,19 @@ namespace Esorb.Certificate.ViewModel
             }
         }
 
+        private ObservableCollection<Teacher> teachers = new();
+
+        public ObservableCollection<Teacher> Teachers
+        {
+            get
+            {
+                return teachers;
+            }
+            set
+            {
+                teachers = value;
+            }
+        }
 
     }
 }

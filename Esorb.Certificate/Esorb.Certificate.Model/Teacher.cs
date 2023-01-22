@@ -1,33 +1,42 @@
 ﻿using Esorb.Certificate.Basics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Esorb.Certificate.Model.Enumerables;
 
 namespace Esorb.Certificate.Model
 {
-    public class Pupil : ViewModelBase
+    public class Teacher : ViewModelBase
     {
-        private long pupilId;
+        private long teacherId;
         private string firstName;
         private string lastName;
-        private DateOnly dateOfBirth;
-        private short yearsAtSchool;
-        private long schoolClassId;
-        private SchoolClass? schoolClass;
+        private GenderValues gender;
+        private Boolean isHeadmaster;
+        private Boolean isAdmin;
+        private string password;
 
-        public Pupil()
+        public Teacher()
         {
             firstName = string.Empty;
             lastName = string.Empty;
+            isHeadmaster = false;
+            isAdmin = false;
+            password = string.Empty;
         }
 
-        public long PupilId
+        public long TeacherId
         {
             get
             {
-                return pupilId;
+                return teacherId;
             }
             set
             {
-                pupilId = value;
-                OnPropertyChanged(nameof(PupilId));
+                teacherId = value;
+                OnPropertyChanged(nameof(TeacherId));
             }
         }
 
@@ -57,63 +66,55 @@ namespace Esorb.Certificate.Model
             }
         }
 
-        public DateOnly DateOfBirth
+        public GenderValues Gender
         {
             get
             {
-                return dateOfBirth;
+                return gender;
             }
             set
             {
-                dateOfBirth = value;
-                OnPropertyChanged(nameof(DateOfBirth));
+                gender = value;
+                OnPropertyChanged(nameof(Gender));
             }
         }
 
-        public short YearsAtSchool
+        public Boolean IsHeadmaster
         {
             get
             {
-                return yearsAtSchool;
+                return isHeadmaster;
             }
             set
             {
-                yearsAtSchool = value;
-                OnPropertyChanged(nameof(YearsAtSchool));
+                isHeadmaster = value;
+                OnPropertyChanged(nameof(IsHeadmaster));
             }
         }
 
-        public long SchoolClassId
+        public Boolean IsAdmin
         {
             get
             {
-                return schoolClassId;
+                return isAdmin;
             }
             set
             {
-                schoolClassId = value;
-                OnPropertyChanged(nameof(SchoolClassId));
+                isAdmin = value;
+                OnPropertyChanged(nameof(IsAdmin));
             }
         }
 
-        public string FullName
+        public string Password
         {
             get
             {
-                return string.Format("{0} {1}", firstName, lastName);
-            }
-        }
-
-        public SchoolClass? SchoolClass
-        {
-            get
-            {
-                return schoolClass;
+                return password;
             }
             set
             {
-                schoolClass = value;
-                OnPropertyChanged(nameof(SchoolClass));
+                password = value;
+                OnPropertyChanged(nameof(Password));
             }
         }
     }

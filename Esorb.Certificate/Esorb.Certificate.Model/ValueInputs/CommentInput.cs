@@ -1,6 +1,6 @@
 ﻿using Esorb.Certificate.Basics;
 using Esorb.Certificate.Model.Interfaces;
-using Esorb.School_Certificate.Model;
+using Esorb.Certificate.Model;
 
 namespace Esorb.Certificate.Model.ValueInputs
 {

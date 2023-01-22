@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Esorb.School_Certificate.Model
+namespace Esorb.Certificate.Model
 {
     public class SchoolClass : ViewModelBase
     {
@@ -15,6 +15,7 @@ namespace Esorb.School_Certificate.Model
         private short yearlevel;
         private short halfYear;
         private ObservableCollection<Pupil> pupils;
+
 
 
         public SchoolClass()
