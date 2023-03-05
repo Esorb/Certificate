@@ -10,7 +10,7 @@
 
 	<ItemGroup>
 		<None Remove="GGS.png" />
-		<None Remove="Pictures\Entity Framework Logo.png" />
+		<None Remove="Pictures\Dapper-Logo.png" />
 		<None Remove="Pictures\GGS.ico" />
 		<None Remove="Pictures\GGS.jpg" />
 		<None Remove="Pictures\GitHub Logo.png" />
@@ -24,20 +24,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
+		<PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.3" />
+		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Esorb.Certificate.Database\Esorb.Certificate.Database.csproj" />
 		<ProjectReference Include="..\Esorb.Certificate.Model\Esorb.Certificate.Model.csproj" />
 	</ItemGroup>
 
@@ -46,7 +38,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="Pictures\Entity Framework Logo.png" />
+		<Resource Include="Pictures\Dapper-Logo.png" />
 		<Resource Include="Pictures\GGS.ico" />
 		<Resource Include="Pictures\GGS.jpg">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -66,6 +58,21 @@
 		<Resource Include="Pictures\Xceed Logo.png">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
 	</ItemGroup>
 
 </Project>

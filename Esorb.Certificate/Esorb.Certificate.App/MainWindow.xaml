@@ -109,6 +109,11 @@
                         <TextBlock Text="Start" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </TabItem.Header>
+                <StackPanel>
+                    <Button x:Name="BtnTest" Content="Test" Click="BtnTest_Click">
+
+                    </Button>
+                </StackPanel>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -257,7 +262,7 @@
                             </Image>
                             <Image Grid.Column="2" VerticalAlignment="Center" Height="60">
                                 <Image.Source>
-                                    <BitmapImage UriSource="Pictures/Entity Framework Logo.png"/>
+                                    <BitmapImage UriSource="Pictures/Dapper-Logo.png"/>
                                 </Image.Source>
                             </Image>
                         </Grid>

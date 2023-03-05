@@ -8,85 +8,12 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.Model
 {
-    public class SchoolClass : ViewModelBase
+    public class SchoolClass : PersistentObject
     {
-        private long schoolClassId;
-        private string className;
-        private short yearlevel;
-        private short halfYear;
-        private ObservableCollection<Pupil> pupils;
-
-
-
-        public SchoolClass()
-        {
-            className = string.Empty;
-            pupils = new ObservableCollection<Pupil>();
-        }
-
-        public long SchoolClassId
-        {
-            get
-            {
-                return schoolClassId;
-            }
-            set
-            {
-                schoolClassId = value;
-                OnPropertyChanged(nameof(SchoolClassId));
-            }
-        }
-
-        public string ClassName
-        {
-            get
-            {
-                return className;
-            }
-            set
-            {
-                className = value;
-                OnPropertyChanged(nameof(ClassName));
-            }
-        }
-
-        public short Yearlevel
-        {
-            get
-            {
-                return yearlevel;
-            }
-            set
-            {
-                yearlevel = value;
-                OnPropertyChanged(nameof(Yearlevel));
-            }
-        }
-
-        public short HalfYear
-        {
-            get
-            {
-                return halfYear;
-            }
-            set
-            {
-                halfYear = value;
-                OnPropertyChanged(nameof(HalfYear));
-            }
-        }
-
-        public ObservableCollection<Pupil> Pupils
-        {
-            get
-            {
-                return pupils;
-            }
-            set
-            {
-                pupils = value;
-            }
-        }
+        public string ClassName { get; set; } = string.Empty;
+        public short Yearlevel { get; set; }
+        public short HalfYear { get; set; }
+        public ObservableCollection<Pupil> Pupils { get; set; } = new ObservableCollection<Pupil>();
 
     }
 }

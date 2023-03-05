@@ -1,5 +1,5 @@
 using Esorb.Certificate.Model;
-using Microsoft.EntityFrameworkCore;
+using Esorb.Certificate.Database;
 using System.Linq;
 
 namespace Esorb.Certificate.UnitTests
@@ -37,8 +37,14 @@ namespace Esorb.Certificate.UnitTests
         [TestMethod]
         public void PupilsTableAfterAddingTwoPupils_contains_2_Pupils()
         {
-            // Arrange
+            // Prepare
+            var dbh = new DbHelper();
+            //dbh.DropTable(typeof(Pupil).ToString());
+            //dbh.CreateTable(typeof(Pupil).ToString());
+            //dbh.DropTable(typeof(SchoolClass).ToString());
+            //dbh.CreateTable(typeof(SchoolClass).ToString());
 
+            // Arrange
             var sc = new SchoolClass()
             {
                 ClassName = "1A",
@@ -46,37 +52,32 @@ namespace Esorb.Certificate.UnitTests
                 HalfYear = 2
             };
 
-            using var data = new CertificateContext();
-            data.Pupils.ExecuteDelete();
-            data.SchoolClasses.ExecuteDelete();
-            data.Add(sc);
-            data.SaveChanges();
+            dbh.Save(sc);
 
             var p1 = new Pupil()
             {
                 FirstName = "Hans",
                 LastName = "Müller",
-                DateOfBirth = new DateOnly(2014, 8, 13),
+                DateOfBirth = new DateTime(2014, 8, 13),
                 YearsAtSchool = 1,
-                SchoolClassId = sc.SchoolClassId
+                SchoolClassId = sc.ID
             };
 
             var p2 = new Pupil()
             {
                 FirstName = "Maria",
                 LastName = "Maier",
-                DateOfBirth = new DateOnly(2013, 2, 25),
+                DateOfBirth = new DateTime(2013, 2, 25),
                 YearsAtSchool = 2,
-                SchoolClassId = sc.SchoolClassId
+                SchoolClassId = sc.ID
             };
 
             // Act
-            data.Add(p1);
-            data.Add(p2);
-            data.SaveChanges();
+            dbh.Save(p1);
+            dbh.Save(p2);
 
             // Assert
-            Assert.AreEqual(2, data.Pupils.Count());
+            Assert.AreEqual(2, dbh.Count(typeof(Pupil).ToString()));
         }
     }
 }

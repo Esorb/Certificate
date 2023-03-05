@@ -13,6 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Runtime.InteropServices;
+using System.Security.Policy;
+using Esorb.Certificate.Database;
+using Esorb.Certificate.Model;
 
 namespace Esorb.Certificate.App
 {
@@ -76,7 +80,45 @@ namespace Esorb.Certificate.App
 
         private void GitHubButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(@"https://github.com/Esorb/Certificate");
+            try
+            {
+                string url = "https://github.com/Esorb/Certificate";
+                Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
+            }
+            catch (System.ComponentModel.Win32Exception noBrowser)
+            {
+                if (noBrowser.ErrorCode == -2147467259)
+                    MessageBox.Show(noBrowser.Message);
+            }
+            catch (System.Exception other)
+            {
+                MessageBox.Show(other.Message);
+            }
+        }
+
+        private void BtnTest_Click(object sender, RoutedEventArgs e)
+        {
+            var dbh = new DbHelper();
+            var p1 = new Pupil()
+            {
+                FirstName = "Hans",
+                LastName = "Müller",
+                DateOfBirth = new DateTime(2014, 8, 13),
+                YearsAtSchool = 1,
+                SchoolClassId = "3A"
+            };
+
+            var p2 = new Pupil()
+            {
+                FirstName = "Maria",
+                LastName = "Maier",
+                DateOfBirth = new DateTime(2013, 2, 25),
+                YearsAtSchool = 2,
+                SchoolClassId = "3A"
+            };
+
+            dbh.Save(p1);
+            dbh.Save(p2);
         }
     }
 }
