@@ -98,27 +98,7 @@ namespace Esorb.Certificate.App
 
         private void BtnTest_Click(object sender, RoutedEventArgs e)
         {
-            var dbh = new DbHelper();
-            var p1 = new Pupil()
-            {
-                FirstName = "Hans",
-                LastName = "Müller",
-                DateOfBirth = new DateTime(2014, 8, 13),
-                YearsAtSchool = 1,
-                SchoolClassId = "3A"
-            };
-
-            var p2 = new Pupil()
-            {
-                FirstName = "Maria",
-                LastName = "Maier",
-                DateOfBirth = new DateTime(2013, 2, 25),
-                YearsAtSchool = 2,
-                SchoolClassId = "3A"
-            };
-
-            dbh.Save(p1);
-            dbh.Save(p2);
+            MessageBox.Show(Properties.Settings.Default.ConnectionString);
         }
     }
 }

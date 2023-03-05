@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Esorb.Certificate.Model.Enumerables;
 
 namespace Esorb.Certificate.Database
 {
@@ -17,6 +18,10 @@ namespace Esorb.Certificate.Database
             CreateTable(typeof(Pupil).ToString());
             InitSchoolClass();
             CreateTable(typeof(SchoolClass).ToString());
+            InitTeacher();
+            CreateTable(typeof(Teacher).ToString());
+            InitCertificateData();
+            CreateTable(typeof(CertificateData).ToString());
         }
 
         private Dictionary<string, ObjectSQL> StandardSQLStatements = new Dictionary<string, ObjectSQL>();
@@ -63,6 +68,18 @@ namespace Esorb.Certificate.Database
 
             using var connection = new SqliteConnection(ConnectionString());
             return connection.ExecuteScalar<int>(StandardSQLStatements[Type].Count);
+        }
+
+        public object LoadById<T>(string SearchID) where T : class, new()
+        {
+            T Result = new T();
+            var Type = Result.GetType().ToString();
+            if (!StandardSQLStatements.ContainsKey(Type)) { return Result; }
+
+            using var connection = new SqliteConnection(ConnectionString());
+            var parameter = new { ID = SearchID };
+            Result = connection.QuerySingle(StandardSQLStatements[Type].SelectById, parameter);
+            return Result;
         }
 
         public void CreateTable(string Type)
@@ -124,7 +141,6 @@ namespace Esorb.Certificate.Database
 
         private void InitSchoolClass()
         {
-
             var Fields = new Dictionary<string, string>
             {
                 { "ClassName", "TEXT" },
@@ -136,5 +152,37 @@ namespace Esorb.Certificate.Database
             StandardSQLStatements.Add(typeof(SchoolClass).ToString(), SQL);
         }
 
+        private void InitTeacher()
+        {
+            var Fields = new Dictionary<string, string>
+            {
+                { "FirstName", "TEXT" },
+                { "LastName", "TEXT" },
+                { "Gender", "INTEGER" },
+                { "IsHeadmaster", "INTEGER" },
+                { "IsAdmin", "INTEGER" },
+                { "Password", "TEXT" }
+            };
+
+            ObjectSQL SQL = new ObjectSQL("Teacher", Fields);
+            StandardSQLStatements.Add(typeof(Teacher).ToString(), SQL);
+        }
+
+        private void InitCertificateData()
+        {
+            var Fields = new Dictionary<string, string>
+            {
+                { "SchoolYear", "TEXT" },
+                { "HalfYear", "INTEGER" },
+                { "DateOfSchoolConference", "TEXT" },
+                { "DateOfCertificateDistribution", "TEXT" },
+                { "DateOfRestartLessons", "TEXT" },
+                { "TimeOfRestartLessons", "TEXT" },
+                { "CertificateTemplateID", "TEXT" }
+            };
+
+            ObjectSQL SQL = new ObjectSQL("Teacher", Fields);
+            StandardSQLStatements.Add(typeof(Teacher).ToString(), SQL);
+        }
     }
 }

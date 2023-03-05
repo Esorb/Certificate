@@ -25,7 +25,7 @@ namespace Esorb.Certificate.App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source = C:\\Users\\frank\\Documents\\Versuche.db;Version=3;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source = C:\\Users\\frank\\Documents\\Versuche.db;")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

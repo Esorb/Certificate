@@ -39,10 +39,10 @@ namespace Esorb.Certificate.UnitTests
         {
             // Prepare
             var dbh = new DbHelper();
-            //dbh.DropTable(typeof(Pupil).ToString());
-            //dbh.CreateTable(typeof(Pupil).ToString());
-            //dbh.DropTable(typeof(SchoolClass).ToString());
-            //dbh.CreateTable(typeof(SchoolClass).ToString());
+            dbh.DropTable(typeof(Pupil).ToString());
+            dbh.CreateTable(typeof(Pupil).ToString());
+            dbh.DropTable(typeof(SchoolClass).ToString());
+            dbh.CreateTable(typeof(SchoolClass).ToString());
 
             // Arrange
             var sc = new SchoolClass()

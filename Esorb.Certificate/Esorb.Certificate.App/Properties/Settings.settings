@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source = C:\Users\frank\Documents\Versuche.db;Version=3;</Value>
+      <Value Profile="(Default)">Data Source = C:\Users\frank\Documents\Versuche.db;</Value>
     </Setting>
     <Setting Name="Klasse" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
