@@ -1,14 +1,13 @@
-﻿using Esorb.Certificate.App.Basics;
-using Esorb.Certificate.App.Model.Interfaces;
+﻿using Esorb.Certificate.App.Model.Interfaces;
 using Esorb.Certificate.App.Model;
 using System.ComponentModel.Design;
 
 namespace Esorb.Certificate.App.Model.ValueInputs;
 
-public class NumberOfHoursInput : ViewModelBase, IValueInput
+public class NumberOfHoursInput : PersistentObject, IValueInput
 {
     private long numberOfHoursID;
-    private long inputContextID;
+    private string inputContextID = string.Empty;
     private string numberOfHoursName;
     private int numberOfHours;
     private InputContext? context;
@@ -27,11 +26,10 @@ public class NumberOfHoursInput : ViewModelBase, IValueInput
         set
         {
             numberOfHoursID = value;
-            OnPropertyChanged(nameof(NumberOfHoursID));
         }
     }
 
-    public long InputContextID
+    public string InputContextID
     {
         get
         {
@@ -40,7 +38,6 @@ public class NumberOfHoursInput : ViewModelBase, IValueInput
         set
         {
             inputContextID = value;
-            OnPropertyChanged(nameof(InputContextID));
         }
     }
     public string ValueName
@@ -52,7 +49,6 @@ public class NumberOfHoursInput : ViewModelBase, IValueInput
         set
         {
             numberOfHoursName = value;
-            OnPropertyChanged(nameof(ValueName));
         }
     }
 
@@ -75,7 +71,6 @@ public class NumberOfHoursInput : ViewModelBase, IValueInput
             {
                 numberOfHours = 0;
             }
-            OnPropertyChanged(nameof(ValueString));
         }
     }
 
@@ -88,7 +83,6 @@ public class NumberOfHoursInput : ViewModelBase, IValueInput
         set
         {
             context = value;
-            OnPropertyChanged(nameof(Context));
         }
     }
 }

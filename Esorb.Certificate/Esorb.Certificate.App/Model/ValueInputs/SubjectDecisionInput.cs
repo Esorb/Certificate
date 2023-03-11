@@ -1,23 +1,16 @@
-﻿using Esorb.Certificate.App.Basics;
-using Esorb.Certificate.App.Model.Interfaces;
+﻿using Esorb.Certificate.App.Model.Interfaces;
 
 namespace Esorb.Certificate.App.Model.ValueInputs;
 
-public class SubjectDecisionInput : ViewModelBase, IValueInput
+public class SubjectDecisionInput : PersistentObject, IValueInput
 {
     private long subjectDecisionID;
     private long inputContextID;
-    private string subjectDecisionName;
-    private string subjectDecisionValue;
+    private string subjectDecisionName = string.Empty;
+    private string subjectDecisionValue = string.Empty;
     private long subjectAlternativeGroupID;
     private SubjectAlternativeGroup? subjectAlternativeGroup;
     private InputContext? context;
-
-    public SubjectDecisionInput()
-    {
-        subjectDecisionName = string.Empty;
-        subjectDecisionValue = string.Empty;
-    }
 
     public long SubjectDecisionID
     {
@@ -28,68 +21,48 @@ public class SubjectDecisionInput : ViewModelBase, IValueInput
         set
         {
             subjectDecisionID = value;
-            OnPropertyChanged(nameof(SubjectDecisionID));
         }
     }
 
     public long InputContextID
     {
-        get
-        {
-            return inputContextID;
-        }
+        get => inputContextID;
         set
         {
             inputContextID = value;
-            OnPropertyChanged(nameof(InputContextID));
         }
     }
 
     public string ValueName
     {
-        get
-        {
-            return subjectDecisionName;
-        }
+        get => subjectDecisionName;
         set
         {
             subjectDecisionName = value;
-            OnPropertyChanged(nameof(ValueName));
         }
     }
 
     public string ValueString
     {
-        get
-        {
-            return subjectDecisionValue;
-        }
+        get => subjectDecisionValue;
         set
         {
             subjectDecisionValue = value;
-            OnPropertyChanged(nameof(ValueString));
         }
     }
 
     public long SubjectAlternativeGroupID
     {
-        get
-        {
-            return subjectAlternativeGroupID;
-        }
+        get => subjectAlternativeGroupID;
         set
         {
             subjectAlternativeGroupID = value;
-            OnPropertyChanged(nameof(SubjectAlternativeGroupID));
         }
     }
 
     public SubjectAlternativeGroup? SubjectAlternativeGroup
     {
-        get
-        {
-            return subjectAlternativeGroup;
-        }
+        get => subjectAlternativeGroup;
         set
         {
             subjectAlternativeGroup = value;
@@ -97,14 +70,10 @@ public class SubjectDecisionInput : ViewModelBase, IValueInput
     }
     public InputContext? Context
     {
-        get
-        {
-            return context;
-        }
+        get => context;
         set
         {
             context = value;
-            OnPropertyChanged(nameof(Context));
         }
     }
 

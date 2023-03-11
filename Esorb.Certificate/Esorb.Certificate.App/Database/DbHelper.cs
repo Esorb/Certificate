@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Esorb.Certificate.App.Model.Enumerables;
 using Esorb.Certificate.App;
+using System.IO;
+using System.Windows;
 
 namespace Esorb.Certificate.App.Database;
 
@@ -34,6 +36,29 @@ public class DbHelper
         //sb.Append(Properties.Settings.DatabasePath);
         //sb.Append(';');
         return "Data Source = C:/Users/frank/Documents/Versuche.db;";
+    }
+
+    public bool IsSQLiteFile(string filePath)
+    {
+        if (string.IsNullOrEmpty(filePath)) return false;
+        if (!File.Exists(filePath)) return false;
+
+        try
+        {
+            using (var connection = new SqliteConnection($"Data Source={filePath}"))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand("SELECT name FROM sqlite_master WHERE type='table'", connection))
+                {
+                    command.ExecuteReader();
+                }
+            }
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
     }
 
     public void Save(PersistentObject Object)

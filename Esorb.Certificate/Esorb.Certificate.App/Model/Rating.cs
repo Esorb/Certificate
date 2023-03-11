@@ -1,5 +1,5 @@
 ﻿namespace Esorb.Certificate.App.Model;
 
-public class Rating
+public class Rating : PersistentObject
 {
 }

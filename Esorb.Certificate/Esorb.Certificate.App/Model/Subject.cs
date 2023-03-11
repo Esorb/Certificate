@@ -10,7 +10,7 @@ using Esorb.Certificate.App.Model.Enumerables;
 
 namespace Esorb.Certificate.App.Model;
 
-public class Subject : ViewModelBase
+public class Subject : PersistentObject
 {
     private long subjectID;
     private string subjectName;
@@ -18,71 +18,20 @@ public class Subject : ViewModelBase
     private bool calculateGrade;
 
 
-    private ObservableCollection<PartialSubject> partialSubjects;
-    private ObservableCollection<Rating> ratings;
-
-
+    private IList<PartialSubject> partialSubjects;
+    private IList<Rating> ratings;
 
     public Subject()
     {
         subjectName = "";
-        partialSubjects = new ObservableCollection<PartialSubject>();
-        ratings = new ObservableCollection<Rating>();
+        partialSubjects = new List<PartialSubject>();
+        ratings = new List<Rating>();
     }
 
-    public long SubjectID
-    {
-        get
-        {
-            return subjectID;
-        }
-        set
-        {
-            subjectID = value;
-            OnPropertyChanged(nameof(SubjectID));
-        }
-    }
-    public string SubjectName
-    {
-        get
-        {
-            return subjectName;
-        }
-        set
-        {
-            subjectName = value;
-            OnPropertyChanged(nameof(SubjectName));
-        }
-    }
-
-    public SubjectHierarchy Hierarchy
-    {
-        get
-        {
-            return hierarchy;
-        }
-        set
-        {
-            hierarchy = value;
-            OnPropertyChanged(nameof(Hierarchy));
-        }
-    }
-
-    public bool CalculateGrade
-    {
-        get
-        {
-            return calculateGrade;
-        }
-        set
-        {
-            calculateGrade = value;
-            OnPropertyChanged(nameof(CalculateGrade));
-        }
-    }
-
-
-    public ObservableCollection<PartialSubject> PartialSubjects
+    public string SubjectName { get; set; } = string.Empty;
+    public SubjectHierarchy Hierarchy { get; set; }
+    public bool CalculateGrade { get; set; }
+    public IList<PartialSubject> PartialSubjects
     {
         get
         {
@@ -93,8 +42,7 @@ public class Subject : ViewModelBase
             partialSubjects = value;
         }
     }
-
-    public ObservableCollection<Rating> Ratings
+    public IList<Rating> Ratings
     {
         get
         {
@@ -105,5 +53,4 @@ public class Subject : ViewModelBase
             ratings = value;
         }
     }
-
 }

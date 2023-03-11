@@ -13,6 +13,4 @@ public class SchoolClass : PersistentObject
     public string ClassName { get; set; } = string.Empty;
     public short Yearlevel { get; set; }
     public short HalfYear { get; set; }
-    public ObservableCollection<Pupil> Pupils { get; set; } = new ObservableCollection<Pupil>();
-
 }

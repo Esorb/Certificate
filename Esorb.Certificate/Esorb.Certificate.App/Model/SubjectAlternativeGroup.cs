@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model;
 
-public class SubjectAlternativeGroup
+public class SubjectAlternativeGroup : PersistentObject
 {
 }

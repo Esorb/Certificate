@@ -19,5 +19,42 @@ public partial class SchoolClassViewModel
     }
 
     private SchoolClass _schoolClass;
+    public string ClassName
+    {
+        get => _schoolClass.ClassName;
+        set
+        {
+            if (_schoolClass.ClassName != value)
+            {
+                _schoolClass.ClassName = value;
+                OnPropertyChanged();
+            }
+        }
+
+    }
+    public short Yearlevel
+    {
+        get => _schoolClass.Yearlevel;
+        set
+        {
+            if (_schoolClass.Yearlevel != value)
+            {
+                _schoolClass.Yearlevel = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+    public short HalfYear
+    {
+        get => _schoolClass.HalfYear;
+        set
+        {
+            if (_schoolClass.HalfYear != value)
+            {
+                _schoolClass.HalfYear = value;
+                OnPropertyChanged();
+            }
+        }
+    }
 }
 

@@ -1,67 +1,17 @@
-﻿using Esorb.Certificate.App.Basics;
-using Esorb.Certificate.App.Model.Interfaces;
-using Esorb.Certificate.App.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Esorb.Certificate.App.Model.Interfaces;
 
 namespace Esorb.Certificate.App.Model.ValueInputs;
 
-public class GradeInput : ViewModelBase, IValueInput
+public class GradeInput : IValueInput
 {
-    private long gradeInputID;
-    private long inputContextID;
-    private string gradeInputName;
-    private string gradeInputValue;
-    private InputContext? context;
-
+    private string gradeInputValue = string.Empty;
     public GradeInput()
     {
-        gradeInputName = string.Empty;
-        gradeInputValue = string.Empty;
     }
 
-    public long GradeInputID
-    {
-        get
-        {
-            return gradeInputID;
-        }
-        set
-        {
-            gradeInputID = value;
-            OnPropertyChanged(nameof(GradeInputID));
-        }
-    }
-
-    public long InputContextID
-    {
-        get
-        {
-            return inputContextID;
-        }
-        set
-        {
-            inputContextID = value;
-            OnPropertyChanged(nameof(InputContextID));
-        }
-    }
-
-    public string ValueName
-    {
-        get
-        {
-            return gradeInputName;
-        }
-        set
-        {
-            gradeInputName = value;
-            OnPropertyChanged(nameof(ValueName));
-        }
-    }
-
+    public long GradeInputID { get; set; }
+    public string InputContextID { get; set; } = string.Empty;
+    public string ValueName { get; set; } = string.Empty;
     public string ValueString
     {
         get
@@ -86,22 +36,7 @@ public class GradeInput : ViewModelBase, IValueInput
                 "ungenügend" => "ungenügend",
                 _ => "falsche Eingabe"
             };
-
-            OnPropertyChanged(nameof(ValueString));
         }
     }
-
-    public InputContext? Context
-    {
-        get
-        {
-            return context;
-        }
-        set
-        {
-            context = value;
-            OnPropertyChanged(nameof(Context));
-        }
-    }
-
+    public InputContext? Context { get; set; }
 }

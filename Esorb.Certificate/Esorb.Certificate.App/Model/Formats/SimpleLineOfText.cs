@@ -1,5 +1,4 @@
-﻿using Esorb.Certificate.App.Basics;
-using Esorb.Certificate.App.Model.Interfaces;
+﻿using Esorb.Certificate.App.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using Xceed.Words.NET;
 
 namespace Esorb.Certificate.App.Model.Formats;
 
-public class SimpleLineOfText : ViewModelBase, IFormat
+public class SimpleLineOfText : IFormat
 {
     public long FormatID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public int PageNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

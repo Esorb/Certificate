@@ -1,5 +1,4 @@
-﻿using Esorb.Certificate.App.Basics;
-using Esorb.Certificate.App.Model.Interfaces;
+﻿using Esorb.Certificate.App.Model.Interfaces;
 using Esorb.Certificate.App.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model.ValueInputs;
 
-public class YesNoDecisionInput : ViewModelBase, IValueInput
+public class YesNoDecisionInput : PersistentObject, IValueInput
 {
     private long yesNoDecisionID;
     private long inputContextID;
@@ -31,7 +30,6 @@ public class YesNoDecisionInput : ViewModelBase, IValueInput
         set
         {
             yesNoDecisionID = value;
-            OnPropertyChanged(nameof(YesNoDecisionID));
         }
     }
 
@@ -44,7 +42,6 @@ public class YesNoDecisionInput : ViewModelBase, IValueInput
         set
         {
             inputContextID = value;
-            OnPropertyChanged(nameof(InputContextID));
         }
     }
 
@@ -57,7 +54,6 @@ public class YesNoDecisionInput : ViewModelBase, IValueInput
         set
         {
             yesNoDecisionName = value;
-            OnPropertyChanged(nameof(ValueName));
         }
     }
 
@@ -77,20 +73,15 @@ public class YesNoDecisionInput : ViewModelBase, IValueInput
         set
         {
             yesNoDecisionValue = (value == "ja" || value == "Ja" || value == "JA" || value == "j" || value == "J");
-            OnPropertyChanged(nameof(ValueString));
         }
     }
 
     public InputContext? Context
     {
-        get
-        {
-            return context;
-        }
+        get => context;
         set
         {
             context = value;
-            OnPropertyChanged(nameof(Context));
         }
     }
 

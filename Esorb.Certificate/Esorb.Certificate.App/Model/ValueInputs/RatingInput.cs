@@ -1,5 +1,4 @@
-﻿using Esorb.Certificate.App.Basics;
-using Esorb.Certificate.App.Model.Interfaces;
+﻿using Esorb.Certificate.App.Model.Interfaces;
 using Esorb.Certificate.App.Model;
 using System;
 using System.Collections.Generic;
@@ -9,64 +8,16 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model.ValueInputs;
 
-public class RatingInput : ViewModelBase, IValueInput
+public class RatingInput : PersistentObject, IValueInput
 {
-    private long ratingInputID;
-    private long inputContextID;
-    private string ratingInputName;
-    private string ratingInputValue;
+    private string ratingInputValue = string.Empty;
     private InputContext? context;
 
-    public RatingInput()
-    {
-        ratingInputName = string.Empty;
-        ratingInputValue = string.Empty;
-    }
-
-    public long RatingInputID
-    {
-        get
-        {
-            return ratingInputID;
-        }
-        set
-        {
-            ratingInputID = value;
-            OnPropertyChanged(nameof(RatingInputID));
-        }
-    }
-    public long InputContextID
-    {
-        get
-        {
-            return inputContextID;
-        }
-        set
-        {
-            inputContextID = value;
-            OnPropertyChanged(nameof(InputContextID));
-        }
-    }
-
-    public string ValueName
-    {
-        get
-        {
-            return ratingInputName;
-        }
-        set
-        {
-            ratingInputName = value;
-            OnPropertyChanged(nameof(ValueName));
-        }
-    }
-
+    public string InputContextID { get; set; } = string.Empty;
+    public string ValueName { get; set; } = string.Empty;
     public string ValueString
     {
-        get
-        {
-            return ratingInputValue;
-        }
+        get => ratingInputValue;
         set
         {
             ratingInputValue = value switch
@@ -81,21 +32,15 @@ public class RatingInput : ViewModelBase, IValueInput
                 "*" => "*",
                 _ => "falsche Eingabe"
             };
-
-            OnPropertyChanged(nameof(ValueString));
         }
     }
 
     public InputContext? Context
     {
-        get
-        {
-            return context;
-        }
+        get => context;
         set
         {
             context = value;
-            OnPropertyChanged(nameof(Context));
         }
     }
 

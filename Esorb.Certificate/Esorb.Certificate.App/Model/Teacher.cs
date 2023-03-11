@@ -1,9 +1,4 @@
-﻿using Esorb.Certificate.App.Basics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Esorb.Certificate.App.Model.Enumerables;
 
 namespace Esorb.Certificate.App.Model;
