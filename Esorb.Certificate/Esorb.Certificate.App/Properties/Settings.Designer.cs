@@ -25,13 +25,13 @@ namespace Esorb.Certificate.App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source = C:\\Users\\frank\\Documents\\Versuche.db;")]
-        public string ConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\frank\\Documents\\Versuche.db")]
+        public string DatabasePath {
             get {
-                return ((string)(this["ConnectionString"]));
+                return ((string)(this["DatabasePath"]));
             }
             set {
-                this["ConnectionString"] = value;
+                this["DatabasePath"] = value;
             }
         }
         

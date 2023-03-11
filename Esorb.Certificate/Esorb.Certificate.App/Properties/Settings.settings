@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Esorb.Certificate.App.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source = C:\Users\frank\Documents\Versuche.db;</Value>
+    <Setting Name="DatabasePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\frank\Documents\Versuche.db</Value>
     </Setting>
     <Setting Name="Klasse" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

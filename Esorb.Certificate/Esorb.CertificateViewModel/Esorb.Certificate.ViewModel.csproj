@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Esorb.Certificate.Basics\Esorb.Certificate.Basics.csproj" />
-    <ProjectReference Include="..\Esorb.Certificate.Model\Esorb.Certificate.Model.csproj" />
-  </ItemGroup>
-
 </Project>

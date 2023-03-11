@@ -19,13 +19,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Esorb.Certificate.App\Esorb.Certificate.App.csproj" />
-		<ProjectReference Include="..\Esorb.Certificate.Basics\Esorb.Certificate.Basics.csproj" />
-		<ProjectReference Include="..\Esorb.Certificate.Database\Esorb.Certificate.Database.csproj" />
-		<ProjectReference Include="..\Esorb.Certificate.Model\Esorb.Certificate.Model.csproj" />
-		<ProjectReference Include="..\Esorb.Certificate.Output\Esorb.Certificate.Output.csproj" />
-		<ProjectReference Include="..\Esorb.Certificate.PupilCsvFileService\Esorb.Certificate.PupilCsvFileService.csproj" />
-		<ProjectReference Include="..\Esorb.Certificate.View\Esorb.Certificate.View.csproj" />
-		<ProjectReference Include="..\Esorb.CertificateViewModel\Esorb.Certificate.ViewModel.csproj" />
 	</ItemGroup>
 
 </Project>
