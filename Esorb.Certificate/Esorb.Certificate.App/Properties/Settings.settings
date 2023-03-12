@@ -5,13 +5,19 @@
     <Setting Name="DatabasePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Users\frank\Documents\Versuche.db</Value>
     </Setting>
-    <Setting Name="Klasse" Type="System.String" Scope="User">
+    <Setting Name="SchoolClass" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Zeugnis" Type="System.String" Scope="User">
+    <Setting Name="SchoolYear" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Lehrer" Type="System.String" Scope="User">
+    <Setting Name="HalfYear" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Teacher" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OutputFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

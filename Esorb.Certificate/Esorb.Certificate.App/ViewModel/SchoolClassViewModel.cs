@@ -9,8 +9,7 @@ using Esorb.Certificate.App.Model;
 
 namespace Esorb.Certificate.App.ViewModel;
 
-[ObservableObject]
-public partial class SchoolClassViewModel
+public partial class SchoolClassViewModel : ObservableObject
 {
 
     public SchoolClassViewModel(SchoolClass schoolClass)

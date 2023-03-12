@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.ViewModel;
 
-[ObservableObject]
-public partial class CertificateViewModell
+public partial class CertificateViewModell : ObservableObject
 {
     //private CertificateData certificateData = new();
 

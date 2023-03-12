@@ -38,36 +38,60 @@ namespace Esorb.Certificate.App.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Klasse {
+        public string SchoolClass {
             get {
-                return ((string)(this["Klasse"]));
+                return ((string)(this["SchoolClass"]));
             }
             set {
-                this["Klasse"] = value;
+                this["SchoolClass"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Zeugnis {
+        public string SchoolYear {
             get {
-                return ((string)(this["Zeugnis"]));
+                return ((string)(this["SchoolYear"]));
             }
             set {
-                this["Zeugnis"] = value;
+                this["SchoolYear"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Lehrer {
+        public string HalfYear {
             get {
-                return ((string)(this["Lehrer"]));
+                return ((string)(this["HalfYear"]));
             }
             set {
-                this["Lehrer"] = value;
+                this["HalfYear"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Teacher {
+            get {
+                return ((string)(this["Teacher"]));
+            }
+            set {
+                this["Teacher"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OutputFolder {
+            get {
+                return ((string)(this["OutputFolder"]));
+            }
+            set {
+                this["OutputFolder"] = value;
             }
         }
     }

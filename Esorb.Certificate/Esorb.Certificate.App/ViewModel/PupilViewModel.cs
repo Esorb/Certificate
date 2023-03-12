@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.ViewModel;
 
-[ObservableObject]
-public partial class PupilViewModel
+public partial class PupilViewModel : ObservableObject
 {
     public PupilViewModel(Pupil pupil)
     {
         _pupil = pupil;
-        _schoolClass = new SchoolClassViewModel(_pupil.SchoolClass);
+        _schoolClass = new SchoolClassViewModel(_pupil.SchoolClass!);
     }
 
     private Pupil _pupil;

@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.ViewModel;
 
-[ObservableObject]
-public partial class TeacherViewModel
+public partial class TeacherViewModel : ObservableObject
 {
     TeacherViewModel(Teacher teacher)
     {

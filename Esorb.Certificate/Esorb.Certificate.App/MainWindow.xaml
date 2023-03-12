@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Esorb.Certificate.App"
         mc:Ignorable="d"
-        Title="Zeugnisse" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode ="NoResize">
+        Title="Zeugnisse" Height="600" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode ="NoResize">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -109,11 +109,55 @@
                         <TextBlock Text="Start" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </TabItem.Header>
-                <StackPanel>
-                    <Button x:Name="BtnTest" Content="Test" Click="BtnTest_Click">
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Zeugnisdatei:" Padding="5,2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding certificateSettingsViewModel.DatabasePath, Mode=TwoWay}" Margin="5" Padding="5,2" Width="550" HorizontalAlignment="Left" FontSize="16"/>
 
-                    </Button>
-                </StackPanel>
+                        <Button Grid.Row="1" Grid.Column="1" x:Name="BtnGetDatabasePath" Content="Zeugnisdatei auswählen" Click="BtnGetDatabasePath_Click" Margin="5" Padding="5,2" FontSize="16">
+                            <Button.ToolTip>
+                                <ToolTip Background="LightYellow" Width="350">
+                                    <StackPanel>
+                                        <TextBlock FontSize="14" Text="Wählen Sie die entpackte Zeugnisdatei aus (*.db, nicht die verteilte verschlüsselte Zip-Datei)!" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Ausgabeverzeichnis:" Padding="5,2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding certificateSettingsViewModel.OutputFolder, Mode=TwoWay}" Margin="5" Padding="5,2" Width="550" HorizontalAlignment="Left" FontSize="16"/>
+
+                        <Button Grid.Row="3" Grid.Column="1" x:Name="BtnGetOutputPath" Content="Ausgabeverzeichnis auswählen" Click="BtnGetOutputPath_Click" Margin="5" Padding="5,2" FontSize="16">
+                            <Button.ToolTip>
+                                <ToolTip Background="LightYellow" Width="350">
+                                    <StackPanel>
+                                        <TextBlock FontSize="14" Text="Wählen Sie hier das Verzeichnis, in das die Zeugnisse gespeichert werden sollen!" TextWrapping="Wrap"/>
+                                        <TextBlock FontSize="14" Text="Am besten nehmen Sie ein leeres Verzeichnis, in das nur die Zeignisdateien gespeichert werden." TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Lehrer:" Padding="5,2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding certificateSettingsViewModel.Teacher, Mode=TwoWay}" Margin="5" Padding="5,2" Width="550" HorizontalAlignment="Left" FontSize="16"/>
+                        <TextBlock Grid.Row="6" Grid.Column="0" Text="Klasse:" Padding="5,2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding certificateSettingsViewModel.SchoolClass, Mode=TwoWay}" Margin="5" Padding="5,2" Width="100" HorizontalAlignment="Left" FontSize="16"/>
+
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
