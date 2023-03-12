@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using Esorb.Certificate.App.ViewModel;
+using Microsoft.Win32;
+//using System.Windows.Forms;
 
 namespace Esorb.Certificate.App;
 
@@ -96,11 +98,17 @@ public partial class MainWindow : Window
 
     private void BtnGetDatabasePath_Click(object sender, RoutedEventArgs e)
     {
-        MessageBox.Show("Test");
+        OpenFileDialog ofd = new OpenFileDialog();
+        ofd.Filter = "Zeugnisdateien (*.db)|*.db";
+        var result = ofd.ShowDialog();
+        if (result is not null && result is true)
+        {
+            string databasePath = ofd.FileName;
+            MessageBox.Show(databasePath);
+        }
     }
 
     private void BtnGetOutputPath_Click(object sender, RoutedEventArgs e)
     {
-
     }
 }
