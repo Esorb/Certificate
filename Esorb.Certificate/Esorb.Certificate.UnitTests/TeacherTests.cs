@@ -129,11 +129,26 @@ public class TeacherTests
         t2.IsHeadmaster = true;
         t2.IsAdmin = false;
 
+        var t3 = new Teacher();
+        t3.FirstName = "Caroline";
+        t3.LastName = "Schäfer";
+        t3.Gender = GenderValues.female;
+        t3.IsHeadmaster = false;
+        t3.IsAdmin = false;
+
+        var t4 = new Teacher();
+        t4.FirstName = "Herbert";
+        t4.LastName = "Böttcher";
+        t4.Gender = GenderValues.male;
+        t4.IsHeadmaster = false;
+        t4.IsAdmin = false;
 
         // Act
 
         dbh.Save(t1);
         dbh.Save(t2);
+        dbh.Save(t3);
+        dbh.Save(t4);
         t2.FirstName = "Henrietta";
         dbh.Save(t2);
         if (string.IsNullOrEmpty(t2.ID))
@@ -142,6 +157,10 @@ public class TeacherTests
             // Assert
             Assert.AreEqual(t2.FirstName, Result.FirstName);
         }
+        t2.FirstName = "Bettina";
+        dbh.Save(t2);
+
+
 
     }
 }
