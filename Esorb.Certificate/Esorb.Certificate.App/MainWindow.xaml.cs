@@ -10,17 +10,32 @@ namespace Esorb.Certificate.App;
 
 public partial class MainWindow : Window
 {
-    private readonly ICertificateSettingsViewModel certificateSettingsViewModel;
+    //private ICertifcateViewModel certificateViewModel;
+    public readonly ICertifcateViewModel certifcateViewModel;
 
-    public MainWindow(ICertificateSettingsViewModel certificateSettingsViewModel)
+    //public ICertifcateViewModel CertificateViewModel
+    //{
+    //    get
+    //    {
+    //        return certificateViewModel;
+    //    }
+    //    private set
+    //    {
+    //        certificateViewModel = value;
+    //    }
+    //}
+    public MainWindow(ICertifcateViewModel certifcateViewModel)
     {
-        DataContext = new CertificateViewModell();
+        //certificateViewModel = new CertifcateViewModel();
         InitializeComponent();
         SetGuiIcons();
-        this.WindowState = WindowState.Maximized;
-        this.certificateSettingsViewModel = certificateSettingsViewModel;
+        WindowState = WindowState.Maximized;
+        this.certifcateViewModel = certifcateViewModel;
+        DataContext = this.certifcateViewModel;
+        MessageBox.Show(this.certifcateViewModel.CertificateSettingsViewModel.DatabasePath);
         //this.Loaded += MainWindow_Loaded;
     }
+
 
     private void SetGuiIcons()
     {
@@ -98,8 +113,12 @@ public partial class MainWindow : Window
 
     private void BtnGetDatabasePath_Click(object sender, RoutedEventArgs e)
     {
-        OpenFileDialog ofd = new OpenFileDialog();
-        ofd.Filter = "Zeugnisdateien (*.db)|*.db";
+        OpenFileDialog ofd = new()
+        {
+            Filter = "Zeugnisbasisdateien (*.db)|*.db",
+            Multiselect = false,
+            Title = "Zeugnisbasisdatei öffnen"
+        };
         var result = ofd.ShowDialog();
         if (result is not null && result is true)
         {
@@ -110,5 +129,6 @@ public partial class MainWindow : Window
 
     private void BtnGetOutputPath_Click(object sender, RoutedEventArgs e)
     {
+        MessageBox.Show(certifcateViewModel.CertificateSettingsViewModel.DatabasePath);
     }
 }

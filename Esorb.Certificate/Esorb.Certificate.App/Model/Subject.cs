@@ -11,7 +11,6 @@ namespace Esorb.Certificate.App.Model;
 
 public class Subject : PersistentObject
 {
-    private long subjectID;
     private string subjectName;
     private SubjectHierarchy hierarchy;
     private bool calculateGrade;
