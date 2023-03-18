@@ -94,5 +94,29 @@ namespace Esorb.Certificate.App.Properties {
                 this["OutputFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TeacherGUID {
+            get {
+                return ((string)(this["TeacherGUID"]));
+            }
+            set {
+                this["TeacherGUID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SchoolClassGUID {
+            get {
+                return ((string)(this["SchoolClassGUID"]));
+            }
+            set {
+                this["SchoolClassGUID"] = value;
+            }
+        }
     }
 }

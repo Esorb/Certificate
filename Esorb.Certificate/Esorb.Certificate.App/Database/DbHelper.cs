@@ -98,7 +98,7 @@ public class DbHelper
         return connection.ExecuteScalar<int>(StandardSQLStatements[Type].Count);
     }
 
-    public object LoadById<T>(string SearchID) where T : class, new()
+    public T LoadById<T>(string SearchID) where T : class, new()
     {
         T Result = new T();
         var Type = Result.GetType().ToString();
@@ -108,6 +108,13 @@ public class DbHelper
         var parameter = new { ID = SearchID };
         Result = connection.QuerySingle(StandardSQLStatements[Type].SelectById, parameter);
         return Result;
+    }
+
+    public IEnumerable<T> LoadAll<T>() where T : class, new()
+    {
+        var Type = typeof(T).ToString();
+        IEnumerable<T> Result = new List<T>();
+        return LoadAll<T>();
     }
 
     public void CreateTable(string Type)

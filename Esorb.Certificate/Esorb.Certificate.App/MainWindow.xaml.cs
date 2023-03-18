@@ -3,8 +3,9 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using Esorb.Certificate.App.ViewModel;
-using Microsoft.Win32;
-//using System.Windows.Forms;
+using System.IO;
+using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace Esorb.Certificate.App;
 
@@ -32,7 +33,6 @@ public partial class MainWindow : Window
         WindowState = WindowState.Maximized;
         this.certifcateViewModel = certifcateViewModel;
         DataContext = this.certifcateViewModel;
-        MessageBox.Show(this.certifcateViewModel.CertificateSettingsViewModel.DatabasePath);
         //this.Loaded += MainWindow_Loaded;
     }
 
@@ -103,17 +103,17 @@ public partial class MainWindow : Window
         catch (System.ComponentModel.Win32Exception noBrowser)
         {
             if (noBrowser.ErrorCode == -2147467259)
-                MessageBox.Show(noBrowser.Message);
+                System.Windows.MessageBox.Show(noBrowser.Message);
         }
         catch (System.Exception other)
         {
-            MessageBox.Show(other.Message);
+            System.Windows.MessageBox.Show(other.Message);
         }
     }
 
     private void BtnGetDatabasePath_Click(object sender, RoutedEventArgs e)
     {
-        OpenFileDialog ofd = new()
+        Microsoft.Win32.OpenFileDialog ofd = new()
         {
             Filter = "Zeugnisbasisdateien (*.db)|*.db",
             Multiselect = false,
@@ -123,12 +123,20 @@ public partial class MainWindow : Window
         if (result is not null && result is true)
         {
             string databasePath = ofd.FileName;
-            MessageBox.Show(databasePath);
+            System.Windows.MessageBox.Show(databasePath);
         }
     }
 
     private void BtnGetOutputPath_Click(object sender, RoutedEventArgs e)
     {
-        MessageBox.Show(certifcateViewModel.CertificateSettingsViewModel.DatabasePath);
+        FolderBrowserDialog folderBrowserDialog = new();
+        folderBrowserDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        //folderBrowserDialog.SelectedPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "OneDrive", "Documents");
+        var result = folderBrowserDialog.ShowDialog();
+        if (result == System.Windows.Forms.DialogResult.OK)
+        {
+            string path = folderBrowserDialog.SelectedPath;
+            System.Windows.MessageBox.Show(path);
+        }
     }
 }

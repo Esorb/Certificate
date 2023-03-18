@@ -100,7 +100,7 @@ public class TeacherTests
         dbh.Save(t4);
         if (string.IsNullOrEmpty(t3.ID))
         {
-            Teacher Result = (Teacher)dbh.LoadById<Teacher>(t3.ID!);
+            Teacher Result = dbh.LoadById<Teacher>(t3.ID!);
             // Assert
             Assert.AreEqual(t3.FirstName, Result.FirstName);
         }
@@ -153,7 +153,7 @@ public class TeacherTests
         dbh.Save(t2);
         if (string.IsNullOrEmpty(t2.ID))
         {
-            Teacher Result = (Teacher)dbh.LoadById<Teacher>(t2.ID!);
+            Teacher Result = dbh.LoadById<Teacher>(t2.ID!);
             // Assert
             Assert.AreEqual(t2.FirstName, Result.FirstName);
         }
