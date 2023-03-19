@@ -58,7 +58,7 @@ public partial class PupilViewModel : ObservableObject
             }
         }
     }
-    public short YearsAtSchool
+    public int YearsAtSchool
     {
         get => _pupil.YearsAtSchool;
         set

@@ -31,7 +31,7 @@ public partial class SchoolClassViewModel : ObservableObject
         }
 
     }
-    public short Yearlevel
+    public int Yearlevel
     {
         get => _schoolClass.Yearlevel;
         set
@@ -43,7 +43,7 @@ public partial class SchoolClassViewModel : ObservableObject
             }
         }
     }
-    public short HalfYear
+    public int HalfYear
     {
         get => _schoolClass.HalfYear;
         set

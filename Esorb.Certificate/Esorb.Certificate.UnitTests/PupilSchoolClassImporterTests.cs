@@ -1,4 +1,6 @@
 ﻿using Esorb.Certificate.App.PupilCsvFileService;
+using Esorb.Certificate.App.Database;
+using Esorb.Certificate.App.Model;
 
 namespace Esorb.Certificate.UnitTests;
 
@@ -75,4 +77,65 @@ public class PupilSchoolClassImporterTests
         // Assert
         Assert.IsTrue(result);
     }
+
+    [TestMethod]
+    public void IntFromEmptyString_returns_0()
+    {
+        // Arrange
+        var psci = new PupilSchoolClassImporter();
+        // Act
+        var result = psci.GetIntFromString("");
+        // Assert
+        Assert.AreEqual(0, result);
+
+    }
+
+    [TestMethod]
+    public void IntFromNullString_returns_0()
+    {
+        // Arrange
+        string? str = null;
+        var psci = new PupilSchoolClassImporter();
+        // Act
+        var result = psci.GetIntFromString(str);
+        // Assert
+        Assert.AreEqual(0, result);
+
+    }
+
+    [TestMethod]
+    public void IntFromCorrectString_returns_number()
+    {
+        // Arrange
+        var psci = new PupilSchoolClassImporter();
+        // Act
+        var result = psci.GetIntFromString("435");
+        // Assert
+        Assert.AreEqual(435, result);
+
+    }
+
+    [TestMethod]
+    public void IntFromTextString_returns_0()
+    {
+        // Arrange
+        var psci = new PupilSchoolClassImporter();
+        // Act
+        var result = psci.GetIntFromString("Hello World");
+        // Assert
+        Assert.AreEqual(0, result);
+
+    }
+
+    [TestMethod]
+    public void Import_returns_4_SchoolClasses()
+    {
+        // Arrange
+        var psci = new PupilSchoolClassImporter();
+        var dbh = new DbHelper();
+        var cm = new CertificateModel();
+        cm.DbHelper = dbh;
+
+    }
+
 }

@@ -42,9 +42,8 @@ public class PupilSchoolClassImporter
         _certificateModel = certificateModel;
 
         DeleteOldPupilAndSchoolClasses();
-
-
-
+        TransferRawDatasToSchoolClass();
+        TransferRawDatasToPupil();
     }
 
     public void DeleteOldPupilAndSchoolClasses()
@@ -56,6 +55,23 @@ public class PupilSchoolClassImporter
         _certificateModel.DbHelper.CreateCertificateTables();
     }
 
+    public void TransferRawDatasToSchoolClass()
+    {
+        foreach (var rawData in RawDatas)
+        {
+            if (!_certificateModel.SchoolClasses.Any(sc => sc.ClassName == rawData.ClassName))
+            {
+                var sc = new SchoolClass();
+                sc.ClassName = rawData.ClassName ?? "";
+                sc.Yearlevel = GetIntFromString(rawData.YearLevel ?? "");
+                sc.HalfYear = GetIntFromString(rawData.HalfYear ?? "");
+
+                _certificateModel.DbHelper.Save(sc);
+                _certificateModel.SchoolClasses.Add(sc);
+            }
+        }
+    }
+
     public void TransferRawDatasToPupil()
     {
         foreach (var rawData in RawDatas)
@@ -63,25 +79,19 @@ public class PupilSchoolClassImporter
             var p = new Pupil();
             p.FirstName = rawData.Firstname ?? "";
             p.LastName = rawData.Lastname ?? "";
-            if (!string.IsNullOrEmpty(rawData.YearsAtSchool))
+            p.YearsAtSchool = GetIntFromString(rawData.YearsAtSchool ?? "");
+            if (!string.IsNullOrEmpty(rawData.DateOfBirth))
             {
-                int num;
-                if (int.TryParse(rawData.YearsAtSchool, out num))
+                DateTime date;
+                if (DateTime.TryParseExact(rawData.DateOfBirth, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
                 {
-                    p.YearsAtSchool = num;
+                    p.DateOfBirth = date;
                 }
             }
-            //if (!string.IsNullOrEmpty(rawData.DateOfBirth))
-            //{
-            //    DateTime date;
-            //    if (DateTime.TryParse(rawData.DateOfBirth, "dd.MM.yyyy", null, out date))
-            //    {
-            //        p.DateOfBirth = date;
-            //    }
-            //}
+            _certificateModel.DbHelper.Save(p);
+            _certificateModel.Pupils.Add(p);
         }
     }
-
 
     public bool IsPupilSchoolClassFile(string? filePath)
     {
@@ -97,4 +107,19 @@ public class PupilSchoolClassImporter
             return firstLine.Equals("Vorname;Nachname;Geburtsdatum;Schulbesuchsjahre;Klasse;Aktuelles Halbjahr;Jahrgang");
         }
     }
+
+    public int GetIntFromString(string str)
+    {
+        int result = 0;
+        if (!string.IsNullOrEmpty(str))
+        {
+            int num;
+            if (int.TryParse(str, out num))
+            {
+                result = num;
+            }
+        }
+        return result;
+    }
+
 }

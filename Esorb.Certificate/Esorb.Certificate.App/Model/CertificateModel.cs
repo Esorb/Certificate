@@ -11,7 +11,7 @@ namespace Esorb.Certificate.App.Model
         public DbHelper DbHelper
         {
             get { return dbHelper; }
-            private set { dbHelper = value; }
+            set { dbHelper = value; }
         }
 
         public IList<Teacher> Teachers { get; private set; } = new List<Teacher>();

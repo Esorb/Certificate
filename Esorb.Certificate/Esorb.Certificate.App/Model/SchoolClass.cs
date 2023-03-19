@@ -10,6 +10,6 @@ namespace Esorb.Certificate.App.Model;
 public class SchoolClass : PersistentObject
 {
     public string ClassName { get; set; } = string.Empty;
-    public short Yearlevel { get; set; }
-    public short HalfYear { get; set; }
+    public int Yearlevel { get; set; }
+    public int HalfYear { get; set; }
 }
