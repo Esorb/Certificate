@@ -145,10 +145,10 @@ public class TeacherTests
 
         // Act
 
-        dbh.Save(t1);
-        dbh.Save(t2);
-        dbh.Save(t3);
         dbh.Save(t4);
+        dbh.Save(t3);
+        dbh.Save(t2);
+        dbh.Save(t1);
         t2.FirstName = "Henrietta";
         dbh.Save(t2);
         if (string.IsNullOrEmpty(t2.ID))
@@ -159,8 +159,32 @@ public class TeacherTests
         }
         t2.FirstName = "Bettina";
         dbh.Save(t2);
-
-
-
     }
+
+    [TestMethod]
+    public void LoadAllTeachers_Returns_4_teachers()
+    {
+        // Arrange
+        var dbh = new DbHelper();
+
+        // Act
+        IList<Teacher> teachers = dbh.LoadAll<Teacher>().OrderBy(teacher => teacher.FullName).ToList();
+
+        // Assert
+        Assert.AreEqual(4, teachers.Count);
+    }
+
+    [TestMethod]
+    public void LoadAllTeachersSorted_Third_element_is_Caroline()
+    {
+        // Arrange
+        var dbh = new DbHelper();
+
+        // Act
+        IList<Teacher> teachers = dbh.LoadAll<Teacher>().OrderBy(teacher => teacher.FullName).ToList();
+
+        // Assert
+        Assert.AreEqual("Caroline", teachers[2].FirstName);
+    }
+
 }

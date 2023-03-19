@@ -17,7 +17,7 @@ namespace Esorb.Certificate.UnitTests
         }
 
         [TestMethod]
-        public void IsSqliteFileForPictureFile_returns_false()
+        public void IsSqliteFileForTextFile_returns_false()
         {
             // Arrange
             var dbh = new DbHelper();

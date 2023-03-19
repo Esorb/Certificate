@@ -7,7 +7,7 @@ public class Pupil : PersistentObject
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public DateTime DateOfBirth { get; set; }
-    public short YearsAtSchool { get; set; }
+    public int YearsAtSchool { get; set; }
     public string SchoolClassId { get; set; } = string.Empty;
 
     public string FullName

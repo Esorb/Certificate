@@ -18,16 +18,20 @@ public class DbHelper
     public DbHelper()
     {
         InitPupil();
-        CreateTable(typeof(Pupil).ToString());
         InitSchoolClass();
-        CreateTable(typeof(SchoolClass).ToString());
         InitTeacher();
-        CreateTable(typeof(Teacher).ToString());
         InitCertificateData();
-        CreateTable(typeof(CertificateData).ToString());
     }
 
     private Dictionary<string, ObjectSQL> StandardSQLStatements = new Dictionary<string, ObjectSQL>();
+
+    public void CreateCertificateTables()
+    {
+        CreateTable(typeof(Pupil).ToString());
+        CreateTable(typeof(SchoolClass).ToString());
+        CreateTable(typeof(Teacher).ToString());
+        CreateTable(typeof(CertificateData).ToString());
+    }
 
     private static string ConnectionString()
     {
@@ -100,21 +104,25 @@ public class DbHelper
 
     public T LoadById<T>(string SearchID) where T : class, new()
     {
-        T Result = new T();
-        var Type = Result.GetType().ToString();
-        if (!StandardSQLStatements.ContainsKey(Type)) { return Result; }
+        T result = new T();
+        var Type = result.GetType().ToString();
+        if (!StandardSQLStatements.ContainsKey(Type)) { return result; }
 
         using var connection = new SqliteConnection(ConnectionString());
         var parameter = new { ID = SearchID };
-        Result = connection.QuerySingle(StandardSQLStatements[Type].SelectById, parameter);
-        return Result;
+        result = connection.QuerySingle(StandardSQLStatements[Type].SelectById, parameter);
+        return result;
     }
 
-    public IEnumerable<T> LoadAll<T>() where T : class, new()
+    public IList<T> LoadAll<T>() where T : class, new()
     {
         var Type = typeof(T).ToString();
-        IEnumerable<T> Result = new List<T>();
-        return LoadAll<T>();
+        IList<T> result = new List<T>();
+
+        using var connection = new SqliteConnection(ConnectionString());
+        result = connection.Query<T>(StandardSQLStatements[Type].SelectAll).ToList();
+
+        return result;
     }
 
     public void CreateTable(string Type)
