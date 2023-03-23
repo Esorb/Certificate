@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="8"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="LightGray" MouseDown="Border_MouseDown" MouseUp="Border_MouseUp">
@@ -31,53 +31,18 @@
                 <Button Grid.Column="3" x:Name="CloseButton" KeyboardNavigation.IsTabStop="False" Click="CloseButton_Click" FontSize="20" FontFamily="Segoe MDL2 Assets" BorderBrush="Transparent" BorderThickness="0" Background="Transparent"/>
             </Grid>
         </Border>
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition x:Name="NavColumn" Width="140"/>
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Border Background="YellowGreen"  Grid.Column="0" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="IndianRed"  Grid.Column="1" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="Yellow"  Grid.Column="2" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="DarkOrchid"  Grid.Column="3" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="OliveDrab"  Grid.Column="4" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="MediumBlue"  Grid.Column="5" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="LightBlue"  Grid.Column="6" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="YellowGreen"  Grid.Column="7" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="IndianRed"  Grid.Column="8" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="Yellow"  Grid.Column="9" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="DarkOrchid"  Grid.Column="10" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="OliveDrab"  Grid.Column="11" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="MediumBlue"  Grid.Column="12" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="LightBlue"  Grid.Column="13" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="YellowGreen"  Grid.Column="14" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="IndianRed"  Grid.Column="15" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="Yellow"  Grid.Column="16" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="DarkOrchid"  Grid.Column="17" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="OliveDrab"  Grid.Column="18" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="MediumBlue"  Grid.Column="19" BorderBrush="LightGray" BorderThickness="2"/>
-            <Border Background="LightBlue"  Grid.Column="20" BorderBrush="LightGray" BorderThickness="2"/>
+            <StackPanel Grid.Column="0">
+                <!--<NavButton>
+
+                </NavButton>-->
+            </StackPanel>
         </Grid>
-        <TabControl TabStripPlacement="Left" Grid.Row="2">
+        <TabControl TabStripPlacement="Left" Grid.Row="1">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="Template">
