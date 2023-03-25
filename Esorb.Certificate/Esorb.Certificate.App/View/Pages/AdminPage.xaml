@@ -15,8 +15,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Background="LightGray">
-            <view:NavButton x:Name="BtnTemplate" Text="Zeugnisvorlagen" Width="Auto"/>
-            <view:NavButton x:Name="BtnCertificate" Text="Zeugnis" Width="Auto"/>
+            <view:NavButton x:Name="BtnTemplate" Text="Zeugnisvorlagen"/>
+            <view:NavButton x:Name="BtnCertificate" Text="Zeugnis"/>
+            <view:NavButton x:Name="BtnTeacher" Text="Lehrer"/>
+            <view:NavButton x:Name="BtnPupil" Text="Schüler"/>
+            <view:NavButton x:Name="BtnClass" Text="Klassen"/>
+            <view:NavButton x:Name="BtnDistribution" Text="Datenbank zur Verteilung vorbereiten"/>
         </StackPanel>
     </Grid>
 </Page>

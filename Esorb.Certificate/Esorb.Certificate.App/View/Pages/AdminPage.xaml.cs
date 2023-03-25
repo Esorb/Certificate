@@ -30,7 +30,10 @@ namespace Esorb.Certificate.App.View.Pages
         {
             BtnTemplate.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E713", 16));
             BtnCertificate.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("F56E", 16));
-
+            BtnTeacher.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E77B", 16));
+            BtnPupil.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("ECA7", 16));
+            BtnClass.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("EBDA", 16));
+            BtnDistribution.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E792", 16));
         }
     }
 }

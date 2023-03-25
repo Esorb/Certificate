@@ -59,13 +59,6 @@ public partial class MainWindow : Window
         BtnExport.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("F571", 16));
         BtnAdmin.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E15E", 16));
         BtnInfo.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E946", 16));
-        this.AdminHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E15E", 16));
-        this.TemplateHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E713", 16));
-        this.CertificateHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("F56E", 16));
-        this.TeacherHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E77B", 16));
-        this.DistributionHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E792", 16));
-        this.PupilHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("ECA7", 16));
-        this.ClassHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("EBDA", 16));
     }
 
     //private void MainWindow_Loaded(object sender, RoutedEventArgs e)
