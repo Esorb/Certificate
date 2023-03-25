@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using Esorb.Certificate.App.ViewModel;
+using Esorb.Certificate.App.View.Controls;
 using System.IO;
 using System.Windows.Forms;
 using System.Security.Cryptography;
@@ -27,20 +28,18 @@ public partial class MainWindow : Window
     //}
     public MainWindow(ICertifcateViewModel certifcateViewModel)
     {
-        //certificateViewModel = new CertifcateViewModel();
         InitializeComponent();
         SetGuiIcons();
         WindowState = WindowState.Maximized;
         this.certifcateViewModel = certifcateViewModel;
         DataContext = this.certifcateViewModel;
-        //this.Loaded += MainWindow_Loaded;
     }
 
 
     private void SetGuiIcons()
     {
-        this.CloseButton.Content = char.ConvertFromUtf32(Convert.ToInt32("E711", 16));
-        this.MinimizeButton.Content = char.ConvertFromUtf32(Convert.ToInt32("E921", 16));
+        this.CloseButton.Icon = char.ConvertFromUtf32(Convert.ToInt32("E711", 16));
+        this.MinimizeButton.MinIcon = char.ConvertFromUtf32(Convert.ToInt32("E921", 16));
         this.StartHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E80F", 16));
         BtnMenue.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E700", 16));
         BtnStart.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E80F", 16));

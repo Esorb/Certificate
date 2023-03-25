@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Esorb.Certificate.App
+namespace Esorb.Certificate.App.View.Controls
 {
     public class NavButton : ButtonBase
     {

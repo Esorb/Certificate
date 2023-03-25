@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Esorb.Certificate.App.ViewModel"
-        xmlns:view="clr-namespace:Esorb.Certificate.App"
+        xmlns:view="clr-namespace:Esorb.Certificate.App.View.Controls"
         mc:Ignorable="d"
         Title="Zeugnisse" Height="600" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode ="NoResize">
 
@@ -28,18 +28,16 @@
                     </Image.Source>
                 </Image>
                 <TextBlock Grid.Column="1" Text="Zeugnisprogramm der Gemeinschaftsgrundschule Forsbach" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="20"/>
-                <Button Grid.Column="2" x:Name="MinimizeButton" KeyboardNavigation.IsTabStop="False" Click="MinimizeButton_Click"  FontSize="20" FontFamily="Segoe MDL2 Assets" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
-                    <!--<Button.Style>
-                        <Style TargetType="Button">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="MistyRose"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>-->
-                </Button>
-                <Button Grid.Column="3" x:Name="CloseButton" KeyboardNavigation.IsTabStop="False" Click="CloseButton_Click" FontSize="20" FontFamily="Segoe MDL2 Assets" BorderBrush="Transparent" BorderThickness="0" Background="Transparent"/>
+                <view:MinimizeButton
+                    Grid.Column="2" 
+                    x:Name="MinimizeButton" 
+                    KeyboardNavigation.IsTabStop="False" 
+                    Click="MinimizeButton_Click"/>
+                <view:CloseButton 
+                    Grid.Column="3" 
+                    x:Name="CloseButton" 
+                    KeyboardNavigation.IsTabStop="False" 
+                    Click="CloseButton_Click"/>
             </Grid>
         </Border>
         <Grid Grid.Row="2">
