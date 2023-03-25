@@ -1,0 +1,75 @@
+﻿<Page x:Class="Esorb.Certificate.App.View.Pages.InfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Esorb.Certificate.App.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="InfoPage">
+
+    <Border Background="White" Height="480" Width="640" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel>
+            <TextBlock Padding="10" Text="Zeugnisprogramm für die" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="20"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Height="80">
+                    <Image.Source>
+                        <BitmapImage UriSource="../../Pictures/GGS.jpg"/>
+                    </Image.Source>
+                </Image>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" >
+                    <TextBlock Text="Gemeinschaftsgrundschule Forsbach" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="20" FontWeight="Bold"/>
+                    <TextBlock Text="Amtliche Schulnummer: 115095" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="12"/>
+                </StackPanel>
+                <Image Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="60">
+                    <Image.Source>
+                        <BitmapImage UriSource="../../Pictures/Roesrath.png"/>
+                    </Image.Source>
+                </Image>
+            </Grid>
+            <TextBlock Text="Ansprechpartnerin für Bedienungshinweise, Ideen und Fehler: Astrid Heidelberg" Margin="0,40,0,0" HorizontalAlignment="Left" FontFamily="Arial" FontSize="16"/>
+            <TextBlock Text="Programmiert 2023 von Frank Brose" TextWrapping="Wrap" Margin="0,10,0,0" HorizontalAlignment="Left" FontFamily="Arial" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                <TextBlock Text="Der Sourcecode ist auf GitHub verfügbar:" Margin="0,0,10,0" VerticalAlignment="Center" FontFamily="Arial" FontSize="16"/>
+                <Button x:Name="GitHubButton" Click="GitHubButton_Click" Margin="0,10,10,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                    <Image Grid.Column="2" Name="GithubLogo">
+                        <Image.Source>
+                            <BitmapImage UriSource="../../Pictures/GitHub Logo.png"/>
+                        </Image.Source>
+                    </Image>
+                </Button>
+            </StackPanel>
+            <TextBlock Text="Verwendete Frameworks und Libraries:" Margin="0,10,0,0" VerticalAlignment="Center" FontFamily="Arial" FontSize="16"/>
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Column="0" VerticalAlignment="Center" Height="40" Margin="0,0,50,0">
+                    <Image.Source>
+                        <BitmapImage UriSource="../../Pictures/Xceed Logo.png"/>
+                    </Image.Source>
+                </Image>
+                <Image Grid.Column="1" VerticalAlignment="Center" Height="50" Margin="0,0,50,0">
+                    <Image.Source>
+                        <BitmapImage UriSource="../../Pictures/SQLite Logo.png"/>
+                    </Image.Source>
+                </Image>
+                <Image Grid.Column="2" VerticalAlignment="Center" Height="60">
+                    <Image.Source>
+                        <BitmapImage UriSource="../../Pictures/Dapper-Logo.png"/>
+                    </Image.Source>
+                </Image>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Page>

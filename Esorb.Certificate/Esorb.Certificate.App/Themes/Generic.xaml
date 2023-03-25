@@ -25,20 +25,10 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" TargetName="BtnBorder" Value="MistyRose"/>
                         </Trigger>
-                    </ControlTemplate.Triggers>
-
-                    <!--<ControlTemplate.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True"/>
-                                <Condition Property="Selected" Value="False" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Background" TargetName="BtnBorder" Value="PaleTurquoise"/>
-                        </MultiDataTrigger>
                         <Trigger Property="Selected" Value="True">
                             <Setter Property="Background" TargetName="BtnBorder" Value="White"/>
                         </Trigger>
-                    </ControlTemplate.Triggers>-->
+                    </ControlTemplate.Triggers>
 
                 </ControlTemplate>
             </Setter.Value>

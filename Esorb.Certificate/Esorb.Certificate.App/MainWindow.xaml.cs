@@ -7,6 +7,8 @@ using Esorb.Certificate.App.View.Controls;
 using System.IO;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Esorb.Certificate.App;
 
@@ -14,6 +16,7 @@ public partial class MainWindow : Window
 {
     //private ICertifcateViewModel certificateViewModel;
     public readonly ICertifcateViewModel certifcateViewModel;
+    private IList<NavButton> navButtons = new List<NavButton>();
 
     //public ICertifcateViewModel CertificateViewModel
     //{
@@ -30,12 +33,21 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         SetGuiIcons();
+        AddNavButtons();
         WindowState = WindowState.Maximized;
         this.certifcateViewModel = certifcateViewModel;
         DataContext = this.certifcateViewModel;
     }
 
-
+    private void AddNavButtons()
+    {
+        navButtons.Add(BtnMenue);
+        navButtons.Add(BtnStart);
+        navButtons.Add(BtnInput);
+        navButtons.Add(BtnExport);
+        navButtons.Add(BtnAdmin);
+        navButtons.Add(BtnInfo);
+    }
     private void SetGuiIcons()
     {
         this.CloseButton.Icon = char.ConvertFromUtf32(Convert.ToInt32("E711", 16));
@@ -47,8 +59,6 @@ public partial class MainWindow : Window
         BtnExport.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("F571", 16));
         BtnAdmin.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E15E", 16));
         BtnInfo.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E946", 16));
-        this.InputHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E70F", 16));
-        this.ExportHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("F571", 16));
         this.AdminHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E15E", 16));
         this.TemplateHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E713", 16));
         this.CertificateHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("F56E", 16));
@@ -56,7 +66,6 @@ public partial class MainWindow : Window
         this.DistributionHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E792", 16));
         this.PupilHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("ECA7", 16));
         this.ClassHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("EBDA", 16));
-        this.InfoHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E946", 16));
     }
 
     //private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -98,23 +107,23 @@ public partial class MainWindow : Window
         }
     }
 
-    private void GitHubButton_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            string url = "https://github.com/Esorb/Certificate";
-            Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
-        }
-        catch (System.ComponentModel.Win32Exception noBrowser)
-        {
-            if (noBrowser.ErrorCode == -2147467259)
-                System.Windows.MessageBox.Show(noBrowser.Message);
-        }
-        catch (System.Exception other)
-        {
-            System.Windows.MessageBox.Show(other.Message);
-        }
-    }
+    //private void GitHubButton_Click(object sender, RoutedEventArgs e)
+    //{
+    //    try
+    //    {
+    //        string url = "https://github.com/Esorb/Certificate";
+    //        Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
+    //    }
+    //    catch (System.ComponentModel.Win32Exception noBrowser)
+    //    {
+    //        if (noBrowser.ErrorCode == -2147467259)
+    //            System.Windows.MessageBox.Show(noBrowser.Message);
+    //    }
+    //    catch (System.Exception other)
+    //    {
+    //        System.Windows.MessageBox.Show(other.Message);
+    //    }
+    //}
 
     private void BtnGetDatabasePath_Click(object sender, RoutedEventArgs e)
     {
@@ -157,5 +166,22 @@ public partial class MainWindow : Window
         {
             NavColumn.Width = bigGridLength;
         }
+    }
+
+    private void StackPanel_Click(object sender, RoutedEventArgs e)
+    {
+
+        var ClickedNavButton = e.OriginalSource as NavButton;
+        if (ClickedNavButton.NavUri != null)
+        {
+            foreach (var navBtn in navButtons)
+            {
+                navBtn.Selected = false;
+            }
+            AppFrame.Navigate(ClickedNavButton.NavUri);
+            ClickedNavButton.Selected = true;
+        }
+
+
     }
 }
