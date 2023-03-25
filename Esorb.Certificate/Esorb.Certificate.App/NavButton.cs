@@ -23,10 +23,10 @@ namespace Esorb.Certificate.App
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NavButton), new FrameworkPropertyMetadata(typeof(NavButton)));
         }
 
-        public static readonly DependencyProperty NavIconProperty = DependencyProperty.Register("NavIcon", typeof(String), typeof(NavButton), new PropertyMetadata(null));
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(NavButton), new PropertyMetadata(null));
-        public static readonly DependencyProperty NavUriProperty = DependencyProperty.Register("NavUri", typeof(Uri), typeof(NavButton), new PropertyMetadata(null));
-        public static readonly DependencyProperty SelectedProperty = DependencyProperty.Register("Selected", typeof(bool), typeof(ButtonBase), new PropertyMetadata(false));
+        public static readonly DependencyProperty NavIconProperty = DependencyProperty.Register("NavIcon", typeof(String), typeof(NavButton), new PropertyMetadata(""));
+        public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(NavButton), new PropertyMetadata(""));
+        //public static readonly DependencyProperty NavUriProperty = DependencyProperty.Register("NavUri", typeof(Uri), typeof(NavButton), new PropertyMetadata(""));
+        //public static readonly DependencyProperty SelectedProperty = DependencyProperty.Register("Selected", typeof(bool), typeof(ButtonBase), new PropertyMetadata(false));
 
         public String NavIcon
         {
@@ -40,16 +40,16 @@ namespace Esorb.Certificate.App
             set { SetValue(TextProperty, value); }
         }
 
-        public Uri NavUri
-        {
-            get { return (Uri)GetValue(NavUriProperty); }
-            set { SetValue(NavUriProperty, value); }
-        }
+        //public Uri? NavUri
+        //{
+        //    get { return (Uri)GetValue(NavUriProperty); }
+        //    set { SetValue(NavUriProperty, value); }
+        //}
 
-        public bool Selected
-        {
-            get { return (bool)GetValue(SelectedProperty); }
-            set { SetValue(SelectedProperty, value); }
-        }
+        //public bool Selected
+        //{
+        //    get { return (bool)GetValue(SelectedProperty); }
+        //    set { SetValue(SelectedProperty, value); }
+        //}
     }
 }

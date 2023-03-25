@@ -10,21 +10,28 @@
                 <ControlTemplate TargetType="{x:Type local:NavButton}">
                     <Border Name="BtnBorder" Background="LightGray"
                             BorderBrush="Transparent"
-                            BorderThickness="0">
+                            BorderThickness="0"
+                            Padding="2,5">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40" />
-                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="80" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{TemplateBinding NavIcon}" FontSize="24" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="{TemplateBinding Text}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Grid.Column="0" Text="{TemplateBinding NavIcon}" FontSize="24" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{TemplateBinding Text}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="3,0,0,0"/>
                         </Grid>
                     </Border>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="BtnBorder" Value="MistyRose"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                    <!--<ControlTemplate.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="Selected" Value="False" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Background" TargetName="BtnBorder" Value="PaleTurquoise"/>
@@ -32,7 +39,7 @@
                         <Trigger Property="Selected" Value="True">
                             <Setter Property="Background" TargetName="BtnBorder" Value="White"/>
                         </Trigger>
-                    </ControlTemplate.Triggers>
+                    </ControlTemplate.Triggers>-->
 
                 </ControlTemplate>
             </Setter.Value>

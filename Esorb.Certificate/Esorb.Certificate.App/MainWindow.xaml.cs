@@ -42,6 +42,12 @@ public partial class MainWindow : Window
         this.CloseButton.Content = char.ConvertFromUtf32(Convert.ToInt32("E711", 16));
         this.MinimizeButton.Content = char.ConvertFromUtf32(Convert.ToInt32("E921", 16));
         this.StartHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E80F", 16));
+        BtnMenue.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E700", 16));
+        BtnStart.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E80F", 16));
+        BtnInput.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E70F", 16));
+        BtnExport.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("F571", 16));
+        BtnAdmin.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E15E", 16));
+        BtnInfo.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E946", 16));
         this.InputHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E70F", 16));
         this.ExportHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("F571", 16));
         this.AdminHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E15E", 16));
@@ -137,6 +143,20 @@ public partial class MainWindow : Window
         {
             string path = folderBrowserDialog.SelectedPath;
             System.Windows.MessageBox.Show(path);
+        }
+    }
+
+    private void BtnMenue_Click(object sender, RoutedEventArgs e)
+    {
+        GridLength smallGridLength = new GridLength(44, GridUnitType.Pixel);
+        GridLength bigGridLength = new GridLength(110, GridUnitType.Pixel);
+        if (NavColumn.Width.Equals(bigGridLength))
+        {
+            NavColumn.Width = smallGridLength;
+        }
+        else
+        {
+            NavColumn.Width = bigGridLength;
         }
     }
 }
