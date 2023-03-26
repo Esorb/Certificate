@@ -30,11 +30,13 @@
                 <TextBlock Grid.Column="1" Text="Zeugnisprogramm der Gemeinschaftsgrundschule Forsbach" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="20"/>
                 <view:MinimizeButton
                     Grid.Column="2" 
+                    MinIcon="&#xE921;"
                     x:Name="MinimizeButton" 
                     KeyboardNavigation.IsTabStop="False" 
                     Click="MinimizeButton_Click"/>
                 <view:CloseButton 
                     Grid.Column="3" 
+                    Icon="&#xE711;"
                     x:Name="CloseButton" 
                     KeyboardNavigation.IsTabStop="False" 
                     Click="CloseButton_Click"/>
@@ -46,12 +48,41 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Background="LightGray" ButtonBase.Click="StackPanel_Click">
-                <view:NavButton x:Name="BtnMenue" NavIcon="" Click="BtnMenue_Click"/>
-                <view:NavButton x:Name="BtnStart" NavIcon=""  Text="Start" NavUri="/View/Pages/StartPage.xaml"/>
-                <view:NavButton x:Name="BtnInput" NavIcon="" Text="Eingabe" NavUri="/View/Pages/InputPage.xaml"/>
-                <view:NavButton x:Name="BtnExport" NavIcon="" Text="Export" NavUri="/View/Pages/ExportPage.xaml"/>
-                <view:NavButton x:Name="BtnAdmin" NavIcon="" Text="Admin" NavUri="/View/Pages/AdminPage.xaml"/>
-                <view:NavButton x:Name="BtnInfo" NavIcon="" Text="Info" NavUri="/View/Pages/InfoPage.xaml"/>
+                <view:NavButton 
+                    x:Name="BtnMenue" 
+                    NavIcon="&#xE700;" 
+                    Click="BtnMenue_Click"
+                    />
+                <view:NavButton 
+                    x:Name="BtnStart" 
+                    NavIcon="&#xE80F;"  
+                    Text="Start" 
+                    NavUri="/View/Pages/StartPage.xaml"
+                    />
+                <view:NavButton 
+                    x:Name="BtnInput" 
+                    NavIcon="&#xE70F;" 
+                    Text="Eingabe" 
+                    NavUri="/View/Pages/InputPage.xaml"
+                    />
+                <view:NavButton 
+                    x:Name="BtnExport" 
+                    NavIcon="&#xF571;" 
+                    Text="Export" 
+                    NavUri="/View/Pages/ExportPage.xaml"
+                    />
+                <view:NavButton 
+                    x:Name="BtnAdmin" 
+                    NavIcon="&#xE15E;" 
+                    Text="Admin" 
+                    NavUri="/View/Pages/AdminPage.xaml"
+                    />
+                <view:NavButton 
+                    x:Name="BtnInfo" 
+                    NavIcon="&#xE946;" 
+                    Text="Info" 
+                    NavUri="/View/Pages/InfoPage.xaml"
+                    />
                 <Frame x:Name="PageFrame" Grid.Column="1"/>
             </StackPanel>
             <Frame x:Name="AppFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
@@ -138,146 +169,6 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <!--<TabItem>
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                        <TextBlock Name="AdminHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
-                        <TextBlock Text="Admin" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </TabItem.Header>
-                <TabControl TabStripPlacement="Top">
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
-                                <TextBlock Name="TemplateHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
-                                <TextBlock Text="Zeugnisvorlagen" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </TabItem.Header>
-
-                    </TabItem>
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
-                                <TextBlock Name="CertificateHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
-                                <TextBlock Text="Zeugnis" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </TabItem.Header>
-
-                    </TabItem>
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
-                                <TextBlock Name="TeacherHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
-                                <TextBlock Text="Lehrer" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </TabItem.Header>
-
-                    </TabItem>
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
-                                <TextBlock Name="DistributionHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
-                                <TextBlock Text="Datenbank zur Verteilung vorbereiten" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </TabItem.Header>
-
-                    </TabItem>
-
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
-                                <TextBlock Name="PupilHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
-                                <TextBlock Text="Schüler" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </TabItem.Header>
-
-                    </TabItem>
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal" Margin="5,5,15,5">
-                                <TextBlock Name="ClassHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
-                                <TextBlock Text="Klassen" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </TabItem.Header>
-
-                    </TabItem>
-
-                </TabControl>
-            </TabItem>-->
-            <!--<TabItem>
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                        <TextBlock Name="InfoHeader" FontSize="24" FontFamily="Segoe MDL2 Assets" Margin="0,0,10,0"/>
-                        <TextBlock Text="Info" FontFamily="Arial" FontSize="16" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </TabItem.Header>
-                <Border Background="White" Height="480" Width="640" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <StackPanel>
-                        <TextBlock Padding="10" Text="Zeugnisprogramm für die" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="20"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Height="80">
-                                <Image.Source>
-                                    <BitmapImage UriSource="Pictures/GGS.jpg"/>
-                                </Image.Source>
-                            </Image>
-                            <StackPanel Grid.Column="1" VerticalAlignment="Center" >
-                                <TextBlock Text="Gemeinschaftsgrundschule Forsbach" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="20" FontWeight="Bold"/>
-                                <TextBlock Text="Amtliche Schulnummer: 115095" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="12"/>
-                            </StackPanel>
-                            <Image Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="60">
-                                <Image.Source>
-                                    <BitmapImage UriSource="Pictures/Roesrath.png"/>
-                                </Image.Source>
-                            </Image>
-                        </Grid>
-                        <TextBlock Text="Ansprechpartnerin für Bedienungshinweise, Ideen und Fehler: Astrid Heidelberg" Margin="0,40,0,0" HorizontalAlignment="Left" FontFamily="Arial" FontSize="16"/>
-                        <TextBlock Text="Programmiert 2023 von Frank Brose" TextWrapping="Wrap" Margin="0,10,0,0" HorizontalAlignment="Left" FontFamily="Arial" FontSize="16"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
-                            <TextBlock Text="Der Sourcecode ist auf GitHub verfügbar:" Margin="0,0,10,0" VerticalAlignment="Center" FontFamily="Arial" FontSize="16"/>
-                            <Button x:Name="GitHubButton" Click="GitHubButton_Click" Margin="0,10,10,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
-                                <Image Grid.Column="2" Name="GithubLogo">
-                                    <Image.Source>
-                                        <BitmapImage UriSource="Pictures/GitHub Logo.png"/>
-                                    </Image.Source>
-                                </Image>
-                            </Button>
-                        </StackPanel>
-                        <TextBlock Text="Verwendete Frameworks und Libraries:" Margin="0,10,0,0" VerticalAlignment="Center" FontFamily="Arial" FontSize="16"/>
-                        <Grid Margin="0,10,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Image Grid.Column="0" VerticalAlignment="Center" Height="40" Margin="0,0,50,0">
-                                <Image.Source>
-                                    <BitmapImage UriSource="Pictures/Xceed Logo.png"/>
-                                </Image.Source>
-                            </Image>
-                            <Image Grid.Column="1" VerticalAlignment="Center" Height="50" Margin="0,0,50,0">
-                                <Image.Source>
-                                    <BitmapImage UriSource="Pictures/SQLite Logo.png"/>
-                                </Image.Source>
-                            </Image>
-                            <Image Grid.Column="2" VerticalAlignment="Center" Height="60">
-                                <Image.Source>
-                                    <BitmapImage UriSource="Pictures/Dapper-Logo.png"/>
-                                </Image.Source>
-                            </Image>
-                        </Grid>
-                    </StackPanel>
-
-                </Border>
-
-            </TabItem>-->
         </TabControl>
     </Grid>
 </Window>

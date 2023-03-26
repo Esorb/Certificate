@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esorb.Certificate.App.View.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,28 +13,49 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Esorb.Certificate.App.ViewModel;
+using Esorb.Certificate.App.View.Controls;
+using System.IO;
+using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.Collections;
+using System.Collections.Generic;
+
 
 namespace Esorb.Certificate.App.View.Pages
 {
-    /// <summary>
-    /// Interaktionslogik für AdminPage.xaml
-    /// </summary>
     public partial class AdminPage : Page
     {
+        private IList<NavButton> navButtons = new List<NavButton>();
         public AdminPage()
         {
             InitializeComponent();
-            SetGuiIcons();
+            AddNavButtons();
         }
 
-        private void SetGuiIcons()
+        private void AddNavButtons()
         {
-            BtnTemplate.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E713", 16));
-            BtnCertificate.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("F56E", 16));
-            BtnTeacher.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E77B", 16));
-            BtnPupil.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("ECA7", 16));
-            BtnClass.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("EBDA", 16));
-            BtnDistribution.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E792", 16));
+            navButtons.Add(BtnTemplate);
+            navButtons.Add(BtnCertificate);
+            navButtons.Add(BtnTeacher);
+            navButtons.Add(BtnPupil);
+            navButtons.Add(BtnClass);
+            navButtons.Add(BtnDistribution);
+        }
+
+        private void AdminPanel_Click(object sender, RoutedEventArgs e)
+        {
+            var ClickedNavButton = e.OriginalSource as NavButton;
+            if (ClickedNavButton!.NavUri != null)
+            {
+                foreach (var navBtn in navButtons)
+                {
+                    navBtn.Selected = false;
+                }
+
+                AdminFrame.Navigate(ClickedNavButton.NavUri);
+                ClickedNavButton.Selected = true;
+            }
         }
     }
 }

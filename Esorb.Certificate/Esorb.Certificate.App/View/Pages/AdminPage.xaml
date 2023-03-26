@@ -14,13 +14,51 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="LightGray">
-            <view:NavButton x:Name="BtnTemplate" Text="Zeugnisvorlagen"/>
-            <view:NavButton x:Name="BtnCertificate" Text="Zeugnis"/>
-            <view:NavButton x:Name="BtnTeacher" Text="Lehrer"/>
-            <view:NavButton x:Name="BtnPupil" Text="Schüler"/>
-            <view:NavButton x:Name="BtnClass" Text="Klassen"/>
-            <view:NavButton x:Name="BtnDistribution" Text="Datenbank zur Verteilung vorbereiten"/>
+        <StackPanel
+            x:Name="AdminPanel" 
+            Grid.Row="0" 
+            Orientation="Horizontal" 
+            Background="LightGray"
+            ButtonBase.Click="AdminPanel_Click">
+
+            <view:NavButton 
+                x:Name="BtnTemplate" 
+                NavIcon="&#xE713;" 
+                Text="Zeugnisvorlagen" 
+                NavUri="/View/Pages/TemplatePage.xaml"
+                />
+            <view:NavButton 
+                x:Name="BtnCertificate" 
+                NavIcon="&#xF56E;" 
+                Text="Zeugnis" 
+                NavUri="/View/Pages/CertificatePage.xaml"
+                />
+            <view:NavButton 
+                x:Name="BtnTeacher" 
+                NavIcon="&#xE77B;" 
+                Text="Lehrer" 
+                NavUri="/View/Pages/TeacherPage.xaml"
+                />
+            <view:NavButton
+                x:Name="BtnPupil"
+                NavIcon="&#xECA7;" 
+                Text="Schüler"
+                NavUri="/View/Pages/PupilPage.xaml"
+                />
+            <view:NavButton 
+                x:Name="BtnClass" 
+                NavIcon="&#xEBDA;" 
+                Text="Klassen"
+                NavUri="/View/Pages/SchoolClassPage.xaml"
+                />
+            <view:NavButton 
+                x:Name="BtnDistribution" 
+                NavIcon="&#xE792;" 
+                Text="Datenbank zur Verteilung vorbereiten" 
+                NavUri="/View/Pages/DistributionPage.xaml"
+                />
         </StackPanel>
+
+        <Frame x:Name="AdminFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

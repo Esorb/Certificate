@@ -50,15 +50,7 @@ public partial class MainWindow : Window
     }
     private void SetGuiIcons()
     {
-        this.CloseButton.Icon = char.ConvertFromUtf32(Convert.ToInt32("E711", 16));
-        this.MinimizeButton.MinIcon = char.ConvertFromUtf32(Convert.ToInt32("E921", 16));
         this.StartHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E80F", 16));
-        BtnMenue.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E700", 16));
-        BtnStart.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E80F", 16));
-        BtnInput.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E70F", 16));
-        BtnExport.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("F571", 16));
-        BtnAdmin.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E15E", 16));
-        BtnInfo.NavIcon = char.ConvertFromUtf32(Convert.ToInt32("E946", 16));
     }
 
     //private void MainWindow_Loaded(object sender, RoutedEventArgs e)

@@ -1,0 +1,26 @@
+﻿Endbenutzer-Lizenzvereinbarung (EULA) für das Zeugnisprogramm
+-------------------------------------------------------------
+
+Bitte lesen Sie diesen Endbenutzer-Lizenzvertrag (EULA) sorgfältig durch, bevor Sie das Zeugnisprogramm (die "Software") installieren oder verwenden. Durch die Installation oder Verwendung der Software stimmen Sie den Bedingungen dieses EULAs zu.
+Wenn Sie diesen Bedingungen nicht zustimmen, darf die Software nicht installiert oder verwendet werden.
+
+Dies ist eine rechtliche Vereinbarung zwischen Ihnen (dem "Endbenutzer") und Frank Brose (dem "Lizenzgeber" und "Entwickler") für die Nutzung des Zeugnisprogramms.
+
+Durch die Installation, dem Download oder die Nutzunng der Software erklärt sicher der Endbenutzer mit den Bedingungen dieser Lizenzvereinbarung einverstanden.
+Wenn der Endbenutzer mit diesen Bedingungen nicht einverstanden ist, darf er die Software nicht nutzen.
+
+LIZENZ:
+Der Lizenzgeber erteilt dem Lizenznehmer eine nicht exklusive, nicht übertragbare und kostenlose Lizenz für die Nutzung der Software. Die Software ist nur für den dienstlichen Gebrauch an der Gemeinschaftsgrundschule Forsbach vorgesehen. Jegliche Weitergabe, Verkauf oder Übertragung der Lizenz an Dritte ist untersagt.
+
+HAFTUNGSAUSSCHLUSS:
+Der Endbenutzer verwendet die Software auf eigenes Risiko. Der Entwickler übernimmt keinerlei Garantie oder Gewährleistung für die Software. Der Entwickler haftet nicht für Schäden oder Verluste aus der Nutzung der Software oder der Unfähigkeit, die Software zu nutzen.
+
+ÄNDERUNGEN AM PRODUKT:
+Der Lizenzgeber behält sich das Recht vor, das Produkt jederzeit zu ändern oder einzustellen, ohne den Lizenznehmer darüber zu informieren.
+
+URHEBERRECHT:
+Der Endbenutzer erkennt an, dass alle Rechte am geistigen Eigentum an der Software beim Entwickler liegen. Der Endbenutzer darf die Software nicht in irgendeiner Weise kopieren, ändern oder an Dritte außerhalb der Gemeinschaftsschule Forsbach weitergeben.
+
+VERTRAGSBESTIMMUNGEN:
+Diese Vereinbarung stellt die vollständige Vereinbarung zwischen Endbenutzer und Entwickler/Lizenzgeber dard und ersetzt alle früheren Vereinabrungen oder Absprachen.
+Diese Vereinbarung unterliegt den Gesetzen Deutschlands und alle Streitigkeiten unterliegen ausschließlich der Zuständigkeit deutscher Gerichte.

@@ -9,6 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Documents\EULA.txt" />
 		<None Remove="GGS.png" />
 		<None Remove="Pictures\Dapper-Logo.png" />
 		<None Remove="Pictures\GGS.ico" />
@@ -44,16 +45,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Documents\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Reference Include="System.Windows.Forms">
 			<HintPath>DLLs\System.Windows.Forms.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="Documents\EULA.txt">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
 		<Resource Include="Pictures\Dapper-Logo.png" />
 		<Resource Include="Pictures\GGS.ico" />
 		<Resource Include="Pictures\GGS.jpg">

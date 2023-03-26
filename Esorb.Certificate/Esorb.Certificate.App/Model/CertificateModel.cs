@@ -17,6 +17,8 @@ namespace Esorb.Certificate.App.Model
         public IList<Teacher> Teachers { get; private set; } = new List<Teacher>();
         public IList<Pupil> Pupils { get; private set; } = new List<Pupil>();
         public IList<SchoolClass> SchoolClasses { get; private set; } = new List<SchoolClass>();
+        public IList<CertificateTemplate> CertificateTemplates { get; private set; } = new List<CertificateTemplate>();
+        public CertificateData CertificateData { get; private set; } = new();
 
         public void LoadCertificateModel()
         {

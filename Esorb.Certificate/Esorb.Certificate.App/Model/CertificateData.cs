@@ -15,6 +15,4 @@ public class CertificateData : PersistentObject
     public DateTime DateOfCertificateDistribution { get; set; }
     public DateTime DateOfRestartLessons { get; set; }
     public DateTime TimeOfRestartLessons { get; set; }
-    public string CertificateTemplateID { get; set; } = string.Empty;
-    public CertificateTemplate? Template { get; set; }
 }

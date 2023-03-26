@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model;
 
-public class CertificateTemplate
+public class CertificateTemplate : PersistentObject
 {
     public short Yearlevel { get; set; }
     public short HalfYear { get; set; }
