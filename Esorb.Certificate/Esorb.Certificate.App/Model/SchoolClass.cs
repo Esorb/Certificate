@@ -12,4 +12,5 @@ public class SchoolClass : PersistentObject
     public string ClassName { get; set; } = string.Empty;
     public int Yearlevel { get; set; }
     public int HalfYear { get; set; }
+    public IList<Pupil> Pupils { get; set; } = new List<Pupil>();
 }

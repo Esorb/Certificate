@@ -132,10 +132,47 @@ public class PupilSchoolClassImporterTests
     {
         // Arrange
         var psci = new PupilSchoolClassImporter();
+        psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
+        //var dbh = new DbHelper();
+        var cm = new CertificateModel();
+        // Act
+        cm.LoadCertificateModel();
+        // Assert
+        Assert.AreEqual(4, cm.SchoolClasses.Count);
+    }
+
+    [TestMethod]
+    public void Import_returns_8_Pupils()
+    {
+        // Arrange
+        var psci = new PupilSchoolClassImporter();
+        psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
+        //var dbh = new DbHelper();
+        var cm = new CertificateModel();
+        // Act
+        cm.LoadCertificateModel();
+        // Assert
+        Assert.AreEqual(8, cm.Pupils.Count);
+    }
+
+    [TestMethod]
+    public void Import_returns_properly_linked_Pupils_SchoolClasses()
+    {
+        // Arrange
+        var psci = new PupilSchoolClassImporter();
+        psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
         var dbh = new DbHelper();
         var cm = new CertificateModel();
-        cm.DbHelper = dbh;
-
+        // Act
+        cm.LoadCertificateModel();
+        cm.LinkCertificateModel();
+        // Assert
+        foreach (var p in cm.Pupils)
+        {
+            Assert.IsNotNull(p.SchoolClass);
+            Assert.AreEqual(p.SchoolClassId, p.SchoolClass.ID);
+            Assert.IsTrue(p.SchoolClass.Pupils.Contains(p));
+        }
     }
 
 }

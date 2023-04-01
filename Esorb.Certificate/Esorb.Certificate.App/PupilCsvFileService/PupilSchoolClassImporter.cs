@@ -14,7 +14,9 @@ namespace Esorb.Certificate.App.PupilCsvFileService;
 
 public class PupilSchoolClassImporter
 {
-    private CertificateModel _certificateModel { get; set; }
+    private IList<Pupil> pupils = new List<Pupil>();
+    private IList<SchoolClass> schoolClasses = new List<SchoolClass>();
+    private DbHelper dbHelper = new DbHelper();
     public IList<PupilRawData> RawDatas { get; set; } = new List<PupilRawData>();
 
     public void ReadRawData(string fileName)
@@ -31,7 +33,7 @@ public class PupilSchoolClassImporter
         RawDatas = csv.GetRecords<PupilRawData>().ToList();
     }
 
-    public void ImportPupilsAndSchoolClasses(string? filePath, CertificateModel certificateModel)
+    public void ImportPupilsAndSchoolClasses(string? filePath)
     {
         if (!IsPupilSchoolClassFile(filePath)) return;
 
@@ -39,57 +41,69 @@ public class PupilSchoolClassImporter
 
         if (RawDatas.Count == 0) return;
 
-        _certificateModel = certificateModel;
-
         DeleteOldPupilAndSchoolClasses();
+        TransferRawDatas();
+    }
+
+    private void TransferRawDatas()
+    {
+        // Do not change the order, SchoolClasses have to be transfered first
         TransferRawDatasToSchoolClass();
         TransferRawDatasToPupil();
     }
 
-    public void DeleteOldPupilAndSchoolClasses()
+    private void DeleteOldPupilAndSchoolClasses()
     {
-        _certificateModel.Pupils.Clear();
-        _certificateModel.DbHelper.DropTable("Pupil");
-        _certificateModel.SchoolClasses.Clear();
-        _certificateModel.DbHelper.DropTable("SchoolClass");
-        _certificateModel.DbHelper.CreateCertificateTables();
+        dbHelper.DropTable(typeof(Pupil).ToString());
+        dbHelper.DropTable(typeof(SchoolClass).ToString());
+        dbHelper.CreateCertificateTables();
     }
 
-    public void TransferRawDatasToSchoolClass()
+    private void TransferRawDatasToSchoolClass()
     {
         foreach (var rawData in RawDatas)
         {
-            if (!_certificateModel.SchoolClasses.Any(sc => sc.ClassName == rawData.ClassName))
+            if (rawData != null && !string.IsNullOrEmpty(rawData.ClassName))
             {
-                var sc = new SchoolClass();
-                sc.ClassName = rawData.ClassName ?? "";
-                sc.Yearlevel = GetIntFromString(rawData.YearLevel ?? "");
-                sc.HalfYear = GetIntFromString(rawData.HalfYear ?? "");
+                if (!schoolClasses.Any(sc => sc.ClassName == rawData.ClassName))
+                {
+                    var sc = new SchoolClass();
+                    sc.ClassName = rawData.ClassName ?? "";
+                    sc.Yearlevel = GetIntFromString(rawData.YearLevel ?? "");
+                    sc.HalfYear = GetIntFromString(rawData.HalfYear ?? "");
 
-                _certificateModel.DbHelper.Save(sc);
-                _certificateModel.SchoolClasses.Add(sc);
+                    dbHelper.Save(sc);
+                    schoolClasses.Add(sc);
+                }
             }
         }
     }
 
-    public void TransferRawDatasToPupil()
+    private void TransferRawDatasToPupil()
     {
         foreach (var rawData in RawDatas)
         {
-            var p = new Pupil();
-            p.FirstName = rawData.Firstname ?? "";
-            p.LastName = rawData.Lastname ?? "";
-            p.YearsAtSchool = GetIntFromString(rawData.YearsAtSchool ?? "");
-            if (!string.IsNullOrEmpty(rawData.DateOfBirth))
+            if (rawData != null && !string.IsNullOrEmpty(rawData.Firstname))
             {
-                DateTime date;
-                if (DateTime.TryParseExact(rawData.DateOfBirth, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                var p = new Pupil();
+                p.FirstName = rawData.Firstname ?? "";
+                p.LastName = rawData.Lastname ?? "";
+                p.YearsAtSchool = GetIntFromString(rawData.YearsAtSchool ?? "");
+                if (!string.IsNullOrEmpty(rawData.DateOfBirth))
                 {
-                    p.DateOfBirth = date;
+                    DateTime date;
+                    if (DateTime.TryParseExact(rawData.DateOfBirth, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                    {
+                        p.DateOfBirth = date;
+                    }
                 }
+
+                var schoolClass = schoolClasses.FirstOrDefault(sc => sc.ClassName == rawData.ClassName);
+                p.SchoolClassId = schoolClass.ID ?? "";
+
+                dbHelper.Save(p);
+                pupils.Add(p);
             }
-            _certificateModel.DbHelper.Save(p);
-            _certificateModel.Pupils.Add(p);
         }
     }
 

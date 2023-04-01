@@ -79,6 +79,7 @@ public class PupilTests
         // Assert
         Assert.AreEqual(2, dbh.Count(typeof(Pupil).ToString()));
     }
+
     [TestMethod]
     public void PupilsTableAfterAddingTwoPupilsAndDeletingOnePupil_contains_1_Pupil()
     {

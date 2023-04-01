@@ -14,25 +14,12 @@ namespace Esorb.Certificate.App;
 
 public partial class MainWindow : Window
 {
-    //private ICertifcateViewModel certificateViewModel;
     public readonly ICertifcateViewModel certifcateViewModel;
     private IList<NavButton> navButtons = new List<NavButton>();
 
-    //public ICertifcateViewModel CertificateViewModel
-    //{
-    //    get
-    //    {
-    //        return certificateViewModel;
-    //    }
-    //    private set
-    //    {
-    //        certificateViewModel = value;
-    //    }
-    //}
     public MainWindow(ICertifcateViewModel certifcateViewModel)
     {
         InitializeComponent();
-        SetGuiIcons();
         AddNavButtons();
         WindowState = WindowState.Maximized;
         this.certifcateViewModel = certifcateViewModel;
@@ -48,15 +35,6 @@ public partial class MainWindow : Window
         navButtons.Add(BtnAdmin);
         navButtons.Add(BtnInfo);
     }
-    private void SetGuiIcons()
-    {
-        this.StartHeader.Text = char.ConvertFromUtf32(Convert.ToInt32("E80F", 16));
-    }
-
-    //private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-    //{
-
-    //}
 
     private void CloseButton_Click(object sender, RoutedEventArgs e)
     {
@@ -89,53 +67,6 @@ public partial class MainWindow : Window
         if (this.WindowState == WindowState.Normal)
         {
             this.WindowState = WindowState.Maximized;
-        }
-    }
-
-    //private void GitHubButton_Click(object sender, RoutedEventArgs e)
-    //{
-    //    try
-    //    {
-    //        string url = "https://github.com/Esorb/Certificate";
-    //        Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
-    //    }
-    //    catch (System.ComponentModel.Win32Exception noBrowser)
-    //    {
-    //        if (noBrowser.ErrorCode == -2147467259)
-    //            System.Windows.MessageBox.Show(noBrowser.Message);
-    //    }
-    //    catch (System.Exception other)
-    //    {
-    //        System.Windows.MessageBox.Show(other.Message);
-    //    }
-    //}
-
-    private void BtnGetDatabasePath_Click(object sender, RoutedEventArgs e)
-    {
-        Microsoft.Win32.OpenFileDialog ofd = new()
-        {
-            Filter = "Zeugnisbasisdateien (*.db)|*.db",
-            Multiselect = false,
-            Title = "Zeugnisbasisdatei öffnen"
-        };
-        var result = ofd.ShowDialog();
-        if (result is not null && result is true)
-        {
-            string databasePath = ofd.FileName;
-            System.Windows.MessageBox.Show(databasePath);
-        }
-    }
-
-    private void BtnGetOutputPath_Click(object sender, RoutedEventArgs e)
-    {
-        FolderBrowserDialog folderBrowserDialog = new();
-        folderBrowserDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        //folderBrowserDialog.SelectedPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "OneDrive", "Documents");
-        var result = folderBrowserDialog.ShowDialog();
-        if (result == System.Windows.Forms.DialogResult.OK)
-        {
-            string path = folderBrowserDialog.SelectedPath;
-            System.Windows.MessageBox.Show(path);
         }
     }
 

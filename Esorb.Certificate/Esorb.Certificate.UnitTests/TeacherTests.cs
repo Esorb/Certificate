@@ -98,12 +98,9 @@ public class TeacherTests
         dbh.Save(t2);
         dbh.Save(t3);
         dbh.Save(t4);
-        if (string.IsNullOrEmpty(t3.ID))
-        {
-            Teacher Result = dbh.LoadById<Teacher>(t3.ID!);
-            // Assert
-            Assert.AreEqual(t3.FirstName, Result.FirstName);
-        }
+        Teacher Result = dbh.LoadById<Teacher>(t3.ID!);
+        // Assert
+        Assert.AreEqual(t3.FirstName, Result.FirstName);
 
     }
     [TestMethod]
@@ -151,12 +148,9 @@ public class TeacherTests
         dbh.Save(t1);
         t2.FirstName = "Henrietta";
         dbh.Save(t2);
-        if (string.IsNullOrEmpty(t2.ID))
-        {
-            Teacher Result = dbh.LoadById<Teacher>(t2.ID!);
-            // Assert
-            Assert.AreEqual(t2.FirstName, Result.FirstName);
-        }
+        Teacher Result = dbh.LoadById<Teacher>(t2.ID!);
+        // Assert
+        Assert.AreEqual(t2.FirstName, Result.FirstName);
         t2.FirstName = "Bettina";
         dbh.Save(t2);
     }

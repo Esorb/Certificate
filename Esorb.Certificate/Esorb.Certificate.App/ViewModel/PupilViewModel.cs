@@ -66,6 +66,7 @@ public partial class PupilViewModel : ObservableObject
             if (_pupil.YearsAtSchool != value)
             {
                 _pupil.YearsAtSchool = value;
+                OnPropertyChanged();
             }
         }
     }

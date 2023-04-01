@@ -4,16 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Esorb.Certificate.App.Database;
 using Esorb.Certificate.App.Model;
 
 namespace Esorb.Certificate.App.ViewModel;
 
-public partial class CertificateDataViewModel : ObservableObject
+public partial class CertificateDataViewModel : ObservableObject, ICertificateDataViewModel
 {
     private CertificateData _certificateData;
-    public CertificateDataViewModel(CertificateData certificateData)
+    private DbHelper _dbHelper;
+
+    public CertificateDataViewModel(CertificateData certificateData, DbHelper dbHelper)
     {
         _certificateData = certificateData;
+        _dbHelper = dbHelper;
     }
 
     public string SchoolYear
@@ -25,10 +29,11 @@ public partial class CertificateDataViewModel : ObservableObject
             {
                 _certificateData.SchoolYear = value;
                 OnPropertyChanged();
+                _dbHelper.Save(_certificateData);
             }
         }
     }
-    public short HalfYear
+    public int HalfYear
     {
         get => _certificateData.HalfYear;
         set
@@ -37,6 +42,7 @@ public partial class CertificateDataViewModel : ObservableObject
             {
                 _certificateData.HalfYear = value;
                 OnPropertyChanged();
+                _dbHelper.Save(_certificateData);
             }
         }
     }
@@ -49,6 +55,7 @@ public partial class CertificateDataViewModel : ObservableObject
             {
                 _certificateData.DateOfSchoolConference = value;
                 OnPropertyChanged();
+                _dbHelper.Save(_certificateData);
             }
         }
     }
@@ -61,6 +68,7 @@ public partial class CertificateDataViewModel : ObservableObject
             {
                 _certificateData.DateOfCertificateDistribution = value;
                 OnPropertyChanged();
+                _dbHelper.Save(_certificateData);
             }
         }
     }
@@ -73,6 +81,7 @@ public partial class CertificateDataViewModel : ObservableObject
             {
                 _certificateData.DateOfRestartLessons = value;
                 OnPropertyChanged();
+                _dbHelper.Save(_certificateData);
             }
         }
     }
@@ -85,8 +94,8 @@ public partial class CertificateDataViewModel : ObservableObject
             {
                 _certificateData.TimeOfRestartLessons = value;
                 OnPropertyChanged();
+                _dbHelper.Save(_certificateData);
             }
         }
     }
-
 }

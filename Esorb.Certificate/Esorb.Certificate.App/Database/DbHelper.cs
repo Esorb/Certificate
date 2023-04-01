@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace Esorb.Certificate.App.Database;
 
-public class DbHelper
+public class DbHelper : IDbHelper
 {
     public DbHelper()
     {
@@ -110,7 +110,7 @@ public class DbHelper
 
         using var connection = new SqliteConnection(ConnectionString());
         var parameter = new { ID = SearchID };
-        result = connection.QuerySingle(StandardSQLStatements[Type].SelectById, parameter);
+        result = connection.QuerySingle<T>(StandardSQLStatements[Type].SelectById, parameter);
         return result;
     }
 
@@ -217,11 +217,10 @@ public class DbHelper
         {
             { "SchoolYear", "TEXT" },
             { "HalfYear", "INTEGER" },
-            { "DateOfSchoolConference", "TEXT" },
-            { "DateOfCertificateDistribution", "TEXT" },
-            { "DateOfRestartLessons", "TEXT" },
-            { "TimeOfRestartLessons", "TEXT" },
-            { "CertificateTemplateID", "TEXT" }
+            { "DateOfSchoolConference", "DATETIME" },
+            { "DateOfCertificateDistribution", "DATETIME" },
+            { "DateOfRestartLessons", "DATETIME" },
+            { "TimeOfRestartLessons", "DATETIME" },
         };
 
         ObjectSQL SQL = new ObjectSQL("CertificateData", Fields);

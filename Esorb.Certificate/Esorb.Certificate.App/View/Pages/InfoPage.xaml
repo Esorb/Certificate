@@ -70,6 +70,12 @@
                     </Image.Source>
                 </Image>
             </Grid>
+            <Button 
+                x:Name="TestBtn" 
+                Content="Test" 
+                Margin="0,20,0,0" 
+                Click="TestBtn_Click"
+                />
         </StackPanel>
     </Border>
 </Page>

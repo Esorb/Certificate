@@ -1,6 +1,12 @@
-﻿using System;
+﻿using Esorb.Certificate.App.Database;
+using Esorb.Certificate.App.Model;
+using Esorb.Certificate.App.Model.Enumerables;
+using Esorb.Certificate.App.PupilCsvFileService;
+using Esorb.Certificate.App.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +50,16 @@ namespace Esorb.Certificate.App.View.Pages
             }
         }
 
-
+        private void TestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Test!");
+            var psci = new PupilSchoolClassImporter();
+            psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
+            var dbh = new DbHelper();
+            var cm = new CertificateModel();
+            // Act
+            cm.LoadCertificateModel();
+            cm.LinkCertificateModel();
+        }
     }
 }
