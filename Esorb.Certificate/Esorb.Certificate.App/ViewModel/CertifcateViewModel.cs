@@ -13,10 +13,9 @@ namespace Esorb.Certificate.App.ViewModel
 
         public CertifcateViewModel()
         {
-            certificateSettingsViewModel = new CertificateSettingsViewModel();
         }
 
-        private ICertificateSettingsViewModel certificateSettingsViewModel;
+        private ICertificateSettingsViewModel certificateSettingsViewModel = new CertificateSettingsViewModel();
         private ICertificateDataViewModel certificateDateViewModel;
         private IList<TeacherViewModel> teachersViewModel;
         private IList<PupilViewModel> pupilsViewModel;

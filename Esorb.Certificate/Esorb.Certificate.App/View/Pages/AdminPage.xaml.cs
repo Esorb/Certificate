@@ -28,22 +28,25 @@ namespace Esorb.Certificate.App.View.Pages
     {
         private IList<NavButton> navButtons = new List<NavButton>();
         private IDictionary<Uri, Page> subPages = new Dictionary<Uri, Page>();
+        public readonly ICertifcateViewModel certifcateViewModel;
 
-        public AdminPage()
+        public AdminPage(ICertifcateViewModel certifcateViewModel)
         {
             InitializeComponent();
             AddNavButtons();
             InitSubPages();
+            this.certifcateViewModel = certifcateViewModel;
+            DataContext = this.certifcateViewModel;
         }
 
         private void InitSubPages()
         {
-            subPages.Add(BtnTemplate.NavUri!, new TemplatePage());
-            subPages.Add(BtnCertificate.NavUri!, new CertificatePage());
-            subPages.Add(BtnTeacher.NavUri!, new TeacherPage());
-            subPages.Add(BtnPupil.NavUri!, new PupilPage());
-            subPages.Add(BtnClass.NavUri!, new SchoolClassPage());
-            subPages.Add(BtnDistribution.NavUri!, new DistributionPage());
+            subPages.Add(BtnTemplate.NavUri!, new TemplatePage(certifcateViewModel));
+            subPages.Add(BtnCertificate.NavUri!, new CertificatePage(certifcateViewModel));
+            subPages.Add(BtnTeacher.NavUri!, new TeacherPage(certifcateViewModel));
+            subPages.Add(BtnPupil.NavUri!, new PupilPage(certifcateViewModel));
+            subPages.Add(BtnClass.NavUri!, new SchoolClassPage(certifcateViewModel));
+            subPages.Add(BtnDistribution.NavUri!, new DistributionPage(certifcateViewModel));
         }
 
         private void AddNavButtons()

@@ -27,9 +27,13 @@ namespace Esorb.Certificate.App.View.Pages
     /// </summary>
     public partial class InfoPage : Page
     {
-        public InfoPage()
+        public readonly ICertifcateViewModel certifcateViewModel;
+
+        public InfoPage(ICertifcateViewModel certifcateViewModel)
         {
             InitializeComponent();
+            this.certifcateViewModel = certifcateViewModel;
+            DataContext = this.certifcateViewModel;
         }
 
         private void GitHubButton_Click(object sender, RoutedEventArgs e)

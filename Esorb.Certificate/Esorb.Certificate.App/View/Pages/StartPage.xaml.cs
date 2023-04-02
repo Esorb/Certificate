@@ -22,10 +22,12 @@ namespace Esorb.Certificate.App.View.Pages
     /// </summary>
     public partial class StartPage : Page
     {
-        //public readonly ICertifcateViewModel certifcateViewModel;
-        public StartPage()
+        public readonly ICertifcateViewModel certifcateViewModel;
+        public StartPage(ICertifcateViewModel certifcateViewModel)
         {
             InitializeComponent();
+            this.certifcateViewModel = certifcateViewModel;
+            DataContext = this.certifcateViewModel;
         }
         private void BtnGetDatabasePath_Click(object sender, RoutedEventArgs e)
         {

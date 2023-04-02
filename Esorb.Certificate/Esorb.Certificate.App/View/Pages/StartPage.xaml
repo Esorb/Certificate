@@ -88,7 +88,15 @@
                     FontSize="16"
                     />
 
-                <Button Grid.Row="3" Grid.Column="1" x:Name="BtnGetOutputPath" Content="Ausgabeverzeichnis auswählen" Click="BtnGetOutputPath_Click" Margin="5" Padding="5,2" FontSize="16">
+                <Button 
+                    Grid.Row="3" 
+                    Grid.Column="1" 
+                    x:Name="BtnGetOutputPath" 
+                    Content="Ausgabeverzeichnis auswählen" 
+                    Click="BtnGetOutputPath_Click" 
+                    Margin="5" 
+                    Padding="5,2" 
+                    FontSize="16">
                     <Button.ToolTip>
                         <ToolTip 
                             Background="LightYellow" 
@@ -117,8 +125,7 @@
                     Padding="5,2" 
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Center" 
-                    FontSize="16"
-                    />
+                    FontSize="16"/>
                 <TextBox 
                     Grid.Row="5" 
                     Grid.Column="1" 
@@ -128,7 +135,20 @@
                     Width="550" 
                     HorizontalAlignment="Left" 
                     FontSize="16"
-                    />
+                    >
+                    <TextBox.ToolTip>
+                        <ToolTip
+                            Background="LightYellow" 
+                            Width="350"
+                            >
+                            <TextBlock
+                                FontSize="14"
+                                Text="Wählen Sie hier den/die Klassenlehrer*in aus, der/die das Zeugnis am Ende unterschreibt."
+                                TextWrapping="Wrap"     
+                                />
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
                 <TextBlock 
                     Grid.Row="6" 
                     Grid.Column="0" 
@@ -146,8 +166,20 @@
                     Width="100" 
                     HorizontalAlignment="Left" 
                     FontSize="16"
-                    />
-
+                    >
+                    <TextBox.ToolTip>
+                        <ToolTip
+                            Background="LightYellow" 
+                            Width="350"
+                            >
+                            <TextBlock
+                                FontSize="14"
+                                Text="Wählen Sie hier die Klasse aus, für die Sie das Zeugnis erstellen wollen."
+                                TextWrapping="Wrap"     
+                                />
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
             </Grid>
         </Grid>
     </Border>

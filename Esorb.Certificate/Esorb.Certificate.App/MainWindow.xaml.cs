@@ -37,11 +37,11 @@ public partial class MainWindow : Window
 
     private void InitPages()
     {
-        pages.Add(BtnStart.NavUri!, new StartPage());
-        pages.Add(BtnInput.NavUri!, new InputPage());
-        pages.Add(BtnExport.NavUri!, new ExportPage());
-        pages.Add(BtnAdmin.NavUri!, new AdminPage());
-        pages.Add(BtnInfo.NavUri!, new InfoPage());
+        pages.Add(BtnStart.NavUri!, new StartPage(certifcateViewModel));
+        pages.Add(BtnInput.NavUri!, new InputPage(certifcateViewModel));
+        pages.Add(BtnExport.NavUri!, new ExportPage(certifcateViewModel));
+        pages.Add(BtnAdmin.NavUri!, new AdminPage(certifcateViewModel));
+        pages.Add(BtnInfo.NavUri!, new InfoPage(certifcateViewModel));
     }
 
     private void AddNavButtons()

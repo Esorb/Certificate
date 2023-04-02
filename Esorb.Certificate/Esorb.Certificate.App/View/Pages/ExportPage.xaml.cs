@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esorb.Certificate.App.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace Esorb.Certificate.App.View.Pages
     /// </summary>
     public partial class ExportPage : Page
     {
-        public ExportPage()
+        public readonly ICertifcateViewModel certifcateViewModel;
+
+        public ExportPage(ICertifcateViewModel certifcateViewModel)
         {
             InitializeComponent();
+            this.certifcateViewModel = certifcateViewModel;
+            DataContext = this.certifcateViewModel;
         }
     }
 }

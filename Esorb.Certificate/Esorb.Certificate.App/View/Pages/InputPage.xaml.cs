@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esorb.Certificate.App.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace Esorb.Certificate.App.View.Pages
     /// </summary>
     public partial class InputPage : Page
     {
-        public InputPage()
+        public readonly ICertifcateViewModel certifcateViewModel;
+
+        public InputPage(ICertifcateViewModel certifcateViewModel)
         {
             InitializeComponent();
+            this.certifcateViewModel = certifcateViewModel;
+            DataContext = this.certifcateViewModel;
         }
     }
 }
