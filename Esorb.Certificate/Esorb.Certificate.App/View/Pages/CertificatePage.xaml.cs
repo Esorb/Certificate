@@ -22,11 +22,9 @@ namespace Esorb.Certificate.App.View.Pages
     public partial class CertificatePage : Page
     {
         public readonly ICertifcateViewModel certifcateViewModel;
-        public CertificatePage(ICertifcateViewModel certifcateViewModel)
+        public CertificatePage()
         {
             InitializeComponent();
-            this.certifcateViewModel = certifcateViewModel;
-            DataContext = this.certifcateViewModel;
         }
     }
 }

@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Collections;
 using System.Collections.Generic;
+using Esorb.Certificate.App.Database;
+using System.Windows.Controls;
+using Esorb.Certificate.App.View.Pages;
 
 namespace Esorb.Certificate.App;
 
@@ -16,14 +19,29 @@ public partial class MainWindow : Window
 {
     public readonly ICertifcateViewModel certifcateViewModel;
     private IList<NavButton> navButtons = new List<NavButton>();
-
+    private IDictionary<Uri, Page> pages = new Dictionary<Uri, Page>();
     public MainWindow(ICertifcateViewModel certifcateViewModel)
     {
         InitializeComponent();
         AddNavButtons();
         WindowState = WindowState.Maximized;
+        InitPages();
+        SetApplicationStatus();
         this.certifcateViewModel = certifcateViewModel;
         DataContext = this.certifcateViewModel;
+    }
+
+    private void SetApplicationStatus()
+    {
+    }
+
+    private void InitPages()
+    {
+        pages.Add(BtnStart.NavUri!, new StartPage());
+        pages.Add(BtnInput.NavUri!, new InputPage());
+        pages.Add(BtnExport.NavUri!, new ExportPage());
+        pages.Add(BtnAdmin.NavUri!, new AdminPage());
+        pages.Add(BtnInfo.NavUri!, new InfoPage());
     }
 
     private void AddNavButtons()
@@ -94,7 +112,8 @@ public partial class MainWindow : Window
             {
                 navBtn.Selected = false;
             }
-            AppFrame.Navigate(ClickedNavButton.NavUri);
+            AppFrame.Navigate(pages[ClickedNavButton.NavUri]);
+            //AppFrame.Navigate(ClickedNavButton.NavUri);
             ClickedNavButton.Selected = true;
         }
 
