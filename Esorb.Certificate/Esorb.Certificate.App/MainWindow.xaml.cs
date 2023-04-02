@@ -67,7 +67,7 @@ public partial class MainWindow : Window
 
     private void InitMenu()
     {
-
+        NavColumn.Width = GetLastMenuWidth();
     }
 
 

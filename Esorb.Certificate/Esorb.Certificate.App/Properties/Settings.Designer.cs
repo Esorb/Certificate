@@ -145,7 +145,7 @@ namespace Esorb.Certificate.App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("wide")]
+        [global::System.Configuration.DefaultSettingValueAttribute("narrow")]
         public string MenuPosition {
             get {
                 return ((string)(this["MenuPosition"]));

@@ -33,7 +33,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MenuPosition" Type="System.String" Scope="User">
-      <Value Profile="(Default)">wide</Value>
+      <Value Profile="(Default)">narrow</Value>
     </Setting>
   </Settings>
 </SettingsFile>
