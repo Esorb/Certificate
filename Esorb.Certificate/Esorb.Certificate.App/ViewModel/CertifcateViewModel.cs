@@ -11,7 +11,7 @@ namespace Esorb.Certificate.App.ViewModel
     public class CertifcateViewModel : ObservableObject, ICertifcateViewModel
     {
 
-        public CertifcateViewModel()
+        public CertifcateViewModel(ICertificateModel certificateModel)
         {
         }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App
 {
-    public class CertificateSettings
+    public class CertificateSettings : ICertificateSettings
     {
         public CertificateSettings()
         {
@@ -18,41 +18,62 @@ namespace Esorb.Certificate.App
             halfYear = Properties.Settings.Default.HalfYear;
             teacher = Properties.Settings.Default.Teacher;
             outputFolder = Properties.Settings.Default.OutputFolder;
+            page = Properties.Settings.Default.Page;
+            subPage = Properties.Settings.Default.SubPage;
+            menuPosition = Properties.Settings.Default.MenuPosition;
         }
 
+        private string schoolYear;
+        private string halfYear;
+        private string schoolClass;
+        private string databasePath;
         private string outputFolder;
+        private string page;
+        private string subPage;
+        private string teacher;
+        private string menuPosition;
 
+        public string MenuPosition
+        {
+            get { return menuPosition; }
+            set { menuPosition = value; }
+        }
+
+        public string SubPage
+        {
+            get { return subPage; }
+            set { subPage = value; }
+        }
+        public string Page
+        {
+            get { return page; }
+            set { page = value; }
+        }
         public string OutPutFolder
         {
             get { return outputFolder; }
             set { outputFolder = value; }
         }
-
-        private string databasePath;
         public string DatabasePath
         {
             get => databasePath;
             set { databasePath = value; }
         }
-        private string schoolClass;
         public string SchoolClass
         {
             get => schoolClass;
             set { schoolClass = value; }
         }
-        private string schoolYear;
         public string SchoolYear
         {
             get => schoolYear;
             set { schoolYear = value; }
         }
-        private string halfYear;
         public string HalfYear
         {
             get => halfYear;
             set { halfYear = value; }
         }
-        private string teacher;
         public string Teacher
         {
             get => teacher;
@@ -66,6 +87,9 @@ namespace Esorb.Certificate.App
             Properties.Settings.Default.HalfYear = halfYear;
             Properties.Settings.Default.Teacher = teacher;
             Properties.Settings.Default.OutputFolder = outputFolder;
+            Properties.Settings.Default.Page = page;
+            Properties.Settings.Default.SubPage = subPage;
+            Properties.Settings.Default.MenuPosition = menuPosition;
             Properties.Settings.Default.Save();
         }
     }

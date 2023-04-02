@@ -7,13 +7,6 @@ namespace Esorb.Certificate.App.Model
     public class CertificateModel : ICertificateModel
     {
         private IDbHelper dbHelper = new DbHelper();
-
-        //public DbHelper DbHelper
-        //{
-        //    get { return dbHelper; }
-        //    set { dbHelper = value; }
-        //}
-
         public IList<Teacher> Teachers { get; private set; } = new List<Teacher>();
         public IList<Pupil> Pupils { get; private set; } = new List<Pupil>();
         public IList<SchoolClass> SchoolClasses { get; private set; } = new List<SchoolClass>();

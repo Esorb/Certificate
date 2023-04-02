@@ -118,5 +118,41 @@ namespace Esorb.Certificate.App.Properties {
                 this["SchoolClassGUID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Start")]
+        public string Page {
+            get {
+                return ((string)(this["Page"]));
+            }
+            set {
+                this["Page"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SubPage {
+            get {
+                return ((string)(this["SubPage"]));
+            }
+            set {
+                this["SubPage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("wide")]
+        public string MenuPosition {
+            get {
+                return ((string)(this["MenuPosition"]));
+            }
+            set {
+                this["MenuPosition"] = value;
+            }
+        }
     }
 }

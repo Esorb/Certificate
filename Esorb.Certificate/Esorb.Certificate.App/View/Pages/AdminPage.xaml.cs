@@ -1,25 +1,10 @@
-﻿using Esorb.Certificate.App.View.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Collections.Generic;
+
 using Esorb.Certificate.App.ViewModel;
 using Esorb.Certificate.App.View.Controls;
-using System.IO;
-using System.Windows.Forms;
-using System.Security.Cryptography;
-using System.Collections;
-using System.Collections.Generic;
 
 
 namespace Esorb.Certificate.App.View.Pages

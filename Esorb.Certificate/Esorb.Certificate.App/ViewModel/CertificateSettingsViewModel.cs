@@ -11,11 +11,10 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public partial class CertificateSettingsViewModel : ObservableObject, ICertificateSettingsViewModel
     {
+        private CertificateSettings _certificateSettings = new CertificateSettings();
         public CertificateSettingsViewModel()
         {
-            _certificateSettings = new CertificateSettings();
         }
-        private CertificateSettings _certificateSettings;
         public string DatabasePath
         {
             get => _certificateSettings.DatabasePath;
@@ -25,6 +24,7 @@ namespace Esorb.Certificate.App.ViewModel
                 {
                     _certificateSettings.DatabasePath = value;
                     OnPropertyChanged();
+                    _certificateSettings.Save();
                 }
             }
         }
@@ -80,6 +80,45 @@ namespace Esorb.Certificate.App.ViewModel
                 }
             }
         }
+        public string Page
+        {
+            get => _certificateSettings.Page;
+            set
+            {
+                if (_certificateSettings.Page != value)
+                {
+                    _certificateSettings.Page = value;
+                    OnPropertyChanged();
+                    _certificateSettings.Save();
+                }
+            }
+        }
+        public string SubPage
+        {
+            get => _certificateSettings.SubPage;
+            set
+            {
+                if (_certificateSettings.SubPage != value)
+                {
+                    _certificateSettings.SubPage = value;
+                    OnPropertyChanged();
+                    _certificateSettings.Save();
+                }
+            }
+        }
 
+        public string MenuPosition
+        {
+            get => _certificateSettings.MenuPosition;
+            set
+            {
+                if (_certificateSettings.MenuPosition != value)
+                {
+                    _certificateSettings.MenuPosition = value;
+                    OnPropertyChanged();
+                    _certificateSettings.Save();
+                }
+            }
+        }
     }
 }

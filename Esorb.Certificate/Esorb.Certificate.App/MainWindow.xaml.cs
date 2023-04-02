@@ -1,40 +1,77 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
+using System.Collections.Generic;
+using System.Windows.Controls;
+
+using Esorb.Certificate.App.Model;
 using Esorb.Certificate.App.ViewModel;
 using Esorb.Certificate.App.View.Controls;
-using System.IO;
-using System.Windows.Forms;
-using System.Security.Cryptography;
-using System.Collections;
-using System.Collections.Generic;
-using Esorb.Certificate.App.Database;
-using System.Windows.Controls;
 using Esorb.Certificate.App.View.Pages;
 
 namespace Esorb.Certificate.App;
 
 public partial class MainWindow : Window
 {
+    public readonly ICertificateModel certificateModel = new CertificateModel();
     public readonly ICertifcateViewModel certifcateViewModel;
+    private ICertificateSettingsViewModel SettingsVM;
     private IList<NavButton> navButtons = new List<NavButton>();
     private IDictionary<Uri, Page> pages = new Dictionary<Uri, Page>();
-    public MainWindow(ICertifcateViewModel certifcateViewModel)
+    public MainWindow()
     {
         InitializeComponent();
         AddNavButtons();
         WindowState = WindowState.Maximized;
-        InitPages();
-        SetApplicationStatus();
-        this.certifcateViewModel = certifcateViewModel;
+        certifcateViewModel = new CertifcateViewModel(certificateModel);
+        SettingsVM = certifcateViewModel.CertificateSettingsViewModel;
         DataContext = this.certifcateViewModel;
+        InitPages();
+        InitMenu();
+        SetApplicationStatus();
     }
 
     private void SetApplicationStatus()
     {
-        BtnStart.Selected = true;
-        AppFrame.Navigate(pages[BtnStart.NavUri]);
+        var btn = GetLastActivatedNavButton();
+        btn.Selected = true;
+        AppFrame.Navigate(pages[btn.NavUri!]);
+    }
+
+    private NavButton GetLastActivatedNavButton()
+    {
+        NavButton btn;
+
+        switch (certifcateViewModel.CertificateSettingsViewModel.Page)
+        {
+            case "Start":
+                return BtnStart;
+            case "Input":
+                return BtnInput;
+            case "Export":
+                return BtnExport;
+            case "Admin":
+                return BtnAdmin;
+            case "Info":
+                return BtnInfo;
+            default:
+                return BtnStart;
+        }
+    }
+
+    private GridLength GetLastMenuWidth()
+    {
+        GridLength result;
+
+        switch (certifcateViewModel.CertificateSettingsViewModel.MenuPosition)
+        {
+            case "wide":
+                return new GridLength(110, GridUnitType.Pixel);
+            default:
+                return new GridLength(44, GridUnitType.Pixel);
+        }
+
+        return result;
     }
 
     private void InitPages()
@@ -44,6 +81,11 @@ public partial class MainWindow : Window
         pages.Add(BtnExport.NavUri!, new ExportPage(certifcateViewModel));
         pages.Add(BtnAdmin.NavUri!, new AdminPage(certifcateViewModel));
         pages.Add(BtnInfo.NavUri!, new InfoPage(certifcateViewModel));
+    }
+
+    private void InitMenu()
+    {
+
     }
 
     private void AddNavButtons()
@@ -97,10 +139,12 @@ public partial class MainWindow : Window
         if (NavColumn.Width.Equals(bigGridLength))
         {
             NavColumn.Width = smallGridLength;
+            SettingsVM.MenuPosition = "narrow";
         }
         else
         {
             NavColumn.Width = bigGridLength;
+            SettingsVM.MenuPosition = "wide";
         }
     }
 

@@ -26,5 +26,14 @@
     <Setting Name="SchoolClassGUID" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Page" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Start</Value>
+    </Setting>
+    <Setting Name="SubPage" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MenuPosition" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wide</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
