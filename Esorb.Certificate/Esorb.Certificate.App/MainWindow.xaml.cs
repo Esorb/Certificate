@@ -33,6 +33,8 @@ public partial class MainWindow : Window
 
     private void SetApplicationStatus()
     {
+        BtnStart.Selected = true;
+        AppFrame.Navigate(pages[BtnStart.NavUri]);
     }
 
     private void InitPages()
