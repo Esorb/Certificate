@@ -27,10 +27,23 @@ namespace Esorb.Certificate.App.View.Pages
     public partial class AdminPage : Page
     {
         private IList<NavButton> navButtons = new List<NavButton>();
+        private IDictionary<Uri, Page> subPages = new Dictionary<Uri, Page>();
+
         public AdminPage()
         {
             InitializeComponent();
             AddNavButtons();
+            InitSubPages();
+        }
+
+        private void InitSubPages()
+        {
+            subPages.Add(BtnTemplate.NavUri!, new TemplatePage());
+            subPages.Add(BtnCertificate.NavUri!, new CertificatePage());
+            subPages.Add(BtnTeacher.NavUri!, new TeacherPage());
+            subPages.Add(BtnPupil.NavUri!, new PupilPage());
+            subPages.Add(BtnClass.NavUri!, new SchoolClassPage());
+            subPages.Add(BtnDistribution.NavUri!, new DistributionPage());
         }
 
         private void AddNavButtons()
@@ -53,7 +66,7 @@ namespace Esorb.Certificate.App.View.Pages
                     navBtn.Selected = false;
                 }
 
-                AdminFrame.Navigate(ClickedNavButton.NavUri);
+                AdminFrame.Navigate(subPages[ClickedNavButton.NavUri]);
                 ClickedNavButton.Selected = true;
             }
         }

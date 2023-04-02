@@ -113,7 +113,6 @@ public partial class MainWindow : Window
                 navBtn.Selected = false;
             }
             AppFrame.Navigate(pages[ClickedNavButton.NavUri]);
-            //AppFrame.Navigate(ClickedNavButton.NavUri);
             ClickedNavButton.Selected = true;
         }
 
