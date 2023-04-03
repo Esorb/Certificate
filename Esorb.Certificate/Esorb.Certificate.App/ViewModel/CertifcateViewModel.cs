@@ -10,17 +10,17 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public class CertifcateViewModel : ObservableObject, ICertifcateViewModel
     {
-
-        public CertifcateViewModel(ICertificateModel certificateModel)
-        {
-        }
-
         private ICertificateSettingsViewModel certificateSettingsViewModel = new CertificateSettingsViewModel();
         private ICertificateDataViewModel certificateDateViewModel;
         private IList<TeacherViewModel> teachersViewModel;
         private IList<PupilViewModel> pupilsViewModel;
+        private IList<CertificateTemplateViewModel> certificateTemplatesViewModel;
         private ICertificateModel certificateModel;
 
+        public CertifcateViewModel(ICertificateModel certificateModel)
+        {
+            this.certificateModel = certificateModel;
+        }
 
         public IList<PupilViewModel> PupilsViewModel
         {

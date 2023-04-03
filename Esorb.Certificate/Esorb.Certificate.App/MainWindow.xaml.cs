@@ -22,11 +22,12 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        AddNavButtons();
         WindowState = WindowState.Maximized;
         certifcateViewModel = new CertifcateViewModel(certificateModel);
         SettingsVM = certifcateViewModel.CertificateSettingsViewModel;
         DataContext = this.certifcateViewModel;
+
+        AddNavButtons();
         InitPages();
         InitMenu();
         SetApplicationStatus();

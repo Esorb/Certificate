@@ -19,10 +19,10 @@ namespace Esorb.Certificate.App.View.Pages
     /// <summary>
     /// Interaktionslogik für PupilPage.xaml
     /// </summary>
-    public partial class PupilPage : Page
+    public partial class SettingsPage : Page
     {
         public readonly ICertifcateViewModel certifcateViewModel;
-        public PupilPage(ICertifcateViewModel certifcateViewModel)
+        public SettingsPage(ICertifcateViewModel certifcateViewModel)
         {
             InitializeComponent();
             this.certifcateViewModel = certifcateViewModel;

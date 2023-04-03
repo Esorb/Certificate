@@ -21,9 +21,15 @@
             Background="LightGray"
             ButtonBase.Click="AdminPanel_Click">
 
+            <view:NavButton
+                x:Name="BtnSettings"
+                NavIcon="&#xE713;" 
+                Text="Einstellungen"
+                NavUri="/View/Pages/SettingsPage.xaml"
+                />
             <view:NavButton 
                 x:Name="BtnTemplate" 
-                NavIcon="&#xE713;" 
+                NavIcon="&#xE16F;" 
                 Text="Zeugnisvorlagen" 
                 NavUri="/View/Pages/TemplatePage.xaml"
                 />
@@ -38,12 +44,6 @@
                 NavIcon="&#xE77B;" 
                 Text="Lehrer" 
                 NavUri="/View/Pages/TeacherPage.xaml"
-                />
-            <view:NavButton
-                x:Name="BtnPupil"
-                NavIcon="&#xECA7;" 
-                Text="Schüler"
-                NavUri="/View/Pages/PupilPage.xaml"
                 />
             <view:NavButton 
                 x:Name="BtnClass" 

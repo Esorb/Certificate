@@ -41,7 +41,6 @@ public class DbHelper : IDbHelper
         sb.Append(_settings.DatabasePath);
         sb.Append(';');
 
-        //return "Data Source = C:/Users/frank/Documents/Versuche.db;";
         return sb.ToString();
     }
 
