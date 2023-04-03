@@ -1,26 +1,25 @@
-﻿using Esorb.Certificate.App.Model;
-using Dapper;
-using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Esorb.Certificate.App.Model.Enumerables;
-using Esorb.Certificate.App;
 using System.IO;
-using System.Windows;
+using Dapper;
+using Microsoft.Data.Sqlite;
+
+using Esorb.Certificate.App.Model;
 
 namespace Esorb.Certificate.App.Database;
 
 public class DbHelper : IDbHelper
 {
+    private CertificateSettings _settings = new();
     public DbHelper()
     {
         InitPupil();
         InitSchoolClass();
         InitTeacher();
         InitCertificateData();
+        InitCertificateTemplate();
     }
 
     private Dictionary<string, ObjectSQL> StandardSQLStatements = new Dictionary<string, ObjectSQL>();
@@ -31,15 +30,19 @@ public class DbHelper : IDbHelper
         CreateTable(typeof(SchoolClass).ToString());
         CreateTable(typeof(Teacher).ToString());
         CreateTable(typeof(CertificateData).ToString());
+        CreateTable(typeof(CertificateTemplate).ToString());
     }
 
-    private static string ConnectionString()
+    private string ConnectionString()
     {
-        //StringBuilder sb = new StringBuilder();
-        //sb.Append("Data Source = ");
-        //sb.Append(Properties.Settings.DatabasePath);
-        //sb.Append(';');
-        return "Data Source = C:/Users/frank/Documents/Versuche.db;";
+        StringBuilder sb = new StringBuilder();
+
+        sb.Append("Data Source = ");
+        sb.Append(_settings.DatabasePath);
+        sb.Append(';');
+
+        //return "Data Source = C:/Users/frank/Documents/Versuche.db;";
+        return sb.ToString();
     }
 
     public bool IsSQLiteFile(string filePath)
@@ -225,5 +228,17 @@ public class DbHelper : IDbHelper
 
         ObjectSQL SQL = new ObjectSQL("CertificateData", Fields);
         StandardSQLStatements.Add(typeof(CertificateData).ToString(), SQL);
+    }
+
+    private void InitCertificateTemplate()
+    {
+        var Fields = new Dictionary<string, string>
+        {
+            { "Yearlevel", "INTEGER" },
+            { "HalfYear", "INTEGER" },
+        };
+
+        ObjectSQL SQL = new ObjectSQL("CertificateTemplate", Fields);
+        StandardSQLStatements.Add(typeof(CertificateTemplate).ToString(), SQL);
     }
 }
