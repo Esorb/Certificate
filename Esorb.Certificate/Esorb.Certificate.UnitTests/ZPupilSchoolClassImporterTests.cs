@@ -5,7 +5,7 @@ using Esorb.Certificate.App.Model;
 namespace Esorb.Certificate.UnitTests;
 
 [TestClass]
-public class PupilSchoolClassImporterTests
+public class ZPupilSchoolClassImporterTests
 {
     [TestMethod]
     public void ReadRawDataOfTestfile_contains_8_Entries()

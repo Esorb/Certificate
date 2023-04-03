@@ -68,5 +68,12 @@ namespace Esorb.Certificate.UnitTests
             Assert.AreEqual("", gc.Calculate(0, 31));
         }
 
+        [TestMethod]
+        public void DataModelLoadsOnCreation_Contains_6_GradeLimits()
+        {
+            var cm = new CertificateModel();
+            Assert.AreEqual(6, cm.GradeLimits.Count);
+        }
+
     }
 }

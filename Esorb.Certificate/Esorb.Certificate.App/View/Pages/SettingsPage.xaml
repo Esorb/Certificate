@@ -9,6 +9,13 @@
       Title="SettingsPage">
 
     <Grid>
-        <TextBox Text="Settings"/>
+        <ScrollViewer>
+            <StackPanel>
+                <Expander Header="Grenzwerte für die Zensurenberechnung" Margin="10,10,10,0" FontSize="14">
+                </Expander>
+                <Expander Header="Rechtsbehelfsbelehrung" Margin="10,10,10,0" FontSize="14">
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
