@@ -9,12 +9,60 @@
       Title="SettingsPage">
 
     <Grid>
-        <ScrollViewer>
+        <ScrollViewer  VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <Expander Header="Grenzwerte für die Zensurenberechnung" Margin="10,10,10,0" FontSize="14">
+                    <Grid Margin="20,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid Grid.Column="0"
+                            ItemsSource="{Binding GradeLimitsViewModel}" 
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            CanUserDeleteRows="False"
+                            >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn 
+                                    Header="Grenzwert" 
+                                    Binding="{Binding PercentageLimit}" 
+                                    IsReadOnly="False"
+                                    CanUserSort="False"
+                                    CanUserResize="False"
+                                    CanUserReorder="False"
+                                    />
+                                <DataGridTextColumn 
+                                    Header="Zensur" 
+                                    Binding="{Binding Grade}" 
+                                    IsReadOnly="True"
+                                    CanUserSort="False"
+                                    CanUserResize="False"
+                                    CanUserReorder="False"
+                                    />
+                                <DataGridTemplateColumn 
+                                    Header="Numerisch"
+                                    IsReadOnly="True"
+                                    Width="Auto"
+                                    CanUserSort="False"
+                                    CanUserResize="False"
+                                    CanUserReorder="False"
+                                    >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock 
+                                                Text="{Binding GradeNumeric}" 
+                                                HorizontalAlignment="Center"
+                                                />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </Expander>
-                <Expander Header="Rechtsbehelfsbelehrung" Margin="10,10,10,0" FontSize="14">
-                </Expander>
+                        <Expander Header="Rechtsbehelfsbelehrung" Margin="10,10,10,0" FontSize="14">
+                        </Expander>
             </StackPanel>
         </ScrollViewer>
     </Grid>

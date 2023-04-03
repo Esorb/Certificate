@@ -62,27 +62,33 @@ namespace Esorb.Certificate.App.ViewModel
 
         public IList<PupilViewModel> PupilsViewModel
         {
-            get { return pupilsViewModel; }
+            get => pupilsViewModel;
             set { pupilsViewModel = value; }
         }
 
 
         public IList<TeacherViewModel> TeachersViewModel
         {
-            get { return teachersViewModel; }
+            get => teachersViewModel;
             set { teachersViewModel = value; }
         }
 
         public ICertificateSettingsViewModel CertificateSettingsViewModel
         {
-            get { return certificateSettingsViewModel; }
+            get => certificateSettingsViewModel;
             set { certificateSettingsViewModel = value; }
         }
 
         public ICertificateDataViewModel CertificateDateViewModel
         {
-            get { return certificateDateViewModel; }
+            get => certificateDateViewModel;
             set { certificateDateViewModel = value; }
+        }
+
+        public IList<GradeLimitViewModel> GradeLimitsViewModel
+        {
+            get => gradeLimitsViewModel;
+            set { gradeLimitsViewModel = value; }
         }
 
     }
