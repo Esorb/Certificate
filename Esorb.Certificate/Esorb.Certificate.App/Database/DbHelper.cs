@@ -20,6 +20,7 @@ public class DbHelper : IDbHelper
         InitTeacher();
         InitCertificateData();
         InitCertificateTemplate();
+        InitGradeLimit();
     }
 
     private Dictionary<string, ObjectSQL> StandardSQLStatements = new Dictionary<string, ObjectSQL>();
@@ -31,6 +32,7 @@ public class DbHelper : IDbHelper
         CreateTable(typeof(Teacher).ToString());
         CreateTable(typeof(CertificateData).ToString());
         CreateTable(typeof(CertificateTemplate).ToString());
+        CreateTable(typeof(GradeLimit).ToString());
     }
 
     private string ConnectionString()
@@ -239,5 +241,19 @@ public class DbHelper : IDbHelper
 
         ObjectSQL SQL = new ObjectSQL("CertificateTemplate", Fields);
         StandardSQLStatements.Add(typeof(CertificateTemplate).ToString(), SQL);
+    }
+
+    private void InitGradeLimit()
+    {
+        var Fields = new Dictionary<string, string>
+        {
+            { "PercentageLimit", "REAL" },
+            { "Grade", "TEXT" },
+            { "GradeNumeric", "INTEGER" },
+        };
+
+        ObjectSQL SQL = new ObjectSQL("GradeLimit", Fields);
+        StandardSQLStatements.Add(typeof(GradeLimit).ToString(), SQL);
+
     }
 }

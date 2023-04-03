@@ -57,13 +57,27 @@ namespace Esorb.Certificate.App.View.Pages
         private void TestBtn_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Test!");
-            var psci = new PupilSchoolClassImporter();
-            psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
-            var dbh = new DbHelper();
-            var cm = new CertificateModel();
-            // Act
-            cm.LoadCertificateModel();
-            cm.LinkCertificateModel();
+
+            IList<GradeLimit> gradeLimits = new List<GradeLimit>();
+            var gl1 = new GradeLimit { PercentageLimit = 0.965, Grade = "sehr gut", GradeNumeric = 1 };
+            gradeLimits.Add(gl1);
+            var gl2 = new GradeLimit { PercentageLimit = 0.845, Grade = "gut", GradeNumeric = 2 };
+            gradeLimits.Add(gl2);
+            var gl3 = new GradeLimit { PercentageLimit = 0.695, Grade = "befriediegend", GradeNumeric = 3 };
+            gradeLimits.Add(gl3);
+            var gl4 = new GradeLimit { PercentageLimit = 0.495, Grade = "ausreichend", GradeNumeric = 4 };
+            gradeLimits.Add(gl4);
+            var gl5 = new GradeLimit { PercentageLimit = 0.195, Grade = "mangelhaft", GradeNumeric = 5 };
+            gradeLimits.Add(gl5);
+            var gl6 = new GradeLimit { PercentageLimit = 0.0, Grade = "ungenügend", GradeNumeric = 6 };
+            gradeLimits.Add(gl6);
+
+            GradeCalculator gc = new GradeCalculator(gradeLimits);
+
+            // Assert
+            string erg = gc.Calculate(8, 8);
+            erg = gc.Calculate(24, 23);
+
         }
     }
 }
