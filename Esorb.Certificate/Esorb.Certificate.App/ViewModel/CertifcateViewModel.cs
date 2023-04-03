@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Esorb.Certificate.App.Model;
+using Esorb.Certificate.App.Database;
 
 namespace Esorb.Certificate.App.ViewModel
 {
@@ -15,11 +16,48 @@ namespace Esorb.Certificate.App.ViewModel
         private IList<TeacherViewModel> teachersViewModel;
         private IList<PupilViewModel> pupilsViewModel;
         private IList<CertificateTemplateViewModel> certificateTemplatesViewModel;
-        private ICertificateModel certificateModel;
+        private IList<GradeLimitViewModel> gradeLimitsViewModel;
+        private CertificateModel certificateModel;
 
-        public CertifcateViewModel(ICertificateModel certificateModel)
+        public CertifcateViewModel(CertificateModel certificateModel)
         {
             this.certificateModel = certificateModel;
+            BuildCertificateViewModelFromCertificateModel();
+        }
+
+        private void BuildCertificateViewModelFromCertificateModel()
+        {
+            BuildCertificateDataViewModel();
+            BuildTeacherViewModel();
+            BuildGradeLimitsViewModel();
+        }
+
+        private void BuildGradeLimitsViewModel()
+        {
+            gradeLimitsViewModel = new List<GradeLimitViewModel>();
+
+            foreach (var gl in certificateModel.GradeLimits)
+            {
+                gradeLimitsViewModel.Add(new GradeLimitViewModel(gl, certificateModel.DbHelper));
+            }
+
+            gradeLimitsViewModel = gradeLimitsViewModel.OrderBy(glvm => glvm.GradeNumeric).ToList();
+        }
+        private void BuildCertificateDataViewModel()
+        {
+            certificateDateViewModel = new CertificateDataViewModel(certificateModel.CertificateData, certificateModel.DbHelper);
+        }
+
+        private void BuildTeacherViewModel()
+        {
+            teachersViewModel = new List<TeacherViewModel>();
+
+            foreach (var t in certificateModel.Teachers)
+            {
+                teachersViewModel.Add(new TeacherViewModel(t));
+            }
+
+            teachersViewModel = teachersViewModel.OrderBy(tvm => tvm.FullName).ToList();
         }
 
         public IList<PupilViewModel> PupilsViewModel

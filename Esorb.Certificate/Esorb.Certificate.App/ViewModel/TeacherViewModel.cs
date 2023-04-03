@@ -12,7 +12,7 @@ namespace Esorb.Certificate.App.ViewModel;
 
 public partial class TeacherViewModel : ObservableObject, ITeacherViewModel
 {
-    TeacherViewModel(Teacher teacher)
+    public TeacherViewModel(Teacher teacher)
     {
         _teacher = teacher;
     }

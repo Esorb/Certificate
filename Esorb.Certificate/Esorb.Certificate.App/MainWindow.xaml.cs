@@ -13,7 +13,7 @@ namespace Esorb.Certificate.App;
 
 public partial class MainWindow : Window
 {
-    public readonly ICertificateModel certificateModel = new CertificateModel();
+    public readonly CertificateModel certificateModel = new CertificateModel();
     public readonly ICertifcateViewModel certifcateViewModel;
     private ICertificateSettingsViewModel SettingsVM;
     private IList<NavButton> navButtons = new List<NavButton>();
