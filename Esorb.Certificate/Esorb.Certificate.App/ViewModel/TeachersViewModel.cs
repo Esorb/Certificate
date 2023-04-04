@@ -1,12 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Esorb.Certificate.App.Model;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.ViewModel;
 
@@ -28,11 +23,6 @@ public class TeachersViewModel : ObservableObject
     public RelayCommand AddTeacher { get; private set; }
     public RelayCommand RemoveTeacher { get; private set; }
 
-
-    private CertificateModel certificateModel;
-    private ObservableCollection<TeacherViewModel> teachers;
-    private TeacherViewModel selectedTeacher;
-
     public TeacherViewModel SelectedTeacher
     {
         get { return selectedTeacher; }
@@ -43,6 +33,10 @@ public class TeachersViewModel : ObservableObject
             RemoveTeacher.NotifyCanExecuteChanged();
         }
     }
+
+    private CertificateModel certificateModel;
+    private ObservableCollection<TeacherViewModel> teachers;
+    private TeacherViewModel selectedTeacher;
 
     private void BuildTeachersViewModel()
     {

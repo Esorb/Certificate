@@ -10,4 +10,6 @@ public class CertificateTemplate : PersistentObject, ICertificateTemplate
 {
     public int Yearlevel { get; set; }
     public int HalfYear { get; set; }
+    public bool IsFullYearReport { get; set; }
+    public IList<CertificatePage> CertificatePages { get; private set; } = new List<CertificatePage>();
 }
