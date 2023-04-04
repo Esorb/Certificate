@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Esorb.Certificate.App.View.Pages"
+      xmlns:local="clr-namespace:Esorb.Certificate.App.Model.Enumerables"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TeacherPage"
@@ -25,6 +25,7 @@
                 x:Name="TeachersGrid"
                 ItemsSource="{Binding Teachers}"
                 SelectedItem="{Binding SelectedTeacher, Mode=TwoWay}"
+                SelectionChanged="TeachersGrid_SelectionChanged"
                 Margin="20,10,20,0"
                 VerticalAlignment="Stretch"
                 RowHeaderWidth="0"
@@ -35,12 +36,12 @@
                 >
                 <DataGrid.Columns>
                     <DataGridTextColumn
-                            Binding="{Binding FirstName}" 
-                            IsReadOnly="False"
-                            CanUserSort="True"
-                            CanUserResize="False"
-                            CanUserReorder="False"
-                            >
+                        Binding="{Binding FirstName}"
+                        IsReadOnly="False"
+                        CanUserSort="True"
+                        CanUserResize="False"
+                        CanUserReorder="False"
+                        >
                         <DataGridTextColumn.Header>
                             <TextBlock 
                                     Text="Vorname" 
@@ -65,7 +66,6 @@
                     <DataGridComboBoxColumn
                         x:Name="GenderColumn"
                         SelectedItemBinding="{Binding Gender}"
-                        ItemsSource="{Binding GenderList}"
                         IsReadOnly="False"
                         CanUserSort="False"
                         CanUserResize="False"
@@ -77,6 +77,13 @@
                                     FontWeight="Bold"
                                     />
                         </DataGridComboBoxColumn.Header>
+                        <DataGridComboBoxColumn.ItemsSource>
+                            <x:Array Type="{x:Type local:GenderValues}">
+                                <local:GenderValues>weiblich</local:GenderValues>
+                                <local:GenderValues>männlich</local:GenderValues>
+                                <local:GenderValues>divers</local:GenderValues>
+                            </x:Array>
+                        </DataGridComboBoxColumn.ItemsSource>
                     </DataGridComboBoxColumn>
                     <DataGridCheckBoxColumn
                             Binding="{Binding IsHeadmaster}"

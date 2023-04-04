@@ -40,6 +40,7 @@ public class TeachersViewModel : ObservableObject
         {
             selectedTeacher = value;
             OnPropertyChanged(nameof(SelectedTeacher));
+            RemoveTeacher.NotifyCanExecuteChanged();
         }
     }
 
@@ -72,7 +73,7 @@ public class TeachersViewModel : ObservableObject
 
     private bool CanExecuteRemoveTeacher()
     {
-        return (SelectedTeacher != null);
+        return SelectedTeacher != null;
     }
 
 }

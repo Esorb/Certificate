@@ -30,12 +30,17 @@ namespace Esorb.Certificate.App.View.Pages
             DataContext = Teachers;
         }
 
-        public List<GenderValues> GenderList
+        private void TeachersGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            get
-            {
-                return Enum.GetValues(typeof(GenderValues)).Cast<GenderValues>().ToList();
-            }
+            CommandManager.InvalidateRequerySuggested();
         }
+
+        //public List<GenderValues> GenderList
+        //{
+        //    get
+        //    {
+        //        return Enum.GetValues(typeof(GenderValues)).Cast<GenderValues>().ToList();
+        //    }
+        //}
     }
 }
