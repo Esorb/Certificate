@@ -19,7 +19,7 @@ public class TeacherTests
         {
             FirstName = "Astrid",
             LastName = "Heidelberg",
-            Gender = GenderValues.female,
+            Gender = GenderValues.weiblich,
             IsHeadmaster = false,
             IsAdmin = true,
             Password = "password"
@@ -29,7 +29,7 @@ public class TeacherTests
         {
             FirstName = "Bettina",
             LastName = "Nebel",
-            Gender = GenderValues.female,
+            Gender = GenderValues.weiblich,
             IsHeadmaster = true,
             IsAdmin = false
         };
@@ -38,7 +38,7 @@ public class TeacherTests
         {
             FirstName = "Caroline",
             LastName = "Schäfer",
-            Gender = GenderValues.female,
+            Gender = GenderValues.weiblich,
             IsHeadmaster = false,
             IsAdmin = false
         };
@@ -47,7 +47,7 @@ public class TeacherTests
         {
             FirstName = "Herbert",
             LastName = "Böttcher",
-            Gender = GenderValues.male,
+            Gender = GenderValues.männlich,
             IsHeadmaster = false,
             IsAdmin = false
         };
@@ -75,7 +75,7 @@ public class TeacherTests
         {
             FirstName = "Astrid",
             LastName = "Heidelberg",
-            Gender = GenderValues.female,
+            Gender = GenderValues.weiblich,
             IsHeadmaster = false,
             IsAdmin = true,
             Password = "password"
@@ -85,7 +85,7 @@ public class TeacherTests
         {
             FirstName = "Bettina",
             LastName = "Nebel",
-            Gender = GenderValues.female,
+            Gender = GenderValues.weiblich,
             IsHeadmaster = true,
             IsAdmin = false
         };
@@ -94,7 +94,7 @@ public class TeacherTests
         {
             FirstName = "Caroline",
             LastName = "Schäfer",
-            Gender = GenderValues.female,
+            Gender = GenderValues.weiblich,
             IsHeadmaster = false,
             IsAdmin = false
         };
@@ -103,7 +103,7 @@ public class TeacherTests
         {
             FirstName = "Herbert",
             LastName = "Böttcher",
-            Gender = GenderValues.male,
+            Gender = GenderValues.männlich,
             IsHeadmaster = false,
             IsAdmin = false
         };
@@ -131,7 +131,7 @@ public class TeacherTests
         {
             FirstName = "Astrid",
             LastName = "Heidelberg",
-            Gender = GenderValues.female,
+            Gender = GenderValues.weiblich,
             IsHeadmaster = false,
             IsAdmin = true,
             Password = "password"
@@ -141,7 +141,7 @@ public class TeacherTests
         {
             FirstName = "Bettina",
             LastName = "Nebel",
-            Gender = GenderValues.female,
+            Gender = GenderValues.weiblich,
             IsHeadmaster = true,
             IsAdmin = false
         };
@@ -150,7 +150,7 @@ public class TeacherTests
         {
             FirstName = "Caroline",
             LastName = "Schäfer",
-            Gender = GenderValues.female,
+            Gender = GenderValues.weiblich,
             IsHeadmaster = false,
             IsAdmin = false
         };
@@ -159,7 +159,7 @@ public class TeacherTests
         {
             FirstName = "Herbert",
             LastName = "Böttcher",
-            Gender = GenderValues.male,
+            Gender = GenderValues.männlich,
             IsHeadmaster = false,
             IsAdmin = false
         };

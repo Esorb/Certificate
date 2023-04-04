@@ -15,7 +15,7 @@ namespace Esorb.Certificate.App.ViewModel
     {
         private ICertificateSettingsViewModel certificateSettingsViewModel = new CertificateSettingsViewModel();
         private ICertificateDataViewModel certificateDateViewModel;
-        private ObservableCollection<TeacherViewModel> teachersViewModel;
+        private TeachersViewModel teachers;
         private IList<PupilViewModel> pupilsViewModel;
         private IList<CertificateTemplateViewModel> certificateTemplatesViewModel;
         private IList<GradeLimitViewModel> gradeLimitsViewModel;
@@ -24,13 +24,14 @@ namespace Esorb.Certificate.App.ViewModel
         public CertifcateViewModel(CertificateModel certificateModel)
         {
             this.certificateModel = certificateModel;
+            teachers = new(this.certificateModel);
             BuildCertificateViewModelFromCertificateModel();
+
         }
 
         private void BuildCertificateViewModelFromCertificateModel()
         {
             BuildCertificateDataViewModel();
-            BuildTeacherViewModel();
             BuildGradeLimitsViewModel();
         }
 
@@ -50,28 +51,16 @@ namespace Esorb.Certificate.App.ViewModel
             certificateDateViewModel = new CertificateDataViewModel(certificateModel.CertificateData, certificateModel.DbHelper);
         }
 
-        private void BuildTeacherViewModel()
-        {
-            teachersViewModel = new ObservableCollection<TeacherViewModel>();
-
-            foreach (var t in certificateModel.Teachers)
-            {
-                teachersViewModel.Add(new TeacherViewModel(t, certificateModel.DbHelper));
-            }
-
-            //teachersViewModel = new ObservableCollection<TeacherViewModel>(teachersViewModel.OrderBy(tvm => tvm.FullName).ToList());
-        }
 
         public IList<PupilViewModel> PupilsViewModel
         {
             get => pupilsViewModel;
         }
 
-
-        public ObservableCollection<TeacherViewModel> TeachersViewModel
+        public TeachersViewModel Teachers
         {
-            get => teachersViewModel;
-            set { teachersViewModel = value; }
+            get => teachers;
+            private set { teachers = value; }
         }
 
         public ICertificateSettingsViewModel CertificateSettingsViewModel
@@ -91,6 +80,5 @@ namespace Esorb.Certificate.App.ViewModel
             get => gradeLimitsViewModel;
             set { gradeLimitsViewModel = value; }
         }
-
     }
 }

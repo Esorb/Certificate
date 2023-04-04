@@ -12,7 +12,7 @@ namespace Esorb.Certificate.App.Database;
 
 public class DbHelper : IDbHelper
 {
-    private CertificateSettings _settings = new();
+    private readonly CertificateSettings _settings = new();
     public DbHelper()
     {
         InitPupil();

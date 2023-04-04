@@ -23,9 +23,10 @@
             </Grid.ColumnDefinitions>
             <DataGrid 
                     x:Name="TeachersGrid"
-                    ItemsSource="{Binding TeachersViewModel}" 
+                    ItemsSource="{Binding Teachers}" 
                     Margin="20,10,20,0"
                     VerticalAlignment="Stretch"
+                    RowHeaderWidth="0"
                     AutoGenerateColumns="False"
                     SelectionMode="Single"
                     CanUserAddRows="False"

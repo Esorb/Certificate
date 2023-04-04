@@ -41,7 +41,7 @@ public partial class AdminPage : Page
     {
         subPages.Add(BtnTemplate.NavUri!, new TemplatePage(certifcateViewModel));
         subPages.Add(BtnCertificate.NavUri!, new CertificatePage(certifcateViewModel));
-        subPages.Add(BtnTeacher.NavUri!, new TeacherPage(certifcateViewModel));
+        subPages.Add(BtnTeacher.NavUri!, new TeacherPage(certifcateViewModel.Teachers));
         subPages.Add(BtnSettings.NavUri!, new SettingsPage(certifcateViewModel));
         subPages.Add(BtnClass.NavUri!, new SchoolClassPage(certifcateViewModel));
         subPages.Add(BtnDistribution.NavUri!, new DistributionPage(certifcateViewModel));

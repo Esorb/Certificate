@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace Esorb.Certificate.App.View.Controls
 {
-    public class NavButton : ButtonBase
+    public partial class NavButton : ButtonBase
     {
         static NavButton()
         {

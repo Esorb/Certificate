@@ -5,6 +5,15 @@ namespace Esorb.Certificate.App.Model;
 
 public class Teacher : PersistentObject
 {
+    public Teacher()
+    {
+        FirstName = string.Empty;
+        LastName = string.Empty;
+        Gender = GenderValues.weiblich;
+        IsAdmin = false;
+        IsHeadmaster = false;
+        Password = string.Empty;
+    }
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public GenderValues Gender { get; set; }

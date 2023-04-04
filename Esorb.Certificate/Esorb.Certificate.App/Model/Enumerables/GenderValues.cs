@@ -8,7 +8,7 @@ namespace Esorb.Certificate.App.Model.Enumerables;
 
 public enum GenderValues
 {
-    female,
-    male,
-    diverse
+    weiblich,
+    männlich,
+    divers
 }
