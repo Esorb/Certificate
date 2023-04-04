@@ -29,7 +29,7 @@ public partial class PupilViewModel : ObservableObject
             {
                 _pupil.FirstName = value;
                 OnPropertyChanged();
-                OnPropertyChanged("FullName");
+                OnPropertyChanged(nameof(FullName));
             }
         }
     }
@@ -42,7 +42,7 @@ public partial class PupilViewModel : ObservableObject
             {
                 _pupil.LastName = value;
                 OnPropertyChanged();
-                OnPropertyChanged("FullName");
+                OnPropertyChanged(nameof(FullName));
             }
         }
     }

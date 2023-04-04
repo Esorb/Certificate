@@ -53,7 +53,7 @@ namespace Esorb.Certificate.UnitTests
             var gl6 = new GradeLimit { PercentageLimit = 0.0, Grade = "ungenügend", GradeNumeric = 6 };
             gradeLimits.Add(gl6);
 
-            GradeCalculator gc = new GradeCalculator(gradeLimits);
+            GradeCalculator gc = new(gradeLimits);
 
             // Assert
             Assert.AreEqual("sehr gut", gc.Calculate(8, 8));

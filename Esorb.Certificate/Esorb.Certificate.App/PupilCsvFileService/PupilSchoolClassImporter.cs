@@ -16,7 +16,7 @@ public class PupilSchoolClassImporter
 {
     private IList<Pupil> pupils = new List<Pupil>();
     private IList<SchoolClass> schoolClasses = new List<SchoolClass>();
-    private DbHelper dbHelper = new DbHelper();
+    private DbHelper dbHelper = new();
     public IList<PupilRawData> RawDatas { get; set; } = new List<PupilRawData>();
 
     public void ReadRawData(string fileName)
@@ -67,10 +67,12 @@ public class PupilSchoolClassImporter
             {
                 if (!schoolClasses.Any(sc => sc.ClassName == rawData.ClassName))
                 {
-                    var sc = new SchoolClass();
-                    sc.ClassName = rawData.ClassName ?? "";
-                    sc.Yearlevel = GetIntFromString(rawData.YearLevel ?? "");
-                    sc.HalfYear = GetIntFromString(rawData.HalfYear ?? "");
+                    var sc = new SchoolClass
+                    {
+                        ClassName = rawData.ClassName ?? "",
+                        Yearlevel = GetIntFromString(rawData.YearLevel ?? ""),
+                        HalfYear = GetIntFromString(rawData.HalfYear ?? "")
+                    };
 
                     dbHelper.Save(sc);
                     schoolClasses.Add(sc);
@@ -85,10 +87,12 @@ public class PupilSchoolClassImporter
         {
             if (rawData != null && !string.IsNullOrEmpty(rawData.Firstname))
             {
-                var p = new Pupil();
-                p.FirstName = rawData.Firstname ?? "";
-                p.LastName = rawData.Lastname ?? "";
-                p.YearsAtSchool = GetIntFromString(rawData.YearsAtSchool ?? "");
+                var p = new Pupil
+                {
+                    FirstName = rawData.Firstname ?? "",
+                    LastName = rawData.Lastname ?? "",
+                    YearsAtSchool = GetIntFromString(rawData.YearsAtSchool ?? "")
+                };
                 if (!string.IsNullOrEmpty(rawData.DateOfBirth))
                 {
                     DateTime date;
@@ -112,14 +116,12 @@ public class PupilSchoolClassImporter
         if (string.IsNullOrEmpty(filePath)) return false;
         if (!File.Exists(filePath)) return false;
         if (new FileInfo(filePath).Length < 84) return false;
-        if (!filePath.Substring(filePath.Length - 4).Equals(".csv")) return false;
+        if (!filePath[^4..].Equals(".csv")) return false;
 
-        using (StreamReader reader = new(filePath, Encoding.UTF8))
-        {
-            string? firstLine = reader.ReadLine();
-            if (string.IsNullOrEmpty(firstLine)) return false;
-            return firstLine.Equals("Vorname;Nachname;Geburtsdatum;Schulbesuchsjahre;Klasse;Aktuelles Halbjahr;Jahrgang");
-        }
+        using StreamReader reader = new(filePath, Encoding.UTF8);
+        string? firstLine = reader.ReadLine();
+        if (string.IsNullOrEmpty(firstLine)) return false;
+        return firstLine.Equals("Vorname;Nachname;Geburtsdatum;Schulbesuchsjahre;Klasse;Aktuelles Halbjahr;Jahrgang");
     }
 
     public int GetIntFromString(string str)

@@ -47,8 +47,10 @@ namespace Esorb.Certificate.App.View.Pages
 
         private void BtnGetOutputPath_Click(object sender, RoutedEventArgs e)
         {
-            FolderBrowserDialog folderBrowserDialog = new();
-            folderBrowserDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            FolderBrowserDialog folderBrowserDialog = new()
+            {
+                SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
             //folderBrowserDialog.SelectedPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "OneDrive", "Documents");
             var result = folderBrowserDialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)

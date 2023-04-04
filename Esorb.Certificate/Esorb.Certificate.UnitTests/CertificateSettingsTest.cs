@@ -24,13 +24,15 @@ namespace Esorb.Certificate.UnitTests
         public void SettingChanges_are_saved()
         {
             // Arrange
-            var csvm = new CertificateSettingsViewModel();
-            // Act
-            csvm.SchoolClass = "03A";
-            csvm.Teacher = "Petra Brose";
-            csvm.SchoolYear = "2022/2023";
-            csvm.MenuPosition = "narrow";
-            csvm.Page = "Info";
+            var csvm = new CertificateSettingsViewModel
+            {
+                // Act
+                SchoolClass = "03A",
+                Teacher = "Petra Brose",
+                SchoolYear = "2022/2023",
+                MenuPosition = "narrow",
+                Page = "Info"
+            };
             var cs = new CertificateSettingsViewModel();
             // Assert
             Assert.AreEqual("03A", cs.SchoolClass);

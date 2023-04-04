@@ -8,15 +8,15 @@ namespace Esorb.Certificate.App.Database;
 
 public class ObjectSQL : IObjectSQL
 {
-    private string _Insert;
-    private string _Update;
-    private string _SelectById;
-    private string _SelectAll;
-    private string _DeleteById;
-    private string _DeleteAll;
-    private string _Count;
-    private string _CreateTable;
-    private string _DropTable;
+    private readonly string _Insert;
+    private readonly string _Update;
+    private readonly string _SelectById;
+    private readonly string _SelectAll;
+    private readonly string _DeleteById;
+    private readonly string _DeleteAll;
+    private readonly string _Count;
+    private readonly string _CreateTable;
+    private readonly string _DropTable;
 
 
     public ObjectSQL(String TableName, Dictionary<String, string> TableFields)
@@ -47,7 +47,7 @@ public class ObjectSQL : IObjectSQL
 
     private string CreateInsertStatement(String TableName, Dictionary<String, string> TableFields)
     {
-        StringBuilder sB = new StringBuilder();
+        StringBuilder sB = new();
 
         sB.Append("INSERT INTO ").Append(TableName).Append(" (ID, ");
         sB.Append(GetFieldListCommaSeparated(TableFields, false, ""));
@@ -63,7 +63,7 @@ public class ObjectSQL : IObjectSQL
 
     private string CreateUpdateStatement(String TableName, Dictionary<String, string> TableFields)
     {
-        StringBuilder sB = new StringBuilder();
+        StringBuilder sB = new();
 
         sB.Append("UPDATE ").Append(TableName).Append(" SET ");
         sB.Append(GetSetFieldListCommaSeparated(TableFields));
@@ -75,7 +75,7 @@ public class ObjectSQL : IObjectSQL
 
     private string CreateSelectByIdStatement(String TableName, Dictionary<String, string> TableFields)
     {
-        StringBuilder sB = new StringBuilder();
+        StringBuilder sB = new();
 
         sB.Append("SELECT ");
         sB.Append(GetFieldListCommaSeparated(TableFields, true, ""));
@@ -89,13 +89,13 @@ public class ObjectSQL : IObjectSQL
 
     private string CreateSelectAllStatement(String TableName, Dictionary<String, string> TableFields)
     {
-        StringBuilder sB = new StringBuilder();
+        StringBuilder sB = new();
 
         sB.Append("SELECT ");
         sB.Append(GetFieldListCommaSeparated(TableFields, true, ""));
         sB.Append(" FROM ");
         sB.Append(TableName);
-        sB.Append(";");
+        sB.Append(';');
 
         return sB.ToString();
     }
@@ -103,7 +103,7 @@ public class ObjectSQL : IObjectSQL
 
     private string CreateCreateTableStatement(String TableName, Dictionary<String, string> TableFields)
     {
-        StringBuilder sB = new StringBuilder();
+        StringBuilder sB = new();
 
         sB.Append("CREATE TABLE IF NOT EXISTS '").Append(TableName);
         sB.Append("' ( 'ID' TEXT PRIMARY KEY, ");
@@ -115,7 +115,7 @@ public class ObjectSQL : IObjectSQL
 
     private string GetFieldListCommaSeparated(Dictionary<String, string> TableFields, bool withID, string At)
     {
-        StringBuilder sB = new StringBuilder();
+        StringBuilder sB = new();
 
         if (withID)
         {
@@ -141,7 +141,7 @@ public class ObjectSQL : IObjectSQL
 
     private string GetFieldTypeListCommaSeparated(Dictionary<String, string> TableFields)
     {
-        StringBuilder sB = new StringBuilder();
+        StringBuilder sB = new();
 
         int max = TableFields.Count;
         int pos = 1;
@@ -162,7 +162,7 @@ public class ObjectSQL : IObjectSQL
 
     private string GetSetFieldListCommaSeparated(Dictionary<String, string> TableFields)
     {
-        StringBuilder sB = new StringBuilder();
+        StringBuilder sB = new();
 
         int max = TableFields.Count;
         int pos = 1;

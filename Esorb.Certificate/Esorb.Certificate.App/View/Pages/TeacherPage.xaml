@@ -6,9 +6,122 @@
       xmlns:local="clr-namespace:Esorb.Certificate.App.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TeacherPage">
+      Title="TeacherPage"
+      FontSize="14">
 
     <Grid>
-        <TextBlock Text="Teacher"/>
+        <StackPanel>
+            <TextBlock Text="Lehrerinnen und Lehrer" FontSize="16" FontWeight="Bold" Margin="20,10,20,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid MaxHeight="300"
+                    x:Name="TeachersGrid"
+                    Margin="20,10,20,0"
+                    ItemsSource="{Binding TeachersViewModel}" 
+                    AutoGenerateColumns="False"
+                    SelectionMode="Single"
+                    CanUserAddRows="False"
+                    CanUserDeleteRows="False"
+                    >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Binding="{Binding FirstName}" 
+                            IsReadOnly="False"
+                            CanUserSort="True"
+                            CanUserResize="False"
+                            CanUserReorder="False"
+                            >
+                            <DataGridTextColumn.Header>
+                                <TextBlock 
+                                    Text="Vorname" 
+                                    FontWeight="Bold"
+                                    />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn 
+                            Binding="{Binding LastName}" 
+                            IsReadOnly="False"
+                            CanUserSort="True"
+                            CanUserResize="False"
+                            CanUserReorder="False"
+                            >
+                            <DataGridTextColumn.Header>
+                                <TextBlock 
+                                    Text="Nachname" 
+                                    FontWeight="Bold"
+                                    />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn 
+                            Binding="{Binding Gender}"
+                            IsReadOnly="False"
+                            CanUserSort="False"
+                            CanUserResize="False"
+                            CanUserReorder="False"
+                            >
+                            <DataGridTextColumn.Header>
+                                <TextBlock 
+                                    Text="Geschlecht" 
+                                    FontWeight="Bold"
+                                    />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridCheckBoxColumn
+                            Binding="{Binding IsHeadmaster}"
+                            IsReadOnly="False"
+                            CanUserSort="False"
+                            CanUserResize="False"
+                            CanUserReorder="False"
+                            >
+                            <DataGridCheckBoxColumn.Header>
+                                <TextBlock 
+                                    Text="Schulleitung" 
+                                    FontWeight="Bold"
+                                    />
+                            </DataGridCheckBoxColumn.Header>
+                        </DataGridCheckBoxColumn>
+                        <DataGridCheckBoxColumn
+                            Binding="{Binding IsAdmin}"
+                            IsReadOnly="False"
+                            CanUserSort="False"
+                            CanUserResize="False"
+                            CanUserReorder="False"
+                            >
+                            <DataGridCheckBoxColumn.Header>
+                                <TextBlock 
+                                    Text="Admin" 
+                                    FontWeight="Bold"
+                                    />
+                            </DataGridCheckBoxColumn.Header>
+                        </DataGridCheckBoxColumn>
+                        <DataGridTextColumn 
+                            Binding="{Binding Password}"
+                            IsReadOnly="False"
+                            CanUserSort="False"
+                            CanUserResize="False"
+                            CanUserReorder="False"
+                            >
+                            <DataGridTextColumn.Header>
+                                <TextBlock 
+                                    Text="Passwort" 
+                                    FontWeight="Bold"
+                                    />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Margin="20,10,20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" x:Name="BtnAddTeacher" Content="Neu" Margin="0,0,20,0" Padding="10,5"/>
+                <Button Grid.Column="1" x:Name="BtnDeleteTeacher" Content="Löschen" Margin="0,0,20,0" Padding="10,5"/>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

@@ -13,7 +13,7 @@ namespace Esorb.Certificate.App;
 
 public partial class MainWindow : Window
 {
-    public readonly CertificateModel certificateModel = new CertificateModel();
+    public readonly CertificateModel certificateModel = new();
     public readonly ICertifcateViewModel certifcateViewModel;
     private ICertificateSettingsViewModel SettingsVM;
     private IList<NavButton> navButtons = new List<NavButton>();
@@ -44,15 +44,12 @@ public partial class MainWindow : Window
 
     private GridLength GetLastMenuWidth()
     {
-        GridLength result;
 
-        switch (certifcateViewModel.CertificateSettingsViewModel.MenuPosition)
+        return certifcateViewModel.CertificateSettingsViewModel.MenuPosition switch
         {
-            case "wide":
-                return new GridLength(110, GridUnitType.Pixel);
-            default:
-                return new GridLength(44, GridUnitType.Pixel);
-        }
+            "wide" => new GridLength(110, GridUnitType.Pixel),
+            _ => new GridLength(44, GridUnitType.Pixel),
+        };
     }
 
 
@@ -123,8 +120,8 @@ public partial class MainWindow : Window
 
     private void BtnMenue_Click(object sender, RoutedEventArgs e)
     {
-        GridLength smallGridLength = new GridLength(44, GridUnitType.Pixel);
-        GridLength bigGridLength = new GridLength(110, GridUnitType.Pixel);
+        GridLength smallGridLength = new(44, GridUnitType.Pixel);
+        GridLength bigGridLength = new(110, GridUnitType.Pixel);
         if (NavColumn.Width.Equals(bigGridLength))
         {
             NavColumn.Width = smallGridLength;
@@ -168,22 +165,14 @@ public partial class MainWindow : Window
 
     private NavButton GetLastActivatedNavButton()
     {
-        NavButton btn;
-
-        switch (certifcateViewModel.CertificateSettingsViewModel.Page)
+        return certifcateViewModel.CertificateSettingsViewModel.Page switch
         {
-            case "Start":
-                return BtnStart;
-            case "Input":
-                return BtnInput;
-            case "Export":
-                return BtnExport;
-            case "Admin":
-                return BtnAdmin;
-            case "Info":
-                return BtnInfo;
-            default:
-                return BtnStart;
-        }
+            "Start" => BtnStart,
+            "Input" => BtnInput,
+            "Export" => BtnExport,
+            "Admin" => BtnAdmin,
+            "Info" => BtnInfo,
+            _ => BtnStart,
+        };
     }
 }

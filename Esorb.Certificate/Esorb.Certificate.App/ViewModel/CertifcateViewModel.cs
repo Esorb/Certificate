@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Esorb.Certificate.App.Model;
 using Esorb.Certificate.App.Database;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 
 namespace Esorb.Certificate.App.ViewModel
 {
@@ -13,7 +15,7 @@ namespace Esorb.Certificate.App.ViewModel
     {
         private ICertificateSettingsViewModel certificateSettingsViewModel = new CertificateSettingsViewModel();
         private ICertificateDataViewModel certificateDateViewModel;
-        private IList<TeacherViewModel> teachersViewModel;
+        private ObservableCollection<TeacherViewModel> teachersViewModel;
         private IList<PupilViewModel> pupilsViewModel;
         private IList<CertificateTemplateViewModel> certificateTemplatesViewModel;
         private IList<GradeLimitViewModel> gradeLimitsViewModel;
@@ -50,24 +52,23 @@ namespace Esorb.Certificate.App.ViewModel
 
         private void BuildTeacherViewModel()
         {
-            teachersViewModel = new List<TeacherViewModel>();
+            teachersViewModel = new ObservableCollection<TeacherViewModel>();
 
             foreach (var t in certificateModel.Teachers)
             {
-                teachersViewModel.Add(new TeacherViewModel(t));
+                teachersViewModel.Add(new TeacherViewModel(t, certificateModel.DbHelper));
             }
 
-            teachersViewModel = teachersViewModel.OrderBy(tvm => tvm.FullName).ToList();
+            //teachersViewModel = new ObservableCollection<TeacherViewModel>(teachersViewModel.OrderBy(tvm => tvm.FullName).ToList());
         }
 
         public IList<PupilViewModel> PupilsViewModel
         {
             get => pupilsViewModel;
-            set { pupilsViewModel = value; }
         }
 
 
-        public IList<TeacherViewModel> TeachersViewModel
+        public ObservableCollection<TeacherViewModel> TeachersViewModel
         {
             get => teachersViewModel;
             set { teachersViewModel = value; }

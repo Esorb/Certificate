@@ -11,7 +11,7 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public partial class CertificateSettingsViewModel : ObservableObject, ICertificateSettingsViewModel
     {
-        private CertificateSettings _certificateSettings = new CertificateSettings();
+        private CertificateSettings _certificateSettings = new();
         public CertificateSettingsViewModel()
         {
         }

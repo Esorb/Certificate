@@ -7,96 +7,105 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Esorb.Certificate.App.Database;
 
 namespace Esorb.Certificate.App.ViewModel;
 
 public partial class TeacherViewModel : ObservableObject, ITeacherViewModel
 {
-    public TeacherViewModel(Teacher teacher)
+    public TeacherViewModel(Teacher teacher, DbHelper dbHelper)
     {
-        _teacher = teacher;
+        Teacher = teacher;
+        DbHelper = dbHelper;
     }
 
-    private Teacher _teacher { get; }
+    private Teacher Teacher { get; }
+    private DbHelper DbHelper { get; }
 
     public string FirstName
     {
-        get => _teacher.FirstName;
+        get => Teacher.FirstName;
         set
         {
-            if (_teacher.FirstName != value)
+            if (Teacher.FirstName != value)
             {
-                _teacher.FirstName = value;
+                Teacher.FirstName = value;
                 OnPropertyChanged();
-                OnPropertyChanged("FullName");
+                OnPropertyChanged(nameof(FullName));
+                DbHelper.Save(Teacher);
             }
         }
     }
     public string LastName
     {
-        get => _teacher.LastName;
+        get => Teacher.LastName;
         set
         {
-            if (_teacher.LastName != value)
+            if (Teacher.LastName != value)
             {
-                _teacher.LastName = value;
+                Teacher.LastName = value;
                 OnPropertyChanged();
-                OnPropertyChanged("FullName");
+                OnPropertyChanged(nameof(FullName));
+                DbHelper.Save(Teacher);
             }
         }
     }
     public GenderValues Gender
     {
-        get => _teacher.Gender;
+        get => Teacher.Gender;
         set
         {
-            if (_teacher.Gender != value)
+            if (Teacher.Gender != value)
             {
-                _teacher.Gender = value;
+                Teacher.Gender = value;
                 OnPropertyChanged();
+                DbHelper.Save(Teacher);
             }
         }
     }
     public Boolean IsHeadmaster
     {
-        get => _teacher.IsHeadmaster;
+        get => Teacher.IsHeadmaster;
         set
         {
-            if (_teacher.IsHeadmaster != value)
+            if (Teacher.IsHeadmaster != value)
             {
-                _teacher.IsHeadmaster = value;
+                Teacher.IsHeadmaster = value;
                 OnPropertyChanged();
+                DbHelper.Save(Teacher);
             }
         }
     }
     public Boolean IsAdmin
     {
-        get => _teacher.IsAdmin;
+        get => Teacher.IsAdmin;
         set
         {
-            if (_teacher.IsAdmin != value)
+            if (Teacher.IsAdmin != value)
             {
-                _teacher.IsAdmin = value;
+                Teacher.IsAdmin = value;
                 OnPropertyChanged();
+                DbHelper.Save(Teacher);
             }
         }
     }
     public string Password
     {
-        get => _teacher.Password;
+        get => Teacher.Password;
         set
         {
-            if (_teacher.Password != value)
+            if (Teacher.Password != value)
             {
-                _teacher.Password = value;
+                Teacher.Password = value;
                 OnPropertyChanged();
+                DbHelper.Save(Teacher);
             }
         }
     }
     public string FullName
 
     {
-        get => _teacher.FullName;
+        get => Teacher.FullName;
     }
 
 }

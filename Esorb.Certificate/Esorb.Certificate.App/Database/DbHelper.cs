@@ -23,7 +23,7 @@ public class DbHelper : IDbHelper
         InitGradeLimit();
     }
 
-    private Dictionary<string, ObjectSQL> StandardSQLStatements = new Dictionary<string, ObjectSQL>();
+    private readonly Dictionary<string, ObjectSQL> StandardSQLStatements = new();
 
     public void CreateCertificateTables()
     {
@@ -37,7 +37,7 @@ public class DbHelper : IDbHelper
 
     private string ConnectionString()
     {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
 
         sb.Append("Data Source = ");
         sb.Append(_settings.DatabasePath);
@@ -53,14 +53,10 @@ public class DbHelper : IDbHelper
 
         try
         {
-            using (var connection = new SqliteConnection($"Data Source={filePath}"))
-            {
-                connection.Open();
-                using (var command = new SqliteCommand("SELECT name FROM sqlite_master WHERE type='table'", connection))
-                {
-                    command.ExecuteReader();
-                }
-            }
+            using var connection = new SqliteConnection($"Data Source={filePath}");
+            connection.Open();
+            using var command = new SqliteCommand("SELECT name FROM sqlite_master WHERE type='table'", connection);
+            command.ExecuteReader();
             return true;
         }
         catch
@@ -108,7 +104,7 @@ public class DbHelper : IDbHelper
 
     public T LoadById<T>(string SearchID) where T : class, new()
     {
-        T result = new T();
+        T result = new();
         var Type = result.GetType().ToString();
         if (!StandardSQLStatements.ContainsKey(Type)) { return result; }
 
@@ -121,12 +117,9 @@ public class DbHelper : IDbHelper
     public IList<T> LoadAll<T>() where T : class, new()
     {
         var Type = typeof(T).ToString();
-        IList<T> result = new List<T>();
 
         using var connection = new SqliteConnection(ConnectionString());
-        result = connection.Query<T>(StandardSQLStatements[Type].SelectAll).ToList();
-
-        return result;
+        return connection.Query<T>(StandardSQLStatements[Type].SelectAll).ToList();
     }
 
     public void CreateTable(string Type)
@@ -182,7 +175,7 @@ public class DbHelper : IDbHelper
             { "SchoolClassId", "TEXT" }
         };
 
-        ObjectSQL SQL = new ObjectSQL("Pupil", Fields);
+        ObjectSQL SQL = new("Pupil", Fields);
         StandardSQLStatements.Add(typeof(Pupil).ToString(), SQL);
     }
 
@@ -195,7 +188,7 @@ public class DbHelper : IDbHelper
             { "HalfYear", "INTEGER" }
         };
 
-        ObjectSQL SQL = new ObjectSQL("SchoolClass", Fields);
+        ObjectSQL SQL = new("SchoolClass", Fields);
         StandardSQLStatements.Add(typeof(SchoolClass).ToString(), SQL);
     }
 
@@ -211,7 +204,7 @@ public class DbHelper : IDbHelper
             { "Password", "TEXT" }
         };
 
-        ObjectSQL SQL = new ObjectSQL("Teacher", Fields);
+        ObjectSQL SQL = new("Teacher", Fields);
         StandardSQLStatements.Add(typeof(Teacher).ToString(), SQL);
     }
 
@@ -227,7 +220,7 @@ public class DbHelper : IDbHelper
             { "TimeOfRestartLessons", "DATETIME" },
         };
 
-        ObjectSQL SQL = new ObjectSQL("CertificateData", Fields);
+        ObjectSQL SQL = new("CertificateData", Fields);
         StandardSQLStatements.Add(typeof(CertificateData).ToString(), SQL);
     }
 
@@ -239,7 +232,7 @@ public class DbHelper : IDbHelper
             { "HalfYear", "INTEGER" },
         };
 
-        ObjectSQL SQL = new ObjectSQL("CertificateTemplate", Fields);
+        ObjectSQL SQL = new("CertificateTemplate", Fields);
         StandardSQLStatements.Add(typeof(CertificateTemplate).ToString(), SQL);
     }
 
@@ -252,7 +245,7 @@ public class DbHelper : IDbHelper
             { "GradeNumeric", "INTEGER" },
         };
 
-        ObjectSQL SQL = new ObjectSQL("GradeLimit", Fields);
+        ObjectSQL SQL = new("GradeLimit", Fields);
         StandardSQLStatements.Add(typeof(GradeLimit).ToString(), SQL);
 
     }

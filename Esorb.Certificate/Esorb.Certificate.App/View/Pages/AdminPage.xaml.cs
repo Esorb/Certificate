@@ -11,9 +11,9 @@ namespace Esorb.Certificate.App.View.Pages;
 
 public partial class AdminPage : Page
 {
-    private IList<NavButton> navButtons = new List<NavButton>();
-    private IDictionary<Uri, Page> subPages = new Dictionary<Uri, Page>();
-    private ICertificateSettingsViewModel SettingsVM;
+    private readonly IList<NavButton> navButtons = new List<NavButton>();
+    private readonly IDictionary<Uri, Page> subPages = new Dictionary<Uri, Page>();
+    private readonly ICertificateSettingsViewModel SettingsVM = new CertificateSettingsViewModel();
 
     public readonly ICertifcateViewModel certifcateViewModel;
 
@@ -69,6 +69,7 @@ public partial class AdminPage : Page
 
             AdminFrame.Navigate(subPages[ClickedNavButton.NavUri]);
             ClickedNavButton.Selected = true;
+            SetLastActivatedNavButton(ClickedNavButton);
         }
     }
 
@@ -86,24 +87,15 @@ public partial class AdminPage : Page
 
     private NavButton GetLastActivatedNavButton()
     {
-        NavButton btn;
-
-        switch (certifcateViewModel.CertificateSettingsViewModel.SubPage)
+        return certifcateViewModel.CertificateSettingsViewModel.SubPage switch
         {
-            case "Settings":
-                return BtnSettings;
-            case "Template":
-                return BtnTemplate;
-            case "Certificate":
-                return BtnCertificate;
-            case "Teacher":
-                return BtnTeacher;
-            case "Class":
-                return BtnClass;
-            case "Distribution":
-                return BtnDistribution;
-            default:
-                return BtnSettings;
-        }
+            "Settings" => BtnSettings,
+            "Template" => BtnTemplate,
+            "Certificate" => BtnCertificate,
+            "Teacher" => BtnTeacher,
+            "Class" => BtnClass,
+            "Distribution" => BtnDistribution,
+            _ => BtnSettings,
+        };
     }
 }
