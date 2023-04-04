@@ -10,118 +10,122 @@
       FontSize="14">
 
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Lehrerinnen und Lehrer" FontSize="16" FontWeight="Bold" Margin="20,10,20,0"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <DataGrid MaxHeight="300"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Lehrerinnen und Lehrer" FontSize="16" FontWeight="Bold" Margin="20,10,20,0"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid 
                     x:Name="TeachersGrid"
-                    Margin="20,10,20,0"
                     ItemsSource="{Binding TeachersViewModel}" 
+                    Margin="20,10,20,0"
+                    VerticalAlignment="Stretch"
                     AutoGenerateColumns="False"
                     SelectionMode="Single"
                     CanUserAddRows="False"
                     CanUserDeleteRows="False"
                     >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
+                <DataGrid.Columns>
+                    <DataGridTextColumn
                             Binding="{Binding FirstName}" 
                             IsReadOnly="False"
                             CanUserSort="True"
                             CanUserResize="False"
                             CanUserReorder="False"
                             >
-                            <DataGridTextColumn.Header>
-                                <TextBlock 
+                        <DataGridTextColumn.Header>
+                            <TextBlock 
                                     Text="Vorname" 
                                     FontWeight="Bold"
                                     />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn 
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn 
                             Binding="{Binding LastName}" 
                             IsReadOnly="False"
                             CanUserSort="True"
                             CanUserResize="False"
                             CanUserReorder="False"
                             >
-                            <DataGridTextColumn.Header>
-                                <TextBlock 
+                        <DataGridTextColumn.Header>
+                            <TextBlock 
                                     Text="Nachname" 
                                     FontWeight="Bold"
                                     />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn 
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn 
                             Binding="{Binding Gender}"
                             IsReadOnly="False"
                             CanUserSort="False"
                             CanUserResize="False"
                             CanUserReorder="False"
                             >
-                            <DataGridTextColumn.Header>
-                                <TextBlock 
+                        <DataGridTextColumn.Header>
+                            <TextBlock 
                                     Text="Geschlecht" 
                                     FontWeight="Bold"
                                     />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridCheckBoxColumn
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                    <DataGridCheckBoxColumn
                             Binding="{Binding IsHeadmaster}"
                             IsReadOnly="False"
                             CanUserSort="False"
                             CanUserResize="False"
                             CanUserReorder="False"
                             >
-                            <DataGridCheckBoxColumn.Header>
-                                <TextBlock 
+                        <DataGridCheckBoxColumn.Header>
+                            <TextBlock 
                                     Text="Schulleitung" 
                                     FontWeight="Bold"
                                     />
-                            </DataGridCheckBoxColumn.Header>
-                        </DataGridCheckBoxColumn>
-                        <DataGridCheckBoxColumn
+                        </DataGridCheckBoxColumn.Header>
+                    </DataGridCheckBoxColumn>
+                    <DataGridCheckBoxColumn
                             Binding="{Binding IsAdmin}"
                             IsReadOnly="False"
                             CanUserSort="False"
                             CanUserResize="False"
                             CanUserReorder="False"
                             >
-                            <DataGridCheckBoxColumn.Header>
-                                <TextBlock 
+                        <DataGridCheckBoxColumn.Header>
+                            <TextBlock 
                                     Text="Admin" 
                                     FontWeight="Bold"
                                     />
-                            </DataGridCheckBoxColumn.Header>
-                        </DataGridCheckBoxColumn>
-                        <DataGridTextColumn 
+                        </DataGridCheckBoxColumn.Header>
+                    </DataGridCheckBoxColumn>
+                    <DataGridTextColumn 
                             Binding="{Binding Password}"
                             IsReadOnly="False"
                             CanUserSort="False"
                             CanUserResize="False"
                             CanUserReorder="False"
                             >
-                            <DataGridTextColumn.Header>
-                                <TextBlock 
+                        <DataGridTextColumn.Header>
+                            <TextBlock 
                                     Text="Passwort" 
                                     FontWeight="Bold"
                                     />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-            <Grid Margin="20,10,20,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" x:Name="BtnAddTeacher" Content="Neu" Margin="0,0,20,0" Padding="10,5"/>
-                <Button Grid.Column="1" x:Name="BtnDeleteTeacher" Content="Löschen" Margin="0,0,20,0" Padding="10,5"/>
-            </Grid>
-        </StackPanel>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="2" Margin="20,10,20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="BtnAddTeacher" Content="Neu" Margin="0,0,20,0" Padding="10,5"/>
+            <Button Grid.Column="1" x:Name="BtnDeleteTeacher" Content="Löschen" Margin="0,0,20,0" Padding="10,5"/>
+        </Grid>
     </Grid>
 </Page>
