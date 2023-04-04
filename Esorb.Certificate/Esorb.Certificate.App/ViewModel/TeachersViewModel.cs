@@ -15,7 +15,7 @@ public class TeachersViewModel : ObservableObject
     public TeachersViewModel(CertificateModel certificateModel)
     {
         this.certificateModel = certificateModel;
-        BuildTeacherViewModel();
+        BuildTeachersViewModel();
         AddTeacher = new RelayCommand(ExecuteAddTeacher, CanExecuteAddTeacher);
         RemoveTeacher = new RelayCommand(ExecuteRemoveTeacher, CanExecuteRemoveTeacher);
     }
@@ -28,9 +28,22 @@ public class TeachersViewModel : ObservableObject
     public RelayCommand AddTeacher { get; private set; }
     public RelayCommand RemoveTeacher { get; private set; }
 
+
     private CertificateModel certificateModel;
     private ObservableCollection<TeacherViewModel> teachers;
-    private void BuildTeacherViewModel()
+    private TeacherViewModel selectedTeacher;
+
+    public TeacherViewModel SelectedTeacher
+    {
+        get { return selectedTeacher; }
+        set
+        {
+            selectedTeacher = value;
+            OnPropertyChanged(nameof(SelectedTeacher));
+        }
+    }
+
+    private void BuildTeachersViewModel()
     {
         teachers = new ObservableCollection<TeacherViewModel>();
 
@@ -38,26 +51,28 @@ public class TeachersViewModel : ObservableObject
         {
             teachers.Add(new TeacherViewModel(t, certificateModel.DbHelper));
         }
-
-        //teachersViewModel = new ObservableCollection<TeacherViewModel>(teachersViewModel.OrderBy(tvm => tvm.FullName).ToList());
     }
+
     private void ExecuteAddTeacher()
     {
-
+        Teacher teacher = new();
+        TeacherViewModel teacherViewModel = new(teacher, certificateModel.DbHelper);
+        Teachers.Add(teacherViewModel);
     }
 
     private bool CanExecuteAddTeacher()
     {
-        return false;
+        return true;
     }
     private void ExecuteRemoveTeacher()
     {
-
+        SelectedTeacher.Delete();
+        teachers.Remove(SelectedTeacher);
     }
 
     private bool CanExecuteRemoveTeacher()
     {
-        return false;
+        return (SelectedTeacher != null);
     }
 
 }

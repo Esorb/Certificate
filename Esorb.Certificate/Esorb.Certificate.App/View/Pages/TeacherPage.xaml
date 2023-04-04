@@ -22,16 +22,17 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <DataGrid 
-                    x:Name="TeachersGrid"
-                    ItemsSource="{Binding Teachers}" 
-                    Margin="20,10,20,0"
-                    VerticalAlignment="Stretch"
-                    RowHeaderWidth="0"
-                    AutoGenerateColumns="False"
-                    SelectionMode="Single"
-                    CanUserAddRows="False"
-                    CanUserDeleteRows="False"
-                    >
+                x:Name="TeachersGrid"
+                ItemsSource="{Binding Teachers}"
+                SelectedItem="{Binding SelectedTeacher, Mode=TwoWay}"
+                Margin="20,10,20,0"
+                VerticalAlignment="Stretch"
+                RowHeaderWidth="0"
+                AutoGenerateColumns="False"
+                SelectionMode="Single"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                >
                 <DataGrid.Columns>
                     <DataGridTextColumn
                             Binding="{Binding FirstName}" 
@@ -61,20 +62,22 @@
                                     />
                         </DataGridTextColumn.Header>
                     </DataGridTextColumn>
-                    <DataGridTextColumn 
-                            Binding="{Binding Gender}"
-                            IsReadOnly="False"
-                            CanUserSort="False"
-                            CanUserResize="False"
-                            CanUserReorder="False"
-                            >
-                        <DataGridTextColumn.Header>
+                    <DataGridComboBoxColumn
+                        x:Name="GenderColumn"
+                        SelectedItemBinding="{Binding Gender}"
+                        ItemsSource="{Binding GenderList}"
+                        IsReadOnly="False"
+                        CanUserSort="False"
+                        CanUserResize="False"
+                        CanUserReorder="False"
+                        >
+                        <DataGridComboBoxColumn.Header>
                             <TextBlock 
                                     Text="Geschlecht" 
                                     FontWeight="Bold"
                                     />
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
+                        </DataGridComboBoxColumn.Header>
+                    </DataGridComboBoxColumn>
                     <DataGridCheckBoxColumn
                             Binding="{Binding IsHeadmaster}"
                             IsReadOnly="False"
@@ -125,8 +128,22 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" x:Name="BtnAddTeacher" Content="Neu" Margin="0,0,20,0" Padding="10,5"/>
-            <Button Grid.Column="1" x:Name="BtnDeleteTeacher" Content="Löschen" Margin="0,0,20,0" Padding="10,5"/>
+            <Button 
+                Grid.Column="0" 
+                x:Name="BtnAddTeacher" 
+                Command="{Binding AddTeacher}"
+                Content="Neu" 
+                Margin="0,0,20,0" 
+                Padding="10,5"
+                />
+            <Button 
+                Grid.Column="1" 
+                x:Name="BtnDeleteTeacher" 
+                Command="{Binding RemoveTeacher}"
+                Content="Löschen" 
+                Margin="0,0,20,0" 
+                Padding="10,5"
+                />
         </Grid>
     </Grid>
 </Page>

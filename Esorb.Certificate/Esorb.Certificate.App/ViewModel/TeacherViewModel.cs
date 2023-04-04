@@ -108,4 +108,9 @@ public partial class TeacherViewModel : ObservableObject, ITeacherViewModel
         get => Teacher.FullName;
     }
 
+    public void Delete()
+    {
+        DbHelper.Delete(Teacher);
+    }
+
 }

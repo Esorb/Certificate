@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Esorb.Certificate.App.Model.Enumerables;
 
 namespace Esorb.Certificate.App.View.Pages
 {
@@ -27,6 +28,14 @@ namespace Esorb.Certificate.App.View.Pages
             InitializeComponent();
             Teachers = teachers;
             DataContext = Teachers;
+        }
+
+        public List<GenderValues> GenderList
+        {
+            get
+            {
+                return Enum.GetValues(typeof(GenderValues)).Cast<GenderValues>().ToList();
+            }
         }
     }
 }
