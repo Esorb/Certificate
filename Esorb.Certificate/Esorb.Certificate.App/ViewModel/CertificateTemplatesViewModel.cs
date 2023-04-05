@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.ViewModel
 {
-    public partial class CertificateTemplatesViewModel : ObservableObject
+    public partial class CertificateTemplatesViewModel : ObservableObject, ICertificateTemplatesViewModel
     {
         public CertificateTemplatesViewModel(CertificateModel certificateModel)
         {
@@ -33,6 +33,12 @@ namespace Esorb.Certificate.App.ViewModel
                 RemoveCertificateTemplate.NotifyCanExecuteChanged();
             }
         }
+        public ObservableCollection<CertificateTemplateViewModel> CertificateTemplates
+        {
+            get => certificateTemplates;
+            set { certificateTemplates = value; }
+        }
+
 
         private CertificateModel certificateModel;
         private ObservableCollection<CertificateTemplateViewModel> certificateTemplates;
@@ -55,7 +61,7 @@ namespace Esorb.Certificate.App.ViewModel
 
         private bool CanExecuteAddCertificateTemplate()
         {
-            return false;
+            return true;
         }
 
         private void ExecuteRemoveCertificateTemplate()

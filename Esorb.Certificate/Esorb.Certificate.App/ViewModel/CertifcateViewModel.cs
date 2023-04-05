@@ -16,7 +16,7 @@ namespace Esorb.Certificate.App.ViewModel
         private ICertificateSettingsViewModel certificateSettingsViewModel = new CertificateSettingsViewModel();
         private ICertificateDataViewModel certificateDataViewModel;
         private TeachersViewModel teachers;
-        private CertificateTemplatesViewModel certificateTemplates;
+        private CertificateTemplatesViewModel certificateTemplatesViewModel;
         private IList<PupilViewModel> pupilsViewModel;
         private IList<GradeLimitViewModel> gradeLimitsViewModel;
         private CertificateModel certificateModel;
@@ -25,7 +25,7 @@ namespace Esorb.Certificate.App.ViewModel
         {
             this.certificateModel = certificateModel;
             teachers = new(this.certificateModel);
-            certificateTemplates = new(this.certificateModel);
+            certificateTemplatesViewModel = new CertificateTemplatesViewModel(this.certificateModel);
             BuildCertificateViewModelFromCertificateModel();
 
         }
@@ -74,6 +74,12 @@ namespace Esorb.Certificate.App.ViewModel
         {
             get => certificateDataViewModel;
             set { certificateDataViewModel = value; }
+        }
+
+        public CertificateTemplatesViewModel CertificateTemplatesViewModel
+        {
+            get => certificateTemplatesViewModel;
+            private set { certificateTemplatesViewModel = value; }
         }
 
         public IList<GradeLimitViewModel> GradeLimitsViewModel

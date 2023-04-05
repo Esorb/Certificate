@@ -17,9 +17,6 @@ using Esorb.Certificate.App.Model.Enumerables;
 
 namespace Esorb.Certificate.App.View.Pages
 {
-    /// <summary>
-    /// Interaktionslogik für TeacherPage.xaml
-    /// </summary>
     public partial class TeacherPage : Page
     {
         public readonly TeachersViewModel Teachers;
@@ -29,18 +26,9 @@ namespace Esorb.Certificate.App.View.Pages
             Teachers = teachers;
             DataContext = Teachers;
         }
-
         private void TeachersGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CommandManager.InvalidateRequerySuggested();
         }
-
-        //public List<GenderValues> GenderList
-        //{
-        //    get
-        //    {
-        //        return Enum.GetValues(typeof(GenderValues)).Cast<GenderValues>().ToList();
-        //    }
-        //}
     }
 }

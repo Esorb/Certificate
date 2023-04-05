@@ -48,5 +48,21 @@ namespace Esorb.Certificate.App.ViewModel
             }
         }
 
+        public bool IsFullYearReport
+        {
+            get => _certificateTemplate.IsFullYearReport;
+            set
+            {
+                if (value != _certificateTemplate.IsFullYearReport)
+                {
+                    _certificateTemplate.IsFullYearReport = value;
+                    HalfYear = 2;
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(Yearlevel));
+                    _dbHelper.Save(_certificateTemplate);
+                }
+            }
+        }
+
     }
 }

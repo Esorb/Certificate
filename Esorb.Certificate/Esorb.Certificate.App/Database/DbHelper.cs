@@ -230,6 +230,7 @@ public class DbHelper : IDbHelper
         {
             { "Yearlevel", "INTEGER" },
             { "HalfYear", "INTEGER" },
+            { "IsFullYearReport", "BOOLEAN" },
         };
 
         ObjectSQL SQL = new("CertificateTemplate", Fields);

@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace Esorb.Certificate.App.View.Pages
 {
-    /// <summary>
-    /// Interaktionslogik für StartPage.xaml
-    /// </summary>
     public partial class StartPage : Page
     {
         public readonly ICertifcateViewModel certifcateViewModel;

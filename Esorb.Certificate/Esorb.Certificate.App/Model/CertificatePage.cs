@@ -10,5 +10,6 @@ namespace Esorb.Certificate.App.Model
     {
         public int PageNumber { get; set; }
         public Guid CertificateTemplateId { get; set; }
+        public CertificateTemplate CertificateTemplate { get; set; }
     }
 }

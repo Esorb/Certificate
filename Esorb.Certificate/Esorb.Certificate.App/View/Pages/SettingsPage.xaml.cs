@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace Esorb.Certificate.App.View.Pages
 {
-    /// <summary>
-    /// Interaktionslogik für PupilPage.xaml
-    /// </summary>
     public partial class SettingsPage : Page
     {
         public readonly ICertifcateViewModel certifcateViewModel;
