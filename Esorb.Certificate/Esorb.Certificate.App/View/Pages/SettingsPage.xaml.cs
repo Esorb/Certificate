@@ -14,16 +14,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Esorb.Certificate.App.View.Pages
+namespace Esorb.Certificate.App.View.Pages;
+
+public partial class SettingsPage : Page
 {
-    public partial class SettingsPage : Page
+    public readonly ICertifcateViewModel certifcateViewModel;
+    public SettingsPage(ICertifcateViewModel certifcateViewModel)
     {
-        public readonly ICertifcateViewModel certifcateViewModel;
-        public SettingsPage(ICertifcateViewModel certifcateViewModel)
-        {
-            InitializeComponent();
-            this.certifcateViewModel = certifcateViewModel;
-            DataContext = this.certifcateViewModel;
-        }
+        InitializeComponent();
+        this.certifcateViewModel = certifcateViewModel;
+        DataContext = this.certifcateViewModel;
+    }
+
+    private void CertificateTemplatesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        CommandManager.InvalidateRequerySuggested();
     }
 }

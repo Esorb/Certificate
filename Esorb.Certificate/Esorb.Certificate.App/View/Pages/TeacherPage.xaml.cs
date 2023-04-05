@@ -15,20 +15,19 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Esorb.Certificate.App.Model.Enumerables;
 
-namespace Esorb.Certificate.App.View.Pages
+namespace Esorb.Certificate.App.View.Pages;
+
+public partial class TeacherPage : Page
 {
-    public partial class TeacherPage : Page
+    public readonly TeachersViewModel Teachers;
+    public TeacherPage(TeachersViewModel teachers)
     {
-        public readonly TeachersViewModel Teachers;
-        public TeacherPage(TeachersViewModel teachers)
-        {
-            InitializeComponent();
-            Teachers = teachers;
-            DataContext = Teachers;
-        }
-        private void TeachersGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            CommandManager.InvalidateRequerySuggested();
-        }
+        InitializeComponent();
+        Teachers = teachers;
+        DataContext = Teachers;
+    }
+    private void TeachersGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        CommandManager.InvalidateRequerySuggested();
     }
 }

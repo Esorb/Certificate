@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Esorb.Certificate.App.ViewModel">
+    <DataTemplate DataType="{x:Type vm:CertificateTemplateViewModel}">
+        <Grid Margin="25,10,0,0">
+            <Expander>
+                <Expander.Header>
+                    <TextBlock Text="{Binding TemplateName}"/>
+                </Expander.Header>
+            </Expander>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

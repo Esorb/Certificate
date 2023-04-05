@@ -5,5 +5,7 @@
         string Grade { get; set; }
         int GradeNumeric { get; set; }
         double PercentageLimit { get; set; }
+        string Explanation { get; set; }
+
     }
 }

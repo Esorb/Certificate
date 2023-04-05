@@ -56,7 +56,9 @@ namespace Esorb.Certificate.App.ViewModel
 
         private void ExecuteAddCertificateTemplate()
         {
-
+            CertificateTemplate certificateTemplate = new();
+            CertificateTemplateViewModel certificateTemplateViewModel = new(certificateTemplate, certificateModel.DbHelper);
+            CertificateTemplates.Add(certificateTemplateViewModel);
         }
 
         private bool CanExecuteAddCertificateTemplate()
@@ -66,11 +68,12 @@ namespace Esorb.Certificate.App.ViewModel
 
         private void ExecuteRemoveCertificateTemplate()
         {
-
+            SelectedCertificateTemplate.Delete();
+            CertificateTemplates.Remove(SelectedCertificateTemplate);
         }
         private bool CanExecuteRemoveCertificateTemplate()
         {
-            return false;
+            return SelectedCertificateTemplate != null;
         }
 
     }

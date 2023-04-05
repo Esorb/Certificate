@@ -9,6 +9,13 @@
       Title="SettingsPage"
       FontSize="14">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../DataTemplates/GradeLevelLegendDataTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         <ScrollViewer  VerticalScrollBarVisibility="Auto">
             <StackPanel>
@@ -89,7 +96,10 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <DataGrid Grid.Column="0" Grid.Row="0"
-                            ItemsSource="{Binding CertificateTemplatesViewModel.CertificateTemplates}" 
+                            x:Name="CertificateTemplatesGrid"
+                            ItemsSource="{Binding CertificateTemplatesViewModel.CertificateTemplates}"
+                            SelectedItem="{Binding CertificateTemplatesViewModel.SelectedCertificateTemplate, Mode=TwoWay}"
+                            SelectionChanged="CertificateTemplatesGrid_SelectionChanged"
                             AutoGenerateColumns="False"
                             CanUserAddRows="False"
                             CanUserDeleteRows="False"
@@ -158,6 +168,7 @@
                     FontSize="16" 
                     FontWeight="Bold"
                     >
+                    <ItemsControl ItemsSource="{Binding GradeLevelLegendsViewModell.GradeLevelLegends}"/>
                 </Expander>
                 <Expander Header="Rechtsbehelfsbelehrung" 
                     Margin="20,10,20,0" 

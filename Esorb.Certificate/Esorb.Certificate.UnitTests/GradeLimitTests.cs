@@ -18,12 +18,48 @@ namespace Esorb.Certificate.UnitTests
             var dbh = new DbHelper();
             dbh.DropTable(typeof(GradeLimit).ToString());
             dbh.CreateTable(typeof(GradeLimit).ToString());
-            var gl1 = new GradeLimit { PercentageLimit = 0.965, Grade = "sehr gut", GradeNumeric = 1 };
-            var gl2 = new GradeLimit { PercentageLimit = 0.845, Grade = "gut", GradeNumeric = 2 };
-            var gl3 = new GradeLimit { PercentageLimit = 0.695, Grade = "befriedigend", GradeNumeric = 3 };
-            var gl4 = new GradeLimit { PercentageLimit = 0.495, Grade = "ausreichend", GradeNumeric = 4 };
-            var gl5 = new GradeLimit { PercentageLimit = 0.195, Grade = "mangelhaft", GradeNumeric = 5 };
-            var gl6 = new GradeLimit { PercentageLimit = 0.0, Grade = "ungenügend", GradeNumeric = 6 };
+            var gl1 = new GradeLimit
+            {
+                PercentageLimit = 0.965,
+                Grade = "sehr gut",
+                GradeNumeric = 1,
+                Explanation = "soll erteilt werden, wenn die Leistung den Anforderungen im besonderen Maße entspricht.",
+            };
+            var gl2 = new GradeLimit
+            {
+                PercentageLimit = 0.845,
+                Grade = "gut",
+                GradeNumeric = 2,
+                Explanation = "soll erteilt werden, wenn die Leistung den Anforderungen voll entspricht.",
+            };
+            var gl3 = new GradeLimit
+            {
+                PercentageLimit = 0.695,
+                Grade = "befriedigend",
+                GradeNumeric = 3,
+                Explanation = "soll erteilt werden, wenn die Leistung im Allgemeinen den Anforderungen entspricht.",
+            };
+            var gl4 = new GradeLimit
+            {
+                PercentageLimit = 0.495,
+                Grade = "ausreichend",
+                GradeNumeric = 4,
+                Explanation = "soll erteilt werden, wenn die Leistung zwar Mängel aufweist, aber im Ganzen den Anforderungen noch entspricht.",
+            };
+            var gl5 = new GradeLimit
+            {
+                PercentageLimit = 0.195,
+                Grade = "mangelhaft",
+                GradeNumeric = 5,
+                Explanation = "soll erteilt werden, wenn die Leistung den Anforderungen nicht entspricht, jedoch erkennen lässt, dass die notwendigen Grundkenntnisse vorhanden sind und die Mängel in absehbarer Zeit behoben werden können.",
+            };
+            var gl6 = new GradeLimit
+            {
+                PercentageLimit = 0.0,
+                Grade = "ungenügend",
+                GradeNumeric = 6,
+                Explanation = "soll erteilt werden, wenn die Leistung den Anforderungen nicht entspricht und selbst Grundkenntnisse so lückenhaft sind, dass die Mängel in absehbarer Zeit nicht behoben werden können.",
+            };
             // Act
             dbh.Save(gl1);
             dbh.Save(gl2);

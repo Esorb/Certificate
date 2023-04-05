@@ -64,5 +64,25 @@ namespace Esorb.Certificate.App.ViewModel
             }
         }
 
+        public string TemplateName
+        {
+            get
+            {
+                if (IsFullYearReport)
+                {
+                    return $"Vorlage für das {Yearlevel}. Schuljahr";
+                }
+                else
+                {
+                    return $"Vorlage für das {Yearlevel}. Schuljahr - {HalfYear}. Halbjahr";
+                }
+            }
+        }
+
+        public void Delete()
+        {
+            _dbHelper.Delete(_certificateTemplate);
+        }
+
     }
 }

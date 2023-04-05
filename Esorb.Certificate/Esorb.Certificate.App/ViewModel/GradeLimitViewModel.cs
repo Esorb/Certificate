@@ -11,52 +11,54 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public partial class GradeLimitViewModel : ObservableObject
     {
-        private GradeLimit _gradeLimit;
-        private DbHelper _dbHelper;
         public GradeLimitViewModel(GradeLimit gradeLimit, DbHelper dbHelper)
         {
-            _gradeLimit = gradeLimit;
-            _dbHelper = dbHelper;
+            this.gradeLimit = gradeLimit;
+            dbHelper = dbHelper;
         }
 
+        private GradeLimit gradeLimit { get; }
+        private DbHelper dbHelper { get; }
+
+
         public double PercentageLimit
-        { 
-            get => _gradeLimit.PercentageLimit;
-            set 
+        {
+            get => gradeLimit.PercentageLimit;
+            set
             {
-                if (_gradeLimit.PercentageLimit != value)
+                if (gradeLimit.PercentageLimit != value)
                 {
-                    _gradeLimit.PercentageLimit = value;
+                    gradeLimit.PercentageLimit = value;
                     OnPropertyChanged();
-                    _dbHelper.Save(_gradeLimit);
+                    dbHelper.Save(gradeLimit);
                 }
 
             }
         }
         public string Grade
         {
-            get => _gradeLimit.Grade;
+            get => gradeLimit.Grade;
             set
             {
-                if (_gradeLimit.Grade != value)
+                if (gradeLimit.Grade != value)
                 {
-                    _gradeLimit.Grade = value;
+                    gradeLimit.Grade = value;
                     OnPropertyChanged();
-                    _dbHelper.Save(_gradeLimit);
+                    dbHelper.Save(gradeLimit);
                 }
 
             }
         }
         public int GradeNumeric
         {
-            get => _gradeLimit.GradeNumeric;
+            get => gradeLimit.GradeNumeric;
             set
             {
-                if (_gradeLimit.GradeNumeric != value)
+                if (gradeLimit.GradeNumeric != value)
                 {
-                    _gradeLimit.GradeNumeric = value;
+                    gradeLimit.GradeNumeric = value;
                     OnPropertyChanged();
-                    _dbHelper.Save(_gradeLimit);
+                    dbHelper.Save(gradeLimit);
                 }
             }
         }

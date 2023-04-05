@@ -90,4 +90,8 @@
 	  </Compile>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Model\Converter\" />
+	</ItemGroup>
+
 </Project>

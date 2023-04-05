@@ -244,6 +244,7 @@ public class DbHelper : IDbHelper
             { "PercentageLimit", "REAL" },
             { "Grade", "TEXT" },
             { "GradeNumeric", "INTEGER" },
+            { "Explanation", "TEXT" },
         };
 
         ObjectSQL SQL = new("GradeLimit", Fields);
