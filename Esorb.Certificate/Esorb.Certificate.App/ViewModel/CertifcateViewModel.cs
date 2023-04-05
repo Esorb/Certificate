@@ -18,6 +18,7 @@ namespace Esorb.Certificate.App.ViewModel
         private TeachersViewModel teachers;
         private CertificateTemplatesViewModel certificateTemplatesViewModel;
         private GradeLevelLegendsViewModell gradeLevelLegendsViewModell;
+        private SchoolClassesViewModel schoolClassesViewModel;
 
         public GradeLevelLegendsViewModell GradeLevelLegendsViewModell
         {
@@ -32,9 +33,12 @@ namespace Esorb.Certificate.App.ViewModel
         public CertifcateViewModel(CertificateModel certificateModel)
         {
             this.certificateModel = certificateModel;
+
             teachers = new(this.certificateModel);
             certificateTemplatesViewModel = new(this.certificateModel);
             gradeLevelLegendsViewModell = new(this.certificateModel);
+            schoolClassesViewModel = new(this.certificateModel);
+
             BuildCertificateViewModelFromCertificateModel();
 
         }
@@ -89,6 +93,12 @@ namespace Esorb.Certificate.App.ViewModel
         {
             get => certificateTemplatesViewModel;
             private set { certificateTemplatesViewModel = value; }
+        }
+
+        public SchoolClassesViewModel SchoolClassesViewModel
+        {
+            get => schoolClassesViewModel;
+            set { schoolClassesViewModel = value; }
         }
 
         public IList<GradeLimitViewModel> GradeLimitsViewModel

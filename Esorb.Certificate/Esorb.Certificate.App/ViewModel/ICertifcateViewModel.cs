@@ -7,6 +7,7 @@ namespace Esorb.Certificate.App.ViewModel
         ICertificateDataViewModel CertificateDateViewModel { get; set; }
         ICertificateSettingsViewModel CertificateSettingsViewModel { get; set; }
         CertificateTemplatesViewModel CertificateTemplatesViewModel { get; }
+        public SchoolClassesViewModel SchoolClassesViewModel { get; set; }
         IList<GradeLimitViewModel> GradeLimitsViewModel { get; set; }
         IList<PupilViewModel> PupilsViewModel { get; }
         TeachersViewModel Teachers { get; }

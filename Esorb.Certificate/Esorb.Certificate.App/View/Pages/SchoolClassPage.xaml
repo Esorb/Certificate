@@ -3,12 +3,30 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Esorb.Certificate.App.View.Pages"
+      xmlns:local="clr-namespace:Esorb.Certificate.App.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SchoolClassPage">
+      Title="SchoolClassPage"
+      FontSize="14">
 
-    <Grid>
-        <TextBlock Text="SchoolClass"/>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../DataTemplates/SchoolClassDataTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Margin="10">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Button 
+                    Content="Lade Schüler Datei (*.csv)" 
+                    Margin="10"
+                    Width="150" 
+                    HorizontalAlignment="Left"/>
+                <ItemsControl ItemsSource="{Binding SchoolClasses}"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

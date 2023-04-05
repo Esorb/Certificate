@@ -86,8 +86,9 @@ public partial class PupilViewModel : ObservableObject
     {
         get => _pupil.FullName;
     }
-    public SchoolClassViewModel? SchoolClass
+    public SchoolClassViewModel SchoolClass
     {
         get => _schoolClass;
+        set => _schoolClass = value;
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Esorb.Certificate.App.Model;
+using System.Collections.ObjectModel;
 
 namespace Esorb.Certificate.App.ViewModel;
 
@@ -16,8 +17,11 @@ public partial class SchoolClassViewModel : ObservableObject
     {
         _schoolClass = schoolClass;
     }
-
-    private SchoolClass _schoolClass;
+    public ObservableCollection<PupilViewModel> Pupils
+    {
+        get { return pupils; }
+        set { pupils = value; }
+    }
     public string ClassName
     {
         get => _schoolClass.ClassName;
@@ -55,5 +59,8 @@ public partial class SchoolClassViewModel : ObservableObject
             }
         }
     }
+
+    private SchoolClass _schoolClass;
+    private ObservableCollection<PupilViewModel> pupils = new ObservableCollection<PupilViewModel>();
 }
 
