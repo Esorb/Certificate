@@ -23,7 +23,7 @@
                 <Button 
                     Content="Lade Schüler Datei (*.csv)" 
                     Margin="10"
-                    Width="150" 
+                    Width="200" 
                     HorizontalAlignment="Left"/>
                 <ItemsControl ItemsSource="{Binding SchoolClasses}"/>
             </StackPanel>
