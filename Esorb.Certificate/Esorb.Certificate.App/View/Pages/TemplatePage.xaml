@@ -18,6 +18,8 @@
     </Page.Resources>
 
     <Grid Margin="10">
-        <ItemsControl ItemsSource="{Binding CertificateTemplates}"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding CertificateTemplates}"/>
+        </ScrollViewer>
     </Grid>
 </Page>
