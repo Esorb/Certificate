@@ -14,7 +14,7 @@ namespace Esorb.Certificate.App.ViewModel
     public class CertifcateViewModel : ObservableObject, ICertifcateViewModel
     {
         private ICertificateSettingsViewModel certificateSettingsViewModel = new CertificateSettingsViewModel();
-        private ICertificateDataViewModel certificateDataViewModel;
+        private CertificateDataViewModel certificateDataViewModel;
         private TeachersViewModel teachers;
         private CertificateTemplatesViewModel certificateTemplatesViewModel;
         private GradeLevelLegendsViewModell gradeLevelLegendsViewModell;
@@ -83,7 +83,7 @@ namespace Esorb.Certificate.App.ViewModel
             set { certificateSettingsViewModel = value; }
         }
 
-        public ICertificateDataViewModel CertificateDateViewModel
+        public CertificateDataViewModel CertificateDateViewModel
         {
             get => certificateDataViewModel;
             set { certificateDataViewModel = value; }

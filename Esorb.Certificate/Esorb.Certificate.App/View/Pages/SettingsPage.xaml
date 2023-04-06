@@ -152,7 +152,30 @@
                                 Content="Löschen" 
                                 Margin="0,0,20,0" 
                                 Padding="10,5"
-                                />
+                                >
+                                <Button.ToolTip>
+                                    <ToolTip 
+                            Background="LightYellow" 
+                            Width="350">
+                                        <StackPanel>
+                                            <TextBlock
+                                                Margin="0,5,0,0"
+                                                FontSize="14"
+                                                FontWeight="Bold"
+                                                Text="Achtung:"
+                                                TextWrapping="Wrap"
+                                                Foreground="Red"
+                                            />
+                                                        <TextBlock
+                                                FontSize="14"
+                                                Text="Wenn Sie eine Vorlage löschen, dann gehen alle Inhalte dieser Vorlage und die Arbeit, die Sie bereits investiert haben, unwiederbringlich verloren!"
+                                                TextWrapping="Wrap"
+                                                Foreground="Red"
+                                            />
+                                        </StackPanel>
+                                    </ToolTip>
+                                </Button.ToolTip>
+                            </Button>
                         </Grid>
 
                     </Grid>

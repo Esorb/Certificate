@@ -31,7 +31,8 @@
                     Padding="5,2" 
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Center" 
-                    FontSize="16"/>
+                    FontSize="16"
+                    />
                 <TextBox 
                     Grid.Row="0" 
                     Grid.Column="1" 

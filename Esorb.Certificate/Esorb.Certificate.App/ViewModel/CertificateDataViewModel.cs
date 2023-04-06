@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,28 @@ public partial class CertificateDataViewModel : ObservableObject, ICertificateDa
     private CertificateData _certificateData;
     private DbHelper _dbHelper;
 
+    public List<String> SchoolYearChoices = new();
+    public List<int> HalfYearChoices = new();
+
+    private void Prepare()
+    {
+        int currentYear = DateTime.Now.Year;
+        SchoolYearChoices.Add($"{currentYear - 1} / {currentYear}");
+        SchoolYearChoices.Add($"{currentYear} / {currentYear + 1}");
+        if (!SchoolYearChoices.Contains(SchoolYear))
+        {
+            SchoolYearChoices.Add(SchoolYear);
+        }
+        OnPropertyChanged(nameof(SchoolYearChoices));
+        HalfYearChoices.Add(1);
+        HalfYearChoices.Add(2);
+        OnPropertyChanged(nameof(HalfYearChoices));
+    }
     public CertificateDataViewModel(CertificateData certificateData, DbHelper dbHelper)
     {
         _certificateData = certificateData;
         _dbHelper = dbHelper;
+        Prepare();
     }
 
     public string SchoolYear

@@ -1,6 +1,8 @@
-﻿using Esorb.Certificate.App.ViewModel;
+﻿using CsvHelper;
+using Esorb.Certificate.App.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +23,18 @@ namespace Esorb.Certificate.App.View.Pages
     /// </summary>
     public partial class CertificatePage : Page
     {
-        public readonly ICertifcateViewModel certifcateViewModel;
-        public CertificatePage(ICertifcateViewModel certifcateViewModel)
+        public readonly CertificateDataViewModel CertifcateDataViewModel;
+        public CertificatePage(CertificateDataViewModel certifcateDataViewModel)
         {
             InitializeComponent();
-            this.certifcateViewModel = certifcateViewModel;
-            DataContext = this.certifcateViewModel;
+            CertifcateDataViewModel = certifcateDataViewModel;
+            DataContext = CertifcateDataViewModel;
+            Prepare();
+        }
+        private void Prepare()
+        {
+            CertifcateDataViewModel.SchoolYearChoices.ForEach(sy => CbSchoolYear.Items.Add(sy));
+            CertifcateDataViewModel.HalfYearChoices.ForEach(hy => CbHalfYear.Items.Add(hy));
         }
     }
 }
