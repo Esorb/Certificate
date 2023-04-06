@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
+using System.Globalization;
+using System.Threading;
 
 namespace Esorb.Certificate.App;
 
@@ -22,6 +24,8 @@ public partial class App : Application
 
     protected override async void OnStartup(StartupEventArgs e)
     {
+        Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
         await AppHost.StopAsync();
         var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
         startupForm.Show();

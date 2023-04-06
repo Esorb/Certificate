@@ -22,9 +22,57 @@
             <StackPanel>
                 <Button 
                     Content="Lade Schüler Datei (*.csv)" 
-                    Margin="10"
                     Width="200" 
-                    HorizontalAlignment="Left"/>
+                    HorizontalAlignment="Left"
+                    Margin="4,10" 
+                    Padding="5,2" 
+                    FontSize="16">
+                    <Button.ToolTip>
+                        <ToolTip 
+                            Background="LightYellow" 
+                            Width="350">
+                            <StackPanel>
+                                <TextBlock 
+                                    FontSize="14" 
+                                    Text="Hier könnnen Sie die aus Excel durch [Speichern unter] exportierte Schülerdatei einlesen." 
+                                    TextWrapping="Wrap"
+                                    />
+                                <TextBlock 
+                                    FontSize="14" 
+                                    Text="Format:" 
+                                    TextWrapping="Wrap"
+                                    />
+                                <TextBlock
+                                    Margin="0,5,0,0"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Text="CSV UTF-8 (durch Trennzeichen getrennt) (*.csv)"
+                                    TextWrapping="Wrap"
+                                    />
+                                <TextBlock
+                                    Margin="0,5,0,0"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Text="Achtung:"
+                                    TextWrapping="Wrap"
+                                    Foreground="Red"
+                                    />
+                                <TextBlock
+                                    FontSize="14"
+                                    Text="Ein anderes Format sorgt dafür, dass die deutschen Umlaute nicht korrekt dargestellt werden."
+                                    TextWrapping="Wrap"
+                                    Foreground="Red"
+                                    />
+                                <TextBlock
+                                    FontSize="14"
+                                    Text="Sollten Sie bereits Bewertungen oder Zensuren erfasst haben, so gehen diese verloren, auch wenn es sich um die gleichen Schüler handelt, die schon importiert worden sind!"
+                                    TextWrapping="Wrap"
+                                    Foreground="Red"
+                                    />
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
                 <ItemsControl ItemsSource="{Binding SchoolClasses}"/>
             </StackPanel>
         </ScrollViewer>
