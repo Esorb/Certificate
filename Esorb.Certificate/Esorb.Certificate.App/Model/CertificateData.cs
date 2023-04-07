@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model;
 
-public class CertificateData : PersistentObject, ICertificateData
+public class CertificateData : PersistentObject
 {
     public CertificateData()
     {

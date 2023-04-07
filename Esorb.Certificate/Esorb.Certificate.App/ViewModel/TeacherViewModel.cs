@@ -11,7 +11,7 @@ using Esorb.Certificate.App.Database;
 
 namespace Esorb.Certificate.App.ViewModel;
 
-public partial class TeacherViewModel : ObservableObject, ITeacherViewModel
+public partial class TeacherViewModel : ObservableObject
 {
     public TeacherViewModel(Teacher teacher, DbHelper dbHelper)
     {

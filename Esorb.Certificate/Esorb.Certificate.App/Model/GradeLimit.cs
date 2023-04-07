@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model
 {
-    public class GradeLimit : PersistentObject, IGradeLimit
+    public class GradeLimit : PersistentObject
     {
         public double PercentageLimit { get; set; }
         public string Grade { get; set; }

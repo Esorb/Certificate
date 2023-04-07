@@ -10,7 +10,7 @@
       FontSize="14">
 
     <Border Background="White">
-        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid Margin="10,10,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -28,10 +28,8 @@
                 Text="Zeugnisdaten:" 
                 Grid.Row="0" 
                 Grid.Column="0" 
-                Grid.ColumnSpan="2"
                 Margin="0,0,0,10"
                 Padding="5,2" 
-                HorizontalAlignment="Center" 
                 VerticalAlignment="Center" 
                 FontSize="16"
                 FontWeight="Bold"

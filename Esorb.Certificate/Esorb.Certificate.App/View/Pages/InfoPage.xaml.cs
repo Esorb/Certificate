@@ -27,9 +27,9 @@ namespace Esorb.Certificate.App.View.Pages
     /// </summary>
     public partial class InfoPage : Page
     {
-        public readonly ICertifcateViewModel certifcateViewModel;
+        public readonly CertifcateViewModel certifcateViewModel;
 
-        public InfoPage(ICertifcateViewModel certifcateViewModel)
+        public InfoPage(CertifcateViewModel certifcateViewModel)
         {
             InitializeComponent();
             this.certifcateViewModel = certifcateViewModel;

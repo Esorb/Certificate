@@ -21,9 +21,9 @@ namespace Esorb.Certificate.App.View.Pages
     /// </summary>
     public partial class ExportPage : Page
     {
-        public readonly ICertifcateViewModel certifcateViewModel;
+        public readonly CertifcateViewModel certifcateViewModel;
 
-        public ExportPage(ICertifcateViewModel certifcateViewModel)
+        public ExportPage(CertifcateViewModel certifcateViewModel)
         {
             InitializeComponent();
             this.certifcateViewModel = certifcateViewModel;

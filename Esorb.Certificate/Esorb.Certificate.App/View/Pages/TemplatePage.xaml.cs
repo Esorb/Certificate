@@ -21,8 +21,8 @@ namespace Esorb.Certificate.App.View.Pages
     /// </summary>
     public partial class TemplatePage : Page
     {
-        public readonly ICertificateTemplatesViewModel certifcateTemplatesViewModel;
-        public TemplatePage(ICertificateTemplatesViewModel certifcateTemplatesViewModel)
+        public readonly CertificateTemplatesViewModel certifcateTemplatesViewModel;
+        public TemplatePage(CertificateTemplatesViewModel certifcateTemplatesViewModel)
         {
             InitializeComponent();
             this.certifcateTemplatesViewModel = certifcateTemplatesViewModel;

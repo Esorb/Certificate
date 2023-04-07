@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model;
 
-public abstract class PersistentObject : IPersistentObject
+public abstract class PersistentObject
 {
     //public PersistentObject()
     //{

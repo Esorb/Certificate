@@ -13,7 +13,7 @@ public partial class AdminPage : Page
 {
     private readonly IList<NavButton> navButtons = new List<NavButton>();
     private readonly IDictionary<Uri, Page> subPages = new Dictionary<Uri, Page>();
-    private readonly ICertificateSettingsViewModel SettingsVM = new CertificateSettingsViewModel();
+    private readonly CertificateSettingsViewModel SettingsVM = new CertificateSettingsViewModel();
 
     public readonly CertifcateViewModel certifcateViewModel;
 

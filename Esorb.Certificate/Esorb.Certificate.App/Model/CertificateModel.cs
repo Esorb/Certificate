@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Esorb.Certificate.App.Model
 {
-    public class CertificateModel : ICertificateModel
+    public class CertificateModel
     {
         public DbHelper DbHelper { get; private set; } = new DbHelper();
         private CertificateSettings settings = new();

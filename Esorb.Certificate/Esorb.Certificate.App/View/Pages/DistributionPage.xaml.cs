@@ -21,8 +21,8 @@ namespace Esorb.Certificate.App.View.Pages
     /// </summary>
     public partial class DistributionPage : Page
     {
-        public readonly ICertifcateViewModel certifcateViewModel;
-        public DistributionPage(ICertifcateViewModel certifcateViewModel)
+        public readonly CertifcateViewModel certifcateViewModel;
+        public DistributionPage(CertifcateViewModel certifcateViewModel)
         {
             InitializeComponent();
             this.certifcateViewModel = certifcateViewModel;

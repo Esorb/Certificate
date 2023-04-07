@@ -18,8 +18,8 @@ namespace Esorb.Certificate.App.View.Pages;
 
 public partial class SettingsPage : Page
 {
-    public readonly ICertifcateViewModel certifcateViewModel;
-    public SettingsPage(ICertifcateViewModel certifcateViewModel)
+    public readonly CertifcateViewModel certifcateViewModel;
+    public SettingsPage(CertifcateViewModel certifcateViewModel)
     {
         InitializeComponent();
         this.certifcateViewModel = certifcateViewModel;

@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace Esorb.Certificate.App.ViewModel
 {
-    public partial class CertificateSettingsViewModel : ObservableObject, ICertificateSettingsViewModel
+    public partial class CertificateSettingsViewModel : ObservableObject
     {
         private CertificateSettings _certificateSettings = new();
         public CertificateSettingsViewModel()

@@ -6,9 +6,148 @@
       xmlns:local="clr-namespace:Esorb.Certificate.App.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DistributionPage">
+      Title="DistributionPage"
+      FontSize="14">
 
     <Grid>
-        <TextBlock Text="Distribution"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock 
+            Text="Schritt 1:" 
+            Grid.Row="0" 
+            Grid.Column="0"
+            FontSize="16" 
+            FontWeight="Bold" 
+            Margin="20,10,20,0"
+            />
+        <Button 
+            Content="Zeugnisse zur Erfassung vorbereiten"
+            Grid.Row="1" 
+            Grid.Column="0"
+            Margin="20,10,20,0"
+            Padding="10,5"
+            >
+            <Button.ToolTip>
+                <ToolTip 
+                            Background="LightYellow" 
+                            Width="350">
+                    <StackPanel>
+                        <TextBlock 
+                                    FontSize="14" 
+                                    Text="Hiermit verknüpfen Sie die Schüler auf Basis ihrer Klassen und dem vorgegebenen Halbjahr mit den dazu passenden Zeugnisvorlagen. Dabei werden sämtliche zu erfassenden Felder erzeugt." 
+                                    TextWrapping="Wrap"
+                                    />
+                        <TextBlock
+                                    Margin="0,5,0,0"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Text="Achtung:"
+                                    TextWrapping="Wrap"
+                                    Foreground="Red"
+                                    />
+                        <TextBlock
+                                    FontSize="14"
+                                    Text="Sollten Sie bereits Bewertungen oder Zensuren erfasst haben, so gehen diese verloren!"
+                                    TextWrapping="Wrap"
+                                    Foreground="Red"
+                                    />
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <TextBlock 
+            Grid.Row="2" 
+            Grid.Column="0"
+            Text="Schritt 2:" 
+            FontSize="16" 
+            FontWeight="Bold" 
+            Margin="20,10,20,0"
+            />
+        <Button 
+            Content="Zeugnissdatei zur Verteilung erstellen"
+            Grid.Row="3" 
+            Grid.Column="0"
+            Margin="20,10,20,0"
+            Padding="10,5"
+            >
+            <Button.ToolTip>
+                <ToolTip 
+                            Background="LightYellow" 
+                            Width="350">
+                    <StackPanel>
+                        <TextBlock 
+                                    FontSize="14" 
+                                    Text="Hiermit verknüpfen Sie die Schüler auf Basis ihrer Klassen und dem vorgegebenen Halbjahr mit den dazu passenden Zeugnisvorlagen. Dabei werden sämtliche zu erfassenden Felder erzeugt." 
+                                    TextWrapping="Wrap"
+                                    />
+                        <TextBlock
+                                    Margin="0,5,0,0"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Text="Achtung:"
+                                    TextWrapping="Wrap"
+                                    Foreground="Red"
+                                    />
+                        <TextBlock
+                                    FontSize="14"
+                                    Text="Sollten Sie bereits Bewertungen oder Zensuren erfasst haben, so gehen diese verloren!"
+                                    TextWrapping="Wrap"
+                                    Foreground="Red"
+                                    />
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <TextBlock 
+            Grid.Row="4" 
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            FontSize="16" 
+            Margin="20,10,20,0"
+            >
+            <Run Text="Schritt 3" FontWeight="Bold"/>
+            <Run Text="(außerhalb dieses Programms)"/>
+            <Run Text=":" FontWeight="Bold"/>
+        </TextBlock>
+        <StackPanel 
+            Margin="20,10,20,0"
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            >
+            <TextBlock 
+                TextWrapping="Wrap"
+                Width="550"
+                HorizontalAlignment="Left"                
+                >
+                <Run Text="Packen Sie die erstellte Zeugnisdatei z.B. mit dem kostenlosen Programm 7-Zip in ein "/>
+                <Run Text="verschlüsseltes Archiv " FontWeight="Bold"/>
+                <Run Text="(Datenschutz!)."/>
+            </TextBlock>
+            <TextBlock 
+                Text="Verteilen Sie dieses verschlüsselte Archiv z. B. per E-Mail an alle Klassenlehrer*innen."
+                Margin="0,5,0,0"
+                TextWrapping="Wrap"
+                Width="550"
+                HorizontalAlignment="Left"                
+                />
+            <TextBlock 
+                Text="Verteilen Sie das Passwort für das Archiv auf anderem Wege (z. B. per SMS oder analog im Lehrerzimmer)."
+                Margin="0,5,0,0"
+                TextWrapping="Wrap"
+                Width="550"
+                HorizontalAlignment="Left"                
+                />
+        </StackPanel>
     </Grid>
 </Page>

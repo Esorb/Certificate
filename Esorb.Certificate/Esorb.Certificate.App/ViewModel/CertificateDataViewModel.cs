@@ -10,7 +10,7 @@ using Esorb.Certificate.App.Model;
 
 namespace Esorb.Certificate.App.ViewModel;
 
-public partial class CertificateDataViewModel : ObservableObject, ICertificateDataViewModel
+public partial class CertificateDataViewModel : ObservableObject
 {
     private CertificateData _certificateData;
     private DbHelper _dbHelper;

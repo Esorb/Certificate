@@ -53,7 +53,7 @@ public class DbHelper : IDbHelper
 
         try
         {
-            using var connection = new SqliteConnection($"Data Source={filePath}");
+            using var connection = new SqliteConnection(ConnectionString());
             connection.Open();
             using var command = new SqliteCommand("SELECT name FROM sqlite_master WHERE type='table'", connection);
             command.ExecuteReader();
@@ -63,6 +63,14 @@ public class DbHelper : IDbHelper
         {
             return false;
         }
+    }
+
+    public void ShrinkDatabaseFile()
+    {
+        using var connection = new SqliteConnection(ConnectionString());
+        connection.Open();
+        using var command = new SqliteCommand("VACUUM", connection);
+        command.ExecuteNonQuery();
     }
 
     public void Save(PersistentObject Object)

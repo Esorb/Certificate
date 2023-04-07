@@ -1,25 +1,28 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Esorb.Certificate.App.Model;
 using Esorb.Certificate.App.Database;
-using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.Windows.Forms;
 
 namespace Esorb.Certificate.App.ViewModel
 {
-    public class CertifcateViewModel : ObservableObject, ICertifcateViewModel
+    public class CertifcateViewModel : ObservableObject
     {
-        private ICertificateSettingsViewModel certificateSettingsViewModel = new CertificateSettingsViewModel();
+        private CertificateSettingsViewModel certificateSettingsViewModel = new CertificateSettingsViewModel();
         private CertificateDataViewModel certificateDataViewModel;
         private TeachersViewModel teachers;
         private CertificateTemplatesViewModel certificateTemplatesViewModel;
         private GradeLevelLegendsViewModell gradeLevelLegendsViewModell;
         private SchoolClassesViewModel schoolClassesViewModel;
 
+        public RelayCommand SelectCertificateFile { get; private set; }
+        public RelayCommand SelectOutputFolder { get; private set; }
         public GradeLevelLegendsViewModell GradeLevelLegendsViewModell
         {
             get { return gradeLevelLegendsViewModell; }
@@ -40,7 +43,8 @@ namespace Esorb.Certificate.App.ViewModel
             schoolClassesViewModel = new(this.certificateModel);
 
             BuildCertificateViewModelFromCertificateModel();
-
+            SelectCertificateFile = new RelayCommand(ExecuteSelectCertificateFile, CanExecuteSelectCertificateFile);
+            SelectOutputFolder = new RelayCommand(ExecuteSelectOutputFolder, CanExecuteSelectOutputFolder);
         }
 
         private void BuildCertificateViewModelFromCertificateModel()
@@ -77,7 +81,7 @@ namespace Esorb.Certificate.App.ViewModel
             private set { teachers = value; }
         }
 
-        public ICertificateSettingsViewModel CertificateSettingsViewModel
+        public CertificateSettingsViewModel CertificateSettingsViewModel
         {
             get => certificateSettingsViewModel;
             set { certificateSettingsViewModel = value; }
@@ -105,6 +109,47 @@ namespace Esorb.Certificate.App.ViewModel
         {
             get => gradeLimitsViewModel;
             set { gradeLimitsViewModel = value; }
+        }
+
+        private void ExecuteSelectCertificateFile()
+        {
+            Microsoft.Win32.OpenFileDialog ofd = new()
+            {
+                Filter = "Zeugnisbasisdateien (*.db)|*.db",
+                Multiselect = false,
+                Title = "Zeugnisbasisdatei öffnen"
+            };
+            var result = ofd.ShowDialog();
+            if (result is not null && result is true)
+            {
+                string databasePath = ofd.FileName;
+                System.Windows.MessageBox.Show(databasePath);
+            }
+        }
+
+        private bool CanExecuteSelectCertificateFile()
+        {
+            return true;
+        }
+
+        private void ExecuteSelectOutputFolder()
+        {
+            FolderBrowserDialog folderBrowserDialog = new()
+            {
+                SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+            //folderBrowserDialog.SelectedPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "OneDrive", "Documents");
+            var result = folderBrowserDialog.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = folderBrowserDialog.SelectedPath;
+                System.Windows.MessageBox.Show(path);
+            }
+        }
+
+        private bool CanExecuteSelectOutputFolder()
+        {
+            return true;
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.ViewModel
 {
-    public partial class CertificateTemplatesViewModel : ObservableObject, ICertificateTemplatesViewModel
+    public partial class CertificateTemplatesViewModel : ObservableObject
     {
         public CertificateTemplatesViewModel(CertificateModel certificateModel)
         {
