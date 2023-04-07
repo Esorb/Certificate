@@ -21,17 +21,16 @@ namespace Esorb.Certificate.UnitTests
             dbh.DropTable(typeof(CertificateData).ToString());
             dbh.CreateTable(typeof(CertificateData).ToString());
             // Arrange
-            var cd = new CertificateData
-            {
-                SchoolYear = "2022 / 2023",
-                HalfYear = 2,
-                DateOfSchoolConference = new DateTime(2023, 04, 01),
-                DateOfCertificateDistribution = new DateTime(2023, 04, 15),
-                DateOfRestartLessons = new DateTime(2023, 07, 15),
-                TimeOfRestartLessons = DateTime.ParseExact("08:00:00 AM", "hh:mm:ss tt", CultureInfo.InvariantCulture)
-            };
+            var cm = new CertificateModel();
+            var cd = cm.CertificateData;
+            cd.SchoolYear = "2022 / 2023";
+            cd.HalfYear = 2;
+            cd.DateOfSchoolConference = new DateTime(2023, 04, 01);
+            cd.DateOfCertificateDistribution = new DateTime(2023, 04, 15);
+            cd.DateOfRestartLessons = new DateTime(2023, 07, 15);
+            cd.TimeOfRestartLessons = DateTime.ParseExact("08:00:00 AM", "hh:mm:ss tt", CultureInfo.InvariantCulture);
             dbh.Save(cd);
-            var cbvm = new CertificateDataViewModel(cd, dbh)
+            var cbvm = new CertificateDataViewModel(cm)
             {
                 // Act
                 SchoolYear = "2023 / 2024"

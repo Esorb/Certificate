@@ -33,7 +33,7 @@ namespace Esorb.Certificate.App.ViewModel
         #region Partial Viewmodels
         public GradeLevelLegendsViewModell GradeLevelLegendsViewModell { get; set; }
         public GradeLimitsViewModel GradeLimitsViewModel { get; set; }
-        public TeachersViewModel Teachers { get; set; }
+        public TeachersViewModel TeachersViewModel { get; set; }
         public CertificateSettingsViewModel CertificateSettingsViewModel { get; set; }
         public CertificateDataViewModel CertificateDataViewModel { get; set; }
         public CertificateTemplatesViewModel CertificateTemplatesViewModel { get; set; }
@@ -48,12 +48,18 @@ namespace Esorb.Certificate.App.ViewModel
         #endregion
 
         #region Selected ocjects
-        public Teacher SelectedTeacher { get; set; }
+        public TeacherViewModel SelectedTeacher { get; set; }
         public SchoolClass SelectedSchoolClass { get; set; }
 
         private void SetSelectedTeacher()
         {
+            var numberOfTeachers = TeachersViewModel?.Teachers?.Count ?? 0;
+            if (numberOfTeachers == 0) { return; }
+            if (CertificateSettingsViewModel == null) { return; }
+            if (string.IsNullOrEmpty(CertificateSettingsViewModel.TeacherGUID)) { return; }
+            if (!TeachersViewModel!.Teachers.Any(t => t.ID == CertificateSettingsViewModel.TeacherGUID)) { return; }
 
+            SelectedTeacher = TeachersViewModel.Teachers.FirstOrDefault(t => t.ID == CertificateSettingsViewModel.TeacherGUID)!;
         }
 
         #endregion
@@ -73,7 +79,7 @@ namespace Esorb.Certificate.App.ViewModel
 
         private void BuildPartialViewModels()
         {
-            Teachers = new(this.certificateModel);
+            TeachersViewModel = new(this.certificateModel);
             CertificateTemplatesViewModel = new(certificateModel);
             GradeLevelLegendsViewModell = new(certificateModel);
             GradeLimitsViewModel = new(certificateModel);

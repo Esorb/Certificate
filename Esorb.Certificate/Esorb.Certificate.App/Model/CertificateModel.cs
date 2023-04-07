@@ -32,7 +32,7 @@ namespace Esorb.Certificate.App.Model
             SchoolClasses = DbHelper.LoadAll<SchoolClass>().OrderBy(schoolClass => schoolClass.ClassName).ToList();
             GradeLimits = DbHelper.LoadAll<GradeLimit>().OrderBy(gl => gl.GradeNumeric).ToList();
             CertificateTemplates = DbHelper.LoadAll<CertificateTemplate>().OrderBy(ct => ct.Yearlevel).ThenBy(ct => ct.HalfYear).ToList();
-            CertificateData = DbHelper.LoadAll<CertificateData>().ToList().FirstOrDefault();
+            CertificateData = DbHelper.LoadAll<CertificateData>().ToList().FirstOrDefault() ?? new CertificateData();
         }
 
         public void ClearCertificateModel()

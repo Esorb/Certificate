@@ -120,5 +120,33 @@ namespace Esorb.Certificate.App.ViewModel
                 }
             }
         }
+
+        public string TeacherGUID
+        {
+            get => certificateSettings.TeacherGUID;
+            set
+            {
+                if (certificateSettings.TeacherGUID != value)
+                {
+                    certificateSettings.TeacherGUID = value;
+                    OnPropertyChanged();
+                    certificateSettings.Save();
+                }
+            }
+        }
+
+        public string SchoolClassGUID
+        {
+            get => certificateSettings.SchoolClassGUID;
+            set
+            {
+                if (certificateSettings.SchoolClassGUID != value)
+                {
+                    certificateSettings.SchoolClassGUID = value;
+                    OnPropertyChanged();
+                    certificateSettings.Save();
+                }
+            }
+        }
     }
 }

@@ -22,6 +22,10 @@ public partial class TeacherViewModel : ObservableObject
     private Teacher Teacher { get; }
     private DbHelper DbHelper { get; }
 
+    public string ID
+    {
+        get => Teacher.ID;
+    }
     public string FirstName
     {
         get => Teacher.FirstName;
