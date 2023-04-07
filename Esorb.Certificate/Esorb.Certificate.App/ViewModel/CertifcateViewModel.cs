@@ -19,7 +19,6 @@ namespace Esorb.Certificate.App.ViewModel
         public GradeLevelLegendsViewModell GradeLevelLegendsViewModell { get; set; }
 
         private IList<PupilViewModel> pupilsViewModel;
-        private IList<GradeLimitViewModel> gradeLimitsViewModel;
 
         private CertificateModel certificateModel;
 
@@ -27,12 +26,14 @@ namespace Esorb.Certificate.App.ViewModel
         {
             this.certificateModel = certificateModel;
             CertificateSettingsViewModel = new CertificateSettingsViewModel();
+
             Teachers = new(this.certificateModel);
             CertificateTemplatesViewModel = new(this.certificateModel);
             GradeLevelLegendsViewModell = new(this.certificateModel);
             SchoolClassesViewModel = new(this.certificateModel);
 
             BuildCertificateViewModelFromCertificateModel();
+
             SelectCertificateFile = new RelayCommand(ExecuteSelectCertificateFile, CanExecuteSelectCertificateFile);
             SelectOutputFolder = new RelayCommand(ExecuteSelectOutputFolder, CanExecuteSelectOutputFolder);
         }
@@ -45,21 +46,22 @@ namespace Esorb.Certificate.App.ViewModel
 
         private void BuildGradeLimitsViewModel()
         {
-            gradeLimitsViewModel = new List<GradeLimitViewModel>();
+            GradeLimitsViewModel = new List<GradeLimitViewModel>();
 
             foreach (var gl in certificateModel.GradeLimits)
             {
-                gradeLimitsViewModel.Add(new GradeLimitViewModel(gl, certificateModel.DbHelper));
+                GradeLimitsViewModel.Add(new GradeLimitViewModel(gl, certificateModel.DbHelper));
             }
 
-            gradeLimitsViewModel = gradeLimitsViewModel.OrderBy(glvm => glvm.GradeNumeric).ToList();
+            GradeLimitsViewModel = GradeLimitsViewModel.OrderBy(glvm => glvm.GradeNumeric).ToList();
         }
         private void BuildCertificateDataViewModel()
         {
             this.CertificateDateViewModel = new CertificateDataViewModel(certificateModel.CertificateData, certificateModel.DbHelper);
         }
 
-
+        public Teacher SelectedTeacher { get; set; }
+        public SchoolClass SelectedSchoolClass { get; set; }
         public IList<PupilViewModel> PupilsViewModel
         {
             get => pupilsViewModel;
@@ -70,11 +72,7 @@ namespace Esorb.Certificate.App.ViewModel
         public CertificateDataViewModel CertificateDateViewModel { get; set; }
         public CertificateTemplatesViewModel CertificateTemplatesViewModel { get; set; }
         public SchoolClassesViewModel SchoolClassesViewModel { get; set; }
-        public IList<GradeLimitViewModel> GradeLimitsViewModel
-        {
-            get => gradeLimitsViewModel;
-            set { gradeLimitsViewModel = value; }
-        }
+        public IList<GradeLimitViewModel> GradeLimitsViewModel { get; set; }
 
         public Teacher SelectedTeacher { get; set; }
         private void ExecuteSelectCertificateFile()
