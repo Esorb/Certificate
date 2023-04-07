@@ -37,12 +37,12 @@ public class DbHelper
         CreateTable(typeof(GradeLimit).ToString());
     }
 
-    private string ConnectionString()
+    private string ConnectionString(string filePath)
     {
         StringBuilder sb = new();
 
         sb.Append("Data Source = ");
-        sb.Append(settings.DatabasePath);
+        sb.Append(filePath);
         sb.Append(';');
 
         return sb.ToString();
@@ -55,7 +55,7 @@ public class DbHelper
 
         try
         {
-            using var connection = new SqliteConnection(ConnectionString());
+            using var connection = new SqliteConnection(ConnectionString(filePath));
             connection.Open();
             string sql = "SELECT name FROM sqlite_master WHERE type='table'";
             List<string> result = connection.Query<string>(sql).AsList();
@@ -75,7 +75,7 @@ public class DbHelper
 
     public void ShrinkDatabaseFile()
     {
-        using var connection = new SqliteConnection(ConnectionString());
+        using var connection = new SqliteConnection(ConnectionString(settings.DatabasePath));
         connection.Open();
         using var command = new SqliteCommand("VACUUM", connection);
         command.ExecuteNonQuery();
@@ -114,7 +114,7 @@ public class DbHelper
             return 0;
         }
 
-        using var connection = new SqliteConnection(ConnectionString());
+        using var connection = new SqliteConnection(ConnectionString(settings.DatabasePath));
         return connection.ExecuteScalar<int>(StandardSQLStatements[Type].Count);
     }
 
@@ -124,7 +124,7 @@ public class DbHelper
         var Type = result.GetType().ToString();
         if (!StandardSQLStatements.ContainsKey(Type)) { return result; }
 
-        using var connection = new SqliteConnection(ConnectionString());
+        using var connection = new SqliteConnection(ConnectionString(settings.DatabasePath));
         var parameter = new { ID = SearchID };
         result = connection.QuerySingle<T>(StandardSQLStatements[Type].SelectById, parameter);
         return result;
@@ -134,7 +134,7 @@ public class DbHelper
     {
         var Type = typeof(T).ToString();
 
-        using var connection = new SqliteConnection(ConnectionString());
+        using var connection = new SqliteConnection(ConnectionString(settings.DatabasePath));
         return connection.Query<T>(StandardSQLStatements[Type].SelectAll).ToList();
     }
 
@@ -142,7 +142,7 @@ public class DbHelper
     {
         if (!StandardSQLStatements.ContainsKey(Type)) { return; }
 
-        using var connection = new SqliteConnection(ConnectionString());
+        using var connection = new SqliteConnection(ConnectionString(settings.DatabasePath));
         connection.ExecuteScalar(StandardSQLStatements[Type].CreateTable);
     }
 
@@ -151,14 +151,14 @@ public class DbHelper
     {
         if (!StandardSQLStatements.ContainsKey(Type)) { return; }
 
-        using var connection = new SqliteConnection(ConnectionString());
+        using var connection = new SqliteConnection(ConnectionString(settings.DatabasePath));
         connection.Execute(StandardSQLStatements[Type].DropTable);
     }
 
 
     private void CreateDbInstance(PersistentObject Object)
     {
-        using var connection = new SqliteConnection(ConnectionString());
+        using var connection = new SqliteConnection(ConnectionString(settings.DatabasePath));
         {
             connection.ExecuteScalar(StandardSQLStatements[Object.GetType().ToString()].Insert, Object);
         };
@@ -167,14 +167,14 @@ public class DbHelper
 
     private void UpdateDbInstance(PersistentObject Object)
     {
-        using var connection = new SqliteConnection(ConnectionString());
+        using var connection = new SqliteConnection(ConnectionString(settings.DatabasePath));
         connection.ExecuteScalar(StandardSQLStatements[Object.GetType().ToString()].Update, Object);
     }
 
 
     private void DeleteDbInstance(PersistentObject Object)
     {
-        using var connection = new SqliteConnection(ConnectionString());
+        using var connection = new SqliteConnection(ConnectionString(settings.DatabasePath));
         connection.ExecuteScalar(StandardSQLStatements[Object.GetType().ToString()].DeleteById, Object);
     }
 
