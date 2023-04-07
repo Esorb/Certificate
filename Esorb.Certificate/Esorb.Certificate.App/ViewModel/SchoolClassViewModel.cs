@@ -15,7 +15,7 @@ public partial class SchoolClassViewModel : ObservableObject
 
     public SchoolClassViewModel(SchoolClass schoolClass)
     {
-        schoolClass = schoolClass;
+        this.schoolClass = schoolClass;
     }
     public ObservableCollection<PupilViewModel> Pupils
     {
@@ -37,7 +37,6 @@ public partial class SchoolClassViewModel : ObservableObject
                 OnPropertyChanged();
             }
         }
-
     }
     public int Yearlevel
     {

@@ -97,6 +97,7 @@ namespace Esorb.Certificate.App.ViewModel
         {
             BuildPartialViewModels();
             SetSelectedTeacher();
+            SetSelectedSchoolClass();
         }
 
         private void BuildPartialViewModels()

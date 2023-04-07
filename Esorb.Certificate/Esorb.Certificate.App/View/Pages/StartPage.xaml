@@ -181,29 +181,6 @@
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Center" 
                     FontSize="16"/>
-                <TextBox 
-                    Grid.Row="6" 
-                    Grid.Column="1" 
-                    Text="{Binding CertificateSettingsViewModel.SchoolClass, Mode=TwoWay}" 
-                    Margin="5" 
-                    Padding="5,2" 
-                    Width="100" 
-                    HorizontalAlignment="Left" 
-                    FontSize="16"
-                    >
-                    <TextBox.ToolTip>
-                        <ToolTip
-                            Background="LightYellow" 
-                            Width="350"
-                            >
-                            <TextBlock
-                                FontSize="14"
-                                Text="Wählen Sie hier die Klasse aus, für die Sie das Zeugnis erstellen wollen."
-                                TextWrapping="Wrap"     
-                                />
-                        </ToolTip>
-                    </TextBox.ToolTip>
-                </TextBox>
                 <ComboBox
                     x:Name="CbSchoolClassSelection"
                     SelectedItem="{Binding SelectedSchoolClass}"
@@ -214,6 +191,8 @@
                     FontSize="16"
                     Height="30"
                     Margin="5"
+                    Width="80"
+                    HorizontalAlignment="Left"
                     SelectionChanged="CbSchoolClassSelection_SelectionChanged"
                     >
                     <ComboBox.ToolTip>

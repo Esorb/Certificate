@@ -28,7 +28,7 @@ public class SchoolClassesViewModel : ObservableObject
 
         schoolClasses = new ObservableCollection<SchoolClassViewModel>();
 
-        foreach (var sc in certificateModel.SchoolClasses)
+        foreach (SchoolClass sc in certificateModel.SchoolClasses)
         {
             scvm = new SchoolClassViewModel(sc);
             schoolClasses.Add(scvm);
