@@ -14,33 +14,23 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public class CertifcateViewModel : ObservableObject
     {
-        private CertificateSettingsViewModel certificateSettingsViewModel = new CertificateSettingsViewModel();
-        private CertificateDataViewModel certificateDataViewModel;
-        private TeachersViewModel teachers;
-        private CertificateTemplatesViewModel certificateTemplatesViewModel;
-        private GradeLevelLegendsViewModell gradeLevelLegendsViewModell;
-        private SchoolClassesViewModel schoolClassesViewModel;
-
         public RelayCommand SelectCertificateFile { get; private set; }
         public RelayCommand SelectOutputFolder { get; private set; }
-        public GradeLevelLegendsViewModell GradeLevelLegendsViewModell
-        {
-            get { return gradeLevelLegendsViewModell; }
-            set { gradeLevelLegendsViewModell = value; }
-        }
+        public GradeLevelLegendsViewModell GradeLevelLegendsViewModell { get; set; }
 
         private IList<PupilViewModel> pupilsViewModel;
         private IList<GradeLimitViewModel> gradeLimitsViewModel;
+
         private CertificateModel certificateModel;
 
         public CertifcateViewModel(CertificateModel certificateModel)
         {
             this.certificateModel = certificateModel;
-
-            teachers = new(this.certificateModel);
-            certificateTemplatesViewModel = new(this.certificateModel);
-            gradeLevelLegendsViewModell = new(this.certificateModel);
-            schoolClassesViewModel = new(this.certificateModel);
+            CertificateSettingsViewModel = new CertificateSettingsViewModel();
+            Teachers = new(this.certificateModel);
+            CertificateTemplatesViewModel = new(this.certificateModel);
+            GradeLevelLegendsViewModell = new(this.certificateModel);
+            SchoolClassesViewModel = new(this.certificateModel);
 
             BuildCertificateViewModelFromCertificateModel();
             SelectCertificateFile = new RelayCommand(ExecuteSelectCertificateFile, CanExecuteSelectCertificateFile);
@@ -66,7 +56,7 @@ namespace Esorb.Certificate.App.ViewModel
         }
         private void BuildCertificateDataViewModel()
         {
-            certificateDataViewModel = new CertificateDataViewModel(certificateModel.CertificateData, certificateModel.DbHelper);
+            this.CertificateDateViewModel = new CertificateDataViewModel(certificateModel.CertificateData, certificateModel.DbHelper);
         }
 
 
@@ -75,42 +65,18 @@ namespace Esorb.Certificate.App.ViewModel
             get => pupilsViewModel;
         }
 
-        public TeachersViewModel Teachers
-        {
-            get => teachers;
-            private set { teachers = value; }
-        }
-
-        public CertificateSettingsViewModel CertificateSettingsViewModel
-        {
-            get => certificateSettingsViewModel;
-            set { certificateSettingsViewModel = value; }
-        }
-
-        public CertificateDataViewModel CertificateDateViewModel
-        {
-            get => certificateDataViewModel;
-            set { certificateDataViewModel = value; }
-        }
-
-        public CertificateTemplatesViewModel CertificateTemplatesViewModel
-        {
-            get => certificateTemplatesViewModel;
-            private set { certificateTemplatesViewModel = value; }
-        }
-
-        public SchoolClassesViewModel SchoolClassesViewModel
-        {
-            get => schoolClassesViewModel;
-            set { schoolClassesViewModel = value; }
-        }
-
+        public TeachersViewModel Teachers { get; set; }
+        public CertificateSettingsViewModel CertificateSettingsViewModel { get; set; }
+        public CertificateDataViewModel CertificateDateViewModel { get; set; }
+        public CertificateTemplatesViewModel CertificateTemplatesViewModel { get; set; }
+        public SchoolClassesViewModel SchoolClassesViewModel { get; set; }
         public IList<GradeLimitViewModel> GradeLimitsViewModel
         {
             get => gradeLimitsViewModel;
             set { gradeLimitsViewModel = value; }
         }
 
+        public Teacher SelectedTeacher { get; set; }
         private void ExecuteSelectCertificateFile()
         {
             Microsoft.Win32.OpenFileDialog ofd = new()
@@ -126,7 +92,6 @@ namespace Esorb.Certificate.App.ViewModel
                 System.Windows.MessageBox.Show(databasePath);
             }
         }
-
         private bool CanExecuteSelectCertificateFile()
         {
             return true;
@@ -146,7 +111,6 @@ namespace Esorb.Certificate.App.ViewModel
                 System.Windows.MessageBox.Show(path);
             }
         }
-
         private bool CanExecuteSelectOutputFolder()
         {
             return true;
