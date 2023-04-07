@@ -17,7 +17,7 @@ namespace Esorb.Certificate.App.Model
 
         public CertificateModel()
         {
-            if (DbHelper.IsSQLiteFile(settings.DatabasePath))
+            if (DbHelper.IsCertificateFile(settings.DatabasePath))
             {
                 LoadCertificateModel();
                 LinkCertificateModel();

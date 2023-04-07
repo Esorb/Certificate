@@ -51,6 +51,11 @@ namespace Esorb.Certificate.App.ViewModel
         public Teacher SelectedTeacher { get; set; }
         public SchoolClass SelectedSchoolClass { get; set; }
 
+        private void SetSelectedTeacher()
+        {
+
+        }
+
         #endregion
 
         #region Private ViewModel Builders
@@ -77,12 +82,6 @@ namespace Esorb.Certificate.App.ViewModel
         }
 
         #endregion
-
-        private void SetSelectedTeacher()
-        {
-
-        }
-        public IList<PupilViewModel> PupilsViewModel { get; set; }
 
         #region Private parts of RelayCommands
         private void ExecuteSelectCertificateFile()

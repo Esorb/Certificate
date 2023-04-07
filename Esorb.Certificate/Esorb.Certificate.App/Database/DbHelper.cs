@@ -12,7 +12,9 @@ namespace Esorb.Certificate.App.Database;
 
 public class DbHelper
 {
-    private readonly CertificateSettings _settings = new();
+    private readonly CertificateSettings settings = new();
+    private List<string> Tables = new List<string>();
+
     public DbHelper()
     {
         InitPupil();
@@ -40,13 +42,13 @@ public class DbHelper
         StringBuilder sb = new();
 
         sb.Append("Data Source = ");
-        sb.Append(_settings.DatabasePath);
+        sb.Append(settings.DatabasePath);
         sb.Append(';');
 
         return sb.ToString();
     }
 
-    public bool IsSQLiteFile(string filePath)
+    public bool IsCertificateFile(string filePath)
     {
         if (string.IsNullOrEmpty(filePath)) return false;
         if (!File.Exists(filePath)) return false;
@@ -185,6 +187,7 @@ public class DbHelper
 
         ObjectSQL SQL = new("Pupil", Fields);
         StandardSQLStatements.Add(typeof(Pupil).ToString(), SQL);
+        Tables.Add("Pupil");
     }
 
     private void InitSchoolClass()
@@ -198,6 +201,7 @@ public class DbHelper
 
         ObjectSQL SQL = new("SchoolClass", Fields);
         StandardSQLStatements.Add(typeof(SchoolClass).ToString(), SQL);
+        Tables.Add("SchoolClass");
     }
 
     private void InitTeacher()
@@ -214,6 +218,7 @@ public class DbHelper
 
         ObjectSQL SQL = new("Teacher", Fields);
         StandardSQLStatements.Add(typeof(Teacher).ToString(), SQL);
+        Tables.Add("Teacher");
     }
 
     private void InitCertificateData()
@@ -230,6 +235,7 @@ public class DbHelper
 
         ObjectSQL SQL = new("CertificateData", Fields);
         StandardSQLStatements.Add(typeof(CertificateData).ToString(), SQL);
+        Tables.Add("CertificateData");
     }
 
     private void InitCertificateTemplate()
