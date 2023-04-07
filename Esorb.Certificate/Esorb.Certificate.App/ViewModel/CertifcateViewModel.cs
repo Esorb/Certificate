@@ -32,6 +32,7 @@ namespace Esorb.Certificate.App.ViewModel
 
         #region Partial Viewmodels
         public GradeLevelLegendsViewModell GradeLevelLegendsViewModell { get; set; }
+        public GradeLimitsViewModel GradeLimitsViewModel { get; set; }
         public TeachersViewModel Teachers { get; set; }
         public CertificateSettingsViewModel CertificateSettingsViewModel { get; set; }
         public CertificateDataViewModel CertificateDataViewModel { get; set; }
@@ -61,39 +62,27 @@ namespace Esorb.Certificate.App.ViewModel
 
         private void BuildCertificateViewModelFromCertificateModel()
         {
+            BuildPartialViewModels();
+            SetSelectedTeacher();
+        }
+
+        private void BuildPartialViewModels()
+        {
             Teachers = new(this.certificateModel);
             CertificateTemplatesViewModel = new(certificateModel);
             GradeLevelLegendsViewModell = new(certificateModel);
+            GradeLimitsViewModel = new(certificateModel);
             SchoolClassesViewModel = new(certificateModel);
             CertificateDataViewModel = new(certificateModel);
-
-            BuildGradeLimitsViewModel();
         }
-
-        private void BuildGradeLimitsViewModel()
-        {
-            GradeLimitsViewModel = new List<GradeLimitViewModel>();
-
-            foreach (var gl in certificateModel.GradeLimits)
-            {
-                GradeLimitsViewModel.Add(new GradeLimitViewModel(gl, certificateModel.DbHelper));
-            }
-
-            GradeLimitsViewModel = GradeLimitsViewModel.OrderBy(glvm => glvm.GradeNumeric).ToList();
-        }
-
-        //private void BuildCertificateDataViewModel()
-        //{
-        //}
 
         #endregion
 
-        private void GetSelectedTeacher()
+        private void SetSelectedTeacher()
         {
 
         }
         public IList<PupilViewModel> PupilsViewModel { get; set; }
-        public IList<GradeLimitViewModel> GradeLimitsViewModel { get; set; }
 
         #region Private parts of RelayCommands
         private void ExecuteSelectCertificateFile()

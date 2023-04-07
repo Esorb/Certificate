@@ -33,7 +33,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <DataGrid Grid.Column="0"
-                            ItemsSource="{Binding GradeLimitsViewModel}" 
+                            ItemsSource="{Binding GradeLimitsViewModel.GradeLimits}" 
                             AutoGenerateColumns="False"
                             CanUserAddRows="False"
                             CanUserDeleteRows="False"
@@ -166,7 +166,7 @@
                                                 TextWrapping="Wrap"
                                                 Foreground="Red"
                                             />
-                                                        <TextBlock
+                                            <TextBlock
                                                 FontSize="14"
                                                 Text="Wenn Sie eine Vorlage löschen, dann gehen alle Inhalte dieser Vorlage und die Arbeit, die Sie bereits investiert haben, unwiederbringlich verloren!"
                                                 TextWrapping="Wrap"
