@@ -14,9 +14,21 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public class CertifcateViewModel : ObservableObject
     {
+        #region Partial Viewmodels
+        public GradeLevelLegendsViewModell GradeLevelLegendsViewModell { get; set; }
+        public TeachersViewModel Teachers { get; set; }
+        public CertificateSettingsViewModel CertificateSettingsViewModel { get; set; }
+        public CertificateDataViewModel CertificateDateViewModel { get; set; }
+        public CertificateTemplatesViewModel CertificateTemplatesViewModel { get; set; }
+        public SchoolClassesViewModel SchoolClassesViewModel { get; set; }
+
+        #endregion
+
+        #region RelayCommands
         public RelayCommand SelectCertificateFile { get; private set; }
         public RelayCommand SelectOutputFolder { get; private set; }
-        public GradeLevelLegendsViewModell GradeLevelLegendsViewModell { get; set; }
+
+        #endregion
 
         private IList<PupilViewModel> pupilsViewModel;
 
@@ -24,22 +36,26 @@ namespace Esorb.Certificate.App.ViewModel
 
         public CertifcateViewModel(CertificateModel certificateModel)
         {
-            this.certificateModel = certificateModel;
             CertificateSettingsViewModel = new CertificateSettingsViewModel();
+            this.certificateModel = certificateModel;
 
+            BuildCertificateViewModelFromCertificateModel();
+
+        }
+
+        #region Private ViewModel Builders
+        private void BuildRelayCommands()
+        {
+            SelectCertificateFile = new RelayCommand(ExecuteSelectCertificateFile, CanExecuteSelectCertificateFile);
+            SelectOutputFolder = new RelayCommand(ExecuteSelectOutputFolder, CanExecuteSelectOutputFolder);
+        }
+        private void BuildCertificateViewModelFromCertificateModel()
+        {
             Teachers = new(this.certificateModel);
             CertificateTemplatesViewModel = new(this.certificateModel);
             GradeLevelLegendsViewModell = new(this.certificateModel);
             SchoolClassesViewModel = new(this.certificateModel);
 
-            BuildCertificateViewModelFromCertificateModel();
-
-            SelectCertificateFile = new RelayCommand(ExecuteSelectCertificateFile, CanExecuteSelectCertificateFile);
-            SelectOutputFolder = new RelayCommand(ExecuteSelectOutputFolder, CanExecuteSelectOutputFolder);
-        }
-
-        private void BuildCertificateViewModelFromCertificateModel()
-        {
             BuildCertificateDataViewModel();
             BuildGradeLimitsViewModel();
         }
@@ -60,6 +76,9 @@ namespace Esorb.Certificate.App.ViewModel
             this.CertificateDateViewModel = new CertificateDataViewModel(certificateModel.CertificateData, certificateModel.DbHelper);
         }
 
+        #endregion
+
+
         public Teacher SelectedTeacher { get; set; }
         public SchoolClass SelectedSchoolClass { get; set; }
         public IList<PupilViewModel> PupilsViewModel
@@ -67,14 +86,9 @@ namespace Esorb.Certificate.App.ViewModel
             get => pupilsViewModel;
         }
 
-        public TeachersViewModel Teachers { get; set; }
-        public CertificateSettingsViewModel CertificateSettingsViewModel { get; set; }
-        public CertificateDataViewModel CertificateDateViewModel { get; set; }
-        public CertificateTemplatesViewModel CertificateTemplatesViewModel { get; set; }
-        public SchoolClassesViewModel SchoolClassesViewModel { get; set; }
         public IList<GradeLimitViewModel> GradeLimitsViewModel { get; set; }
 
-        public Teacher SelectedTeacher { get; set; }
+        #region Private parts of RelayCommands
         private void ExecuteSelectCertificateFile()
         {
             Microsoft.Win32.OpenFileDialog ofd = new()
@@ -113,5 +127,7 @@ namespace Esorb.Certificate.App.ViewModel
         {
             return true;
         }
+
+        #endregion
     }
 }
