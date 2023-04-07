@@ -17,7 +17,7 @@ public partial class App : Application
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddSingleton<MainWindow>();
-                services.AddSingleton<ICertifcateViewModel, CertifcateViewModel>();
+                //services.AddSingleton<CertifcateViewModel, CertifcateViewModel>();
             })
             .Build();
     }
