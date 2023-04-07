@@ -14,6 +14,20 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public class CertifcateViewModel : ObservableObject
     {
+        private CertificateModel certificateModel;
+
+        #region Constructor
+        public CertifcateViewModel(CertificateModel certificateModel)
+        {
+            CertificateSettingsViewModel = new CertificateSettingsViewModel();
+            this.certificateModel = certificateModel;
+
+            BuildCertificateViewModelFromCertificateModel();
+
+        }
+
+        #endregion
+
         #region Partial Viewmodels
         public GradeLevelLegendsViewModell GradeLevelLegendsViewModell { get; set; }
         public TeachersViewModel Teachers { get; set; }
@@ -30,18 +44,11 @@ namespace Esorb.Certificate.App.ViewModel
 
         #endregion
 
-        private IList<PupilViewModel> pupilsViewModel;
+        #region Selected ocjects
+        public Teacher SelectedTeacher { get; set; }
+        public SchoolClass SelectedSchoolClass { get; set; }
 
-        private CertificateModel certificateModel;
-
-        public CertifcateViewModel(CertificateModel certificateModel)
-        {
-            CertificateSettingsViewModel = new CertificateSettingsViewModel();
-            this.certificateModel = certificateModel;
-
-            BuildCertificateViewModelFromCertificateModel();
-
-        }
+        #endregion
 
         #region Private ViewModel Builders
         private void BuildRelayCommands()
@@ -79,13 +86,7 @@ namespace Esorb.Certificate.App.ViewModel
         #endregion
 
 
-        public Teacher SelectedTeacher { get; set; }
-        public SchoolClass SelectedSchoolClass { get; set; }
-        public IList<PupilViewModel> PupilsViewModel
-        {
-            get => pupilsViewModel;
-        }
-
+        public IList<PupilViewModel> PupilsViewModel { get; set; }
         public IList<GradeLimitViewModel> GradeLimitsViewModel { get; set; }
 
         #region Private parts of RelayCommands
