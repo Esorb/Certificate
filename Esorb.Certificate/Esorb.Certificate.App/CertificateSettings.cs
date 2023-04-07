@@ -8,88 +8,47 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App
 {
-    public class CertificateSettings : ICertificateSettings
+    public class CertificateSettings
     {
         public CertificateSettings()
         {
-            databasePath = Properties.Settings.Default.DatabasePath;
-            schoolClass = Properties.Settings.Default.SchoolClass;
-            schoolYear = Properties.Settings.Default.SchoolYear;
-            halfYear = Properties.Settings.Default.HalfYear;
-            teacher = Properties.Settings.Default.Teacher;
-            outputFolder = Properties.Settings.Default.OutputFolder;
-            page = Properties.Settings.Default.Page;
-            subPage = Properties.Settings.Default.SubPage;
-            menuPosition = Properties.Settings.Default.MenuPosition;
+            DatabasePath = Properties.Settings.Default.DatabasePath;
+            SchoolClass = Properties.Settings.Default.SchoolClass;
+            SchoolYear = Properties.Settings.Default.SchoolYear;
+            HalfYear = Properties.Settings.Default.HalfYear;
+            Teacher = Properties.Settings.Default.Teacher;
+            OutputFolder = Properties.Settings.Default.OutputFolder;
+            Page = Properties.Settings.Default.Page;
+            SubPage = Properties.Settings.Default.SubPage;
+            MenuPosition = Properties.Settings.Default.MenuPosition;
+            TeacherGUID = Properties.Settings.Default.TeacherGUID;
+            SchoolClassGUID = Properties.Settings.Default.SchoolClassGUID;
         }
+        public string MenuPosition { get; set; }
+        public string SubPage { get; set; }
+        public string Page { get; set; }
+        public string OutputFolder { get; set; }
+        public string DatabasePath { get; set; }
+        public string SchoolClass { get; set; }
+        public string SchoolYear { get; set; }
+        public string HalfYear { get; set; }
+        public string Teacher { get; set; }
+        public string TeacherGUID { get; set; }
+        public string SchoolClassGUID { get; set; }
 
-        private string schoolYear;
-        private string halfYear;
-        private string schoolClass;
-        private string databasePath;
-        private string outputFolder;
-        private string page;
-        private string subPage;
-        private string teacher;
-        private string menuPosition;
-
-        public string MenuPosition
-        {
-            get { return menuPosition; }
-            set { menuPosition = value; }
-        }
-
-        public string SubPage
-        {
-            get { return subPage; }
-            set { subPage = value; }
-        }
-        public string Page
-        {
-            get { return page; }
-            set { page = value; }
-        }
-        public string OutPutFolder
-        {
-            get { return outputFolder; }
-            set { outputFolder = value; }
-        }
-        public string DatabasePath
-        {
-            get => databasePath;
-            set { databasePath = value; }
-        }
-        public string SchoolClass
-        {
-            get => schoolClass;
-            set { schoolClass = value; }
-        }
-        public string SchoolYear
-        {
-            get => schoolYear;
-            set { schoolYear = value; }
-        }
-        public string HalfYear
-        {
-            get => halfYear;
-            set { halfYear = value; }
-        }
-        public string Teacher
-        {
-            get => teacher;
-            set { teacher = value; }
-        }
         public void Save()
         {
-            Properties.Settings.Default.DatabasePath = databasePath;
-            Properties.Settings.Default.SchoolClass = schoolClass;
-            Properties.Settings.Default.SchoolYear = schoolYear;
-            Properties.Settings.Default.HalfYear = halfYear;
-            Properties.Settings.Default.Teacher = teacher;
-            Properties.Settings.Default.OutputFolder = outputFolder;
-            Properties.Settings.Default.Page = page;
-            Properties.Settings.Default.SubPage = subPage;
-            Properties.Settings.Default.MenuPosition = menuPosition;
+            Properties.Settings.Default.DatabasePath = DatabasePath;
+            Properties.Settings.Default.SchoolClass = SchoolClass;
+            Properties.Settings.Default.SchoolYear = SchoolYear;
+            Properties.Settings.Default.HalfYear = HalfYear;
+            Properties.Settings.Default.Teacher = Teacher;
+            Properties.Settings.Default.OutputFolder = OutputFolder;
+            Properties.Settings.Default.Page = Page;
+            Properties.Settings.Default.SubPage = SubPage;
+            Properties.Settings.Default.MenuPosition = MenuPosition;
+            Properties.Settings.Default.TeacherGUID = TeacherGUID;
+            Properties.Settings.Default.SchoolClassGUID = SchoolClassGUID;
             Properties.Settings.Default.Save();
         }
     }
