@@ -10,7 +10,7 @@ using Esorb.Certificate.App.Model;
 
 namespace Esorb.Certificate.App.Database;
 
-public class DbHelper : IDbHelper
+public class DbHelper
 {
     private readonly CertificateSettings _settings = new();
     public DbHelper()
