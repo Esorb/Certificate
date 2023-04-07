@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Esorb.Certificate.App.ViewModel"
-      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StartPage">
@@ -150,6 +149,7 @@
                     </TextBox.ToolTip>
                 </TextBox>
                 <ComboBox
+                    x:Name="CbTeacherSelection"
                     SelectedItem="{Binding SelectedTeacher}"
                     ItemsSource="{Binding TeachersViewModel.Teachers}"
                     DisplayMemberPath="FullName"
@@ -157,8 +157,21 @@
                     Grid.Column="1"
                     FontSize="16"
                     Height="30"
+                    Margin="5"
+                    SelectionChanged="CbTeacherSelection_SelectionChanged"
                     >
-
+                    <ComboBox.ToolTip>
+                        <ToolTip
+                            Background="LightYellow" 
+                            Width="350"
+                            >
+                            <TextBlock
+                                FontSize="14"
+                                Text="Wählen Sie hier den/die Klassenlehrer*in aus, der/die das Zeugnis am Ende unterschreibt."
+                                TextWrapping="Wrap"     
+                                />
+                        </ToolTip>
+                    </ComboBox.ToolTip>
                 </ComboBox>
                 <TextBlock 
                     Grid.Row="6" 
@@ -191,6 +204,31 @@
                         </ToolTip>
                     </TextBox.ToolTip>
                 </TextBox>
+                <ComboBox
+                    x:Name="CbSchoolClassSelection"
+                    SelectedItem="{Binding SelectedSchoolClass}"
+                    ItemsSource="{Binding SchoolClassesViewModel.SchoolClasses}"
+                    DisplayMemberPath="ClassName"
+                    Grid.Row="6" 
+                    Grid.Column="1"
+                    FontSize="16"
+                    Height="30"
+                    Margin="5"
+                    SelectionChanged="CbSchoolClassSelection_SelectionChanged"
+                    >
+                    <ComboBox.ToolTip>
+                        <ToolTip
+                            Background="LightYellow" 
+                            Width="350"
+                            >
+                            <TextBlock
+                                FontSize="14"
+                                Text="Wählen Sie hier die Klasse aus, für die Sie das Zeugnis erstellen wollen."
+                                TextWrapping="Wrap"     
+                                />
+                        </ToolTip>
+                    </ComboBox.ToolTip>
+                </ComboBox>
             </Grid>
         </Grid>
     </Border>

@@ -26,4 +26,14 @@ public partial class StartPage : Page
         this.certifcateViewModel = certifcateViewModel;
         DataContext = this.certifcateViewModel;
     }
+
+    private void CbTeacherSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        certifcateViewModel.HandleTeacherChange();
+    }
+
+    private void CbSchoolClassSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        certifcateViewModel.HandleSchoolClassChange();
+    }
 }

@@ -41,15 +41,27 @@ namespace Esorb.Certificate.App.ViewModel
 
         #endregion
 
-        #region RelayCommands
+        #region RelayCommands and Functions
         public RelayCommand SelectCertificateFile { get; private set; }
         public RelayCommand SelectOutputFolder { get; private set; }
+
+        public void HandleTeacherChange()
+        {
+            CertificateSettingsViewModel.Teacher = SelectedTeacher.FullName;
+            CertificateSettingsViewModel.TeacherGUID = SelectedTeacher.ID;
+        }
+
+        public void HandleSchoolClassChange()
+        {
+            CertificateSettingsViewModel.SchoolClass = SelectedSchoolClass.ClassName;
+            CertificateSettingsViewModel.SchoolClassGUID = SelectedSchoolClass.ID;
+        }
 
         #endregion
 
         #region Selected ocjects
         public TeacherViewModel SelectedTeacher { get; set; }
-        public SchoolClass SelectedSchoolClass { get; set; }
+        public SchoolClassViewModel SelectedSchoolClass { get; set; }
 
         private void SetSelectedTeacher()
         {
@@ -62,6 +74,16 @@ namespace Esorb.Certificate.App.ViewModel
             SelectedTeacher = TeachersViewModel.Teachers.FirstOrDefault(t => t.ID == CertificateSettingsViewModel.TeacherGUID)!;
         }
 
+        private void SetSelectedSchoolClass()
+        {
+            var numberOfSchoolClasses = SchoolClassesViewModel.SchoolClasses?.Count ?? 0;
+            if (numberOfSchoolClasses == 0) { return; }
+            if (CertificateSettingsViewModel == null) { return; }
+            if (string.IsNullOrEmpty(CertificateSettingsViewModel.SchoolClassGUID)) { return; }
+            if (!SchoolClassesViewModel!.SchoolClasses.Any(sc => sc.ID == CertificateSettingsViewModel.SchoolClassGUID)) { return; }
+
+            SelectedSchoolClass = SchoolClassesViewModel.SchoolClasses.FirstOrDefault(sc => sc.ID == CertificateSettingsViewModel.SchoolClassGUID)!;
+        }
         #endregion
 
         #region Private ViewModel Builders

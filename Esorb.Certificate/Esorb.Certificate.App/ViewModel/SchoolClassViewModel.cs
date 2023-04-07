@@ -15,21 +15,25 @@ public partial class SchoolClassViewModel : ObservableObject
 
     public SchoolClassViewModel(SchoolClass schoolClass)
     {
-        _schoolClass = schoolClass;
+        schoolClass = schoolClass;
     }
     public ObservableCollection<PupilViewModel> Pupils
     {
         get { return pupils; }
         set { pupils = value; }
     }
+    public string ID
+    {
+        get => schoolClass.ID;
+    }
     public string ClassName
     {
-        get => _schoolClass.ClassName;
+        get => schoolClass.ClassName;
         set
         {
-            if (_schoolClass.ClassName != value)
+            if (schoolClass.ClassName != value)
             {
-                _schoolClass.ClassName = value;
+                schoolClass.ClassName = value;
                 OnPropertyChanged();
             }
         }
@@ -37,30 +41,30 @@ public partial class SchoolClassViewModel : ObservableObject
     }
     public int Yearlevel
     {
-        get => _schoolClass.Yearlevel;
+        get => schoolClass.Yearlevel;
         set
         {
-            if (_schoolClass.Yearlevel != value)
+            if (schoolClass.Yearlevel != value)
             {
-                _schoolClass.Yearlevel = value;
+                schoolClass.Yearlevel = value;
                 OnPropertyChanged();
             }
         }
     }
     public int HalfYear
     {
-        get => _schoolClass.HalfYear;
+        get => schoolClass.HalfYear;
         set
         {
-            if (_schoolClass.HalfYear != value)
+            if (schoolClass.HalfYear != value)
             {
-                _schoolClass.HalfYear = value;
+                schoolClass.HalfYear = value;
                 OnPropertyChanged();
             }
         }
     }
 
-    private SchoolClass _schoolClass;
+    private SchoolClass schoolClass;
     private ObservableCollection<PupilViewModel> pupils = new ObservableCollection<PupilViewModel>();
 }
 
