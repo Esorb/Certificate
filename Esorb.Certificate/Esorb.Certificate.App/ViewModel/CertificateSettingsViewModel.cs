@@ -11,112 +11,112 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public partial class CertificateSettingsViewModel : ObservableObject
     {
-        private CertificateSettings _certificateSettings = new();
+        private CertificateSettings certificateSettings = new();
         public CertificateSettingsViewModel()
         {
         }
         public string DatabasePath
         {
-            get => _certificateSettings.DatabasePath;
+            get => certificateSettings.DatabasePath;
             set
             {
-                if (_certificateSettings.DatabasePath != value)
+                if (certificateSettings.DatabasePath != value)
                 {
-                    _certificateSettings.DatabasePath = value;
+                    certificateSettings.DatabasePath = value;
                     OnPropertyChanged();
-                    _certificateSettings.Save();
+                    certificateSettings.Save();
                 }
             }
         }
         public string SchoolClass
         {
-            get => _certificateSettings.SchoolClass;
+            get => certificateSettings.SchoolClass;
             set
             {
-                if (_certificateSettings.SchoolClass != value)
+                if (certificateSettings.SchoolClass != value)
                 {
-                    _certificateSettings.SchoolClass = value;
+                    certificateSettings.SchoolClass = value;
                     OnPropertyChanged();
-                    _certificateSettings.Save();
+                    certificateSettings.Save();
                 }
             }
         }
         public string SchoolYear
         {
-            get => _certificateSettings.SchoolYear;
+            get => certificateSettings.SchoolYear;
             set
             {
-                if (_certificateSettings.SchoolYear != value)
+                if (certificateSettings.SchoolYear != value)
                 {
-                    _certificateSettings.SchoolYear = value;
+                    certificateSettings.SchoolYear = value;
                     OnPropertyChanged();
-                    _certificateSettings.Save();
+                    certificateSettings.Save();
                 }
             }
         }
         public string HalfYear
         {
-            get => _certificateSettings.HalfYear;
+            get => certificateSettings.HalfYear;
             set
             {
-                if (_certificateSettings.HalfYear != value)
+                if (certificateSettings.HalfYear != value)
                 {
-                    _certificateSettings.HalfYear = value;
+                    certificateSettings.HalfYear = value;
                     OnPropertyChanged();
-                    _certificateSettings.Save();
+                    certificateSettings.Save();
                 }
             }
         }
         public string Teacher
         {
-            get => _certificateSettings.Teacher;
+            get => certificateSettings.Teacher;
             set
             {
-                if (_certificateSettings.Teacher != value)
+                if (certificateSettings.Teacher != value)
                 {
-                    _certificateSettings.Teacher = value;
+                    certificateSettings.Teacher = value;
                     OnPropertyChanged();
-                    _certificateSettings.Save();
+                    certificateSettings.Save();
                 }
             }
         }
         public string Page
         {
-            get => _certificateSettings.Page;
+            get => certificateSettings.Page;
             set
             {
-                if (_certificateSettings.Page != value)
+                if (certificateSettings.Page != value)
                 {
-                    _certificateSettings.Page = value;
+                    certificateSettings.Page = value;
                     OnPropertyChanged();
-                    _certificateSettings.Save();
+                    certificateSettings.Save();
                 }
             }
         }
         public string SubPage
         {
-            get => _certificateSettings.SubPage;
+            get => certificateSettings.SubPage;
             set
             {
-                if (_certificateSettings.SubPage != value)
+                if (certificateSettings.SubPage != value)
                 {
-                    _certificateSettings.SubPage = value;
+                    certificateSettings.SubPage = value;
                     OnPropertyChanged();
-                    _certificateSettings.Save();
+                    certificateSettings.Save();
                 }
             }
         }
 
         public string MenuPosition
         {
-            get => _certificateSettings.MenuPosition;
+            get => certificateSettings.MenuPosition;
             set
             {
-                if (_certificateSettings.MenuPosition != value)
+                if (certificateSettings.MenuPosition != value)
                 {
-                    _certificateSettings.MenuPosition = value;
+                    certificateSettings.MenuPosition = value;
                     OnPropertyChanged();
-                    _certificateSettings.Save();
+                    certificateSettings.Save();
                 }
             }
         }
