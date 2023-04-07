@@ -26,18 +26,4 @@ public partial class StartPage : Page
         this.certifcateViewModel = certifcateViewModel;
         DataContext = this.certifcateViewModel;
     }
-    private void BtnGetOutputPath_Click(object sender, RoutedEventArgs e)
-    {
-        FolderBrowserDialog folderBrowserDialog = new()
-        {
-            SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-        };
-        //folderBrowserDialog.SelectedPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "OneDrive", "Documents");
-        var result = folderBrowserDialog.ShowDialog();
-        if (result == System.Windows.Forms.DialogResult.OK)
-        {
-            string path = folderBrowserDialog.SelectedPath;
-            System.Windows.MessageBox.Show(path);
-        }
-    }
 }
