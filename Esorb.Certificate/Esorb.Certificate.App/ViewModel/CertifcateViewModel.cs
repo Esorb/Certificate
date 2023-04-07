@@ -126,14 +126,23 @@ namespace Esorb.Certificate.App.ViewModel
             if (result is not null && result is true)
             {
                 string databasePath = ofd.FileName;
-                System.Windows.MessageBox.Show(databasePath);
                 HandleCertificateFileChanged(databasePath);
             }
         }
 
         private void HandleCertificateFileChanged(string databasePath)
         {
-
+            if (string.IsNullOrWhiteSpace(databasePath))
+            {
+                MessageBox.Show("Sie haben keine Datei ausgewählt!");
+                return;
+            }
+            if (!dbHelper.IsCertificateFile(databasePath))
+            {
+                MessageBox.Show("Die Ausgewählte Datei ist keine valide Zeugnisbasisdatei!");
+                return;
+            }
+            CertificateSettingsViewModel.DatabasePath = databasePath;
         }
 
         private bool CanExecuteSelectCertificateFile()
