@@ -12,13 +12,13 @@ namespace Esorb.Certificate.App.ViewModel;
 
 public partial class CertificateDataViewModel : ObservableObject
 {
-    private CertificateData _certificateData;
-    private DbHelper _dbHelper;
+    private CertificateData certificateData;
+    private DbHelper dbHelper;
 
     public List<String> SchoolYearChoices = new();
     public List<int> HalfYearChoices = new();
 
-    private void Prepare()
+    private void PrepareSchoolYearChoices()
     {
         int currentYear = DateTime.Now.Year;
         SchoolYearChoices.Add($"{currentYear - 1} / {currentYear}");
@@ -32,88 +32,88 @@ public partial class CertificateDataViewModel : ObservableObject
         HalfYearChoices.Add(2);
         OnPropertyChanged(nameof(HalfYearChoices));
     }
-    public CertificateDataViewModel(CertificateData certificateData, DbHelper dbHelper)
+    public CertificateDataViewModel(CertificateModel certificateModel)
     {
-        _certificateData = certificateData;
-        _dbHelper = dbHelper;
-        Prepare();
+        certificateData = certificateModel.CertificateData;
+        dbHelper = certificateModel.DbHelper;
+        PrepareSchoolYearChoices();
     }
 
     public string SchoolYear
     {
-        get => _certificateData.SchoolYear;
+        get => certificateData.SchoolYear;
         set
         {
-            if (value != _certificateData.SchoolYear)
+            if (value != certificateData.SchoolYear)
             {
-                _certificateData.SchoolYear = value;
+                certificateData.SchoolYear = value;
                 OnPropertyChanged();
-                _dbHelper.Save(_certificateData);
+                dbHelper.Save(certificateData);
             }
         }
     }
     public int HalfYear
     {
-        get => _certificateData.HalfYear;
+        get => certificateData.HalfYear;
         set
         {
-            if (value != _certificateData.HalfYear)
+            if (value != certificateData.HalfYear)
             {
-                _certificateData.HalfYear = value;
+                certificateData.HalfYear = value;
                 OnPropertyChanged();
-                _dbHelper.Save(_certificateData);
+                dbHelper.Save(certificateData);
             }
         }
     }
     public DateTime DateOfSchoolConference
     {
-        get => _certificateData.DateOfSchoolConference;
+        get => certificateData.DateOfSchoolConference;
         set
         {
-            if (value != _certificateData.DateOfSchoolConference)
+            if (value != certificateData.DateOfSchoolConference)
             {
-                _certificateData.DateOfSchoolConference = value;
+                certificateData.DateOfSchoolConference = value;
                 OnPropertyChanged();
-                _dbHelper.Save(_certificateData);
+                dbHelper.Save(certificateData);
             }
         }
     }
     public DateTime DateOfCertificateDistribution
     {
-        get => _certificateData.DateOfCertificateDistribution;
+        get => certificateData.DateOfCertificateDistribution;
         set
         {
-            if (value != _certificateData.DateOfCertificateDistribution)
+            if (value != certificateData.DateOfCertificateDistribution)
             {
-                _certificateData.DateOfCertificateDistribution = value;
+                certificateData.DateOfCertificateDistribution = value;
                 OnPropertyChanged();
-                _dbHelper.Save(_certificateData);
+                dbHelper.Save(certificateData);
             }
         }
     }
     public DateTime DateOfRestartLessons
     {
-        get => _certificateData.DateOfRestartLessons;
+        get => certificateData.DateOfRestartLessons;
         set
         {
-            if (value != _certificateData.DateOfRestartLessons)
+            if (value != certificateData.DateOfRestartLessons)
             {
-                _certificateData.DateOfRestartLessons = value;
+                certificateData.DateOfRestartLessons = value;
                 OnPropertyChanged();
-                _dbHelper.Save(_certificateData);
+                dbHelper.Save(certificateData);
             }
         }
     }
     public DateTime TimeOfRestartLessons
     {
-        get => _certificateData.TimeOfRestartLessons;
+        get => certificateData.TimeOfRestartLessons;
         set
         {
-            if (value != _certificateData.TimeOfRestartLessons)
+            if (value != certificateData.TimeOfRestartLessons)
             {
-                _certificateData.TimeOfRestartLessons = value;
+                certificateData.TimeOfRestartLessons = value;
                 OnPropertyChanged();
-                _dbHelper.Save(_certificateData);
+                dbHelper.Save(certificateData);
             }
         }
     }

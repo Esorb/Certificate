@@ -15,12 +15,14 @@ namespace Esorb.Certificate.App.ViewModel
     public class CertifcateViewModel : ObservableObject
     {
         private CertificateModel certificateModel;
+        private DbHelper dbHelper;
 
         #region Constructor
         public CertifcateViewModel(CertificateModel certificateModel)
         {
             CertificateSettingsViewModel = new CertificateSettingsViewModel();
             this.certificateModel = certificateModel;
+            dbHelper = certificateModel.DbHelper;
 
             BuildCertificateViewModelFromCertificateModel();
 
@@ -32,7 +34,7 @@ namespace Esorb.Certificate.App.ViewModel
         public GradeLevelLegendsViewModell GradeLevelLegendsViewModell { get; set; }
         public TeachersViewModel Teachers { get; set; }
         public CertificateSettingsViewModel CertificateSettingsViewModel { get; set; }
-        public CertificateDataViewModel CertificateDateViewModel { get; set; }
+        public CertificateDataViewModel CertificateDataViewModel { get; set; }
         public CertificateTemplatesViewModel CertificateTemplatesViewModel { get; set; }
         public SchoolClassesViewModel SchoolClassesViewModel { get; set; }
 
@@ -56,14 +58,15 @@ namespace Esorb.Certificate.App.ViewModel
             SelectCertificateFile = new RelayCommand(ExecuteSelectCertificateFile, CanExecuteSelectCertificateFile);
             SelectOutputFolder = new RelayCommand(ExecuteSelectOutputFolder, CanExecuteSelectOutputFolder);
         }
+
         private void BuildCertificateViewModelFromCertificateModel()
         {
             Teachers = new(this.certificateModel);
-            CertificateTemplatesViewModel = new(this.certificateModel);
-            GradeLevelLegendsViewModell = new(this.certificateModel);
-            SchoolClassesViewModel = new(this.certificateModel);
+            CertificateTemplatesViewModel = new(certificateModel);
+            GradeLevelLegendsViewModell = new(certificateModel);
+            SchoolClassesViewModel = new(certificateModel);
+            CertificateDataViewModel = new(certificateModel);
 
-            BuildCertificateDataViewModel();
             BuildGradeLimitsViewModel();
         }
 
@@ -78,14 +81,17 @@ namespace Esorb.Certificate.App.ViewModel
 
             GradeLimitsViewModel = GradeLimitsViewModel.OrderBy(glvm => glvm.GradeNumeric).ToList();
         }
-        private void BuildCertificateDataViewModel()
-        {
-            this.CertificateDateViewModel = new CertificateDataViewModel(certificateModel.CertificateData, certificateModel.DbHelper);
-        }
+
+        //private void BuildCertificateDataViewModel()
+        //{
+        //}
 
         #endregion
 
+        private void GetSelectedTeacher()
+        {
 
+        }
         public IList<PupilViewModel> PupilsViewModel { get; set; }
         public IList<GradeLimitViewModel> GradeLimitsViewModel { get; set; }
 
