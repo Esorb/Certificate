@@ -57,8 +57,14 @@ public class DbHelper
         {
             using var connection = new SqliteConnection(ConnectionString());
             connection.Open();
-            using var command = new SqliteCommand("SELECT name FROM sqlite_master WHERE type='table'", connection);
-            command.ExecuteReader();
+            string sql = "SELECT name FROM sqlite_master WHERE type='table'";
+            List<string> result = connection.Query<string>(sql).AsList();
+
+            foreach (var t in Tables)
+            {
+                if (!result.Contains(t)) return false;
+            }
+
             return true;
         }
         catch
