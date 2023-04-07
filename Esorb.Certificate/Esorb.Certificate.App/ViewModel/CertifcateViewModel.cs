@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.Generic;
@@ -126,8 +127,15 @@ namespace Esorb.Certificate.App.ViewModel
             {
                 string databasePath = ofd.FileName;
                 System.Windows.MessageBox.Show(databasePath);
+                HandleCertificateFileChanged(databasePath);
             }
         }
+
+        private void HandleCertificateFileChanged(string databasePath)
+        {
+
+        }
+
         private bool CanExecuteSelectCertificateFile()
         {
             return true;
@@ -143,10 +151,25 @@ namespace Esorb.Certificate.App.ViewModel
             var result = folderBrowserDialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                string path = folderBrowserDialog.SelectedPath;
-                System.Windows.MessageBox.Show(path);
+                string OutputFolder = folderBrowserDialog.SelectedPath;
+                HandleOutputFolderChanged(OutputFolder);
             }
         }
+        private void HandleOutputFolderChanged(string outputFolder)
+        {
+            if (string.IsNullOrWhiteSpace(outputFolder))
+            {
+                MessageBox.Show("Sie haben kein Ausgabeverzeichnis ausgewählt!");
+                return;
+            }
+            if (!Directory.Exists(outputFolder))
+            {
+                MessageBox.Show("Das gewählte Verzeichnis existiert nicht!");
+                return;
+            }
+            CertificateSettingsViewModel.OutputFolder = outputFolder;
+        }
+
         private bool CanExecuteSelectOutputFolder()
         {
             return true;

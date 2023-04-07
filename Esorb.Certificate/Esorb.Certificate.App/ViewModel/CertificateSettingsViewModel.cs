@@ -28,6 +28,19 @@ namespace Esorb.Certificate.App.ViewModel
                 }
             }
         }
+        public string OutputFolder
+        {
+            get => certificateSettings.OutputFolder;
+            set
+            {
+                if (certificateSettings.OutputFolder != value)
+                {
+                    certificateSettings.OutputFolder = value;
+                    OnPropertyChanged();
+                    certificateSettings.Save();
+                }
+            }
+        }
         public string SchoolClass
         {
             get => certificateSettings.SchoolClass;
