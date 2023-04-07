@@ -24,8 +24,8 @@ namespace Esorb.Certificate.App.ViewModel
             this.certificateModel = certificateModel;
             dbHelper = certificateModel.DbHelper;
 
+            BuildRelayCommands();
             BuildCertificateViewModelFromCertificateModel();
-
         }
 
         #endregion

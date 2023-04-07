@@ -151,7 +151,8 @@
                 <ComboBox
                     Grid.Row="5" 
                     Grid.Column="1" 
-                    
+                    SelectedItem="{Binding SelectedTeacher}"
+                    ItemsSource="{Binding TeachersViewModel.Teachers}"
                     >
 
                 </ComboBox>
