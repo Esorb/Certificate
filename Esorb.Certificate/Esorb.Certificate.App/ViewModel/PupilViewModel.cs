@@ -13,21 +13,21 @@ public partial class PupilViewModel : ObservableObject
 {
     public PupilViewModel(Pupil pupil)
     {
-        _pupil = pupil;
-        _schoolClass = new SchoolClassViewModel(_pupil.SchoolClass!);
+        this.pupil = pupil;
+        schoolClass = new SchoolClassViewModel(pupil.SchoolClass!);
     }
 
-    private Pupil _pupil;
-    private SchoolClassViewModel _schoolClass;
+    private Pupil pupil;
+    private SchoolClassViewModel schoolClass;
 
     public string FirstName
     {
-        get => _pupil.FirstName;
+        get => pupil.FirstName;
         set
         {
-            if (_pupil.FirstName != value)
+            if (pupil.FirstName != value)
             {
-                _pupil.FirstName = value;
+                pupil.FirstName = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(FullName));
             }
@@ -35,12 +35,12 @@ public partial class PupilViewModel : ObservableObject
     }
     public string LastName
     {
-        get => _pupil.LastName;
+        get => pupil.LastName;
         set
         {
-            if (_pupil.LastName != value)
+            if (pupil.LastName != value)
             {
-                _pupil.LastName = value;
+                pupil.LastName = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(FullName));
             }
@@ -48,47 +48,47 @@ public partial class PupilViewModel : ObservableObject
     }
     public DateTime DateOfBirth
     {
-        get => _pupil.DateOfBirth;
+        get => pupil.DateOfBirth;
         set
         {
-            if (_pupil.DateOfBirth != value)
+            if (pupil.DateOfBirth != value)
             {
-                _pupil.DateOfBirth = value;
+                pupil.DateOfBirth = value;
                 OnPropertyChanged();
             }
         }
     }
     public int YearsAtSchool
     {
-        get => _pupil.YearsAtSchool;
+        get => pupil.YearsAtSchool;
         set
         {
-            if (_pupil.YearsAtSchool != value)
+            if (pupil.YearsAtSchool != value)
             {
-                _pupil.YearsAtSchool = value;
+                pupil.YearsAtSchool = value;
                 OnPropertyChanged();
             }
         }
     }
     public string SchoolClassId
     {
-        get => _pupil.SchoolClassId;
+        get => pupil.SchoolClassId;
         set
         {
-            if (_pupil.SchoolClassId != value)
+            if (pupil.SchoolClassId != value)
             {
-                _pupil.SchoolClassId = value;
+                pupil.SchoolClassId = value;
                 OnPropertyChanged();
             }
         }
     }
     public string FullName
     {
-        get => _pupil.FullName;
+        get => pupil.FullName;
     }
     public SchoolClassViewModel SchoolClass
     {
-        get => _schoolClass;
-        set => _schoolClass = value;
+        get => schoolClass;
+        set => schoolClass = value;
     }
 }

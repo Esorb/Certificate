@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model
 {
-    public class CertificatePage : PersistentObject
+    public class TemplatePage : PersistentObject
     {
         public int PageNumber { get; set; }
-        public Guid CertificateTemplateId { get; set; }
+        public string CertificateTemplateId { get; set; }
         public CertificateTemplate CertificateTemplate { get; set; }
     }
 }
