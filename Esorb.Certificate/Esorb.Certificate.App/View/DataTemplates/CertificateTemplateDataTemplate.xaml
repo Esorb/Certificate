@@ -2,19 +2,82 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:vm="clr-namespace:Esorb.Certificate.App.ViewModel">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="CertificateTemplatePageDataTemplate.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
     <DataTemplate DataType="{x:Type vm:CertificateTemplateViewModel}">
         <Grid>
-            <Expander Margin="0,0,0,10">
+            <Expander 
+                x:Name="expCertificateTemplate"
+                Margin="0,0,0,10"
+                >
                 <Expander.Header>
-                    <TextBlock 
-                        Text="{Binding TemplateName}"
-                        FontSize="16"
-                        FontWeight="Bold"
-                        />
+                    <Grid
+                        Margin="0,0,0,10"
+                        >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Text="{Binding TemplateName}"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Margin="0,0,10,0"
+                            VerticalAlignment="Center"
+                            />
+                        <Button
+                            x:Name="btnAddCertificateTemplatePage"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Visibility="Collapsed"
+                            >
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Text="&#xF56E;"
+                                        FontFamily="Segoe MDL2 Assets"
+                                        FontSize="24"
+                                        />
+                                    <TextBlock 
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Text="+"
+                                        HorizontalAlignment="Center"
+                                        FontWeight="Bold"
+                                        FontSize="18"
+                                        />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
                 </Expander.Header>
                 <ItemsControl ItemsSource="{Binding CertificateTemplatePages}"/>
             </Expander>
         </Grid>
+
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding ElementName=expCertificateTemplate, Path=IsExpanded}" Value="True">
+                <Setter TargetName="btnAddCertificateTemplatePage" Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+        
     </DataTemplate>
 
 </ResourceDictionary>

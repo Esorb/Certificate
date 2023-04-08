@@ -46,11 +46,22 @@ namespace Esorb.Certificate.App.ViewModel
 
         private void BuildCertificateTemplatesViewModel()
         {
+            CertificateTemplateViewModel ctvm;
+            CertificateTemplatePageViewModel ctpvm;
+
             certificateTemplates = new ObservableCollection<CertificateTemplateViewModel>();
 
             foreach (var ct in certificateModel.CertificateTemplates)
             {
-                certificateTemplates.Add(new CertificateTemplateViewModel(ct, certificateModel.DbHelper));
+                ctvm = new CertificateTemplateViewModel(ct, certificateModel.DbHelper);
+                certificateTemplates.Add(ctvm);
+
+                foreach (var ctp in ct.CertificateTemplatePages)
+                {
+                    ctpvm = new CertificateTemplatePageViewModel(ctp, certificateModel.DbHelper);
+                    ctvm.CertificateTemplatePages.Add(ctpvm);
+                    ctpvm.CertificateTemplate = ctvm;
+                }
             }
         }
 

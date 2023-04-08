@@ -20,7 +20,7 @@ public partial class CertificateTemplatePageViewModel : ObservableObject
         CertificateTemplatePage = certificateTemplatePage;
         DbHelper = dbHelper;
     }
-    public int PagNumber
+    public int PageNumber
     {
         get => CertificateTemplatePage.PageNumber;
         set

@@ -10,7 +10,7 @@ using Esorb.Certificate.App.ViewModel;
 namespace Esorb.Certificate.UnitTests
 {
     [TestClass]
-    public class CertificateTemplateTest
+    public class CertificateTemplate1Test
     {
         [TestMethod]
         public void CreateTemplates_result_in_6_Templates()

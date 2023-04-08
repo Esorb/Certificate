@@ -85,7 +85,7 @@ namespace Esorb.Certificate.App.ViewModel
             _dbHelper.Delete(_certificateTemplate);
         }
 
-        public ObservableCollection<CertificateTemplatePageViewModel> CertificateTemplatePages { get; set; }
+        public ObservableCollection<CertificateTemplatePageViewModel> CertificateTemplatePages { get; set; } = new ObservableCollection<CertificateTemplatePageViewModel>();
 
     }
 }

@@ -155,8 +155,9 @@
                                 >
                                 <Button.ToolTip>
                                     <ToolTip 
-                            Background="LightYellow" 
-                            Width="350">
+                                        Background="LightYellow" 
+                                        Width="350"
+                                        >
                                         <StackPanel>
                                             <TextBlock
                                                 Margin="0,5,0,0"

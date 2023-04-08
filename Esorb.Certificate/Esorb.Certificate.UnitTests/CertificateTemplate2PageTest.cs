@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Esorb.Certificate.UnitTests
 {
     [TestClass]
-    public class CertificateTemplatePageTest
+    public class CertificateTemplate2PageTest
     {
         [TestMethod]
         public void CreateCertificateTemplatePages_results_in_24_Pages()

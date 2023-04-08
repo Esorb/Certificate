@@ -37,5 +37,17 @@ namespace Esorb.Certificate.UnitTests
             // Assert
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void IsCertificateFileForSimilarFile_returns_false()
+        {
+            // Arrange
+            var dbh = new DbHelper();
+            // Act
+            var result = dbh.IsCertificateFile("C:/Users/frank/Documents/Falsch.db");
+            // Assert
+            Assert.IsFalse(result);
+        }
+
     }
 }

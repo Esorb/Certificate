@@ -18,7 +18,7 @@ namespace Esorb.Certificate.UnitTests
         {
             // Prepare
             var dbh = new DbHelper();
-            dbh.DropTable(typeof(CertificateData).ToString());
+            dbh.DropTable(nameof(CertificateData).ToString());
             dbh.CreateTable(typeof(CertificateData).ToString());
             // Arrange
             var cm = new CertificateModel();
