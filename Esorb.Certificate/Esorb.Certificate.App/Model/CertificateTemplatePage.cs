@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esorb.Certificate.App.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model
 {
-    public class TemplatePage : PersistentObject
+    public class CertificateTemplatePage : PersistentObject
     {
         public int PageNumber { get; set; }
         public string CertificateTemplateId { get; set; }

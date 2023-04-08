@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esorb.Certificate.App.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,5 @@ public class CertificateTemplate : PersistentObject
     public int Yearlevel { get; set; }
     public int HalfYear { get; set; }
     public bool IsFullYearReport { get; set; }
-    public IList<TemplatePage> TemplatePages { get; private set; } = new List<TemplatePage>();
+    public IList<CertificateTemplatePage> CertificateTemplatePages { get; private set; } = new List<CertificateTemplatePage>();
 }

@@ -13,15 +13,21 @@ namespace Esorb.Certificate.App.Model
         public IList<SchoolClass> SchoolClasses { get; private set; } = new List<SchoolClass>();
         public IList<GradeLimit> GradeLimits { get; private set; } = new List<GradeLimit>();
         public IList<CertificateTemplate> CertificateTemplates { get; private set; } = new List<CertificateTemplate>();
+        public IList<CertificateTemplatePage> CertificateTemplatePages { get; private set; } = new List<CertificateTemplatePage>();
         public CertificateData CertificateData { get; private set; } = new CertificateData();
 
         public CertificateModel()
         {
             if (DbHelper.IsCertificateFile(settings.DatabasePath))
             {
-                LoadCertificateModel();
-                LinkCertificateModel();
+                BuildCertificateModel();
             }
+        }
+
+        public void BuildCertificateModel()
+        {
+            LoadCertificateModel();
+            LinkCertificateModel();
         }
         public void LoadCertificateModel()
         {
@@ -32,6 +38,7 @@ namespace Esorb.Certificate.App.Model
             SchoolClasses = DbHelper.LoadAll<SchoolClass>().OrderBy(schoolClass => schoolClass.ClassName).ToList();
             GradeLimits = DbHelper.LoadAll<GradeLimit>().OrderBy(gl => gl.GradeNumeric).ToList();
             CertificateTemplates = DbHelper.LoadAll<CertificateTemplate>().OrderBy(ct => ct.Yearlevel).ThenBy(ct => ct.HalfYear).ToList();
+            CertificateTemplatePages = DbHelper.LoadAll<CertificateTemplatePage>().OrderBy(ctp => ctp.CertificateTemplateId).ThenBy(ctp => ctp.PageNumber).ToList();
             CertificateData = DbHelper.LoadAll<CertificateData>().ToList().FirstOrDefault() ?? new CertificateData();
         }
 
@@ -45,11 +52,13 @@ namespace Esorb.Certificate.App.Model
             GradeLimits.Clear();
             CertificateTemplates.Clear();
             CertificateData = new CertificateData();
+            CertificateTemplatePages.Clear();
         }
 
         public void LinkCertificateModel()
         {
             LinkPupilsSchoolClasses();
+            LinkCertificateTemplatePagesToCertificateTemplates();
         }
 
         private void LinkPupilsSchoolClasses()
@@ -60,5 +69,15 @@ namespace Esorb.Certificate.App.Model
                 pupil.SchoolClass?.Pupils.Add(pupil);
             }
         }
+        private void LinkCertificateTemplatePagesToCertificateTemplates()
+        {
+            foreach (var ctp in CertificateTemplatePages)
+            {
+                ctp.CertificateTemplate = CertificateTemplates.FirstOrDefault(ct => ct.ID == ctp.CertificateTemplateId);
+                ctp.CertificateTemplate?.CertificateTemplatePages.Add(ctp);
+            }
+        }
+
+
     }
 }

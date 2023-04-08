@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esorb.Certificate.App.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,5 @@ namespace Esorb.Certificate.App.Model;
 
 public abstract class PersistentObject
 {
-    //public PersistentObject()
-    //{
-    //    ID = Guid.NewGuid().ToString();
-    //}
     public string? ID { get; set; }
 }

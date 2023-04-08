@@ -23,6 +23,7 @@ public class DbHelper
         InitCertificateData();
         InitCertificateTemplate();
         InitGradeLimit();
+        InitCertificateTemplatePage();
     }
 
     private readonly Dictionary<string, ObjectSQL> StandardSQLStatements = new();
@@ -35,6 +36,7 @@ public class DbHelper
         CreateTable(typeof(CertificateData).ToString());
         CreateTable(typeof(CertificateTemplate).ToString());
         CreateTable(typeof(GradeLimit).ToString());
+        CreateTable(typeof(CertificateTemplatePage).ToString());
     }
 
     private string ConnectionString(string filePath)
@@ -190,7 +192,6 @@ public class DbHelper
             { "YearsAtSchool", "INTEGER" },
             { "SchoolClassId", "TEXT" }
         };
-
         ObjectSQL SQL = new("Pupil", Fields);
         StandardSQLStatements.Add(typeof(Pupil).ToString(), SQL);
         Tables.Add("Pupil");
@@ -204,7 +205,6 @@ public class DbHelper
             { "Yearlevel", "INTEGER" },
             { "HalfYear", "INTEGER" }
         };
-
         ObjectSQL SQL = new("SchoolClass", Fields);
         StandardSQLStatements.Add(typeof(SchoolClass).ToString(), SQL);
         Tables.Add("SchoolClass");
@@ -221,7 +221,6 @@ public class DbHelper
             { "IsAdmin", "INTEGER" },
             { "Password", "TEXT" }
         };
-
         ObjectSQL SQL = new("Teacher", Fields);
         StandardSQLStatements.Add(typeof(Teacher).ToString(), SQL);
         Tables.Add("Teacher");
@@ -238,7 +237,6 @@ public class DbHelper
             { "DateOfRestartLessons", "DATETIME" },
             { "TimeOfRestartLessons", "DATETIME" },
         };
-
         ObjectSQL SQL = new("CertificateData", Fields);
         StandardSQLStatements.Add(typeof(CertificateData).ToString(), SQL);
         Tables.Add("CertificateData");
@@ -252,9 +250,9 @@ public class DbHelper
             { "HalfYear", "INTEGER" },
             { "IsFullYearReport", "BOOLEAN" },
         };
-
         ObjectSQL SQL = new("CertificateTemplate", Fields);
         StandardSQLStatements.Add(typeof(CertificateTemplate).ToString(), SQL);
+        Tables.Add("CertificateTemplate");
     }
 
     private void InitGradeLimit()
@@ -266,9 +264,21 @@ public class DbHelper
             { "GradeNumeric", "INTEGER" },
             { "Explanation", "TEXT" },
         };
-
         ObjectSQL SQL = new("GradeLimit", Fields);
         StandardSQLStatements.Add(typeof(GradeLimit).ToString(), SQL);
+        Tables.Add("GradeLimit");
+    }
 
+    private void InitCertificateTemplatePage()
+    {
+        var Fields = new Dictionary<string, string>
+        {
+            { "PageNumber", "INTEGER" },
+            { "CertificateTemplateId", "TEXT" },
+        };
+
+        ObjectSQL SQL = new("CertificateTemplatePage", Fields);
+        StandardSQLStatements.Add(typeof(CertificateTemplatePage).ToString(), SQL);
+        Tables.Add("CertificateTemplatePage");
     }
 }

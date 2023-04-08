@@ -10,7 +10,7 @@ using Esorb.Certificate.App.Model;
 
 namespace Esorb.Certificate.App.ViewModel
 {
-    public class CertificateTemplateViewModel : ObservableObject
+    public partial class CertificateTemplateViewModel : ObservableObject
     {
         private CertificateTemplate _certificateTemplate;
         private DbHelper _dbHelper;
@@ -85,7 +85,7 @@ namespace Esorb.Certificate.App.ViewModel
             _dbHelper.Delete(_certificateTemplate);
         }
 
-        public ObservableCollection<TemplatePageViewModel> TemplatePages { get; set; }
+        public ObservableCollection<CertificateTemplatePageViewModel> CertificateTemplatePages { get; set; }
 
     }
 }
