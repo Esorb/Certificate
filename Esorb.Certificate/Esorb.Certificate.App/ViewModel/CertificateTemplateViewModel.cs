@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,6 +84,8 @@ namespace Esorb.Certificate.App.ViewModel
         {
             _dbHelper.Delete(_certificateTemplate);
         }
+
+        public ObservableCollection<TemplatePageViewModel> TemplatePages { get; set; }
 
     }
 }

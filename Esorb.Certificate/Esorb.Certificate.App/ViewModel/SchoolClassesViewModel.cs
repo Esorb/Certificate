@@ -12,26 +12,21 @@ public class SchoolClassesViewModel : ObservableObject
         BuildSchoolClassesViewModel();
     }
 
-    public ObservableCollection<SchoolClassViewModel> SchoolClasses
-    {
-        get => schoolClasses;
-        set => schoolClasses = value;
-    }
+    public ObservableCollection<SchoolClassViewModel> SchoolClasses { get; set; }
 
     private CertificateModel certificateModel;
-    private ObservableCollection<SchoolClassViewModel> schoolClasses;
 
     private void BuildSchoolClassesViewModel()
     {
         SchoolClassViewModel scvm;
         PupilViewModel pvm;
 
-        schoolClasses = new ObservableCollection<SchoolClassViewModel>();
+        SchoolClasses = new ObservableCollection<SchoolClassViewModel>();
 
         foreach (SchoolClass sc in certificateModel.SchoolClasses)
         {
             scvm = new SchoolClassViewModel(sc);
-            schoolClasses.Add(scvm);
+            SchoolClasses.Add(scvm);
 
             foreach (var p in sc.Pupils)
             {
