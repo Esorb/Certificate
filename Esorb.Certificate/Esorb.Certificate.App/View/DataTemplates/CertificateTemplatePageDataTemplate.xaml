@@ -13,6 +13,9 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -36,9 +39,170 @@
                             Margin="0,5,0,0"
                             />
                         <Button
-                            x:Name="btnDeleteCertificateTemplatePage"
+                            x:Name="btnMoveUpCertificateTemplatePage"
                             Margin="10,0,0,0"
                             Grid.Column="1"
+                            Grid.Row="0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Visibility="Collapsed"
+                            >
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Text="&#xF0AD;"
+                                        FontFamily="Segoe MDL2 Assets"
+                                        FontSize="24"
+                                        VerticalAlignment="Center"
+                                        />
+                                </Grid>
+                            </Button.Content>
+                            <Button.ToolTip>
+                                <ToolTip 
+                                        Background="LightYellow" 
+                                        Width="350"
+                                        >
+                                    <StackPanel>
+                                        <TextBlock
+                                                FontSize="14"
+                                                FontWeight="Bold"
+                                                Text="Seite nach oben verschieben:"
+                                                TextWrapping="Wrap"
+                                            />
+                                        <TextBlock
+                                                FontSize="14"
+                                                Text="Wenn Sie die Seite nach oben schieben, werden alle Seiten neu nummmeriert, damit die neue Reihenfolge erhalten bleibt."
+                                                TextWrapping="Wrap"
+                                            />
+                                        <TextBlock
+                                                FontSize="14"
+                                                Text="Sie sollten also z. B. niemals eine Seite 3 vor einer Seite 2 sehen."
+                                                TextWrapping="Wrap"
+                                            />
+                                    </StackPanel>
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button
+                            x:Name="btnMoveDownCertificateTemplatePage"
+                            Margin="0,0,0,0"
+                            Grid.Column="2"
+                            Grid.Row="0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Visibility="Collapsed"
+                            >
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Text="&#xF0AE;"
+                                        FontFamily="Segoe MDL2 Assets"
+                                        FontSize="24"
+                                        VerticalAlignment="Center"
+                                        />
+                                </Grid>
+                            </Button.Content>
+                            <Button.ToolTip>
+                                <ToolTip 
+                                        Background="LightYellow" 
+                                        Width="350"
+                                        >
+                                    <StackPanel>
+                                        <TextBlock
+                                                FontSize="14"
+                                                FontWeight="Bold"
+                                                Text="Seite nach unten verschieben:"
+                                                TextWrapping="Wrap"
+                                            />
+                                        <TextBlock
+                                                FontSize="14"
+                                                Text="Wenn Sie die Seite nach unten schieben, werden alle Seiten neu nummmeriert, damit die neue Reihenfolge erhalten bleibt."
+                                                TextWrapping="Wrap"
+                                            />
+                                        <TextBlock
+                                                FontSize="14"
+                                                Text="Sie sollten also z. B. niemals eine Seite 3 vor einer Seite 2 sehen."
+                                                TextWrapping="Wrap"
+                                            />
+                                    </StackPanel>
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button
+                            x:Name="btnPreviewCertificateTemplatePage"
+                            Command="{Binding PreviewCertificateTemplatePage}"
+                            Margin="0,0,0,0"
+                            Grid.Column="3"
+                            Grid.Row="0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Visibility="Collapsed"
+                            >
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Text="&#xE8FF;"
+                                        FontFamily="Segoe MDL2 Assets"
+                                        FontSize="24"
+                                        VerticalAlignment="Center"
+                                        />
+                                </Grid>
+                            </Button.Content>
+                            <Button.ToolTip>
+                                <ToolTip 
+                                        Background="LightYellow" 
+                                        Width="350"
+                                        >
+                                    <StackPanel>
+                                        <TextBlock
+                                                FontSize="14"
+                                                FontWeight="Bold"
+                                                Text="Seitenvorschau:"
+                                                TextWrapping="Wrap"
+                                            />
+                                        <TextBlock
+                                                FontSize="14"
+                                                Text="Die Vorschau wird Ihnen einen ungefähren Eindruck davon verschaffen, wie diese Seite später aussieht."
+                                                TextWrapping="Wrap"
+                                            />
+                                        <TextBlock
+                                                FontSize="14"
+                                                Text="Sie werden also z. B. niemals eine Seite 3 vor einer Seite 2 sehen."
+                                                TextWrapping="Wrap"
+                                            />
+                                    </StackPanel>
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button
+                            x:Name="btnDeleteCertificateTemplatePage"
+                            Command="{Binding RemoveCertificateTemplatePage}"
+                            Margin="50,0,0,0"
+                            Grid.Column="4"
                             Grid.Row="0"
                             Background="Transparent"
                             BorderBrush="Transparent"
@@ -69,7 +233,6 @@
                                         >
                                     <StackPanel>
                                         <TextBlock
-                                                Margin="0,5,0,0"
                                                 FontSize="14"
                                                 FontWeight="Bold"
                                                 Text="Achtung:"
@@ -88,29 +251,29 @@
                         </Button>
                     </Grid>
                 </Expander.Header>
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" MaxHeight="500">
-                    <Grid 
-                    Background="#f0f0f0"
-                    Width="21cm"
-                    Height="30cm"
-                    >
-                        <Border BorderThickness="1" BorderBrush="#c6c6c6" Margin="20">
-                            <!--<Border.Effect>
-                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="#888" Opacity="0.5"/>
-                            </Border.Effect>-->
-                            <Grid Background="White">
-                                <TextBlock Text="Expander Content"/>
-                            </Grid>
-                        </Border>
-                    </Grid>
-                </ScrollViewer>
+                <TextBlock Text="Expander Content"/>
             </Expander>
         </Grid>
 
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding ElementName=expCertificateTemplatePage, Path=IsExpanded}" Value="True">
                 <Setter TargetName="btnDeleteCertificateTemplatePage" Property="Visibility" Value="Visible"/>
+                <Setter TargetName="btnPreviewCertificateTemplatePage" Property="Visibility" Value="Visible"/>
             </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ElementName=expCertificateTemplatePage, Path=IsExpanded}" Value="True"/>
+                    <Condition Binding="{Binding CanBeMovedUp}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="btnMoveUpCertificateTemplatePage" Property="Visibility" Value="Visible"/>
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ElementName=expCertificateTemplatePage, Path=IsExpanded}" Value="True"/>
+                    <Condition Binding="{Binding CanBeMovedDown}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="btnMoveDownCertificateTemplatePage" Property="Visibility" Value="Visible"/>
+            </MultiDataTrigger>
         </DataTemplate.Triggers>
 
     </DataTemplate>

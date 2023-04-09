@@ -14,7 +14,7 @@ namespace Esorb.Certificate.App.ViewModel
         public GradeLimitViewModel(GradeLimit gradeLimit, DbHelper dbHelper)
         {
             this.gradeLimit = gradeLimit;
-            dbHelper = dbHelper;
+            this.dbHelper = dbHelper;
         }
 
         private GradeLimit gradeLimit { get; }

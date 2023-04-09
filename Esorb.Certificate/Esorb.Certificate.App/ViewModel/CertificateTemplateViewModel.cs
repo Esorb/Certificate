@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Esorb.Certificate.App.Database;
@@ -23,11 +24,21 @@ namespace Esorb.Certificate.App.ViewModel
             this.certificateTemplate = certificateTemplate;
             this.dbHelper = dbHelper;
             AddCertificateTemplatePage = new RelayCommand(ExecuteAddCertificateTemplatePage, CanExecuteAddCertificateTemplatePage);
-            RemoveCertificateTemplatePage = new RelayCommand(ExecuteRemoveCertificateTemplatePage, CanExecuteRemoveCertificateTemplatePage);
         }
         public RelayCommand AddCertificateTemplatePage { get; private set; }
-        public RelayCommand RemoveCertificateTemplatePage { get; private set; }
 
+        public void RemoveCertificateTemplatePage(CertificateTemplatePageViewModel PageToBeRemoved)
+        {
+            certificateTemplate.CertificateTemplatePages.Remove(PageToBeRemoved.CertificateTemplatePage);
+            dbHelper.Delete(PageToBeRemoved.CertificateTemplatePage);
+            CertificateTemplatePages.Remove(PageToBeRemoved);
+            for (int i = 0; i < CertificateTemplatePages.Count; i++)
+            {
+                CertificateTemplatePages[i].PageNumber = i + 1;
+            }
+            OnPropertyChanged(nameof(CertificateTemplatePages));
+            CommandManager.InvalidateRequerySuggested();
+        }
 
         public int HalfYear
         {
@@ -101,19 +112,12 @@ namespace Esorb.Certificate.App.ViewModel
             ctp.CertificateTemplateId = certificateTemplate.ID!;
             ctp.PageNumber = CertificateTemplatePages.Count + 1;
             certificateTemplate.CertificateTemplatePages.Add(ctp);
-            CertificateTemplatePages.Add(new CertificateTemplatePageViewModel(ctp, dbHelper));
+            var ctpvm = new CertificateTemplatePageViewModel(ctp, dbHelper);
+            ctpvm.CertificateTemplateViewModel = this;
+            CertificateTemplatePages.Add(ctpvm);
             dbHelper.Save(ctp);
         }
         private bool CanExecuteAddCertificateTemplatePage()
-        {
-            return true;
-        }
-
-        private void ExecuteRemoveCertificateTemplatePage()
-        {
-            MessageBox.Show("Remove");
-        }
-        private bool CanExecuteRemoveCertificateTemplatePage()
         {
             return true;
         }

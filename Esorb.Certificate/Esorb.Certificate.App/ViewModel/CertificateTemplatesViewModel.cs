@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Esorb.Certificate.App.Database;
 using Esorb.Certificate.App.Model;
 using System;
 using System.Collections.Generic;
@@ -33,15 +34,9 @@ namespace Esorb.Certificate.App.ViewModel
                 RemoveCertificateTemplate.NotifyCanExecuteChanged();
             }
         }
-        public ObservableCollection<CertificateTemplateViewModel> CertificateTemplates
-        {
-            get => certificateTemplates;
-            set { certificateTemplates = value; }
-        }
-
+        public ObservableCollection<CertificateTemplateViewModel> CertificateTemplateViewModels { get; private set; }
 
         private CertificateModel certificateModel;
-        private ObservableCollection<CertificateTemplateViewModel> certificateTemplates;
         private CertificateTemplateViewModel selectedCertificateTemplate;
 
         private void BuildCertificateTemplatesViewModel()
@@ -49,18 +44,18 @@ namespace Esorb.Certificate.App.ViewModel
             CertificateTemplateViewModel ctvm;
             CertificateTemplatePageViewModel ctpvm;
 
-            certificateTemplates = new ObservableCollection<CertificateTemplateViewModel>();
+            CertificateTemplateViewModels = new ObservableCollection<CertificateTemplateViewModel>();
 
             foreach (var ct in certificateModel.CertificateTemplates)
             {
                 ctvm = new CertificateTemplateViewModel(ct, certificateModel.DbHelper);
-                certificateTemplates.Add(ctvm);
+                CertificateTemplateViewModels.Add(ctvm);
 
                 foreach (var ctp in ct.CertificateTemplatePages)
                 {
                     ctpvm = new CertificateTemplatePageViewModel(ctp, certificateModel.DbHelper);
                     ctvm.CertificateTemplatePages.Add(ctpvm);
-                    ctpvm.CertificateTemplate = ctvm;
+                    ctpvm.CertificateTemplateViewModel = ctvm;
                 }
             }
         }
@@ -69,7 +64,7 @@ namespace Esorb.Certificate.App.ViewModel
         {
             CertificateTemplate certificateTemplate = new();
             CertificateTemplateViewModel certificateTemplateViewModel = new(certificateTemplate, certificateModel.DbHelper);
-            CertificateTemplates.Add(certificateTemplateViewModel);
+            CertificateTemplateViewModels.Add(certificateTemplateViewModel);
         }
 
         private bool CanExecuteAddCertificateTemplate()
@@ -80,7 +75,7 @@ namespace Esorb.Certificate.App.ViewModel
         private void ExecuteRemoveCertificateTemplate()
         {
             SelectedCertificateTemplate.Delete();
-            CertificateTemplates.Remove(SelectedCertificateTemplate);
+            CertificateTemplateViewModels.Remove(SelectedCertificateTemplate);
         }
         private bool CanExecuteRemoveCertificateTemplate()
         {

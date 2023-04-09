@@ -1,0 +1,60 @@
+﻿<Window x:Class="Esorb.Certificate.App.View.Windows.CertificateTemplatePagePreviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Esorb.Certificate.App.View.Windows"
+        mc:Ignorable="d"
+        Title="CertificateTemplatePagePreviewWindow" Height="450" Width="800">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Grid 
+                    Background="#f0f0f0"
+                    >
+                <Grid 
+                        Background="White"
+                        Width="21cm"
+                        Height="30cm"
+                        Margin="30"
+                        >
+                    <Border 
+                        BorderThickness="1" 
+                        BorderBrush="#c6c6c6"
+                        Padding="48"
+                        >
+                        <Grid>
+                            <StackPanel>
+                                <Grid x:Name="SchoolHeader">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Height="80">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="../../Pictures/GGS.jpg"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" >
+                                        <TextBlock Text="Gemeinschaftsgrundschule" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="22"/>
+                                        <TextBlock Text="Forsbach" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="22"/>
+                                        <TextBlock Text="Amtliche Schulnummer: 115095" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14"/>
+                                    </StackPanel>
+                                    <Image Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="60">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="../../Pictures/Roesrath.png"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+
+
+
+</Window>

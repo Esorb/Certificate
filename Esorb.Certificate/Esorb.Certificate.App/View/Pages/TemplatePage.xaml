@@ -19,7 +19,7 @@
 
     <Grid Margin="10">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding CertificateTemplates}"/>
+            <ItemsControl ItemsSource="{Binding CertificateTemplateViewModels}"/>
         </ScrollViewer>
     </Grid>
 </Page>

@@ -142,6 +142,14 @@ namespace Esorb.Certificate.App.ViewModel
                 MessageBox.Show("Die Ausgewählte Datei ist keine valide Zeugnisbasisdatei!");
                 return;
             }
+            if (databasePath.Contains("OneDrive") || databasePath.Contains("Dropbox"))
+            {
+                string webProvider;
+                if (databasePath.Contains("OneDrive")) { webProvider = "OneDrive"; }
+                else { webProvider = "Dropbox"; }
+                MessageBox.Show($"Bitte verschieben Sie die Zeugnisbasisdatei ein lokales Verzeichnis und wählen Sie die Datei dann noch einmal aus! Das Verzeichnis, in dem sich die Datei gegenwärtig befindet, wird im Internet auf {webProvider} gespiegelt.", "Datenschutz-Warnung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             CertificateSettingsViewModel.DatabasePath = databasePath;
         }
 
@@ -156,7 +164,7 @@ namespace Esorb.Certificate.App.ViewModel
             {
                 SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
             };
-            //folderBrowserDialog.SelectedPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "OneDrive", "Documents");
+            folderBrowserDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var result = folderBrowserDialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
@@ -174,6 +182,14 @@ namespace Esorb.Certificate.App.ViewModel
             if (!Directory.Exists(outputFolder))
             {
                 MessageBox.Show("Das gewählte Verzeichnis existiert nicht!");
+                return;
+            }
+            if (outputFolder.Contains("OneDrive") || outputFolder.Contains("Dropbox"))
+            {
+                string webProvider;
+                if (outputFolder.Contains("OneDrive")) { webProvider = "OneDrive"; }
+                else { webProvider = "Dropbox"; }
+                MessageBox.Show($"Bitte wählen Sie aus Datenschutzgründen ein lokales Verzeichnis! Das Verzeichnis, dass Sie gewählt haben, wird im Internet auf {webProvider} gespiegelt.", "Datenschutz-Warnung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             CertificateSettingsViewModel.OutputFolder = outputFolder;
