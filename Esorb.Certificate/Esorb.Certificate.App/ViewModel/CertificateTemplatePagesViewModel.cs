@@ -14,12 +14,7 @@ namespace Esorb.Certificate.App.ViewModel
         public CertificateTemplatePagesViewModel(CertificateModel certificateModel)
         {
             this.certificateModel = certificateModel;
-            BuildCertificateTemplatePagesViewModel();
         }
         public ObservableCollection<CertificateTemplatePageViewModel> CertificateTemplatePages { get; private set; }
-
-        private void BuildCertificateTemplatePagesViewModel()
-        {
-        }
     }
 }
