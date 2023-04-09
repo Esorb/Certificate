@@ -39,6 +39,17 @@ public class DbHelper
         CreateTable(typeof(CertificateTemplatePage).ToString());
     }
 
+    public void DropCertificateTables()
+    {
+        DropTable(typeof(Pupil).ToString());
+        DropTable(typeof(SchoolClass).ToString());
+        DropTable(typeof(Teacher).ToString());
+        DropTable(typeof(CertificateData).ToString());
+        DropTable(typeof(CertificateTemplate).ToString());
+        DropTable(typeof(GradeLimit).ToString());
+        DropTable(typeof(CertificateTemplatePage).ToString());
+    }
+
     private string ConnectionString(string filePath)
     {
         StringBuilder sb = new();

@@ -90,14 +90,14 @@
                 </Expander.Header>
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" MaxHeight="500">
                     <Grid 
-                    Background="#f2f2f2"
+                    Background="#f0f0f0"
                     Width="21cm"
                     Height="30cm"
                     >
-                        <Border BorderThickness="1" BorderBrush="#e6e6e6" Margin="20">
-                            <Border.Effect>
+                        <Border BorderThickness="1" BorderBrush="#c6c6c6" Margin="20">
+                            <!--<Border.Effect>
                                 <DropShadowEffect ShadowDepth="2" Direction="315" Color="#888" Opacity="0.5"/>
-                            </Border.Effect>
+                            </Border.Effect>-->
                             <Grid Background="White">
                                 <TextBlock Text="Expander Content"/>
                             </Grid>

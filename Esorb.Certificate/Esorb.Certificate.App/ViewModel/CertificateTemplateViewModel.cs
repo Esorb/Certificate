@@ -4,63 +4,71 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Esorb.Certificate.App.Database;
 using Esorb.Certificate.App.Model;
+using static System.Net.WebRequestMethods;
 
 namespace Esorb.Certificate.App.ViewModel
 {
     public partial class CertificateTemplateViewModel : ObservableObject
     {
-        private CertificateTemplate _certificateTemplate;
-        private DbHelper _dbHelper;
+        private CertificateTemplate certificateTemplate;
+        private DbHelper dbHelper;
 
         public CertificateTemplateViewModel(CertificateTemplate certificateTemplate, DbHelper dbHelper)
         {
-            _certificateTemplate = certificateTemplate;
-            _dbHelper = dbHelper;
+            this.certificateTemplate = certificateTemplate;
+            this.dbHelper = dbHelper;
+            AddCertificateTemplatePage = new RelayCommand(ExecuteAddCertificateTemplatePage, CanExecuteAddCertificateTemplatePage);
+            RemoveCertificateTemplatePage = new RelayCommand(ExecuteRemoveCertificateTemplatePage, CanExecuteRemoveCertificateTemplatePage);
         }
+        public RelayCommand AddCertificateTemplatePage { get; private set; }
+        public RelayCommand RemoveCertificateTemplatePage { get; private set; }
+
 
         public int HalfYear
         {
-            get => _certificateTemplate.HalfYear;
+            get => certificateTemplate.HalfYear;
             set
             {
-                if (value != _certificateTemplate.HalfYear)
+                if (value != certificateTemplate.HalfYear)
                 {
-                    _certificateTemplate.HalfYear = value;
+                    certificateTemplate.HalfYear = value;
                     OnPropertyChanged();
-                    _dbHelper.Save(_certificateTemplate);
+                    dbHelper.Save(certificateTemplate);
                 }
             }
         }
 
         public int Yearlevel
         {
-            get => _certificateTemplate.Yearlevel;
+            get => certificateTemplate.Yearlevel;
             set
             {
-                if (value != _certificateTemplate.Yearlevel)
+                if (value != certificateTemplate.Yearlevel)
                 {
-                    _certificateTemplate.Yearlevel = value;
+                    certificateTemplate.Yearlevel = value;
                     OnPropertyChanged();
-                    _dbHelper.Save(_certificateTemplate);
+                    dbHelper.Save(certificateTemplate);
                 }
             }
         }
 
         public bool IsFullYearReport
         {
-            get => _certificateTemplate.IsFullYearReport;
+            get => certificateTemplate.IsFullYearReport;
             set
             {
-                if (value != _certificateTemplate.IsFullYearReport)
+                if (value != certificateTemplate.IsFullYearReport)
                 {
-                    _certificateTemplate.IsFullYearReport = value;
+                    certificateTemplate.IsFullYearReport = value;
                     HalfYear = 2;
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(Yearlevel));
-                    _dbHelper.Save(_certificateTemplate);
+                    dbHelper.Save(certificateTemplate);
                 }
             }
         }
@@ -82,10 +90,32 @@ namespace Esorb.Certificate.App.ViewModel
 
         public void Delete()
         {
-            _dbHelper.Delete(_certificateTemplate);
+            dbHelper.Delete(certificateTemplate);
         }
 
         public ObservableCollection<CertificateTemplatePageViewModel> CertificateTemplatePages { get; set; } = new ObservableCollection<CertificateTemplatePageViewModel>();
 
+        private void ExecuteAddCertificateTemplatePage()
+        {
+            var ctp = new CertificateTemplatePage();
+            ctp.CertificateTemplateId = certificateTemplate.ID!;
+            ctp.PageNumber = CertificateTemplatePages.Count + 1;
+            certificateTemplate.CertificateTemplatePages.Add(ctp);
+            CertificateTemplatePages.Add(new CertificateTemplatePageViewModel(ctp, dbHelper));
+            dbHelper.Save(ctp);
+        }
+        private bool CanExecuteAddCertificateTemplatePage()
+        {
+            return true;
+        }
+
+        private void ExecuteRemoveCertificateTemplatePage()
+        {
+            MessageBox.Show("Remove");
+        }
+        private bool CanExecuteRemoveCertificateTemplatePage()
+        {
+            return true;
+        }
     }
 }

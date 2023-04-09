@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Esorb.Certificate.App.Database;
+using CommunityToolkit.Mvvm.Input;
+using System.Windows;
 
 namespace Esorb.Certificate.App.ViewModel;
 

@@ -32,7 +32,7 @@
                     </Image.Source>
                 </Image>
             </Grid>
-            <TextBlock Text="Ansprechpartnerin für Bedienungshinweise, Ideen und Fehler: Astrid Heidelberg" Margin="0,40,0,0" HorizontalAlignment="Left" FontFamily="Arial" FontSize="16"/>
+            <TextBlock Text="Ansprechpartnerin für Bedienungshinweise, Ideen und Fehler: Astrid Gerbracht" Margin="0,40,0,0" HorizontalAlignment="Left" FontFamily="Arial" FontSize="16"/>
             <TextBlock Text="Programmiert 2023 von Frank Brose" TextWrapping="Wrap" Margin="0,10,0,0" HorizontalAlignment="Left" FontFamily="Arial" FontSize="16"/>
             <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
                 <TextBlock Text="Der Sourcecode ist auf GitHub verfügbar:" Margin="0,0,10,0" VerticalAlignment="Center" FontFamily="Arial" FontSize="16"/>
@@ -75,6 +75,12 @@
                 Content="Test" 
                 Margin="0,20,0,0" 
                 Click="TestBtn_Click"
+                />
+            <Button
+                x:Name="FillDatabase"
+                Content="Fülle die Datenbank mit aktuellem Stand aus Excel"
+                Margin="0,15,0,0"
+                Click="FillDatabase_Click"
                 />
         </StackPanel>
     </Border>
