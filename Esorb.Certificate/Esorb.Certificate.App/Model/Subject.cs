@@ -27,6 +27,9 @@ public class Subject : PersistentObject
     }
 
     public string SubjectName { get; set; } = string.Empty;
+
+    public Evaluation Evaluation { get; set; }
+    public bool HasPartialSubjects { get; set; }
     public SubjectHierarchy Hierarchy { get; set; }
     public bool CalculateGrade { get; set; }
     public IList<PartialSubject> PartialSubjects

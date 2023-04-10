@@ -8,6 +8,6 @@ namespace Esorb.Certificate.App.Model.Enumerables;
 
 public enum Evaluation
 {
-    Grade,
-    Rating
+    Zensur,
+    Bewertung
 }
