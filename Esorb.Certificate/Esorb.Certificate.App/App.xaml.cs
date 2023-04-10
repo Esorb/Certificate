@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using System.Windows;
 using System.Globalization;
 using System.Threading;
+using Esorb.Certificate.App.Model;
 
 namespace Esorb.Certificate.App;
 

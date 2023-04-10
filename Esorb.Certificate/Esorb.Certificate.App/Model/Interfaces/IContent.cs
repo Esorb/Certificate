@@ -8,9 +8,11 @@ namespace Esorb.Certificate.App.Model.Interfaces;
 
 public interface IContent
 {
-    long ContentID { get; set; }
-    long FormatID { get; set; }
     string Name { get; }
+    int Position { get; set; }
+    string ContentID { get; set; }
+    string FormatID { get; set; }
+    string CertificateTemplatePageId { get; set; }
     IValueInput Value { get; set; }
     bool OnlyOne { get; set; }
 }

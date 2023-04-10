@@ -15,6 +15,7 @@
 		<None Remove="Pictures\GGS.ico" />
 		<None Remove="Pictures\GGS.jpg" />
 		<None Remove="Pictures\GitHub Logo.png" />
+		<None Remove="Pictures\PreviewIcon.png" />
 		<None Remove="Pictures\Roesrath.png" />
 		<None Remove="Pictures\SQLite Logo.png" />
 		<None Remove="Pictures\Xceed Logo.png" />
@@ -31,7 +32,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Pictures\GGS.ico" />
+		<Content Include="Pictures\GGS.ico">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -55,25 +58,30 @@
 		<Resource Include="Documents\EULA.txt">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
-		<Resource Include="Pictures\Dapper-Logo.png" />
+		<Resource Include="Pictures\Dapper-Logo.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
 		<Resource Include="Pictures\GGS.ico" />
 		<Resource Include="Pictures\GGS.jpg">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Pictures\GGS.png">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Pictures\GitHub Logo.png">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Pictures\PreviewIcon.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Pictures\Roesrath.png">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Pictures\SQLite Logo.png">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Pictures\Xceed Logo.png">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Properties\Settings.settings">
 		  <Generator>SettingsSingleFileGenerator</Generator>

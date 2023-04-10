@@ -8,13 +8,17 @@
 
     <DataTemplate DataType="{x:Type vm:CertificateTemplateViewModel}">
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <Expander 
+                Grid.Row="0"
                 x:Name="expCertificateTemplate"
                 Margin="0,0,0,10"
                 >
                 <Expander.Header>
                     <Grid
-                        Margin="0,0,0,10"
+                        Margin="0,0,0,0"
                         >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -32,7 +36,60 @@
                             Margin="0,0,10,0"
                             VerticalAlignment="Center"
                             />
-                        <Button
+                    </Grid>
+                </Expander.Header>
+                <StackPanel>
+                    <Expander
+                        Header="1. Fächer"
+                        FontSize="16"
+                        Margin="20,10,0,0"
+                        >
+
+                    </Expander>
+                    <Expander
+                        Header="2. Entscheidungen"
+                        FontSize="16"
+                        Margin="20,0,0,0"
+                        >
+
+                    </Expander>
+                    <Expander
+                        Header="3. Sonstige Eingaben"
+                        FontSize="16"
+                        Margin="20,0,0,0"
+                        >
+
+                    </Expander>
+                    <Expander
+                        Header="4. Inhalte ohne Schülerbezug"
+                        FontSize="16"
+                        Margin="20,0,0,0"
+                        >
+
+                    </Expander>
+                    <Expander
+                        FontSize="16"
+                        Margin="20,0,0,0"
+                        x:Name="expPages"
+                        >
+                        <Expander.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                            Text="5. Seiten"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontSize="16"
+                            Margin="0,0,10,0"
+                            VerticalAlignment="Center"
+                            />
+                                <Button
                             x:Name="btnAddCertificateTemplatePage"
                             Grid.Column="1"
                             Grid.Row="0"
@@ -41,22 +98,22 @@
                             Visibility="Collapsed"
                             Command="{Binding AddCertificateTemplatePage}"
                             >
-                            <Button.Content>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock
+                                    <Button.Content>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
                                         Grid.Column="0"
                                         Grid.Row="0"
                                         Text="&#xF56E;"
                                         FontFamily="Segoe MDL2 Assets"
                                         FontSize="24"
                                         />
-                                    <TextBlock 
+                                            <TextBlock 
                                         Grid.Column="0"
                                         Grid.Row="0"
                                         Text="+"
@@ -64,17 +121,19 @@
                                         FontWeight="Bold"
                                         FontSize="18"
                                         />
-                                </Grid>
-                            </Button.Content>
-                        </Button>
-                    </Grid>
-                </Expander.Header>
-                <ItemsControl ItemsSource="{Binding CertificateTemplatePages}"/>
+                                        </Grid>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </Expander.Header>
+                        <ItemsControl ItemsSource="{Binding CertificateTemplatePages}"/>
+                    </Expander>
+                </StackPanel>
             </Expander>
         </Grid>
 
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding ElementName=expCertificateTemplate, Path=IsExpanded}" Value="True">
+            <DataTrigger Binding="{Binding ElementName=expPages, Path=IsExpanded}" Value="True">
                 <Setter TargetName="btnAddCertificateTemplatePage" Property="Visibility" Value="Visible"/>
             </DataTrigger>
         </DataTemplate.Triggers>
