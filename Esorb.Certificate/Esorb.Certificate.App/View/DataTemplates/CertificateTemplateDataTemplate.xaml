@@ -3,6 +3,7 @@
                     xmlns:vm="clr-namespace:Esorb.Certificate.App.ViewModel">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="SubjectDataTemplate.xaml"/>
         <ResourceDictionary Source="CertificateTemplatePageDataTemplate.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 

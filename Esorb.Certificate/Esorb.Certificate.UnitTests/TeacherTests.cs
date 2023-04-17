@@ -184,6 +184,50 @@ public class TeacherTests
     {
         // Arrange
         var dbh = new DbHelper();
+        dbh.DropTable(typeof(Teacher).ToString());
+        dbh.CreateTable(typeof(Teacher).ToString());
+
+        var t1 = new Teacher
+        {
+            FirstName = "Astrid",
+            LastName = "Heidelberg",
+            Gender = GenderValues.weiblich,
+            IsHeadmaster = false,
+            IsAdmin = true,
+            Password = "password"
+        };
+
+        var t2 = new Teacher
+        {
+            FirstName = "Bettina",
+            LastName = "Nebel",
+            Gender = GenderValues.weiblich,
+            IsHeadmaster = true,
+            IsAdmin = false
+        };
+
+        var t3 = new Teacher
+        {
+            FirstName = "Caroline",
+            LastName = "Schäfer",
+            Gender = GenderValues.weiblich,
+            IsHeadmaster = false,
+            IsAdmin = false
+        };
+
+        var t4 = new Teacher
+        {
+            FirstName = "Herbert",
+            LastName = "Böttcher",
+            Gender = GenderValues.männlich,
+            IsHeadmaster = false,
+            IsAdmin = false
+        };
+
+        dbh.Save(t4);
+        dbh.Save(t3);
+        dbh.Save(t2);
+        dbh.Save(t1);
 
         // Act
         IList<Teacher> teachers = dbh.LoadAll<Teacher>().OrderBy(teacher => teacher.FullName).ToList();
@@ -197,6 +241,50 @@ public class TeacherTests
     {
         // Arrange
         var dbh = new DbHelper();
+        dbh.DropTable(typeof(Teacher).ToString());
+        dbh.CreateTable(typeof(Teacher).ToString());
+
+        var t1 = new Teacher
+        {
+            FirstName = "Astrid",
+            LastName = "Heidelberg",
+            Gender = GenderValues.weiblich,
+            IsHeadmaster = false,
+            IsAdmin = true,
+            Password = "password"
+        };
+
+        var t2 = new Teacher
+        {
+            FirstName = "Bettina",
+            LastName = "Nebel",
+            Gender = GenderValues.weiblich,
+            IsHeadmaster = true,
+            IsAdmin = false
+        };
+
+        var t3 = new Teacher
+        {
+            FirstName = "Caroline",
+            LastName = "Schäfer",
+            Gender = GenderValues.weiblich,
+            IsHeadmaster = false,
+            IsAdmin = false
+        };
+
+        var t4 = new Teacher
+        {
+            FirstName = "Herbert",
+            LastName = "Böttcher",
+            Gender = GenderValues.männlich,
+            IsHeadmaster = false,
+            IsAdmin = false
+        };
+
+        dbh.Save(t4);
+        dbh.Save(t3);
+        dbh.Save(t2);
+        dbh.Save(t1);
 
         // Act
         IList<Teacher> teachers = dbh.LoadAll<Teacher>().OrderBy(teacher => teacher.FullName).ToList();

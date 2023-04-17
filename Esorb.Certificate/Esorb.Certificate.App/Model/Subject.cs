@@ -11,47 +11,19 @@ namespace Esorb.Certificate.App.Model;
 
 public class Subject : PersistentObject
 {
-    private string subjectName;
-    private SubjectHierarchy hierarchy;
-    private bool calculateGrade;
-
-
-    private IList<PartialSubject> partialSubjects;
-    private IList<Rating> ratings;
-
-    public Subject()
-    {
-        subjectName = "";
-        partialSubjects = new List<PartialSubject>();
-        ratings = new List<Rating>();
-    }
 
     public string SubjectName { get; set; } = string.Empty;
-
     public Evaluation Evaluation { get; set; }
     public bool HasPartialSubjects { get; set; }
-    public SubjectHierarchy Hierarchy { get; set; }
     public bool CalculateGrade { get; set; }
-    public IList<PartialSubject> PartialSubjects
-    {
-        get
-        {
-            return partialSubjects;
-        }
-        set
-        {
-            partialSubjects = value;
-        }
-    }
-    public IList<Rating> Ratings
-    {
-        get
-        {
-            return ratings;
-        }
-        set
-        {
-            ratings = value;
-        }
-    }
+    public int PositionOnPage { get; set; }
+    public bool HasComment { get; set; } = true;
+    public int MaxNumberOfCommentLines { get; set; } = 4;
+    public string CertificateTemplateId { get; set; } = string.Empty;
+    public string CertificateTemplatePageId { get; set; } = string.Empty;
+    public CertificateTemplate? CertificateTemplate { get; set; }
+    public CertificateTemplatePage? CertificateTemplatePage { get; set; }
+    public IList<PartialSubject> PartialSubjects { get; private set; } = new List<PartialSubject>();
+    public IList<Rating> Ratings { get; private set; } = new List<Rating>();
+    public IList<Subject> ContainingSubjects { get; set; } = new List<Subject>();
 }

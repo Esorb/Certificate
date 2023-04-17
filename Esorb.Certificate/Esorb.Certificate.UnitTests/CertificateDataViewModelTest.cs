@@ -18,6 +18,8 @@ namespace Esorb.Certificate.UnitTests
         {
             // Prepare
             var dbh = new DbHelper();
+            dbh.DropTable(nameof(Subject).ToString());
+            dbh.CreateTable(nameof(Subject).ToString());
             dbh.DropTable(nameof(CertificateData).ToString());
             dbh.CreateTable(typeof(CertificateData).ToString());
             // Arrange

@@ -39,6 +39,7 @@ namespace Esorb.Certificate.App.ViewModel
         public CertificateDataViewModel CertificateDataViewModel { get; set; }
         public CertificateTemplatesViewModel CertificateTemplatesViewModel { get; set; }
         public SchoolClassesViewModel SchoolClassesViewModel { get; set; }
+        public SubjectsViewModel SubjectsViewModel { get; set; }
 
         #endregion
 
@@ -109,6 +110,7 @@ namespace Esorb.Certificate.App.ViewModel
             GradeLimitsViewModel = new(certificateModel);
             SchoolClassesViewModel = new(certificateModel);
             CertificateDataViewModel = new(certificateModel);
+            SubjectsViewModel = new(certificateModel);
         }
 
         #endregion

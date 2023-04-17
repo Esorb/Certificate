@@ -13,8 +13,8 @@ namespace Esorb.Certificate.App;
 
 public partial class MainWindow : Window
 {
-    public readonly CertificateModel certificateModel = new();
-    public readonly CertifcateViewModel certifcateViewModel;
+    public readonly CertificateModel CertificateModel;
+    public readonly CertifcateViewModel CertifcateViewModel;
     private CertificateSettingsViewModel SettingsVM;
     private IList<NavButton> navButtons = new List<NavButton>();
     private IDictionary<Uri, Page> pages = new Dictionary<Uri, Page>();
@@ -23,9 +23,10 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         WindowState = WindowState.Maximized;
-        certifcateViewModel = new CertifcateViewModel(certificateModel);
-        SettingsVM = certifcateViewModel.CertificateSettingsViewModel;
-        DataContext = this.certifcateViewModel;
+        CertificateModel = new CertificateModel();
+        CertifcateViewModel = new CertifcateViewModel(CertificateModel);
+        SettingsVM = CertifcateViewModel.CertificateSettingsViewModel;
+        DataContext = this.CertifcateViewModel;
 
         AddNavButtons();
         InitPages();
@@ -45,7 +46,7 @@ public partial class MainWindow : Window
     private GridLength GetLastMenuWidth()
     {
 
-        return certifcateViewModel.CertificateSettingsViewModel.MenuPosition switch
+        return CertifcateViewModel.CertificateSettingsViewModel.MenuPosition switch
         {
             "wide" => new GridLength(110, GridUnitType.Pixel),
             _ => new GridLength(44, GridUnitType.Pixel),
@@ -55,11 +56,11 @@ public partial class MainWindow : Window
 
     private void InitPages()
     {
-        pages.Add(BtnStart.NavUri!, new StartPage(certifcateViewModel));
-        pages.Add(BtnInput.NavUri!, new InputPage(certifcateViewModel));
-        pages.Add(BtnExport.NavUri!, new ExportPage(certifcateViewModel));
-        pages.Add(BtnAdmin.NavUri!, new AdminPage(certifcateViewModel));
-        pages.Add(BtnInfo.NavUri!, new InfoPage(certifcateViewModel));
+        pages.Add(BtnStart.NavUri!, new StartPage(CertifcateViewModel));
+        pages.Add(BtnInput.NavUri!, new InputPage(CertifcateViewModel));
+        pages.Add(BtnExport.NavUri!, new ExportPage(CertifcateViewModel));
+        pages.Add(BtnAdmin.NavUri!, new AdminPage(CertifcateViewModel));
+        pages.Add(BtnInfo.NavUri!, new InfoPage(CertifcateViewModel));
     }
 
 
@@ -165,7 +166,7 @@ public partial class MainWindow : Window
 
     private NavButton GetLastActivatedNavButton()
     {
-        return certifcateViewModel.CertificateSettingsViewModel.Page switch
+        return CertifcateViewModel.CertificateSettingsViewModel.Page switch
         {
             "Start" => BtnStart,
             "Input" => BtnInput,

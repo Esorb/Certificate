@@ -66,8 +66,139 @@ public partial class InfoPage : Page
         CreateTeachers();
         CreateCertificateTemplates();
         CreateCertificateTemplatePages();
+        CreateSubjects();
     }
 
+    private void CreateSubjects()
+    {
+        var dbh = new DbHelper();
+
+        CertificateModel CM = new CertificateModel();
+        Subject s;
+
+        foreach (var ct in CM.CertificateTemplates)
+        {
+            foreach (var ctp in CM.CertificateTemplatePages)
+            {
+                if (ct.Yearlevel == 1 && ct.HalfYear == 2)
+                {
+                    if (ctp.PageNumber == 1)
+                    {
+                        s = new Subject();
+                        s.SubjectName = "Arbeitsverhalten";
+                        s.Evaluation = Evaluation.Bewertung;
+                        s.HasPartialSubjects = false;
+                        s.CalculateGrade = false;
+                        s.PositionOnPage = 1;
+                        s.CertificateTemplateId = ct.ID!;
+                        s.CertificateTemplatePageId = ctp.ID!;
+                        dbh.Save(s);
+
+                        s = new Subject();
+                        s.SubjectName = "Sozialverhalten";
+                        s.Evaluation = Evaluation.Bewertung;
+                        s.HasPartialSubjects = false;
+                        s.CalculateGrade = false;
+                        s.PositionOnPage = 2;
+                        s.CertificateTemplateId = ct.ID!;
+                        s.CertificateTemplatePageId = ctp.ID!;
+                        dbh.Save(s);
+                    }
+                    if (ctp.PageNumber == 2)
+                    {
+                        s = new Subject();
+                        s.SubjectName = "Deutsch";
+                        s.Evaluation = Evaluation.Bewertung;
+                        s.HasPartialSubjects = true;
+                        s.CalculateGrade = false;
+                        s.PositionOnPage = 1;
+                        s.HasComment = true;
+                        s.MaxNumberOfCommentLines = 6;
+                        s.CertificateTemplateId = ct.ID!;
+                        s.CertificateTemplatePageId = ctp.ID!;
+                        dbh.Save(s);
+
+                        s = new Subject();
+                        s.SubjectName = "Mathematik";
+                        s.Evaluation = Evaluation.Bewertung;
+                        s.HasPartialSubjects = true;
+                        s.CalculateGrade = false;
+                        s.PositionOnPage = 2;
+                        s.HasComment = true;
+                        s.MaxNumberOfCommentLines = 6;
+                        s.CertificateTemplateId = ct.ID!;
+                        s.CertificateTemplatePageId = ctp.ID!;
+                        dbh.Save(s);
+                    }
+                    if (ctp.PageNumber == 3)
+                    {
+                        s = new Subject();
+                        s.SubjectName = "Sachunterricht";
+                        s.Evaluation = Evaluation.Bewertung;
+                        s.HasPartialSubjects = false;
+                        s.CalculateGrade = false;
+                        s.PositionOnPage = 1;
+                        s.HasComment = true;
+                        s.MaxNumberOfCommentLines = 6;
+                        s.CertificateTemplateId = ct.ID!;
+                        s.CertificateTemplatePageId = ctp.ID!;
+                        dbh.Save(s);
+
+                        s = new Subject();
+                        s.SubjectName = "Sport";
+                        s.Evaluation = Evaluation.Bewertung;
+                        s.HasPartialSubjects = false;
+                        s.CalculateGrade = false;
+                        s.PositionOnPage = 2;
+                        s.HasComment = true;
+                        s.MaxNumberOfCommentLines = 6;
+                        s.CertificateTemplateId = ct.ID!;
+                        s.CertificateTemplatePageId = ctp.ID!;
+                        dbh.Save(s);
+
+                        s = new Subject();
+                        s.SubjectName = "Musik";
+                        s.Evaluation = Evaluation.Bewertung;
+                        s.HasPartialSubjects = false;
+                        s.CalculateGrade = false;
+                        s.PositionOnPage = 3;
+                        s.HasComment = true;
+                        s.MaxNumberOfCommentLines = 6;
+                        s.CertificateTemplateId = ct.ID!;
+                        s.CertificateTemplatePageId = ctp.ID!;
+                        dbh.Save(s);
+
+                        s = new Subject();
+                        s.SubjectName = "Kunst";
+                        s.Evaluation = Evaluation.Bewertung;
+                        s.HasPartialSubjects = false;
+                        s.CalculateGrade = false;
+                        s.PositionOnPage = 4;
+                        s.HasComment = true;
+                        s.MaxNumberOfCommentLines = 6;
+                        s.CertificateTemplateId = ct.ID!;
+                        s.CertificateTemplatePageId = ctp.ID!;
+                        dbh.Save(s);
+                    }
+                    if (ctp.PageNumber == 4)
+                    {
+                        s = new Subject();
+                        s.SubjectName = "Religion";
+                        s.Evaluation = Evaluation.Bewertung;
+                        s.HasPartialSubjects = false;
+                        s.CalculateGrade = false;
+                        s.PositionOnPage = 1;
+                        s.HasComment = true;
+                        s.MaxNumberOfCommentLines = 6;
+                        s.CertificateTemplateId = ct.ID!;
+                        s.CertificateTemplatePageId = ctp.ID!;
+                        dbh.Save(s);
+                    }
+
+                }
+            }
+        }
+    }
     private void LoadPupilsAndSchoolClassesIntoDatabase()
     {
         var psci = new PupilSchoolClassImporter();

@@ -24,6 +24,7 @@ public class DbHelper
         InitCertificateTemplate();
         InitGradeLimit();
         InitCertificateTemplatePage();
+        InitSubject();
     }
 
     private readonly Dictionary<string, ObjectSQL> StandardSQLStatements = new();
@@ -37,6 +38,7 @@ public class DbHelper
         CreateTable(typeof(CertificateTemplate).ToString());
         CreateTable(typeof(GradeLimit).ToString());
         CreateTable(typeof(CertificateTemplatePage).ToString());
+        CreateTable(typeof(Subject).ToString());
     }
 
     public void DropCertificateTables()
@@ -48,6 +50,7 @@ public class DbHelper
         DropTable(typeof(CertificateTemplate).ToString());
         DropTable(typeof(GradeLimit).ToString());
         DropTable(typeof(CertificateTemplatePage).ToString());
+        DropTable(typeof(Subject).ToString());
     }
 
     private string ConnectionString(string filePath)
@@ -291,5 +294,24 @@ public class DbHelper
         ObjectSQL SQL = new("CertificateTemplatePage", Fields);
         StandardSQLStatements.Add(typeof(CertificateTemplatePage).ToString(), SQL);
         Tables.Add("CertificateTemplatePage");
+    }
+    private void InitSubject()
+    {
+        var Fields = new Dictionary<string, string>
+        {
+            { "SubjectName", "TEXT" },
+            { "Evaluation", "INTEGER" },
+            { "HasPartialSubjects", "BOOLEAN" },
+            { "CalculateGrade", "BOOLEAN" },
+            { "HasComment", "BOOLEAN" },
+            { "MaxNumberOfCommentLines", "INTEGER" },
+            { "PositionOnPage", "INTEGER" },
+            { "CertificateTemplateId", "TEXT" },
+            { "CertificateTemplatePageId", "TEXT" },
+        };
+
+        ObjectSQL SQL = new("Subject", Fields);
+        StandardSQLStatements.Add(typeof(Subject).ToString(), SQL);
+        Tables.Add("Subject");
     }
 }
