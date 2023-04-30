@@ -24,7 +24,19 @@
                         >
                         <Grid>
                             <StackPanel>
-                                <Grid x:Name="SchoolHeader">
+                                <Grid
+                                    x:Name="SchoolHeader"
+                                    >
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding PageNumber}" Value="1">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
@@ -54,7 +66,5 @@
             </Grid>
         </ScrollViewer>
     </Grid>
-
-
 
 </Window>

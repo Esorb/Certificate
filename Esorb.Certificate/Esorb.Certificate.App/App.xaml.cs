@@ -5,6 +5,8 @@ using System.Windows;
 using System.Globalization;
 using System.Threading;
 using Esorb.Certificate.App.Model;
+using Esorb.Certificate.App.InitialLoad;
+
 
 namespace Esorb.Certificate.App;
 
@@ -24,6 +26,10 @@ public partial class App : Application
 
     protected override async void OnStartup(StartupEventArgs e)
     {
+
+        InitialLoader il = new InitialLoader();
+        il.Load();
+
         Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
         Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
         await AppHost.StopAsync();

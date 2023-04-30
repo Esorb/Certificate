@@ -3,7 +3,7 @@ using Esorb.Certificate.App.Model.Enumerables;
 
 namespace Esorb.Certificate.App.Model;
 
-public class Teacher : PersistentObject
+public class Teacher : PersistentObject, ITrackableObject
 {
     public Teacher()
     {

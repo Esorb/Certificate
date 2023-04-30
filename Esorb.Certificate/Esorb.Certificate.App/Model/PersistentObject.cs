@@ -11,7 +11,7 @@ public abstract class PersistentObject : ITrackableObject
 {
     private static readonly DbHelper _dbHelper;
     private static readonly object _lock = new object();
-    private List<TrackableList<ITrackableObject>> _trackedLists;
+    IList<TrackableList> _trackedLists = new List<TrackableList>();
     public string? ID { get; set; }
 
     public DbHelper DbHelper
@@ -53,11 +53,11 @@ public abstract class PersistentObject : ITrackableObject
         _dbHelper?.Delete(this);
     }
 
-    public void AddTrackedList(TrackableList<ITrackableObject> listToBeTracked)
+    public void AddTrackedList(TrackableList listToBeTracked)
     {
-        if (!_trackedLists.Contains(listToBeTracked))
+        if (!_trackedLists.Contains(listToBeTracked!))
         {
-            _trackedLists.Add(listToBeTracked);
+            _trackedLists.Add(listToBeTracked!);
         }
     }
 }

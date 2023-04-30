@@ -105,7 +105,7 @@ namespace Esorb.Certificate.UnitTests
         }
 
         [TestMethod]
-        public void DataModelLoadsOnCreation_Contains_6_GradeLimits()
+        public void ZDataModelLoadsOnCreation_Contains_6_GradeLimits()
         {
             var cm = new CertificateModel();
             Assert.AreEqual(6, cm.GradeLimits.Count);

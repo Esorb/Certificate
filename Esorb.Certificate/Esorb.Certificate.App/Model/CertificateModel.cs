@@ -8,11 +8,11 @@ namespace Esorb.Certificate.App.Model
     {
         public DbHelper DbHelper { get; private set; } = new DbHelper();
         private CertificateSettings settings = new();
-        public TrackableList<Teacher> Teachers { get; private set; } = new();
-        public IList<Pupil> Pupils { get; private set; } = new List<Pupil>();
-        public IList<SchoolClass> SchoolClasses { get; private set; } = new List<SchoolClass>();
-        public IList<GradeLimit> GradeLimits { get; private set; } = new List<GradeLimit>();
-        public IList<CertificateTemplate> CertificateTemplates { get; private set; } = new List<CertificateTemplate>();
+        public TrackableList Teachers { get; private set; } = new();
+        public TrackableList Pupils { get; private set; } = new();
+        public TrackableList SchoolClasses { get; private set; } = new();
+        public TrackableList GradeLimits { get; private set; } = new();
+        public TrackableList CertificateTemplates { get; private set; } = new();
         public IList<CertificateTemplatePage> CertificateTemplatePages { get; private set; } = new List<CertificateTemplatePage>();
         public IList<Subject> Subjects { get; private set; } = new List<Subject>();
         public CertificateData CertificateData { get; private set; } = new CertificateData();
@@ -35,10 +35,10 @@ namespace Esorb.Certificate.App.Model
             settings = new CertificateSettings();
 
             LoadTeachers();
-            Pupils = DbHelper.LoadAll<Pupil>().OrderBy(pupil => pupil.FullName).ToList();
-            SchoolClasses = DbHelper.LoadAll<SchoolClass>().OrderBy(schoolClass => schoolClass.ClassName).ToList();
-            GradeLimits = DbHelper.LoadAll<GradeLimit>().OrderBy(gl => gl.GradeNumeric).ToList();
-            CertificateTemplates = DbHelper.LoadAll<CertificateTemplate>().OrderBy(ct => ct.Yearlevel).ThenBy(ct => ct.HalfYear).ToList();
+            LoadPupils();
+            LoadSchooClasses();
+            LoadGradeLimits();
+            LoadCertificateTemplates();
             CertificateTemplatePages = DbHelper.LoadAll<CertificateTemplatePage>().OrderBy(ctp => ctp.CertificateTemplateId).ThenBy(ctp => ctp.PageNumber).ToList();
             Subjects = DbHelper.LoadAll<Subject>();
 
@@ -51,6 +51,42 @@ namespace Esorb.Certificate.App.Model
             foreach (Teacher teacher in teachers)
             {
                 Teachers.Add(teacher);
+            }
+        }
+
+        public void LoadPupils()
+        {
+            IEnumerable<Pupil> pupils = DbHelper.LoadAll<Pupil>().OrderBy(pupil => pupil.FullName);
+            foreach (Pupil pupil in pupils)
+            {
+                Pupils.Add(pupil);
+            }
+        }
+
+        public void LoadSchooClasses()
+        {
+            IEnumerable<SchoolClass> schoolClasses = DbHelper.LoadAll<SchoolClass>().OrderBy(schoolClass => schoolClass.ClassName);
+            foreach (SchoolClass schoolClass in schoolClasses)
+            {
+                SchoolClasses.Add(schoolClass);
+            }
+        }
+
+        public void LoadGradeLimits()
+        {
+            IEnumerable<GradeLimit> gradeLimits = DbHelper.LoadAll<GradeLimit>().OrderBy(gl => gl.GradeNumeric);
+            foreach (GradeLimit gl in gradeLimits)
+            {
+                GradeLimits.Add(gl);
+            }
+        }
+
+        public void LoadCertificateTemplates()
+        {
+            IEnumerable<CertificateTemplate> certificateTemplates = DbHelper.LoadAll<CertificateTemplate>().OrderBy(ct => ct.Yearlevel).ThenBy(ct => ct.HalfYear);
+            foreach (CertificateTemplate certTemplate in certificateTemplates)
+            {
+                CertificateTemplates.Add(certTemplate);
             }
         }
 
@@ -72,6 +108,12 @@ namespace Esorb.Certificate.App.Model
             LinkPupilsSchoolClasses();
             LinkCertificateTemplatePagesToCertificateTemplates();
             LinkSubjectsToCertificateTemplatePages();
+            LinkSubjectsToCertificateTemplates();
+        }
+
+        public void LinkSubjectsToCertificateTemplates()
+        {
+
         }
         public void LinkSubjectsToCertificateTemplatePages()
         {
@@ -85,9 +127,9 @@ namespace Esorb.Certificate.App.Model
         }
         private void LinkPupilsSchoolClasses()
         {
-            foreach (var pupil in Pupils)
+            foreach (Pupil pupil in Pupils)
             {
-                pupil.SchoolClass = SchoolClasses.FirstOrDefault(sc => sc.ID == pupil.SchoolClassId);
+                pupil.SchoolClass = (SchoolClass)SchoolClasses.FirstOrDefault(sc => sc.ID == pupil.SchoolClassId);
                 pupil.SchoolClass?.Pupils.Add(pupil);
             }
         }
@@ -95,7 +137,7 @@ namespace Esorb.Certificate.App.Model
         {
             foreach (var ctp in CertificateTemplatePages)
             {
-                ctp.CertificateTemplate = CertificateTemplates.FirstOrDefault(ct => ct.ID == ctp.CertificateTemplateId)!;
+                ctp.CertificateTemplate = (CertificateTemplate)CertificateTemplates.FirstOrDefault(ct => ct.ID == ctp.CertificateTemplateId)!;
                 ctp.CertificateTemplate?.CertificateTemplatePages.Add(ctp);
             }
         }

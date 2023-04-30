@@ -2,6 +2,6 @@
 {
     public interface ITrackableObject
     {
-        void AddTrackedList(TrackableList<ITrackableObject> trackedList);
+        public void AddTrackedList(TrackableList listToBeTracked);
     }
 }

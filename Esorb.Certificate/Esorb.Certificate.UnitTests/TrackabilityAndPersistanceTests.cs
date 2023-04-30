@@ -19,8 +19,8 @@ namespace Esorb.Certificate.UnitTests
             dbh.DropTable(typeof(Teacher).ToString());
             dbh.CreateTable(typeof(Teacher).ToString());
 
-            TrackableList<Teacher> tl1 = new();
-            TrackableList<Teacher> tl2 = new();
+            TrackableList tl1 = new();
+            TrackableList tl2 = new();
 
             var t1 = new Teacher
             {

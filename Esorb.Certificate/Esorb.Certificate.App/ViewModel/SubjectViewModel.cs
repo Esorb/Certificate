@@ -22,17 +22,17 @@ public partial class SubjectViewModel : ObservableObject
     }
 
     public string SubjectName
-    { 
+    {
         get => subject.SubjectName;
-        set 
-        { 
+        set
+        {
             if (value != subject.SubjectName)
             {
                 subject.SubjectName = value;
                 OnPropertyChanged(nameof(SubjectName));
                 dbHelper.Save(subject);
             }
-        } 
+        }
     }
     public Evaluation Evaluation
     {
@@ -41,7 +41,7 @@ public partial class SubjectViewModel : ObservableObject
         {
             if (value != subject.Evaluation)
             {
-                subject.Evaluation = value; 
+                subject.Evaluation = value;
                 OnPropertyChanged(nameof(Evaluation));
                 dbHelper.Save(subject);
             }
@@ -58,10 +58,10 @@ public partial class SubjectViewModel : ObservableObject
                 OnPropertyChanged(nameof(HasPartialSubjects));
                 dbHelper.Save(subject);
             }
-        } 
+        }
     }
     public bool CalculateGrade
-    { 
+    {
         get => subject.CalculateGrade;
         set
         {
@@ -87,7 +87,7 @@ public partial class SubjectViewModel : ObservableObject
         }
     }
     public bool HasComment
-    { 
+    {
         get => subject.HasComment;
         set
         {
@@ -99,7 +99,7 @@ public partial class SubjectViewModel : ObservableObject
             }
         }
     }
-    public int MaxNumberOfCommentLines 
+    public int MaxNumberOfCommentLines
     {
         get => subject.MaxNumberOfCommentLines;
         set
