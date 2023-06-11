@@ -8,11 +8,11 @@ namespace Esorb.Certificate.App.Model
     {
         public DbHelper DbHelper { get; private set; } = new DbHelper();
         private CertificateSettings settings = new();
-        public TrackableList Teachers { get; private set; } = new();
-        public TrackableList Pupils { get; private set; } = new();
-        public TrackableList SchoolClasses { get; private set; } = new();
-        public TrackableList GradeLimits { get; private set; } = new();
-        public TrackableList CertificateTemplates { get; private set; } = new();
+        public List<Teacher> Teachers { get; private set; } = new();
+        public List<Pupil> Pupils { get; private set; } = new();
+        public List<SchoolClass> SchoolClasses { get; private set; } = new();
+        public List<GradeLimit> GradeLimits { get; private set; } = new();
+        public List<CertificateTemplate> CertificateTemplates { get; private set; } = new();
         public IList<CertificateTemplatePage> CertificateTemplatePages { get; private set; } = new List<CertificateTemplatePage>();
         public IList<Subject> Subjects { get; private set; } = new List<Subject>();
         public CertificateData CertificateData { get; private set; } = new CertificateData();

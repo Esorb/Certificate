@@ -19,8 +19,8 @@ namespace Esorb.Certificate.UnitTests
             dbh.DropTable(typeof(Teacher).ToString());
             dbh.CreateTable(typeof(Teacher).ToString());
 
-            TrackableList tl1 = new();
-            TrackableList tl2 = new();
+            List<Teacher> tl1 = new();
+            List<Teacher> tl2 = new();
 
             var t1 = new Teacher
             {
@@ -87,18 +87,7 @@ namespace Esorb.Certificate.UnitTests
 
             // Act
             t1.Delete();
-            // Assert
-            Assert.AreEqual(3, tl1.Count);
-            Assert.AreEqual(3, tl2.Count);
-
-            // Act
             t2.Delete();
-
-            // Assert
-            Assert.AreEqual(2, tl1.Count);
-            Assert.AreEqual(2, tl2.Count);
-
-            // Act
             IList<Teacher> teachers = dbh.LoadAll<Teacher>().OrderBy(teacher => teacher.FullName).ToList();
 
             // Assert

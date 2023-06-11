@@ -2,11 +2,11 @@
 
 namespace Esorb.Certificate.App.Model;
 
-public class TrackableList : List<PersistentObject>
+public class TrackableList<T> : List<T> where T : ITrackableObject
 {
-    public void Add(PersistentObject item)
+    public new void Add(T item)
     {
-        item!.AddTrackedList(this);
         base.Add(item);
+        item.AddTrackedList(this);
     }
 }

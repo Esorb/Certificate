@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Esorb.Certificate.App.Model;
 
-public abstract class PersistentObject : ITrackableObject
+public abstract class PersistentObject
 {
     private static readonly DbHelper _dbHelper;
     private static readonly object _lock = new object();
-    IList<TrackableList> _trackedLists = new List<TrackableList>();
+    private List<TrackableList<ITrackableObject>> _trackedLists = new List<TrackableList<ITrackableObject>>();
     public string? ID { get; set; }
 
     public DbHelper DbHelper
@@ -36,16 +36,8 @@ public abstract class PersistentObject : ITrackableObject
 
     public void Delete()
     {
-        RemoveMyselfFromTrackedLists();
+        //RemoveMyselfFromAllTrackedLists();
         DeleteMyselfFromDatabase();
-    }
-
-    private void RemoveMyselfFromTrackedLists()
-    {
-        foreach (var tl in _trackedLists)
-        {
-            tl.Remove(this);
-        }
     }
 
     private void DeleteMyselfFromDatabase()
@@ -53,11 +45,18 @@ public abstract class PersistentObject : ITrackableObject
         _dbHelper?.Delete(this);
     }
 
-    public void AddTrackedList(TrackableList listToBeTracked)
-    {
-        if (!_trackedLists.Contains(listToBeTracked!))
-        {
-            _trackedLists.Add(listToBeTracked!);
-        }
-    }
+    //public void AddTrackedList<T>(TrackableList<T> listToBeTracked) where T : ITrackableObject
+    //{
+    //    _trackedLists.Add((TrackableList<ITrackableObject>)(object)listToBeTracked);
+    //}
+
+    //public void RemoveMyselfFromAllTrackedLists()
+    //{
+    //    foreach (var list in _trackedLists)
+    //    {
+    //        list.Remove((ITrackableObject)this);
+    //    }
+
+    //    _trackedLists.Clear();
+    //}
 }

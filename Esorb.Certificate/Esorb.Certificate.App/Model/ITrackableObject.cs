@@ -1,7 +1,7 @@
-﻿namespace Esorb.Certificate.App.Model
+﻿namespace Esorb.Certificate.App.Model;
+
+public interface ITrackableObject
 {
-    public interface ITrackableObject
-    {
-        public void AddTrackedList(TrackableList listToBeTracked);
-    }
+    void AddTrackedList<T>(TrackableList<T> listToBeTracked) where T : ITrackableObject;
+    void RemoveMyselfFromAllTrackedLists();
 }
