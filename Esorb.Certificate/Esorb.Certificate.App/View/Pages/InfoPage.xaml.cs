@@ -57,12 +57,17 @@ public partial class InfoPage : Page
 
     private void TestBtn_Click(object sender, RoutedEventArgs e)
     {
+        var psci = new PupilSchoolClassImporter();
+        psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
+        var cm = new CertificateModel();
+        cm.LoadCertificateModel();
         _ = MessageBox.Show("Test!");
+
     }
 
     private void FillDatabase_Click(object sender, RoutedEventArgs e)
     {
-        InitialLoader il = new InitialLoader();
+        InitialLoader il = new();
         il.Load();
     }
 }

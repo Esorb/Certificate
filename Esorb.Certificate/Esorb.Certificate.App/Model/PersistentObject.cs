@@ -10,8 +10,8 @@ namespace Esorb.Certificate.App.Model;
 public abstract class PersistentObject
 {
     private static readonly DbHelper _dbHelper;
-    private static readonly object _lock = new object();
-    private List<TrackableList<ITrackableObject>> _trackedLists = new List<TrackableList<ITrackableObject>>();
+    private static readonly object _lock = new();
+    //private List<TrackableList<ITrackableObject>> _trackedLists = new List<TrackableList<ITrackableObject>>();
     public string? ID { get; set; }
 
     public DbHelper DbHelper
@@ -23,10 +23,7 @@ public abstract class PersistentObject
     {
         lock (_lock)
         {
-            if (_dbHelper == null)
-            {
-                _dbHelper = new DbHelper();
-            }
+            _dbHelper ??= new DbHelper();
         }
     }
     public void Save()

@@ -133,10 +133,8 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
-        //var dbh = new DbHelper();
-        var cm = new CertificateModel();
         // Act
-        cm.LoadCertificateModel();
+        var cm = new CertificateModel();
         // Assert
         Assert.AreEqual(4, cm.SchoolClasses.Count);
     }
@@ -147,10 +145,8 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
-        //var dbh = new DbHelper();
-        var cm = new CertificateModel();
         // Act
-        cm.LoadCertificateModel();
+        var cm = new CertificateModel();
         // Assert
         Assert.AreEqual(8, cm.Pupils.Count);
     }
@@ -161,7 +157,6 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
-        var dbh = new DbHelper();
         var cm = new CertificateModel();
         // Act
         cm.LoadCertificateModel();

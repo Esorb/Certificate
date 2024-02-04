@@ -4,6 +4,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="SubjectDataTemplate.xaml"/>
+        <ResourceDictionary Source="SubjectDataTemplate"/>
         <ResourceDictionary Source="CertificateTemplatePageDataTemplate.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
@@ -45,7 +46,7 @@
                         FontSize="16"
                         Margin="20,10,0,0"
                         >
-
+                        <ItemsControl ItemsSource="{Binding Subjects}"/>
                     </Expander>
                     <Expander
                         Header="2. Entscheidungen"

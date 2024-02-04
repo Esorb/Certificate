@@ -13,12 +13,10 @@ namespace Esorb.Certificate.App.ViewModel;
 public partial class SubjectViewModel : ObservableObject
 {
     private readonly Subject subject;
-    private readonly DbHelper dbHelper;
 
-    public SubjectViewModel(Subject subject, DbHelper dbHelper)
+    public SubjectViewModel(Subject subject)
     {
         this.subject = subject;
-        this.dbHelper = dbHelper;
     }
 
     public string SubjectName
@@ -30,7 +28,7 @@ public partial class SubjectViewModel : ObservableObject
             {
                 subject.SubjectName = value;
                 OnPropertyChanged(nameof(SubjectName));
-                dbHelper.Save(subject);
+                subject.Save();
             }
         }
     }
@@ -43,7 +41,7 @@ public partial class SubjectViewModel : ObservableObject
             {
                 subject.Evaluation = value;
                 OnPropertyChanged(nameof(Evaluation));
-                dbHelper.Save(subject);
+                subject.Save();
             }
         }
     }
@@ -56,7 +54,7 @@ public partial class SubjectViewModel : ObservableObject
             {
                 subject.HasPartialSubjects = value;
                 OnPropertyChanged(nameof(HasPartialSubjects));
-                dbHelper.Save(subject);
+                subject.Save();
             }
         }
     }
@@ -69,7 +67,7 @@ public partial class SubjectViewModel : ObservableObject
             {
                 subject.CalculateGrade = value;
                 OnPropertyChanged(nameof(CalculateGrade));
-                dbHelper.Save(subject);
+                subject.Save();
             }
         }
     }
@@ -82,7 +80,7 @@ public partial class SubjectViewModel : ObservableObject
             {
                 subject.PositionOnPage = value;
                 OnPropertyChanged(nameof(PositionOnPage));
-                dbHelper.Save(subject);
+                subject.Save();
             }
         }
     }
@@ -95,7 +93,7 @@ public partial class SubjectViewModel : ObservableObject
             {
                 subject.HasComment = value;
                 OnPropertyChanged(nameof(HasComment));
-                dbHelper.Save(subject);
+                subject.Save();
             }
         }
     }
@@ -108,7 +106,7 @@ public partial class SubjectViewModel : ObservableObject
             {
                 subject.MaxNumberOfCommentLines = value;
                 OnPropertyChanged(nameof(MaxNumberOfCommentLines));
-                dbHelper.Save(subject);
+                subject.Save();
             }
         }
     }

@@ -13,7 +13,7 @@ namespace Esorb.Certificate.App.Database;
 public class DbHelper
 {
     private readonly CertificateSettings settings = new();
-    private List<string> Tables = new List<string>();
+    private readonly List<string> Tables = new();
 
     public DbHelper()
     {
@@ -25,6 +25,7 @@ public class DbHelper
         InitGradeLimit();
         InitCertificateTemplatePage();
         InitSubject();
+        InitContent();
     }
 
     private readonly Dictionary<string, ObjectSQL> StandardSQLStatements = new();
@@ -39,6 +40,7 @@ public class DbHelper
         CreateTable(typeof(GradeLimit).ToString());
         CreateTable(typeof(CertificateTemplatePage).ToString());
         CreateTable(typeof(Subject).ToString());
+        CreateTable(typeof(Content).ToString());
     }
 
     public void DropCertificateTables()
@@ -51,9 +53,10 @@ public class DbHelper
         DropTable(typeof(GradeLimit).ToString());
         DropTable(typeof(CertificateTemplatePage).ToString());
         DropTable(typeof(Subject).ToString());
+        DropTable(typeof(Content).ToString());
     }
 
-    private string ConnectionString(string filePath)
+    private static string ConnectionString(string filePath)
     {
         StringBuilder sb = new();
 
@@ -263,6 +266,8 @@ public class DbHelper
             { "Yearlevel", "INTEGER" },
             { "HalfYear", "INTEGER" },
             { "IsFullYearReport", "BOOLEAN" },
+            { "PupilTransferDecision", "BOOLEAN" },
+            { "AbbForFileName", "TEXT" },
         };
         ObjectSQL SQL = new("CertificateTemplate", Fields);
         StandardSQLStatements.Add(typeof(CertificateTemplate).ToString(), SQL);
@@ -313,5 +318,28 @@ public class DbHelper
         ObjectSQL SQL = new("Subject", Fields);
         StandardSQLStatements.Add(typeof(Subject).ToString(), SQL);
         Tables.Add("Subject");
+    }
+
+    private void InitContent()
+    {
+        var Fields = new Dictionary<string, string>
+        {
+            { "Position", "INTEGER" },
+            { "Format", "TEXT"},
+            { "Field", "TEXT" },
+            { "Text", "TEXT" },
+            { "Length", "INTEGER" },
+            { "WeightLevel1", "INTEGER" },
+            { "WeightLevel2", "INTEGER" },
+            { "RatingCalculation", "TEXT" },
+            { "ElectiveSubjectGroup", "INTEGER" },
+            { "ElectiveSubject", "TEXT" },
+            { "CertificateTemplateID", "TEXT" },
+        };
+
+        ObjectSQL SQL = new("Content", Fields);
+        StandardSQLStatements.Add(typeof(Content).ToString(), SQL);
+        Tables.Add("Content");
+
     }
 }

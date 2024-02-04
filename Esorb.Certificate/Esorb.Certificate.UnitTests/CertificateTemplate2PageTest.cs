@@ -1,11 +1,5 @@
-﻿using CsvHelper.TypeConversion;
-using Esorb.Certificate.App.Database;
+﻿using Esorb.Certificate.App.Database;
 using Esorb.Certificate.App.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Esorb.Certificate.UnitTests
 {
@@ -20,7 +14,7 @@ namespace Esorb.Certificate.UnitTests
             dbh.DropTable(typeof(CertificateTemplatePage).ToString());
             dbh.CreateTable(typeof(CertificateTemplatePage).ToString());
 
-            List<CertificateTemplate> cts = new List<CertificateTemplate>();
+            List<CertificateTemplate> cts = new();
             cts = dbh.LoadAll<CertificateTemplate>().OrderBy(ct => ct.Yearlevel).ThenBy(ct => ct.HalfYear).ToList();
             CertificateTemplatePage ctp;
 
@@ -29,9 +23,11 @@ namespace Esorb.Certificate.UnitTests
             {
                 for (int i = 1; i <= 4; i++)
                 {
-                    ctp = new CertificateTemplatePage();
-                    ctp.CertificateTemplateId = ct.ID!;
-                    ctp.PageNumber = i;
+                    ctp = new CertificateTemplatePage
+                    {
+                        CertificateTemplateId = ct.ID!,
+                        PageNumber = i
+                    };
                     ct.CertificateTemplatePages.Add(ctp);
                     dbh.Save(ctp);
                 }

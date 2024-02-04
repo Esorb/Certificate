@@ -10,8 +10,8 @@ namespace Esorb.Certificate.App.Model
     public class CertificateTemplatePage : PersistentObject
     {
         public int PageNumber { get; set; }
-        public string CertificateTemplateId { get; set; }
-        public CertificateTemplate CertificateTemplate { get; set; }
+        public string? CertificateTemplateId { get; set; }
+        public CertificateTemplate? CertificateTemplate { get; set; }
         public IList<Subject> Subjects { get; private set; } = new List<Subject>();
     }
 }

@@ -39,10 +39,10 @@ namespace Esorb.Certificate.App.Model
             LoadSchooClasses();
             LoadGradeLimits();
             LoadCertificateTemplates();
+            LoadCertificateData();
             CertificateTemplatePages = DbHelper.LoadAll<CertificateTemplatePage>().OrderBy(ctp => ctp.CertificateTemplateId).ThenBy(ctp => ctp.PageNumber).ToList();
             Subjects = DbHelper.LoadAll<Subject>();
 
-            CertificateData = DbHelper.LoadAll<CertificateData>().ToList().FirstOrDefault() ?? new CertificateData();
         }
 
         public void LoadTeachers()
@@ -88,6 +88,11 @@ namespace Esorb.Certificate.App.Model
             {
                 CertificateTemplates.Add(certTemplate);
             }
+        }
+
+        public void LoadCertificateData()
+        {
+            CertificateData = DbHelper.LoadAll<CertificateData>().ToList().FirstOrDefault() ?? new CertificateData();
         }
 
         public void ClearCertificateModel()

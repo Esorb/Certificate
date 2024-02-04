@@ -14,9 +14,9 @@ namespace Esorb.Certificate.App.PupilCsvFileService;
 
 public class PupilSchoolClassImporter
 {
-    private IList<Pupil> pupils = new List<Pupil>();
-    private IList<SchoolClass> schoolClasses = new List<SchoolClass>();
-    private DbHelper dbHelper = new();
+    private readonly IList<Pupil> pupils = new List<Pupil>();
+    private readonly IList<SchoolClass> schoolClasses = new List<SchoolClass>();
+    private readonly DbHelper dbHelper = new();
     public IList<PupilRawData> RawDatas { get; set; } = new List<PupilRawData>();
 
     public void ReadRawData(string fileName)
@@ -95,15 +95,14 @@ public class PupilSchoolClassImporter
                 };
                 if (!string.IsNullOrEmpty(rawData.DateOfBirth))
                 {
-                    DateTime date;
-                    if (DateTime.TryParseExact(rawData.DateOfBirth, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                    if (DateTime.TryParseExact(rawData.DateOfBirth, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
                     {
                         p.DateOfBirth = date;
                     }
                 }
 
                 var schoolClass = schoolClasses.FirstOrDefault(sc => sc.ClassName == rawData.ClassName);
-                p.SchoolClassId = schoolClass.ID ?? "";
+                p.SchoolClassId = schoolClass!.ID ?? "";
 
                 dbHelper.Save(p);
                 pupils.Add(p);
@@ -124,13 +123,12 @@ public class PupilSchoolClassImporter
         return firstLine.Equals("Vorname;Nachname;Geburtsdatum;Schulbesuchsjahre;Klasse;Aktuelles Halbjahr;Jahrgang");
     }
 
-    public int GetIntFromString(string str)
+    public int GetIntFromString(string? str)
     {
         int result = 0;
         if (!string.IsNullOrEmpty(str))
         {
-            int num;
-            if (int.TryParse(str, out num))
+            if (int.TryParse(str, out int num))
             {
                 result = num;
             }

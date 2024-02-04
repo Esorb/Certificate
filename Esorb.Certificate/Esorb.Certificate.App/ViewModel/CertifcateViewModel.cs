@@ -15,8 +15,8 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public class CertifcateViewModel : ObservableObject
     {
-        private CertificateModel certificateModel;
-        private DbHelper dbHelper;
+        private readonly CertificateModel certificateModel;
+        private readonly DbHelper dbHelper;
 
         #region Constructor
         public CertifcateViewModel(CertificateModel certificateModel)

@@ -24,7 +24,7 @@ namespace Esorb.Certificate.App.View.Pages
         public readonly CertificateTemplatesViewModel certifcateTemplatesViewModel;
         public TemplatePage(CertificateTemplatesViewModel certifcateTemplatesViewModel)
         {
-            InitializeComponent();
+            //InitializeComponent();
             this.certifcateTemplatesViewModel = certifcateTemplatesViewModel;
             DataContext = this.certifcateTemplatesViewModel;
         }

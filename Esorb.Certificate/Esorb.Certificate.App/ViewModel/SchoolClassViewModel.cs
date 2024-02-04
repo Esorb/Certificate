@@ -22,10 +22,7 @@ public partial class SchoolClassViewModel : ObservableObject
         get { return pupils; }
         set { pupils = value; }
     }
-    public string ID
-    {
-        get => schoolClass.ID;
-    }
+    public string ID => schoolClass.ID!;
     public string ClassName
     {
         get => schoolClass.ClassName;
@@ -64,6 +61,6 @@ public partial class SchoolClassViewModel : ObservableObject
     }
 
     private SchoolClass schoolClass;
-    private ObservableCollection<PupilViewModel> pupils = new ObservableCollection<PupilViewModel>();
+    private ObservableCollection<PupilViewModel> pupils = new();
 }
 
