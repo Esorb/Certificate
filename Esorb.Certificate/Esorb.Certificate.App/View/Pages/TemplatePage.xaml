@@ -19,7 +19,17 @@
 
     <Grid Margin="10">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding CertificateTemplateViewModels}"/>
+            <StackPanel>
+                <Button
+                    Content="Lade Zeugnis-Master (*.xlsx)" 
+                    Width="200" 
+                    HorizontalAlignment="Left"
+                    Margin="4,10" 
+                    Padding="5,2" 
+                    FontSize="16">
+                </Button>
+                <!--<ItemsControl ItemsSource="{Binding CertificateTemplateViewModels}"/>-->
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Page>

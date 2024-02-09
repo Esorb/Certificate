@@ -134,7 +134,7 @@ namespace Esorb.Certificate.App.Model
         {
             foreach (Pupil pupil in Pupils)
             {
-                pupil.SchoolClass = (SchoolClass)SchoolClasses.FirstOrDefault(sc => sc.ID == pupil.SchoolClassId);
+                pupil.SchoolClass = SchoolClasses.FirstOrDefault(sc => sc.ID == pupil.SchoolClassId);
                 pupil.SchoolClass?.Pupils.Add(pupil);
             }
         }

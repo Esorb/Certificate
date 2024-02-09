@@ -4,7 +4,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="SubjectDataTemplate.xaml"/>
-        <ResourceDictionary Source="SubjectDataTemplate"/>
+        <!--<ResourceDictionary Source="SubjectDataTemplate"/>-->
         <ResourceDictionary Source="CertificateTemplatePageDataTemplate.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
