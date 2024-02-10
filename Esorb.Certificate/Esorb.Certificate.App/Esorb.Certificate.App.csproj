@@ -113,4 +113,13 @@
 		<Folder Include="Model\Converter\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Page Update="View\Pages\SettingsPage.xaml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Page>
+	  <Page Update="View\Pages\TemplatePage.xaml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Page>
+	</ItemGroup>
+
 </Project>

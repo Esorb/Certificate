@@ -9,13 +9,13 @@
       Title="TemplatePage"
       FontSize="16">
 
-    <Page.Resources>
+    <!--<Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../DataTemplates/CertificateTemplateDataTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Page.Resources>
+    </Page.Resources>-->
 
     <Grid Margin="10">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
