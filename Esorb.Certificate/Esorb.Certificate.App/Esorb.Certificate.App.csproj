@@ -16,9 +16,11 @@
 		<None Remove="Pictures\GGS.ico" />
 		<None Remove="Pictures\GGS.jpg" />
 		<None Remove="Pictures\GitHub Logo.png" />
+		<None Remove="Pictures\pdf_document.png" />
 		<None Remove="Pictures\PreviewIcon.png" />
 		<None Remove="Pictures\Roesrath.png" />
 		<None Remove="Pictures\SQLite Logo.png" />
+		<None Remove="Pictures\word_document.png" />
 		<None Remove="Pictures\Xceed Logo.png" />
 		<None Remove="Properties\Settings.settings" />
 	</ItemGroup>
@@ -74,6 +76,9 @@
 		<Resource Include="Pictures\GitHub Logo.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
+		<Resource Include="Pictures\pdf_document.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
 		<Resource Include="Pictures\PreviewIcon.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
@@ -82,6 +87,9 @@
 		</Resource>
 		<Resource Include="Pictures\SQLite Logo.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Pictures\word_document.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Pictures\Xceed Logo.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

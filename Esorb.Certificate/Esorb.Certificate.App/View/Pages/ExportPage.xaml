@@ -9,6 +9,104 @@
       Title="ExportPage">
 
     <Grid>
-        <TextBlock Text="Export" />
+        <StackPanel VerticalAlignment="Center">
+            <Button 
+                Width="350"
+                HorizontalAlignment="Center" 
+                Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Text="1."
+                        Margin="20,10,10,10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="24"
+                        FontWeight="Bold">
+
+                    </TextBlock>
+                    <Image 
+                        HorizontalAlignment="Left"
+                        Source="../../Pictures/word_document.png"
+                        Height="100"
+                        Width="100"
+                        Margin="10"/>
+                    <TextBlock
+                        HorizontalAlignment="Left"
+                        Margin="10"
+                        VerticalAlignment="Center"
+                        FontSize="16">
+                        <Run Text="Zeugnisse" />
+                        <LineBreak />
+                        <Run Text="als Word-Dokumente" />
+                        <LineBreak />
+                        <Run Text="exportieren" />
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+            <Button 
+                Width="350"
+                HorizontalAlignment="Center" 
+                Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Text="2."
+                        Margin="20,10,10,10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="24"
+                        FontWeight="Bold">
+                    </TextBlock>
+                    <Image 
+                        HorizontalAlignment="Left"
+                        Source="../../Pictures/word_document.png"
+                        Height="100"
+                        Width="100"
+                        Margin="10"/>
+                    <TextBlock
+                        Margin="10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="16">
+                        <Run Text="Lernempfehlungen" />
+                        <LineBreak />
+                        <Run Text="als Word-Dokumente" />
+                        <LineBreak />
+                        <Run Text="exportieren" />
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+            <Button 
+                Width="350"
+                HorizontalAlignment="center" 
+                Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Text="3."
+                        Margin="20,10,10,10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="24"
+                        FontWeight="Bold">
+                    </TextBlock>
+                    <Image 
+                        HorizontalAlignment="Left"
+                        Source="../../Pictures/pdf_document.png"
+                        Height="100"
+                        Width="100"
+                        Margin="10"/>
+                    <TextBlock
+                        Margin="10,10,20,10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="16">
+                        <Run Text="Zeugnisse" />
+                        <LineBreak />
+                        <Run Text="in PDF-Dokumente" />
+                        <LineBreak />
+                        <Run Text="umwandeln" />
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </Page>
