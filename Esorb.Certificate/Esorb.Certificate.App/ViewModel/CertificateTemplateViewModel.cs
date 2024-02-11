@@ -129,6 +129,8 @@ namespace Esorb.Certificate.App.ViewModel
             CertificateTemplatePages.Add(ctpvm);
             dbHelper.Save(ctp);
         }
+
+        public ObservableCollection<ContentViewModel> ContentViewModels { get; set; } = new();
         private bool CanExecuteAddCertificateTemplatePage()
         {
             return true;

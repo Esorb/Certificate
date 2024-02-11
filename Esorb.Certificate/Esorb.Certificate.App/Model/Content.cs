@@ -30,5 +30,7 @@ namespace Esorb.Certificate.App.Model
         public long ElectiveSubjectGroup { get; set; } = 0;
         public string ElectiveSubject { get; set; } = string.Empty;
         public string CertificateTemplateID { get; set; } = string.Empty;
+
+        public CertificateTemplate? CertificateTemplate { get; set; }
     }
 }

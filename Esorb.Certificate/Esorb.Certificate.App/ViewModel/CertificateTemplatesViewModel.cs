@@ -57,6 +57,11 @@ namespace Esorb.Certificate.App.ViewModel
                     ctvm.CertificateTemplatePages.Add(ctpvm);
                     ctpvm.CertificateTemplateViewModel = ctvm;
                 }
+
+                foreach (Content c in certificateModel.Contents)
+                {
+
+                }
             }
         }
 
