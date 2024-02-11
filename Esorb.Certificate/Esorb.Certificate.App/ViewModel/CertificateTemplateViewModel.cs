@@ -84,7 +84,7 @@ namespace Esorb.Certificate.App.ViewModel
             }
         }
 
-        public string AbbForFileName
+        public string? AbbForFileName
         {
             get => certificateTemplate.AbbForFileName;
         }
