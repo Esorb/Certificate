@@ -342,4 +342,14 @@ public class DbHelper
         Tables.Add("Content");
 
     }
+    public void PrepareDatabaseForCertificateTemplateUpdate()
+    {
+        DropTable(typeof(CertificateTemplate).ToString());
+        DropTable(typeof(GradeLimit).ToString());
+        DropTable(typeof(Content).ToString());
+
+        CreateTable(typeof(CertificateTemplate).ToString());
+        CreateTable(typeof(GradeLimit).ToString());
+        CreateTable(typeof(Content).ToString());
+    }
 }

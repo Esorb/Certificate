@@ -2,11 +2,19 @@
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System.IO;
+using Esorb.Certificate.App.Database;
 
 namespace Esorb.Certificate.App.Excel
 {
     public class CertificateMasterLoader
     {
+        private DbHelper DbHelper = new();
+        public void UpdateCertificateTemplates(string filePath)
+        {
+            DbHelper.PrepareDatabaseForCertificateTemplateUpdate();
+            LoadExcelFileIntoDatabase(filePath);
+        }
+
         private void LoadExcelFileIntoDatabase(string filePath)
         {
             using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
@@ -22,11 +30,10 @@ namespace Esorb.Certificate.App.Excel
                         Grades2Database(sheet);
                     }
 
-                    if (sheet.SheetName.StartsWith("Jahrgang"))
+                    if (sheet.SheetName.StartsWith("Jahrgang") || sheet.SheetName.Equals("LFE"))
                     {
                         Templates2Database(sheet);
                     }
-
                 }
             }
         }
