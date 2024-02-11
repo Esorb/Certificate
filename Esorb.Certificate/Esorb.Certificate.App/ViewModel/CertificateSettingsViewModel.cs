@@ -11,7 +11,7 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public partial class CertificateSettingsViewModel : ObservableObject
     {
-        private CertificateSettings certificateSettings = new();
+        private readonly CertificateSettings certificateSettings = new();
         public CertificateSettingsViewModel()
         {
         }

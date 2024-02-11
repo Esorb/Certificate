@@ -40,7 +40,7 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         // Act
-        var result = psci.IsPupilSchoolClassFile("C:/Users/frank/Documents/d03mfn.dcs");
+        var result = PupilSchoolClassImporter.IsPupilSchoolClassFile("C:/Users/frank/Documents/d03mfn.dcs");
         // Assert
         Assert.IsFalse(result);
     }
@@ -51,7 +51,7 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         // Act
-        var result = psci.IsPupilSchoolClassFile("C:/Users/frank/Documents/cs.txt");
+        var result = PupilSchoolClassImporter.IsPupilSchoolClassFile("C:/Users/frank/Documents/cs.txt");
         // Assert
         Assert.IsFalse(result);
     }
@@ -62,7 +62,7 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         // Act
-        var result = psci.IsPupilSchoolClassFile("C:/Users/frank/Documents/cs.csv");
+        var result = PupilSchoolClassImporter.IsPupilSchoolClassFile("C:/Users/frank/Documents/cs.csv");
         // Assert
         Assert.IsFalse(result);
     }
@@ -73,7 +73,7 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         // Act
-        var result = psci.IsPupilSchoolClassFile("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
+        var result = PupilSchoolClassImporter.IsPupilSchoolClassFile("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
         // Assert
         Assert.IsTrue(result);
     }
@@ -84,7 +84,7 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         // Act
-        var result = psci.GetIntFromString("");
+        var result = PupilSchoolClassImporter.GetIntFromString("");
         // Assert
         Assert.AreEqual(0, result);
 
@@ -97,7 +97,7 @@ public class PupilSchoolClassImporterTests
         string? str = null;
         var psci = new PupilSchoolClassImporter();
         // Act
-        var result = psci.GetIntFromString(str);
+        var result = PupilSchoolClassImporter.GetIntFromString(str);
         // Assert
         Assert.AreEqual(0, result);
 
@@ -109,7 +109,7 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         // Act
-        var result = psci.GetIntFromString("435");
+        var result = PupilSchoolClassImporter.GetIntFromString("435");
         // Assert
         Assert.AreEqual(435, result);
 
@@ -121,7 +121,7 @@ public class PupilSchoolClassImporterTests
         // Arrange
         var psci = new PupilSchoolClassImporter();
         // Act
-        var result = psci.GetIntFromString("Hello World");
+        var result = PupilSchoolClassImporter.GetIntFromString("Hello World");
         // Assert
         Assert.AreEqual(0, result);
 

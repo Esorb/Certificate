@@ -28,7 +28,7 @@ public partial class App : Application
     {
 
         InitialLoader il = new InitialLoader();
-        il.Load();
+        InitialLoader.Load();
 
         Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
         Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");

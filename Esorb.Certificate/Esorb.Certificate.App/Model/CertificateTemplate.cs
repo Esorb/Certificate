@@ -16,4 +16,5 @@ public class CertificateTemplate : PersistentObject
     public string? AbbForFileName { get; set; }
     public IList<Subject> Subjects { get; private set; } = new List<Subject>();
     public IList<CertificateTemplatePage> CertificateTemplatePages { get; private set; } = new List<CertificateTemplatePage>();
+    public IList<Content> Contents { get; private set; } = new List<Content>();
 }

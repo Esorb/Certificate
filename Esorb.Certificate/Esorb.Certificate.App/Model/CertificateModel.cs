@@ -116,7 +116,7 @@ namespace Esorb.Certificate.App.Model
             LinkSubjectsToCertificateTemplates();
         }
 
-        public void LinkSubjectsToCertificateTemplates()
+        public static void LinkSubjectsToCertificateTemplates()
         {
 
         }

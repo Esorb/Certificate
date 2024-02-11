@@ -18,8 +18,7 @@ namespace Esorb.Certificate.App.InitialLoad;
 
 public class InitialLoader
 {
-    private string filePath = @"C:\Users\frank\Dropbox\Astrid\MeineZeugnisse\Zeugnis-Master.xlsx";
-    public void Load()
+    public static void Load()
     {
         CreateEmptyCertificateDatabase();
         LoadPupilsAndSchoolClassesIntoDatabase();
@@ -31,7 +30,7 @@ public class InitialLoader
 
     }
 
-    private void CreateEmptyCertificateDatabase()
+    private static void CreateEmptyCertificateDatabase()
     {
         var dbh = new DbHelper();
         dbh.DropCertificateTables();
@@ -53,13 +52,13 @@ public class InitialLoader
         cd.Save();
     }
 
-    private void LoadPupilsAndSchoolClassesIntoDatabase()
+    private static void LoadPupilsAndSchoolClassesIntoDatabase()
     {
         var psci = new PupilSchoolClassImporter();
         psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
     }
 
-    public void CreateTeachers()
+    public static void CreateTeachers()
     {
         var dbh = new DbHelper();
         var t1 = new Teacher

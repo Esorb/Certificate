@@ -68,6 +68,6 @@ public partial class InfoPage : Page
     private void FillDatabase_Click(object sender, RoutedEventArgs e)
     {
         InitialLoader il = new();
-        il.Load();
+        InitialLoader.Load();
     }
 }

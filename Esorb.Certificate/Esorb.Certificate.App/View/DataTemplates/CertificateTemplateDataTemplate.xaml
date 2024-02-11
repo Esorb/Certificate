@@ -3,9 +3,9 @@
                     xmlns:vm="clr-namespace:Esorb.Certificate.App.ViewModel">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="SubjectDataTemplate.xaml"/>
+        <!--<ResourceDictionary Source="SubjectDataTemplate.xaml"/>-->
         <!--<ResourceDictionary Source="SubjectDataTemplate"/>-->
-        <ResourceDictionary Source="CertificateTemplatePageDataTemplate.xaml"/>
+        <!--<ResourceDictionary Source="CertificateTemplatePageDataTemplate.xaml"/>-->
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type vm:CertificateTemplateViewModel}">

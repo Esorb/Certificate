@@ -36,7 +36,7 @@ namespace Esorb.Certificate.App.ViewModel
         }
         public ObservableCollection<CertificateTemplateViewModel> CertificateTemplateViewModels { get; private set; }
 
-        private CertificateModel certificateModel;
+        private readonly CertificateModel certificateModel;
         private CertificateTemplateViewModel selectedCertificateTemplate;
 
         private void BuildCertificateTemplatesViewModel()

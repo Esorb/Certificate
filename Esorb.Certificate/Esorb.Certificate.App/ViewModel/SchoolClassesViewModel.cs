@@ -14,7 +14,7 @@ public class SchoolClassesViewModel : ObservableObject
 
     public ObservableCollection<SchoolClassViewModel> SchoolClasses { get; set; }
 
-    private CertificateModel certificateModel;
+    private readonly CertificateModel certificateModel;
 
     private void BuildSchoolClassesViewModel()
     {

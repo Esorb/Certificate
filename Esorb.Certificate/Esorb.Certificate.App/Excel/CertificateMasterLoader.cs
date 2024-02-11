@@ -8,16 +8,16 @@ namespace Esorb.Certificate.App.Excel
 {
     public class CertificateMasterLoader
     {
-        private DbHelper DbHelper = new();
+        private readonly DbHelper DbHelper = new();
         public void UpdateCertificateTemplates(string filePath)
         {
             DbHelper.PrepareDatabaseForCertificateTemplateUpdate();
             LoadExcelFileIntoDatabase(filePath);
         }
 
-        private void LoadExcelFileIntoDatabase(string filePath)
+        private static void LoadExcelFileIntoDatabase(string filePath)
         {
-            using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            using (FileStream stream = new(filePath, FileMode.Open, FileAccess.Read))
             {
                 IWorkbook workbook = new XSSFWorkbook(stream);
 
@@ -38,7 +38,7 @@ namespace Esorb.Certificate.App.Excel
             }
         }
 
-        private void Grades2Database(ISheet sheet)
+        private static void Grades2Database(ISheet sheet)
         {
             for (int j = 1; j <= sheet.LastRowNum; j++)
             {
@@ -65,7 +65,7 @@ namespace Esorb.Certificate.App.Excel
 
         }
 
-        private void Templates2Database(ISheet sheet)
+        private static void Templates2Database(ISheet sheet)
         {
             CertificateTemplate ct = new();
 
@@ -119,7 +119,7 @@ namespace Esorb.Certificate.App.Excel
             Content2Database(sheet, ct);
         }
 
-        private void Content2Database(ISheet sheet, CertificateTemplate ct)
+        private static void Content2Database(ISheet sheet, CertificateTemplate ct)
         {
             ICell cell;
 

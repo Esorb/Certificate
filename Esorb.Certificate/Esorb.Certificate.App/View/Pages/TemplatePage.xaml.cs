@@ -22,9 +22,11 @@ public partial class TemplatePage : Page
 
     private void LoadExcelCertificateMaster_Click(object sender, RoutedEventArgs e)
     {
-        var openFileDialog = new OpenFileDialog();
-        openFileDialog.Title = "Zeugnis-Master auswählen";
-        openFileDialog.Filter = "Excel Dateien (*.xlsx)|*.xlsx";
+        OpenFileDialog openFileDialog = new()
+        {
+            Title = "Zeugnis-Master auswählen",
+            Filter = "Excel Dateien (*.xlsx)|*.xlsx"
+        };
 
         if (openFileDialog.ShowDialog() == true)
         {

@@ -110,7 +110,7 @@ public class PupilSchoolClassImporter
         }
     }
 
-    public bool IsPupilSchoolClassFile(string? filePath)
+    public static bool IsPupilSchoolClassFile(string? filePath)
     {
         if (string.IsNullOrEmpty(filePath)) return false;
         if (!File.Exists(filePath)) return false;
@@ -123,7 +123,7 @@ public class PupilSchoolClassImporter
         return firstLine.Equals("Vorname;Nachname;Geburtsdatum;Schulbesuchsjahre;Klasse;Aktuelles Halbjahr;Jahrgang");
     }
 
-    public int GetIntFromString(string? str)
+    public static int GetIntFromString(string? str)
     {
         int result = 0;
         if (!string.IsNullOrEmpty(str))

@@ -16,8 +16,8 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public partial class CertificateTemplateViewModel : ObservableObject
     {
-        private CertificateTemplate certificateTemplate;
-        private DbHelper dbHelper;
+        private readonly CertificateTemplate certificateTemplate;
+        private readonly DbHelper dbHelper;
 
         public CertificateTemplateViewModel(CertificateTemplate certificateTemplate, DbHelper dbHelper)
         {
@@ -84,10 +84,18 @@ namespace Esorb.Certificate.App.ViewModel
             }
         }
 
+        public string AbbForFileName
+        {
+            get => certificateTemplate.AbbForFileName;
+        }
         public string TemplateName
         {
             get
             {
+                if (AbbForFileName.Equals("LFE"))
+                {
+                    return $"Vorlage für die Lern-Förder-Empfehlung";
+                }
                 if (IsFullYearReport)
                 {
                     return $"Vorlage für das {Yearlevel}. Schuljahr";
@@ -108,12 +116,16 @@ namespace Esorb.Certificate.App.ViewModel
 
         private void ExecuteAddCertificateTemplatePage()
         {
-            var ctp = new CertificateTemplatePage();
-            ctp.CertificateTemplateId = certificateTemplate.ID!;
-            ctp.PageNumber = CertificateTemplatePages.Count + 1;
+            CertificateTemplatePage ctp = new()
+            {
+                CertificateTemplateId = certificateTemplate.ID!,
+                PageNumber = CertificateTemplatePages.Count + 1
+            };
             certificateTemplate.CertificateTemplatePages.Add(ctp);
-            var ctpvm = new CertificateTemplatePageViewModel(ctp, dbHelper);
-            ctpvm.CertificateTemplateViewModel = this;
+            CertificateTemplatePageViewModel ctpvm = new(ctp, dbHelper)
+            {
+                CertificateTemplateViewModel = this
+            };
             CertificateTemplatePages.Add(ctpvm);
             dbHelper.Save(ctp);
         }
