@@ -107,6 +107,9 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Settings.settings</DependentUpon>
 		</Compile>
+		<Compile Update="View\Pages\TemplatePage.xaml.cs">
+		  <SubType>Code</SubType>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -115,9 +118,6 @@
 
 	<ItemGroup>
 	  <Page Update="View\Pages\SettingsPage.xaml">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Page>
-	  <Page Update="View\Pages\TemplatePage.xaml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Page>
 	</ItemGroup>

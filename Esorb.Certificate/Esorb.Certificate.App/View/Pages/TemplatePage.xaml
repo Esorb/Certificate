@@ -3,32 +3,38 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Esorb.Certificate.App.ViewModel"
+      xmlns:local="clr-namespace:Esorb.Certificate.App.View.Pages"
+      xmlns:view="clr-namespace:Esorb.Certificate.App.View.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TemplatePage"
-      FontSize="16">
-
-    <!--<Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../DataTemplates/CertificateTemplateDataTemplate.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>-->
-
+      Title="TemplatePage">
     <Grid Margin="10">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <Button
-                    Content="Lade Zeugnis-Master (*.xlsx)" 
+                <Button 
+                    Content="Lade Zeugnis-Master.xlsx" 
                     Width="200" 
                     HorizontalAlignment="Left"
                     Margin="4,10" 
                     Padding="5,2" 
-                    FontSize="16">
+                    FontSize="16"
+                    Click="LoadExcelCertificateMaster_Click">
+                    <Button.ToolTip>
+                        <ToolTip 
+                            Background="LightYellow" 
+                            Width="350">
+                            <StackPanel>
+                                <TextBlock
+                                    FontSize="14"
+                                    Text="Sollten Sie bereits Bewertungen oder Zensuren erfasst haben, so gehen diese verloren, auch wenn es sich um die gleiche Zeugnis-Master Datei handelt, die schon importiert worden ist!"
+                                    TextWrapping="Wrap"
+                                    Foreground="Red"
+                                    />
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
                 </Button>
-                <!--<ItemsControl ItemsSource="{Binding CertificateTemplateViewModels}"/>-->
+                <!--<ItemsControl ItemsSource="{Binding SchoolClasses}"/>-->
             </StackPanel>
         </ScrollViewer>
     </Grid>
