@@ -108,6 +108,13 @@ namespace Esorb.Certificate.App.Excel
                 ct.IsFullYearReport = true;
             }
 
+            if (sheet.SheetName.Equals("LFE"))
+            {
+                ct.PupilTransferDecision = false;
+                ct.HalfYear = 0;
+                ct.IsFullYearReport = false;
+            }
+
             ct.Save();
             Content2Database(sheet, ct);
         }
