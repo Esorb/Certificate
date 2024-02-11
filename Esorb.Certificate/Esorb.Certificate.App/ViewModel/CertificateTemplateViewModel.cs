@@ -88,11 +88,11 @@ namespace Esorb.Certificate.App.ViewModel
         {
             get => certificateTemplate.AbbForFileName;
         }
-        public string TemplateName
+        public string? TemplateName
         {
             get
             {
-                if (AbbForFileName.Equals("LFE"))
+                if ((!string.IsNullOrEmpty(AbbForFileName)) && AbbForFileName.Equals("LFE"))
                 {
                     return $"Vorlage für die Lern-Förder-Empfehlung";
                 }
