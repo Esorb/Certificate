@@ -1,27 +1,8 @@
-﻿using Esorb.Certificate.App.Database;
-using Esorb.Certificate.App.Model;
-using Esorb.Certificate.App.Model.Enumerables;
-using Esorb.Certificate.App.PupilCsvFileService;
-using Esorb.Certificate.App.ViewModel;
-using Esorb.Certificate.App.InitialLoad;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Esorb.Certificate.App.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Esorb.Certificate.App.ViewModel;
+using Esorb.Certificate.App.Excel;
 
 namespace Esorb.Certificate.App.View.Pages;
 
@@ -48,8 +29,8 @@ public partial class TemplatePage : Page
         if (openFileDialog.ShowDialog() == true)
         {
             string selectedFileName = openFileDialog.FileName;
-            // Hier rufe deine Funktion mit dem Dateinamen auf
-            // Beispiel: ProcessSelectedFile(selectedFileName);
+            CertificateMasterLoader certificateMasterLoader = new();
+            certificateMasterLoader.UpdateCertificateTemplates(selectedFileName);
         }
     }
 }
