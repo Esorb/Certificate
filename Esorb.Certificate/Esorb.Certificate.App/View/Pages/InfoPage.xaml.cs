@@ -59,7 +59,7 @@ public partial class InfoPage : Page
     {
         var psci = new PupilSchoolClassImporter();
         psci.ImportPupilsAndSchoolClasses("C:/Users/frank/source/repos/Esorb/Certificate/Esorb.Certificate/Esorb.Certificate.UnitTests/TestData/PupilsClassesTest.csv");
-        var cm = new CertificateModel();
+        var cm = CertificateModel.GetInstance();
         cm.LoadCertificateModel();
         _ = MessageBox.Show("Test!");
 
