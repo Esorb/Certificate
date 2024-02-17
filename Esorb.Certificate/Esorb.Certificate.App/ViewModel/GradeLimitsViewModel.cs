@@ -15,7 +15,7 @@ public class GradeLimitsViewModel : ObservableObject
     public GradeLimitsViewModel(CertificateModel certificateModel)
     {
         this.certificateModel = certificateModel;
-        dbHelper = certificateModel.DbHelper;
+        dbHelper = DbHelper.GetInstance();
         BuildGradeLimitsViewModel();
     }
 

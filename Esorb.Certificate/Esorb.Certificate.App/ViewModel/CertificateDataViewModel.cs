@@ -35,7 +35,7 @@ public partial class CertificateDataViewModel : ObservableObject
     public CertificateDataViewModel(CertificateModel certificateModel)
     {
         certificateData = certificateModel.CertificateData;
-        dbHelper = certificateModel.DbHelper;
+        dbHelper = DbHelper.GetInstance();
         PrepareSchoolYearChoices();
     }
 

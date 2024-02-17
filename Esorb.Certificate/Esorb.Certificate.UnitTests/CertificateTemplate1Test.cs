@@ -16,7 +16,7 @@ namespace Esorb.Certificate.UnitTests
         public void CreateTemplates_result_in_6_Templates()
         {
             // Prepare
-            var dbh = new DbHelper();
+            var dbh = DbHelper.GetInstance();
             dbh.DropTable(typeof(CertificateTemplate).ToString());
             dbh.CreateTable(typeof(CertificateTemplate).ToString());
 
@@ -29,12 +29,12 @@ namespace Esorb.Certificate.UnitTests
             CertificateTemplate ct4 = new();
             CertificateTemplate ct5 = new();
             CertificateTemplate ct6 = new();
-            CertificateTemplateViewModel ct1VM = new(ct1, dbh);
-            CertificateTemplateViewModel ct2VM = new(ct2, dbh);
-            CertificateTemplateViewModel ct3VM = new(ct3, dbh);
-            CertificateTemplateViewModel ct4VM = new(ct4, dbh);
-            CertificateTemplateViewModel ct5VM = new(ct5, dbh);
-            CertificateTemplateViewModel ct6VM = new(ct6, dbh);
+            CertificateTemplateViewModel ct1VM = new(ct1);
+            CertificateTemplateViewModel ct2VM = new(ct2);
+            CertificateTemplateViewModel ct3VM = new(ct3);
+            CertificateTemplateViewModel ct4VM = new(ct4);
+            CertificateTemplateViewModel ct5VM = new(ct5);
+            CertificateTemplateViewModel ct6VM = new(ct6);
 
             Assert.AreEqual(0, dbh.Count(typeof(CertificateTemplate).ToString()));
 

@@ -12,10 +12,11 @@ namespace Esorb.Certificate.App.Database;
 
 public class DbHelper
 {
+    private static DbHelper instance;
     private readonly CertificateSettings settings = new();
     private readonly List<string> Tables = new();
 
-    public DbHelper()
+    private DbHelper()
     {
         InitPupil();
         InitSchoolClass();
@@ -26,6 +27,16 @@ public class DbHelper
         InitCertificateTemplatePage();
         InitSubject();
         InitContent();
+
+    }
+
+    public static DbHelper GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = new DbHelper();
+        }
+        return instance;
     }
 
     private readonly Dictionary<string, ObjectSQL> StandardSQLStatements = new();

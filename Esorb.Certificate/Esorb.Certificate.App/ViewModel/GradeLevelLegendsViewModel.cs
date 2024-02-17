@@ -16,7 +16,7 @@ public class GradeLevelLegendsViewModell : ObservableObject
     public GradeLevelLegendsViewModell(CertificateModel certificateModel)
     {
         this.certificateModel = certificateModel;
-        dbHelper = certificateModel.DbHelper;
+        dbHelper = DbHelper.GetInstance();
         BuildGradeLevelLegendsViewModel();
     }
     public ObservableCollection<GradeLevelLegendViewModel> GradeLevelLegends { get; set; }

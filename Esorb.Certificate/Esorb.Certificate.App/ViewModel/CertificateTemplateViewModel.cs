@@ -17,12 +17,12 @@ namespace Esorb.Certificate.App.ViewModel
     public partial class CertificateTemplateViewModel : ObservableObject
     {
         private readonly CertificateTemplate certificateTemplate;
-        private readonly DbHelper dbHelper;
+        private DbHelper dbHelper;
 
-        public CertificateTemplateViewModel(CertificateTemplate certificateTemplate, DbHelper dbHelper)
+        public CertificateTemplateViewModel(CertificateTemplate certificateTemplate)
         {
             this.certificateTemplate = certificateTemplate;
-            this.dbHelper = dbHelper;
+            dbHelper = DbHelper.GetInstance();
             AddCertificateTemplatePage = new RelayCommand(ExecuteAddCertificateTemplatePage, CanExecuteAddCertificateTemplatePage);
         }
         public RelayCommand AddCertificateTemplatePage { get; private set; }
@@ -122,7 +122,7 @@ namespace Esorb.Certificate.App.ViewModel
                 PageNumber = CertificateTemplatePages.Count + 1
             };
             certificateTemplate.CertificateTemplatePages.Add(ctp);
-            CertificateTemplatePageViewModel ctpvm = new(ctp, dbHelper)
+            CertificateTemplatePageViewModel ctpvm = new(ctp)
             {
                 CertificateTemplateViewModel = this
             };

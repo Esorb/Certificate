@@ -23,7 +23,7 @@ namespace Esorb.Certificate.App.ViewModel
         {
             CertificateSettingsViewModel = new CertificateSettingsViewModel();
             this.certificateModel = certificateModel;
-            dbHelper = certificateModel.DbHelper;
+            dbHelper = DbHelper.GetInstance();
 
             BuildRelayCommands();
             BuildCertificateViewModelFromCertificateModel();

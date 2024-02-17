@@ -16,9 +16,13 @@ public class PupilSchoolClassImporter
 {
     private readonly IList<Pupil> pupils = new List<Pupil>();
     private readonly IList<SchoolClass> schoolClasses = new List<SchoolClass>();
-    private readonly DbHelper dbHelper = new();
+    private DbHelper dbHelper;
     public IList<PupilRawData> RawDatas { get; set; } = new List<PupilRawData>();
 
+    public PupilSchoolClassImporter()
+    {
+        dbHelper = DbHelper.GetInstance();
+    }
     public void ReadRawData(string fileName)
     {
         CsvConfiguration configuration = new(CultureInfo.InvariantCulture)

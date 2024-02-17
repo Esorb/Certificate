@@ -23,7 +23,7 @@ public abstract class PersistentObject
     {
         lock (_lock)
         {
-            _dbHelper ??= new DbHelper();
+            _dbHelper ??= DbHelper.GetInstance();
         }
     }
     public void Save()

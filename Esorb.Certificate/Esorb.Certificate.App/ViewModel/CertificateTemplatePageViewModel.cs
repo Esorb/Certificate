@@ -19,10 +19,10 @@ public partial class CertificateTemplatePageViewModel : ObservableObject
     public CertificateTemplatePage CertificateTemplatePage { get; set; }
     private DbHelper DbHelper { get; set; }
 
-    public CertificateTemplatePageViewModel(CertificateTemplatePage certificateTemplatePage, DbHelper dbHelper)
+    public CertificateTemplatePageViewModel(CertificateTemplatePage certificateTemplatePage)
     {
         CertificateTemplatePage = certificateTemplatePage;
-        DbHelper = dbHelper;
+        DbHelper = DbHelper.GetInstance();
         RemoveCertificateTemplatePage = new RelayCommand(ExecuteRemoveCertificateTemplatePage, CanExecuteRemoveCertificateTemplatePage);
         PreviewCertificateTemplatePage = new RelayCommand(ExecutePreviewCertificateTemplatePage, CanExecutePreviewCertificateTemplatePage);
     }

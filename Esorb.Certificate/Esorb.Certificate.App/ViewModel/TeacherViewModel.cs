@@ -13,10 +13,10 @@ namespace Esorb.Certificate.App.ViewModel;
 
 public partial class TeacherViewModel : ObservableObject
 {
-    public TeacherViewModel(Teacher teacher, DbHelper dbHelper)
+    public TeacherViewModel(Teacher teacher)
     {
         Teacher = teacher;
-        DbHelper = dbHelper;
+        DbHelper = DbHelper.GetInstance();
     }
 
     private Teacher Teacher { get; }

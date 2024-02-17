@@ -8,11 +8,16 @@ namespace Esorb.Certificate.App.Excel
 {
     public class CertificateMasterLoader
     {
-        private readonly DbHelper DbHelper = new();
+        private readonly DbHelper DbHelper;
         public void UpdateCertificateTemplates(string filePath)
         {
             DbHelper.PrepareDatabaseForCertificateTemplateUpdate();
             LoadExcelFileIntoDatabase(filePath);
+        }
+
+        public CertificateMasterLoader()
+        {
+            DbHelper = DbHelper.GetInstance();
         }
 
         private static void LoadExcelFileIntoDatabase(string filePath)

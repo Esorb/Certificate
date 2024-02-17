@@ -44,14 +44,14 @@ public class TeachersViewModel : ObservableObject
 
         foreach (var t in certificateModel.Teachers)
         {
-            teachers.Add(new TeacherViewModel((Teacher)t, certificateModel.DbHelper));
+            teachers.Add(new TeacherViewModel((Teacher)t));
         }
     }
 
     private void ExecuteAddTeacher()
     {
         Teacher teacher = new();
-        TeacherViewModel teacherViewModel = new(teacher, certificateModel.DbHelper);
+        TeacherViewModel teacherViewModel = new(teacher);
         Teachers.Add(teacherViewModel);
     }
 

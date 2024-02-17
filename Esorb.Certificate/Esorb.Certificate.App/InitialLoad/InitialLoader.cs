@@ -32,7 +32,7 @@ public class InitialLoader
 
     private static void CreateEmptyCertificateDatabase()
     {
-        var dbh = new DbHelper();
+        var dbh = DbHelper.GetInstance();
         dbh.DropCertificateTables();
         dbh.ShrinkDatabaseFile();
         dbh.CreateCertificateTables();
@@ -60,7 +60,7 @@ public class InitialLoader
 
     public static void CreateTeachers()
     {
-        var dbh = new DbHelper();
+        var dbh = DbHelper.GetInstance();
         var t1 = new Teacher
         {
             FirstName = "Astrid",
