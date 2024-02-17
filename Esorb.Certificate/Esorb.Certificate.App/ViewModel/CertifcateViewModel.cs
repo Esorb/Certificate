@@ -15,18 +15,28 @@ namespace Esorb.Certificate.App.ViewModel
 {
     public class CertifcateViewModel : ObservableObject
     {
+        private static CertifcateViewModel instance;
         private readonly CertificateModel certificateModel;
         private readonly DbHelper dbHelper;
 
         #region Constructor
-        public CertifcateViewModel(CertificateModel certificateModel)
+        private CertifcateViewModel()
         {
             CertificateSettingsViewModel = new CertificateSettingsViewModel();
-            this.certificateModel = certificateModel;
+            certificateModel = CertificateModel.GetInstance();
             dbHelper = DbHelper.GetInstance();
 
             BuildRelayCommands();
             BuildCertificateViewModelFromCertificateModel();
+        }
+
+        public static CertifcateViewModel GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new CertifcateViewModel();
+            }
+            return instance;
         }
 
         #endregion
@@ -104,7 +114,7 @@ namespace Esorb.Certificate.App.ViewModel
 
         private void BuildPartialViewModels()
         {
-            TeachersViewModel = new(this.certificateModel);
+            TeachersViewModel = new(certificateModel);
             CertificateTemplatesViewModel = new(certificateModel);
             GradeLevelLegendsViewModell = new(certificateModel);
             GradeLimitsViewModel = new(certificateModel);
