@@ -6,6 +6,7 @@ namespace Esorb.Certificate.App.Model
 {
     public class CertificateModel
     {
+        private static CertificateModel instance;
         public DbHelper DbHelper { get; private set; } = new DbHelper();
         private CertificateSettings settings = new();
         public IList<Teacher> Teachers { get; private set; } = new List<Teacher>();
@@ -19,12 +20,21 @@ namespace Esorb.Certificate.App.Model
         public IList<Content> Contents { get; private set; } = new List<Content>();
         public CertificateData CertificateData { get; private set; } = new CertificateData();
 
-        public CertificateModel()
+        private CertificateModel()
         {
             if (DbHelper.IsCertificateFile(settings.DatabasePath))
             {
                 BuildCertificateModel();
             }
+        }
+
+        public static CertificateModel GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new CertificateModel();
+            }
+            return instance;
         }
 
         public void BuildCertificateModel()

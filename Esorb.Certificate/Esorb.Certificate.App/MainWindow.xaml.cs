@@ -23,7 +23,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         WindowState = WindowState.Maximized;
-        CertificateModel = new CertificateModel();
+        CertificateModel = CertificateModel.GetInstance();
         CertifcateViewModel = new CertifcateViewModel(CertificateModel);
         SettingsVM = CertifcateViewModel.CertificateSettingsViewModel;
         DataContext = this.CertifcateViewModel;
